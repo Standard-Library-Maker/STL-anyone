@@ -11,13 +11,16 @@ d2-klc/js-stl has the dependencies for the following libraries:
 
 ## Environment Settings and Execution order
 
+### Just test for now
 ### in bash Environment
 1. npm install
 2. npm start
+3. see the page and console(f12 in chrome)
 ### in cmd Environment
 1. npm install
 2. npm start
 3. click public folder
+4. see the page and console(f12 in chrome)
 
 ## License
 
