@@ -11,7 +11,7 @@
 
 ## Environment Settings and Execution steps
 
-- Just test for now
+- Just for test
 ### in bash Environment
 1. npm install
 2. npm start
