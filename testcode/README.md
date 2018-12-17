@@ -11,7 +11,7 @@ you have to install nodejs to test this code or you can test this code at chrome
 
 ## Environment Settings and Execution order
 
-### Just test for now. you can change inputs in the code.
+Just test for now. you can change inputs in the code.
 -----
 ### in bash Environment
 1. node '~.js'
