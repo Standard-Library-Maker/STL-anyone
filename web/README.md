@@ -9,6 +9,16 @@ d2-klc/js-stl has the dependencies for the following libraries:
 | --------------------- | ------- | ------- | ------ |
 | 8.11.3+ (except 10.x) | 6.4.0+  | 4.27.1+ | 7.0.0+ |
 
+## Environment Settings and Execution order
+
+### in bash Environment
+1. npm install
+2. npm start
+### in cmd Environment
+1. npm install
+2. npm start
+3. click public folder
+
 ## License
 
 d2-klc/js-stl is licensed under the [MIT license](https://github.com/d2-klc/js-stl/blob/master/LICENSE).
