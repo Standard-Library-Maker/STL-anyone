@@ -10,9 +10,8 @@ you have to install nodejs to test this code or you can test this code at chrome
 | 8.11.3+ (except 10.x) |
 
 ## Environment Settings and Execution order
+Just for test now. You can change your inputs in the code.
 
-Just test for now. you can change inputs in the code.
------
 ### in bash Environment
 1. node '~.js'
 2. check the console log
