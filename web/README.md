@@ -1,5 +1,5 @@
-### js-stl-web
-# STL(Standard Template Library) for javascript and simple frontend
+# javascript-STL-Web
+## STL(Standard Template Library) for javascript and simple frontend
 
 ## Dependency
 
