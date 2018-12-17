@@ -3,7 +3,7 @@
 
 ## Dependency
 
-Blatch has the dependencies for the following libraries:
+d2-klc/js-stl has the dependencies for the following libraries:
 
 | Node.js               | Npm     | Webpack | Babel  |
 | --------------------- | ------- | ------- | ------ |
