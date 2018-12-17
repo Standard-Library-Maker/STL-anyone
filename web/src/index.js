@@ -1,4 +1,4 @@
-import stl from './d2-stl';
+import stl from './lib/d2-stl';
 
 /* Test Code */
 console.log('\nstack test start');

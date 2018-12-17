@@ -1,5 +1,3 @@
-import { isNull } from "util";
-
 function Stack() { 
   this.data = [];
   this.top = 0;
