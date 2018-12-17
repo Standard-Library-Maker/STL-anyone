@@ -11,4 +11,4 @@ Blatch has the dependencies for the following libraries:
 
 ## License
 
-Blatch is licensed under the [MIT license](LICENSE).
+Blatch is licensed under the [MIT license](https://github.com/d2-klc/js-stl/blob/master/LICENSE).
