@@ -4,7 +4,5 @@
 
 -----
 ## License
-- kang Se Eung
-- Lee Ji Soo
-- Cho Young Il
+- created by) kang Se Eung, Lee Ji Soo, Cho Young Il
 - d2-klc/js-stl is licensed under the [MIT license](LICENSE).
