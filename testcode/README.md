@@ -9,7 +9,7 @@ you have to install nodejs to test this code or you can test this code at chrome
 | --------------------- |
 | 8.11.3+ (except 10.x) |
 
-## Environment Settings and Execution order
+## Environment Settings and Execution steps
 Just for test now. You can change your inputs in the code.
 
 ### in bash Environment
