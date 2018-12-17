@@ -3,7 +3,7 @@
 
 ## Dependency
 
-d2-klc/js-stl has the dependencies for the following libraries:
+- d2-klc/js-stl has the dependencies for the following libraries:
 
 | Node.js               | Npm     | Webpack | Babel  |
 | --------------------- | ------- | ------- | ------ |
@@ -11,7 +11,7 @@ d2-klc/js-stl has the dependencies for the following libraries:
 
 ## Environment Settings and Execution steps
 
-### Just test for now
+- Just test for now
 ### in bash Environment
 1. npm install
 2. npm start
