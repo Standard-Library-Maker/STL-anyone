@@ -3,7 +3,7 @@
 
 ## Dependency
 
-d2-klc/js-stl has the dependencies for the following libraries:
+you have to install nodejs to test this code or you can test this code at chrome
 
 | Node.js               |
 | --------------------- |
@@ -12,10 +12,10 @@ d2-klc/js-stl has the dependencies for the following libraries:
 ## Environment Settings and Execution order
 
 ### Just test for now. you can change inputs in the code.
+-----
 ### in bash Environment
 1. node '~.js'
 2. check the console log
------
 ### in cmd Environment
 1. node '~.js'
 2. check the console log
