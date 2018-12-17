@@ -5,7 +5,7 @@
 
 Blatch has the dependencies for the following libraries:
 
-| Node.js               | Npm     | Webpack | babel  |
+| Node.js               | Npm     | Webpack | Babel  |
 | --------------------- | ------- | ------- | ------ |
 | 8.11.3+ (except 10.x) | 6.4.0+  | 4.27.1+ | 7.0.0+ |
 
