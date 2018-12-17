@@ -1,4 +1,4 @@
-# js-stl
+# JS-STL by d2-KLC
 STL(Standard Template Library) for javascript
 
 ------------
