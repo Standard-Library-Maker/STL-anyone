@@ -4,5 +4,7 @@
 
 -----
 ## License
-
+- kang Se eung
+- Lee Ji Soo
+- Cho Young Il
 d2-klc/js-stl is licensed under the [MIT license](LICENSE).
