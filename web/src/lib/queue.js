@@ -1,15 +1,9 @@
-const Queue = {
-  ArrQueue,
-  CircularQueue,
-  LlQueue
-};
-
 // Array queue -> general array
-function ArrQueue() {
+const ArrQueue = function() {
   this.count = 0;
   this.data = [];
   document.writeln(`<br>★★★ Array Queue example ★★★<br>=================================<br>`);
-}
+};
 
 ArrQueue.prototype.push = function(value) {
   this.data[this.count++] = value;
@@ -65,20 +59,20 @@ ArrQueue.prototype.show = function(value) {
 
 ///////////////////////////////////////////////////////////////
 // Circular array queue
-function CircularQueue(max) {
+const CircularQueue = function (max) {
   this.qFront = 0;
   this.qBack = 0;
   this.data = [];
   this.MAX_SIZE = max + 1;
   document.writeln(`<br>★★★ Circular Queue example ★★★<br>=================================<br>`);
-}
+};
 
 CircularQueue.prototype.isFull = function() {
   ((this.qBack + 1) % this.MAX_SIZE === this.qFront);
-}
+};
 CircularQueue.prototype.isEmpty = function() {
   (this.qBack === this.qFront);
-}
+};
 
 CircularQueue.prototype.push = function(value) {
   if (this.isFull()) {
@@ -140,11 +134,18 @@ CircularQueue.prototype.show = function(value) {
 };
 
 
+///////////////////////////////////////////////////////////////
 // Linked list queue -> will be implemented after implementing ll
 function LlQueue() {
   let data = [];
   let head = 0;
   let tail = 0;
 }
+
+const Queue = {
+  ArrQueue,
+  CircularQueue,
+  LlQueue
+};
 
 export default Queue

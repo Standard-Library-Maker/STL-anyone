@@ -1,9 +1,9 @@
-function Stack() { 
+const Stack = function() {
   this.data = [];
   this.top = 0;
   // this.max = 100;
   document.writeln(`<br>★★★ Stack example ★★★ <br>=================================<br>`);
-}
+};
 
 Stack.prototype.push = function(value) {
   this.data[this.top++] = value;
@@ -44,6 +44,6 @@ Stack.prototype.show = function(value) {
     document.writeln(`function(${value}) --> data : [${this.data}] <br>`);
     document.writeln('↓'+`<br>`);
   }
-}
+};
 
 export default Stack
