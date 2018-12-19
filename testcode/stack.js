@@ -44,6 +44,8 @@ function Stack() {
 let s = new Stack();
 s.push("hello world");
 s.push("hello javascript");
+s.push("지수 천재");
+s.pop();
 s.state();
 console.log(`pop : ${s.pop()}`);
 console.log(`top : ${s.top()}`);
@@ -52,3 +54,4 @@ s.state();
 s.clear();
 console.log("=== after clear ===");
 s.state();
+
