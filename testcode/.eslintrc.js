@@ -17,6 +17,10 @@ module.exports = {
             "error",
             "double"
         ],
+        "func-names": [
+            "error", 
+            "never"
+        ],
         "no-trailing-spaces": 0,
         "keyword-spacing": 0,
         "no-unused-vars": 1,
@@ -27,6 +31,6 @@ module.exports = {
         "prefer-const": 0,
         "no-console": 0,
         "consistent-return": 0,
-        "no-tabs": 0
+        "no-tabs": 0,
     }
 };

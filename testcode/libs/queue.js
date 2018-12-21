@@ -108,11 +108,15 @@ function LlQueue() {
   let tail = 0;
 }
 
-
+module.exports = { 
+  ArrQueue, 
+  CircularQueue,
+  LlQueue,
+};
 
 
 /* Test Code */
-let s1 = new ArrQueue();
+/* let s1 = new ArrQueue();
 s1.push("hello world");
 s1.push("hello javascript");
 s1.push("this is queue");
@@ -128,10 +132,10 @@ console.log(`back : ${s1.back()}`);
 console.log(`size : ${s1.size()}`);
 s1.clear();
 console.log("=== after clear() ===");
-s1.state();
+s1.state(); */
 
 /* test code2 */
-let s2 = new CircularQueue(3);
+/* let s2 = new CircularQueue(3);
 s2.push("hello world");
 s2.push("hello javascript");
 s2.push("this is circular queue");
@@ -154,4 +158,5 @@ console.log(`size : ${s2.size()}`);
 
 s2.clear();
 console.log("=== after clear() ===");
-s2.state();
+s2.state(); */
+

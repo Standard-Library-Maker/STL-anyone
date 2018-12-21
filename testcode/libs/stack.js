@@ -39,9 +39,10 @@ function Stack() {
   };
 }
 
+module.exports = Stack;
 
 /* Test Code */
-let s = new Stack();
+/* let s = new Stack();
 s.push("hello world");
 s.push("hello javascript");
 s.push("지수 천재");
@@ -53,5 +54,5 @@ console.log(`size : ${s.size()}`);
 s.state();
 s.clear();
 console.log("=== after clear ===");
-s.state();
+s.state(); */
 
