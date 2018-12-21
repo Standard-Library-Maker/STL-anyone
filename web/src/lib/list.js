@@ -1,9 +1,9 @@
 // Python list 참고.
 const List = function() {
-  console.log("\n==================\nList Create\n==================\n");
   this.data = [];
   this.pos = 0;
   this.listSize = 0;
+  document.writeln(`<br>★★★ List example ★★★ <br>=================================<br>`);
 };
 
 // append value at the end of the list
@@ -30,9 +30,9 @@ List.prototype.get = function(position) {
 // insert value at the list[index]
 List.prototype.insert = function (index, value) {
   if(this.data[index] !== undefined){
+    this.listSize++;
     for(let i = this.listSize; i > index; i--)
       this.data[i] = this.data[i-1];
-    this.listSize++;
     this.data[index] = value;
   } else { // data[index] === undefined ---> 데이터가 없는 경우.
     this.listSize++;
@@ -58,7 +58,6 @@ List.prototype.length = function() {
 
 // return datas in the list
 List.prototype.toString = function() {
-  console.log(this.data);
   return this.data;
 };
 
@@ -113,25 +112,4 @@ List.prototype.getElement = function() {
   return this.data[this.pos];
 };
 
-
-/* test code */
-
-let BubbleSort = require('./[sort]bubble');
-let newList = new List();
-newList.append(2);
-newList.append(5);
-newList.append(1);
-newList.toString();
-const result = BubbleSort(newList.data);
-console.log(result);
-console.log(`length : ${newList.length()}`);
-newList.insert(2,7);
-newList.toString();
-console.log(`length : ${newList.length()}`);
-newList.remove(2);
-newList.toString();
-newList.end();
-console.log(`current position's element : ${newList.getElement()}`);
-newList.clear();
-console.log("after clear");
-newList.toString();
+export default List;
