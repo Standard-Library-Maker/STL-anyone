@@ -7,17 +7,19 @@
 
 | Node.js               |
 | --------------------- |
-| 8.11.3+ (except 10.x) |
+| 8.11.3+               |
 
 ## Environment Settings and Execution steps
 - Just for test now. You can change your inputs in the code.
 
 ### in bash Environment
-1. node '~.js'
-2. check the console log
+1. npm install or npm i
+2. node '~.js' or npm start
+3. check the console log
 ### in cmd Environment
-1. node '~.js'
-2. check the console log
+1. npm install or npm i
+2. node '~.js' or npm start
+3. check the console log
 
 ## License
 
