@@ -5,7 +5,7 @@ let List = require("./libs/list");
 let LinkedList = require("./libs/linked_list");
 let Heap = require("./libs/heap");
 
-/* Heap test case*/
+//Heap test case
 let h = new Heap();
 h.push(1);
 h.push(4);
