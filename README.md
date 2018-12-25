@@ -4,5 +4,5 @@
 
 -----
 ## License
-- created by) kang Se Eung, Lee Ji Soo, Cho Young Il
+- Created by) Kang Se Eung, Lee Ji Soo, Cho Young Il
 - Standard-Library-Maker/STL::anyone? is licensed under the [MIT license](LICENSE).
