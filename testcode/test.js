@@ -2,12 +2,12 @@ let Stack = require("./libs/stack");
 let Queue = require("./libs/queue");
 let BubbleSort = require("./libs/[sort]bubble");
 let List = require("./libs/list");
-//let LinkedList = require("./libs/linked_list");
+// let LinkedList = require("./libs/linked_list");
 let Heap = require("./libs/heap");
 let PriorityQueue = require("./libs/priority_queue");
 
 
-//Heap test case
+// Heap test case
 let h = new Heap();
 h.push(1);
 h.push(2);
@@ -109,4 +109,4 @@ testPriorityQueue.empty();
 testPriorityQueue.size();
 testPriorityQueue.top();
 testPriorityQueue.push(1);
-testPriorityQueue.pop();*/
+testPriorityQueue.pop(); */
