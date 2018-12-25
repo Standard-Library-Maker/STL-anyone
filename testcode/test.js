@@ -2,16 +2,16 @@ let Stack = require("./libs/stack");
 let Queue = require("./libs/queue");
 let BubbleSort = require("./libs/[sort]bubble");
 let List = require("./libs/list");
-let LinkedList = require("./libs/linked_list");
+//let LinkedList = require("./libs/linked_list");
 let Heap = require("./libs/heap");
 
 //Heap test case
 let h = new Heap();
 h.push(1);
-h.push(4);
 h.push(2);
-h.push(5);
 h.push(3);
+h.push(4);
+h.push(5);
 h.state();
 
 
