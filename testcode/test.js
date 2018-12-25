@@ -21,7 +21,6 @@ h.state();
 /* let s = new Stack();
 s.push("hello world");
 s.push("hello javascript");
-s.push("지수 천재");
 s.pop();
 s.state();
 console.log(`pop : ${s.pop()}`);
@@ -100,7 +99,7 @@ newList.toString();
 */
 
 
-// Priority queue => test by Jisoo
+// Priority queue => test by Jisoo 
 console.log("\n=======test by Jisoo=======");
 let testPriorityQueue = new PriorityQueue();
 testPriorityQueue.empty();
