@@ -1,4 +1,4 @@
-# JS-STL by d2-KLC
+# STL::anyone? by Standard-Library-Maker
 - STL(Standard Template Library) for javascript
 - clone and execute by following each readme steps
 
