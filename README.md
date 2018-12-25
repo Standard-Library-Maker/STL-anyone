@@ -5,4 +5,4 @@
 -----
 ## License
 - created by) kang Se Eung, Lee Ji Soo, Cho Young Il
-- d2-klc/js-stl is licensed under the [MIT license](LICENSE).
+- Standard-Library-Maker/STL::anyone? is licensed under the [MIT license](LICENSE).
