@@ -13,11 +13,11 @@
 
 - Just for test
 ### in bash Environment
-1. npm install
+1. npm install(npm i)
 2. npm start
 3. see the page and console(f12 in chrome)
 ### in cmd Environment
-1. npm install
+1. npm install(npm i)
 2. npm start
 3. click public folder
 4. see the page and console(f12 in chrome)

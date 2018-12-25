@@ -4,10 +4,15 @@
   "description": "- STL(Standard Template Library) for javascript testcode",
   "main": "test.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node test.js"
   },
-  "author": "",
-  "license": "ISC",
+  "author": {
+    "name": "Youngil Cho",
+    "email": "yicho93@gmail.com"
+  },
+  "contributors": ["Jisoo Lee", "Seeung Kang"],
+  "license": "MIT",
   "dependencies": {
     "eslint": "^5.10.0",
     "eslint-config-airbnb-base": "^13.1.0",
