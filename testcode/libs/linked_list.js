@@ -4,7 +4,7 @@ let Node = function(value) {
   this.next = null;
 };
 
-let LinkedList = function() {
+const LinkedList = function() {
   this.length = 0;
   this.head = null;
   this.tail = null;
@@ -71,6 +71,61 @@ LinkedList.prototype.insert = function(pos, value) {
   }
 };
 
+LinkedList.prototype.removeHead = function() {
+  if (this.length === 0) return -1;
+
+  let temp = this.head.next;
+  // delete this.head;
+  this.head = temp;
+  this.length--;
+  // return temp;
+};
+
+LinkedList.prototype.removeTail = function() {
+  if (this.length === 0) return -1;
+  
+  let temp = this.head;
+  while(temp) {
+    if(temp.next === this.tail) {
+      temp.next = null;
+      // delete this.tail;
+      this.tail = temp;
+      this.length--;
+      // return temp;
+    }
+    temp = temp.next;    
+  }
+};
+
+LinkedList.prototype.remove = function(pos) {
+  if (pos <= 0 || pos > this.length || this.length === 0) return -1;
+  if (pos === 1) this.removeHead();
+
+  let temp = this.head; // temp = this.head = LinkedList.indexOf(1)
+  let prev;
+  for(let i = 0; i < pos; i++) { // 0 ~ pos - 1
+    if(i === pos - 2) {
+      prev = temp;
+    }
+    temp = temp.next;
+  }
+  prev.next = temp; // prev = cur - 1, temp = cur + 1
+  this.length--;
+};
+
+LinkedList.prototype.size = function() {
+  return this.length;
+};
+
+LinkedList.prototype.toString = function() {
+  console.log("========linked list========");
+  let curNode = this.head;
+  while(curNode !== null) {
+    console.log(curNode.data);
+    curNode = curNode.next;
+  }
+};
+
 
 /* test code */
 let newList = new LinkedList();
@@ -81,12 +136,24 @@ console.log(`length : ${newList.length}`);
 newList.appendHead(1);
 // newList.toString();
 console.log(`length : ${newList.length}`);
-newList.insert(3, 7);
+newList.insert(2, 7);
 console.log(newList);
 console.log(newList.find(1));
 console.log(`length : ${newList.length}`);
-// newList.remove(2);
 newList.toString();
+newList.removeHead();
+newList.toString();
+newList.removeTail();
+newList.toString();
+console.log(`size : ${newList.size()}`);
+newList.appendTail(5);
+newList.toString();
+console.log(`size : ${newList.size()}`);
+newList.remove(2);
+newList.toString();
+console.log(`size : ${newList.size()}`);
+
+
 // newList.end();
 // console.log(`current position's element : ${newList.getElement()}`);
 // newList.clear();

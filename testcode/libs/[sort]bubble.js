@@ -15,10 +15,11 @@ const BubbleSort = function(array) {
     console.log(`${input.length - i}th progressing ... ${input}`);
   }
   return input;
-}
+};
 
-//const input = [3, 1, 6, 5, 4, 2];
-//const result = bubbleSort(input);
 
-//console.log(`\nresult : ${result}`);
+// const input = ["나", "가", "안녕", "aw"];
+// const result = BubbleSort(input);
+
+// console.log(`\nresult : ${result}`);
 module.exports = BubbleSort;
