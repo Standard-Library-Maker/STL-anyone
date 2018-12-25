@@ -1,9 +1,14 @@
 // Python list 참고.
-const List = function() {
+const List = function(arr = []) {
   console.log("\n==================\nList Create\n==================\n");
-  this.data = [];
+  this.data = arr;
   this.pos = 0;
   this.listSize = 0;
+};
+
+const makeList = function(array) {
+  let newList = new List(array);
+  return newList;
 };
 
 // append value at the end of the list
@@ -113,7 +118,8 @@ module.exports = List;
 
 /* test code */
 
-/* let BubbleSort = require('./[sort]bubble');
+/* let BubbleSort = require("./[sort]bubble");
+
 let newList = new List();
 newList.append(2);
 newList.append(5);
@@ -122,7 +128,7 @@ newList.toString();
 const result = BubbleSort(newList.data);
 console.log(result);
 console.log(`length : ${newList.length()}`);
-newList.insert(2,7);
+newList.insert(2, 7);
 newList.toString();
 console.log(`length : ${newList.length()}`);
 newList.remove(2);
