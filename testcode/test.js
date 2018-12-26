@@ -2,7 +2,7 @@ let Stack = require("./libs/stack");
 let Queue = require("./libs/queue");
 let BubbleSort = require("./libs/[sort]bubble");
 let List = require("./libs/list");
-// let LinkedList = require("./libs/linked_list");
+let LinkedList = require("./libs/linked_list");
 let Heap = require("./libs/heap");
 let PriorityQueue = require("./libs/priority_queue");
 
@@ -100,6 +100,34 @@ console.log("after clear");
 newList.toString();
 */
 
+/* Linked_list test code */
+let newList = new LinkedList();
+newList.appendHead(2);
+newList.toString();
+console.log(`size : ${newList.size()}`);
+newList.appendTail(5);
+newList.toString();
+console.log(`size : ${newList.size()}`);
+newList.appendHead(1);
+newList.toString();
+console.log(`size : ${newList.size()}`);
+newList.insert(2, 7);
+console.log(newList);
+console.log(newList.find(1));
+console.log(`length : ${newList.length}`);
+newList.toString();
+newList.remove();
+newList.toString();
+console.log(`size : ${newList.size()}`);
+newList.appendTail(10);
+newList.toString();
+console.log(`size : ${newList.size()}`);
+newList.remove(2);
+newList.toString();
+console.log(`size : ${newList.size()}`);
+newList.remove(3);
+newList.toString();
+console.log(`size : ${newList.size()}`);
 
 // Priority queue => test by Jisoo 
 /*
