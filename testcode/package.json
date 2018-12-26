@@ -11,7 +11,10 @@
     "name": "Youngil Cho",
     "email": "yicho93@gmail.com"
   },
-  "contributors": ["Jisoo Lee", "Seeung Kang"],
+  "contributors": [
+    "Jisoo Lee",
+    "Seeung Kang"
+  ],
   "license": "MIT",
   "dependencies": {
     "eslint": "^5.10.0",
