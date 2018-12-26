@@ -11,6 +11,29 @@ const LinkedList = function() {
   this.tail = null;
 };
 
+// find node that has the 'value'.
+LinkedList.prototype.find = function(value) {
+  let curNode = this.head;
+  // let index = 1;
+  while(curNode.data !== value) { // if it has value return node, else return null.
+    curNode = curNode.next;
+    // index++;
+  }
+  return curNode;
+  // return index;
+};
+
+// find node in the linked list in the index of pos
+LinkedList.prototype.indexOf = function(pos) {
+  if (pos <= 0 || pos > this.length || this.length === 0) return -1;
+  
+  let curNode = this.head;
+  for(let i = 1; i < pos; i++) {
+    curNode = curNode.next;
+  }
+  return curNode;
+};
+
 // append on the front of the list
 LinkedList.prototype.appendHead = function(value) {
   let node = new Node(value);
@@ -34,18 +57,6 @@ LinkedList.prototype.appendTail = function(value) {
     this.tail = node;
   }
   this.length++;
-};
-
-// find node that has the 'value'.
-LinkedList.prototype.find = function(value) {
-  let curNode = this.head;
-  // let index = 1;
-  while(curNode.data !== value) { // if it has value return node, else return null.
-    curNode = curNode.next;
-    // index++;
-  }
-  return curNode;
-  // return index;
 };
 
 // the index of the list starts from 1 for normal user.
@@ -131,6 +142,11 @@ LinkedList.prototype.toString = function() {
     console.log(curNode.data);
     curNode = curNode.next;
   }
+};
+
+LinkedList.prototype.isEmpty = function() {
+  if(this.head === null && this.length === 0) return true;
+  return false;
 };
 
 module.exports = LinkedList;
