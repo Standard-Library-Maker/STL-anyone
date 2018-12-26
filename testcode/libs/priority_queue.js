@@ -61,7 +61,7 @@ PriorityQueue.prototype.maxHeap = function (indexOfValue, indexOfParent) {
             break;
         }
     }
-}
+};
 
 PriorityQueue.prototype.minHeap = function (indexOfValue, indexOfParent) {
     while (indexOfValue > 0) {
@@ -74,7 +74,7 @@ PriorityQueue.prototype.minHeap = function (indexOfValue, indexOfParent) {
             break;
         }
     }
-}
+};
 
 //priority_queue::pop()
 PriorityQueue.prototype.pop = function () {
@@ -86,7 +86,7 @@ PriorityQueue.prototype.pop = function () {
         let indexOfRightChild = indexOfRoot * 2 + 2;
         this.data[indexOfRoot] = this.data[this.count - 1];  // remove top data 
         this.count--;
-        
+
         /* 수정 중
         while (indexOfRoot < this.count) {
             let indexOfChange = 0;
@@ -131,12 +131,12 @@ PriorityQueue.prototype.testData = function () {
     console.log("test empty() // count:" + this.count);
     console.log("test size() // size:" + this.count);
     console.log("test top() // top:" + this.data[0]);
-}
+};
 
 PriorityQueue.prototype.swapData = function (indexOfValue, indexOfParent) {
     var tmp = this.data[indexOfValue];
     this.data[indexOfValue] = this.data[indexOfParent];
     this.data[indexOfParent] = tmp;
-}
+};
 
 module.exports = PriorityQueue;
