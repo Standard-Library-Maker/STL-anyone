@@ -81,7 +81,7 @@ s2.clear();
 console.log("=== after clear() ===");
 s2.state(); */
 
-/* list test case 
+/* list test case
 let newList = new List();
 newList.append(2);
 newList.append(5);
@@ -102,9 +102,8 @@ console.log("after clear");
 newList.toString();
 */
 
-
-
-// Priority queue => test by Jisoo 
+/*
+// Priority queue => test by Jisoo
 console.log("\n=======test by Jisoo=======");
 let testPriorityQueue_1 = new PriorityQueue();
 testPriorityQueue_1.push(3);
@@ -116,8 +115,14 @@ testPriorityQueue_1.push(12);
 testPriorityQueue_1.push(2);
 testPriorityQueue_1.testData();
 testPriorityQueue_1.pop();
+testPriorityQueue_1.pop();
+testPriorityQueue_1.pop();
+testPriorityQueue_1.pop();
+testPriorityQueue_1.pop();
+testPriorityQueue_1.pop();
+testPriorityQueue_1.pop();
 testPriorityQueue_1.testData();
-/*
+
 let testPriorityQueue_2 = new PriorityQueue("greater");
 testPriorityQueue_2.push(3);
 testPriorityQueue_2.push(5);
@@ -126,5 +131,13 @@ testPriorityQueue_2.push(8);
 testPriorityQueue_2.push(4);
 testPriorityQueue_2.push(12);
 testPriorityQueue_2.push(2);
+testPriorityQueue_2.testData();
+testPriorityQueue_2.pop();
+testPriorityQueue_2.pop();
+testPriorityQueue_2.pop();
+testPriorityQueue_2.pop();
+testPriorityQueue_2.pop();
+testPriorityQueue_2.pop();
+testPriorityQueue_2.pop();
 testPriorityQueue_2.testData();
 */
