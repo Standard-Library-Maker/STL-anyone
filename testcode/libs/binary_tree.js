@@ -1,11 +1,23 @@
-const binaryTree = function(arr = []){
-    console.log("\n==================\nBinary Tree Create\n==================\n");
-    this.data = null;
-    this.left = null;
-    this.right = null;
-    this.size = 0;
+let Node = function(value){
+  this.left = null;
+  this.right = null;
+  this.data = value;
 };
 
-let Node = function(value){
+const BinaryTree = function(arr = []){
+  this.root = null;
+  this.count = 0;
+};
 
+BinaryTree.prototype.push = function(value){
+  let node = new Node(value);
+  if(root == null) root = node;
+  else{
+
+  }
+};
+
+BinaryTree.prototype.size = function(){
+  return this.count;
+  console.log("binary tree size : " + this.count);
 };
