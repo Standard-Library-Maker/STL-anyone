@@ -1,3 +1,5 @@
+const swap = require("./swap");
+
 const Heap = function(){
   this.data = [];
   this.count = 0;
@@ -15,13 +17,13 @@ Heap.prototype.push = function(value){
   this.data[this.count] = value;
   /*max heap*/
 
-  var temp = this.count;
+  let temp = this.count;
   while(temp > 0){
     if(temp % 2 === 0) var parent = (temp) / 2;
     else var parent = (temp - 1) / 2;
 
     if(this.data[temp] > this.data[parent]){
-      this.swap(this.data, temp, parent);
+      swap(this.data, temp, parent);
       temp = parent;
     }
     else{
