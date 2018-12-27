@@ -5,9 +5,33 @@ let Node = function(value) {
 };
 
 const LinkedList = function() {
+  console.log("\n==================\nLinked List Create\n==================\n");
   this.length = 0;
   this.head = null;
   this.tail = null;
+};
+
+// find node that has the 'value'.
+LinkedList.prototype.find = function(value) {
+  let curNode = this.head;
+  // let index = 1;
+  while(curNode.data !== value) { // if it has value return node, else return null.
+    curNode = curNode.next;
+    // index++;
+  }
+  return curNode;
+  // return index;
+};
+
+// find node in the linked list in the index of pos
+LinkedList.prototype.indexOf = function(pos) {
+  if (pos <= 0 || pos > this.length || this.length === 0) return -1;
+  
+  let curNode = this.head;
+  for(let i = 1; i < pos; i++) {
+    curNode = curNode.next;
+  }
+  return curNode;
 };
 
 // append on the front of the list
@@ -35,18 +59,6 @@ LinkedList.prototype.appendTail = function(value) {
   this.length++;
 };
 
-// find node that has the 'value'.
-LinkedList.prototype.find = function(value) {
-  let curNode = this.head;
-  // let index = 1;
-  while(curNode.data !== value) { // if it has value return node, else return null.
-    curNode = curNode.next;
-    // index++;
-  }
-  return curNode;
-  // return index;
-};
-
 // the index of the list starts from 1 for normal user.
 LinkedList.prototype.insert = function(pos, value) {
   if(pos > 0 && pos < this.length) {
@@ -71,7 +83,7 @@ LinkedList.prototype.insert = function(pos, value) {
   }
 };
 
-LinkedList.prototype.removeHead = function() {
+/* LinkedList.prototype.removeHead = function() {
   if (this.length === 0) return -1;
 
   let temp = this.head.next;
@@ -79,9 +91,9 @@ LinkedList.prototype.removeHead = function() {
   this.head = temp;
   this.length--;
   // return temp;
-};
+}; */
 
-LinkedList.prototype.removeTail = function() {
+/* LinkedList.prototype.removeTail = function() {
   if (this.length === 0) return -1;
   
   let temp = this.head;
@@ -95,22 +107,28 @@ LinkedList.prototype.removeTail = function() {
     }
     temp = temp.next;    
   }
-};
+}; */
 
 LinkedList.prototype.remove = function(pos) {
   if (pos <= 0 || pos > this.length || this.length === 0) return -1;
-  if (pos === 1) this.removeHead();
-
-  let temp = this.head; // temp = this.head = LinkedList.indexOf(1)
-  let prev;
-  for(let i = 0; i < pos; i++) { // 0 ~ pos - 1
-    if(i === pos - 2) {
-      prev = temp;
+  if (typeof pos === "undefined" || pos === 1) { // remove head
+    let temp = this.head.next;
+    // delete this.head;
+    this.head = temp;
+    this.length--;
+  } else {
+    // if (pos === this.length) this.removeTail();
+    let temp = this.head; // temp = this.head = LinkedList.indexOf(1)
+    let prev;
+    for(let i = 0; i < pos; i++) { // 0 ~ pos - 1
+      if(i === pos - 2) {
+        prev = temp;
+      }
+      temp = temp.next;
     }
-    temp = temp.next;
+    prev.next = temp; // prev = cur - 1, temp = cur + 1
+    this.length--;
   }
-  prev.next = temp; // prev = cur - 1, temp = cur + 1
-  this.length--;
 };
 
 LinkedList.prototype.size = function() {
@@ -126,32 +144,41 @@ LinkedList.prototype.toString = function() {
   }
 };
 
+LinkedList.prototype.isEmpty = function() {
+  if(this.head === null && this.length === 0) return true;
+  return false;
+};
+
+module.exports = LinkedList;
 
 /* test code */
-let newList = new LinkedList();
+/* let newList = new LinkedList();
 newList.appendHead(2);
-console.log(`length : ${newList.length}`);
+newList.toString();
+console.log(`size : ${newList.size()}`);
 newList.appendTail(5);
-console.log(`length : ${newList.length}`);
+newList.toString();
+console.log(`size : ${newList.size()}`);
 newList.appendHead(1);
-// newList.toString();
-console.log(`length : ${newList.length}`);
+newList.toString();
+console.log(`size : ${newList.size()}`);
 newList.insert(2, 7);
 console.log(newList);
 console.log(newList.find(1));
 console.log(`length : ${newList.length}`);
 newList.toString();
-newList.removeHead();
-newList.toString();
-newList.removeTail();
+newList.remove();
 newList.toString();
 console.log(`size : ${newList.size()}`);
-newList.appendTail(5);
+newList.appendTail(10);
 newList.toString();
 console.log(`size : ${newList.size()}`);
 newList.remove(2);
 newList.toString();
 console.log(`size : ${newList.size()}`);
+newList.remove(3);
+newList.toString();
+console.log(`size : ${newList.size()}`); */
 
 
 // newList.end();

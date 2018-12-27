@@ -2,11 +2,12 @@ let Stack = require("./libs/stack");
 let Queue = require("./libs/queue");
 let BubbleSort = require("./libs/[sort]bubble");
 let List = require("./libs/list");
-// let LinkedList = require("./libs/linked_list");
+//let LinkedList = require("./libs/linked_list");
 let Heap = require("./libs/heap");
 let PriorityQueue = require("./libs/priority_queue");
 
 
+/*
 // Heap test case
 let h = new Heap();
 h.push(1);
@@ -18,7 +19,7 @@ let array = [1, 3, 2, 5, 4];
 h.makeHeap(array);
 //console.log(`pop : ${h.pop()}`);
 h.state();
-
+*/
 
 /* stack test case */
 /* let s = new Stack();
@@ -102,12 +103,28 @@ newList.toString();
 */
 
 
-// Priority queue => test by Jisoo 
 /*
+// Priority queue => test by Jisoo 
 console.log("\n=======test by Jisoo=======");
-let testPriorityQueue = new PriorityQueue();
-testPriorityQueue.empty();
-testPriorityQueue.size();
-testPriorityQueue.top();
-testPriorityQueue.push(1);
-testPriorityQueue.pop(); */
+let testPriorityQueue_1 = new PriorityQueue();
+testPriorityQueue_1.push(3);
+testPriorityQueue_1.push(5);
+testPriorityQueue_1.push(1);
+testPriorityQueue_1.push(8);
+testPriorityQueue_1.push(4);
+testPriorityQueue_1.push(12);
+testPriorityQueue_1.push(2);
+testPriorityQueue_1.testData();
+testPriorityQueue_1.pop();
+testPriorityQueue_1.testData();
+
+let testPriorityQueue_2 = new PriorityQueue("greater");
+testPriorityQueue_2.push(3);
+testPriorityQueue_2.push(5);
+testPriorityQueue_2.push(1);
+testPriorityQueue_2.push(8);
+testPriorityQueue_2.push(4);
+testPriorityQueue_2.push(12);
+testPriorityQueue_2.push(2);
+testPriorityQueue_2.testData();
+*/
