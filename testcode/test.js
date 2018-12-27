@@ -117,9 +117,6 @@ testPriorityQueue_1.push(2);
 testPriorityQueue_1.testData();
 testPriorityQueue_1.pop();
 testPriorityQueue_1.testData();
-testPriorityQueue_1.pop();
-testPriorityQueue_1.testData();
-
 /*
 let testPriorityQueue_2 = new PriorityQueue("greater");
 testPriorityQueue_2.push(3);
