@@ -1,94 +1,90 @@
 // Priority Queue implemented by Jisoo
 const PriorityQueue = function (value) {
-    this.data = [];                                         // array position will be starts 0
-    this.count = 0;
-    if (value == "greater") {                               // based on Min_Heap
-        this.mode = "min_heap";
-    } else if (value == "less" || value == undefined) {     // DEFAULT : based on Max_Heap
-        this.mode = "max_heap";
-    } else {
-        console.log("ERROR:input sort criteria (option:greater,less)");
-    }
+  this.data = []; // array position will be starts 0
+  this.count = 0;
+  if (value === "greater") { // based on Min_Heap
+    this.mode = "min_heap";
+  } else if (value === "less" || value === undefined) { // DEFAULT : based on Max_Heap
+    this.mode = "max_heap";
+  } else {
+    console.log("ERROR:input sort criteria (option:greater,less)");
+  }
 };
 
-//priority_queue::isESmpty()
+// priority_queue::isESmpty()
 PriorityQueue.prototype.isEmpty = function () {
-    return this.count === 0;
+  return this.count === 0;
 };
 
-//priority_queue::size()
+// priority_queue::size()
 PriorityQueue.prototype.size = function () {
-    return this.count;
+  return this.count;
 };
 
-//priority_queue::top()
+// priority_queue::top()
 PriorityQueue.prototype.top = function () {
-    if (this.count > 0) {
-        return this.data[1];
-    } else {
-        console.log("ERROR:priority queue is empty");
-        return undefined;
-    }
+  if (this.count > 0) {
+    return this.data[1];
+  } 
+  console.log("ERROR:priority queue is empty");
+  return undefined;
 };
 
-//priority_queue::push(value)
+// priority_queue::push(value)
 PriorityQueue.prototype.push = function (value) {
-    if (value == undefined) {
-        console.log("ERROR:push() required parameter")
-    }
+  if (value === undefined) {
+    console.log("ERROR:push() required parameter");
+  }
 
-    this.count++;
-    this.data[this.count] = value;      // insert value into the last location
-    if (this.count != 1) {              // need to compare value with parent
-        let posOfValue = this.count;
-        let posOfParent = Math.floor((posOfValue - 1) / 2);
-        if (this.mode == "max_heap") {  // mode : less(default)
-            this.maxHeap(posOfValue, posOfParent);
-        } else {                        // mode : greater
-            this.minHeap(posOfValue, posOfParent);
-        }
+  this.count++;
+  this.data[this.count] = value; // insert value into the last location
+  if (this.count !== 1) { // need to compare value with parent
+    let posOfValue = this.count;
+    let posOfParent = Math.floor((posOfValue - 1) / 2);
+    if (this.mode === "max_heap") { // mode : less(default)
+      this.maxHeap(posOfValue, posOfParent);
+    } else { // mode : greater
+      this.minHeap(posOfValue, posOfParent);
     }
-
+  }
 };
 
 PriorityQueue.prototype.maxHeap = function (posOfValue, posOfParent) {
-    while (posOfValue > 0) {
-        if (this.data[posOfParent] < this.data[posOfValue]) {
-            this.swapData(posOfValue, posOfParent);
-            posOfValue = posOfParent;
-            posOfParent = Math.floor((posOfValue - 1) / 2);
-        }
-        else {
-            break;
-        }
+  while (posOfValue > 0) {
+    if (this.data[posOfParent] < this.data[posOfValue]) {
+      this.swapData(posOfValue, posOfParent);
+      posOfValue = posOfParent;
+      posOfParent = Math.floor((posOfValue - 1) / 2);
+    } else {
+      break;
     }
+  }
 };
 
 PriorityQueue.prototype.minHeap = function (posOfValue, posOfParent) {
-    while (posOfValue > 0) {
-        if (this.data[posOfParent] > this.data[posOfValue]) {
-            this.swapData(posOfValue, posOfParent);
-            posOfValue = posOfParent;
-            posOfParent = Math.floor((posOfValue - 1) / 2);
-        }
-        else {
-            break;
-        }
+  while (posOfValue > 0) {
+    if (this.data[posOfParent] > this.data[posOfValue]) {
+      this.swapData(posOfValue, posOfParent);
+      posOfValue = posOfParent;
+      posOfParent = Math.floor((posOfValue - 1) / 2);
+    } else {
+      break;
     }
+  }
 };
 
-//priority_queue::pop()
+// priority_queue::pop()
 PriorityQueue.prototype.pop = function () {
-    if (this.isEmpty()) {
-        console.log("ERROR:priority queue is empty");
-    } else {
-        let posOfRoot = 0;
-        let posOfLeftChild = posOfRoot * 2 + 1;
-        let posOfRightChild = posOfRoot * 2 + 2;
-        this.data[posOfRoot] = this.data[this.count];  // remove top data && move last element to top position
-        this.count--;
+  if (this.isEmpty()) {
+    console.log("ERROR:priority queue is empty");
+  } else {
+    let posOfRoot = 0;
+    let posOfLeftChild = posOfRoot * 2 + 1;
+    let posOfRightChild = posOfRoot * 2 + 2;
+    this.data[posOfRoot] = this.data[this.count]; // remove top data && move last element to top position
+    this.count--;
 
-        /* 수정 중
+    /* 수정 중
         while (posOfRoot < this.count) {
             let posOfChange = 0;
             if (posOfRightChild < this.count) {
@@ -112,33 +108,33 @@ PriorityQueue.prototype.pop = function () {
             }
         }
         */
-    }
+  }
 };
 
 
-//priority_queue::swap() (C++ 11 supports this method)
+// priority_queue::swap() (C++ 11 supports this method)
 PriorityQueue.prototype.swap = function () {
 };
 
-//priority_queue::emplace (C++ 11 supports this method)
+// priority_queue::emplace (C++ 11 supports this method)
 PriorityQueue.prototype.emplace = function () {
 };
 
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// /////////////////////////////////////////////////////////////////////////
 PriorityQueue.prototype.testData = function () {
-    for (let i = 1; i <= this.count; i++) {
-        console.log(this.data[i])
-    }
-    console.log();
-    console.log("test isEmpty() // count:" + this.count);
-    console.log("test size() // size:" + this.count);
-    console.log("test top() // top:" + this.data[0]);
+  for (let i = 1; i <= this.count; i++) {
+    console.log(this.data[i]);
+  }
+  console.log();
+  console.log(`test isEmpty() // count:${this.count}`);
+  console.log(`test size() // size:${this.count}`);
+  console.log(`test top() // top:${this.data[0]}`);
 };
 
 PriorityQueue.prototype.swapData = function (posOfValue, posOfParent) {
-    var tmp = this.data[posOfValue];
-    this.data[posOfValue] = this.data[posOfParent];
-    this.data[posOfParent] = tmp;
+  let tmp = this.data[posOfValue];
+  this.data[posOfValue] = this.data[posOfParent];
+  this.data[posOfParent] = tmp;
 };
 
 module.exports = PriorityQueue;

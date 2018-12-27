@@ -32,5 +32,6 @@ module.exports = {
         "no-console": 0,
         "consistent-return": 0,
         "no-tabs": 0,
+        "linebreak-style": 0,
     }
 };
