@@ -3,6 +3,7 @@ const swap = function(array, num1, num2) {
   let temp = newArr[num1];
   newArr[num1] = newArr[num2];
   newArr[num2] = temp;
+  return newArr;
 };
 
 module.exports = swap;

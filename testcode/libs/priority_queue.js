@@ -1,4 +1,4 @@
-const swapData = require('./')
+const swapData = require("./swap")
 
 // Priority Queue implemented by Jisoo
 const PriorityQueue = function (value) {
@@ -56,7 +56,7 @@ PriorityQueue.prototype.push = function (value) {
 PriorityQueue.prototype.maxHeap = function (posOfValue, posOfParent) {
   while (posOfValue > 0) {
     if (this.data[posOfParent] < this.data[posOfValue]) {
-      this.swapData(this.data, posOfValue, posOfParent);
+      this.data = this.swapData(this.data, posOfValue, posOfParent);
       posOfValue = posOfParent;
       posOfParent = Math.floor((posOfValue - 1) / 2);
     }
@@ -69,7 +69,7 @@ PriorityQueue.prototype.maxHeap = function (posOfValue, posOfParent) {
 PriorityQueue.prototype.minHeap = function (posOfValue, posOfParent) {
   while (posOfValue > 0) {
     if (this.data[posOfParent] > this.data[posOfValue]) {
-      this.swapData(this.data, posOfValue, posOfParent);
+      this.data = this.swapData(this.data, posOfValue, posOfParent);
       posOfValue = posOfParent;
       posOfParent = Math.floor((posOfValue - 1) / 2);
     }
@@ -91,27 +91,27 @@ PriorityQueue.prototype.pop = function () {
     this.count--;
 
     /*
-    while (posOfRoot < this.count) {
-        let posOfChange = 0;
-        if (posOfRightChild < this.count) {
-            if (this.data[posOfLeftChild] < this.data[posOfRightChild]) {
-                posOfChange = posOfRightChild;
-            } else {
-                posOfChange = posOfLeftChild;
-            }
+    while (posOfLightChild < this.count) {
+      let posOfChange = 0;
+      if (posOfRightChild < this.count) {         // if there is posOfRightChild
+        if (this.data[posOfLeftChild] < this.data[posOfRightChild]) {
+          posOfChange = posOfRightChild;
         } else {
-            posOfChange = posOfLeftChild;
+          posOfChange = posOfLeftChild;
         }
-        if (this.data[posOfChange] > this.data[posOfRoot]) {
-            this.swapData(this.data, posOfChange, posOfRoot);
-            posOfRoot = posOfChange;
-            this.testData();
-            let posOfLeftChild = posOfRoot * 2 + 1;
-            let posOfRightChild = posOfRoot * 2 + 2;
-        }
-        else {
-            break;
-        }
+      } else {                                    // if there isn't posOfRightChild
+        posOfChange = posOfLeftChild;
+      }
+      if (this.data[posOfChange] > this.data[posOfRoot]) {
+        this.data = this.swapData(this.data, posOfChange, posOfRoot);
+        posOfRoot = posOfChange;
+        this.testData();
+        let posOfLeftChild = posOfRoot * 2 + 1;
+        let posOfRightChild = posOfRoot * 2 + 2;
+      }
+      else {
+        break;
+      }
     }*/
   }
 };
@@ -134,12 +134,6 @@ PriorityQueue.prototype.testData = function () {
   console.log(`test isEmpty() // count:${this.count}`);
   console.log(`test size() // size:${this.count}`);
   console.log(`test top() // top:${this.data[0]}`);
-};
-
-PriorityQueue.prototype.swapData = function (posOfValue, posOfParent) {
-  let tmp = this.data[posOfValue];
-  this.data[posOfValue] = this.data[posOfParent];
-  this.data[posOfParent] = tmp;
 };
 
 module.exports = PriorityQueue;
