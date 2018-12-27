@@ -1,12 +1,12 @@
-const swapData = require('./')
+const swapData = require("./swap");
 
 // Priority Queue implemented by Jisoo
 const PriorityQueue = function (value) {
   this.data = [];                                         // array position will be starts 0
   this.count = 0;
-  if (value == "greater") {                               // based on Min_Heap
+  if (value === "greater") {                               // based on Min_Heap
     this.mode = "min_heap";
-  } else if (value == "less" || value == undefined) {     // DEFAULT : based on Max_Heap
+  } else if (value === "less" || value === undefined) {     // DEFAULT : based on Max_Heap
 
     this.mode = "max_heap";
   } else {
@@ -14,7 +14,7 @@ const PriorityQueue = function (value) {
   }
 };
 
-//priority_queue::isEmpty()
+// priority_queue::isEmpty()
 PriorityQueue.prototype.isEmpty = function () {
   return this.count === 0;
 };
@@ -35,16 +35,16 @@ PriorityQueue.prototype.top = function () {
 
 // priority_queue::push(value)
 PriorityQueue.prototype.push = function (value) {
-  if (value == undefined) {
-    console.log("ERROR:push() required parameter")
+  if (value === undefined) {
+    console.log("ERROR:push() required parameter");
   }
 
   this.count++;
-  this.data[this.count] = value;      // insert value into the last location
-  if (this.count != 1) {              // need to compare value with parent
+  this.data[this.count] = value; // insert value into the last location
+  if (this.count !== 1) {              // need to compare value with parent
     let posOfValue = this.count;
     let posOfParent = Math.floor((posOfValue - 1) / 2);
-    if (this.mode == "max_heap") {  // mode : less(default)
+    if (this.mode === "max_heap") {  // mode : less(default)
       this.maxHeap(posOfValue, posOfParent);
     } else {                        // mode : greater
       this.minHeap(posOfValue, posOfParent);
@@ -90,29 +90,28 @@ PriorityQueue.prototype.pop = function () {
     this.data[posOfRoot] = this.data[this.count];  // remove top data && move last element to top position
     this.count--;
 
-    /*
-    while (posOfRoot < this.count) {
-        let posOfChange = 0;
-        if (posOfRightChild < this.count) {
-            if (this.data[posOfLeftChild] < this.data[posOfRightChild]) {
-                posOfChange = posOfRightChild;
-            } else {
-                posOfChange = posOfLeftChild;
-            }
-        } else {
-            posOfChange = posOfLeftChild;
-        }
-        if (this.data[posOfChange] > this.data[posOfRoot]) {
-            this.swapData(this.data, posOfChange, posOfRoot);
-            posOfRoot = posOfChange;
-            this.testData();
-            let posOfLeftChild = posOfRoot * 2 + 1;
-            let posOfRightChild = posOfRoot * 2 + 2;
-        }
-        else {
-            break;
-        }
-    }*/
+  /* while (posOfRoot < this.count) {
+      let posOfChange = 0;
+      if (posOfRightChild < this.count) {
+          if (this.data[posOfLeftChild] < this.data[posOfRightChild]) {
+              posOfChange = posOfRightChild;
+          } else {
+              posOfChange = posOfLeftChild;
+          }
+      } else {
+          posOfChange = posOfLeftChild;
+      }
+      if (this.data[posOfChange] > this.data[posOfRoot]) {
+          this.swapData(this.data, posOfChange, posOfRoot);
+          posOfRoot = posOfChange;
+          this.testData();
+          let posOfLeftChild = posOfRoot * 2 + 1;
+          let posOfRightChild = posOfRoot * 2 + 2;
+      }
+      else {
+          break;
+      }
+  } */
   }
 };
 
