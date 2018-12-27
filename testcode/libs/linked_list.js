@@ -1,4 +1,4 @@
-// C++ STL, 생활코딩 등 참고.
+// C++ STL, 생활코딩 등 참고.. append 함수 변경 예정.
 let Node = function(value) {
   this.data = value;
   this.next = null;
