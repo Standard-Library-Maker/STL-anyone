@@ -56,7 +56,7 @@ PriorityQueue.prototype.push = function (value) {
 PriorityQueue.prototype.maxHeap = function (posOfValue, posOfParent) {
   while (posOfValue > 0) {
     if (this.data[posOfParent] < this.data[posOfValue]) {
-      this.swapData(this.data, posOfValue, posOfParent);
+      this.data = this.swapData(this.data, posOfValue, posOfParent);
       posOfValue = posOfParent;
       posOfParent = Math.floor((posOfValue - 1) / 2);
     }
@@ -69,7 +69,7 @@ PriorityQueue.prototype.maxHeap = function (posOfValue, posOfParent) {
 PriorityQueue.prototype.minHeap = function (posOfValue, posOfParent) {
   while (posOfValue > 0) {
     if (this.data[posOfParent] > this.data[posOfValue]) {
-      this.swapData(this.data, posOfValue, posOfParent);
+      this.data = this.swapData(this.data, posOfValue, posOfParent);
       posOfValue = posOfParent;
       posOfParent = Math.floor((posOfValue - 1) / 2);
     }
@@ -133,12 +133,6 @@ PriorityQueue.prototype.testData = function () {
   console.log(`test isEmpty() // count:${this.count}`);
   console.log(`test size() // size:${this.count}`);
   console.log(`test top() // top:${this.data[0]}`);
-};
-
-PriorityQueue.prototype.swapData = function (posOfValue, posOfParent) {
-  let tmp = this.data[posOfValue];
-  this.data[posOfValue] = this.data[posOfParent];
-  this.data[posOfParent] = tmp;
 };
 
 module.exports = PriorityQueue;
