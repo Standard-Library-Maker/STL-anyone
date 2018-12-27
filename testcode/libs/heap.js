@@ -1,32 +1,32 @@
 const swap = require("./swap");
 
-const Heap = function() {
+const Heap = function(){
   this.data = [];
   this.count = 0;
 };
 
-Heap.prototype.size = function() {
+Heap.prototype.size = function(){
   return this.count;
 };
 
-Heap.prototype.isEmpty = function() {
+Heap.prototype.isEmpty = function(){
   return this.count === 0;
 };
 
-Heap.prototype.push = function(value) {
+Heap.prototype.push = function(value){
   this.data[this.count] = value;
-  /* max heap */
+  /*max heap*/
 
   let temp = this.count;
-  let parent = null;
-  while(temp > 0) {
-    if(temp % 2 === 0) parent = (temp) / 2;
-    else parent = (temp - 1) / 2;
+  while(temp > 0){
+    if(temp % 2 === 0) var parent = (temp) / 2;
+    else var parent = (temp - 1) / 2;
 
-    if(this.data[temp] > this.data[parent]) {
+    if(this.data[temp] > this.data[parent]){
       swap(this.data, temp, parent);
       temp = parent;
-    } else{
+    }
+    else{
       break;
     }
   }
