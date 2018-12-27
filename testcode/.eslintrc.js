@@ -33,5 +33,7 @@ module.exports = {
         "consistent-return": 0,
         "no-tabs": 0,
         "linebreak-style": 0,
+        "no-multi-spaces": 0,
+        "max-len": 200,
     }
 };
