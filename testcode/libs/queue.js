@@ -11,7 +11,7 @@ function ArrQueue() {
   };
 
   this.pop = () => {
-    if(this.isEmpty()) console.log("Error. Queue is empty");
+    if (this.isEmpty()) console.log("Error. Queue is empty");
     else {
       let popedValue = data[0];
       for (let i = 0; i < count - 1; i++) {
@@ -19,16 +19,16 @@ function ArrQueue() {
       }
       data.splice(--count, 1);
       return popedValue;
-    } 
+    }
   };
-  
+
   this.front = () => {
-    if(this.isEmpty()) console.log("Error. Queue is empty");
+    if (this.isEmpty()) console.log("Error. Queue is empty");
     else return data[0];
   };
 
   this.back = () => {
-    if(this.isEmpty()) console.log("Error. Queue is empty");
+    if (this.isEmpty()) console.log("Error. Queue is empty");
     else return data[count - 1];
   };
 
@@ -38,7 +38,7 @@ function ArrQueue() {
     count = 0;
     data = [];
   };
-  
+
   this.state = () => {
     console.log(`=== ${this.size()} items in the queue : [${data}] ===`);
   };
@@ -95,7 +95,7 @@ function CircularQueue(max) {
     qBack = 0;
     data = [];
   };
-  
+
   this.state = () => {
     console.log(`=== ${this.size()} items in the queue : [${data}] ===`);
   };
@@ -108,8 +108,8 @@ function LlQueue() {
   let tail = 0;
 }
 
-module.exports = { 
-  ArrQueue, 
+module.exports = {
+  ArrQueue,
   CircularQueue,
   LlQueue,
 };

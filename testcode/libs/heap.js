@@ -1,68 +1,68 @@
-const Heap = function(){
+const Heap = function () {
     this.data = [];
     this.count = 0;
 };
 
-Heap.prototype.size = function(){
+Heap.prototype.size = function () {
     return this.count;
 };
 
-Heap.prototype.isEmpty = function(){
+Heap.prototype.isEmpty = function () {
     return this.count === 0;
 };
 
-Heap.prototype.swap = function(array, num1, num2){
+Heap.prototype.swap = function (array, num1, num2) {
     var temp = array[num1];
     array[num1] = array[num2];
     array[num2] = temp;
 };
 
-Heap.prototype.push = function(value){
+Heap.prototype.push = function (value) {
     this.data[this.count] = value;
     /*max heap*/
 
     var temp = this.count;
-    while(temp > 0){
-        if(temp % 2 === 0) var parent = (temp) / 2;
+    while (temp > 0) {
+        if (temp % 2 === 0) var parent = (temp) / 2;
         else var parent = (temp - 1) / 2;
 
-        if(this.data[temp] > this.data[parent]){
+        if (this.data[temp] > this.data[parent]) {
             this.swap(this.data, temp, parent);
             temp = parent;
         }
-        else{
+        else {
             break;
         }
     }
-    this.count++;   
+    this.count++;
 };
 
-Heap.prototype.state = function(){
+Heap.prototype.state = function () {
     console.log(`=== ${this.size()} items in the heap : [${this.data}] ===`);
 };
 
-Heap.prototype.pop = function(){
-    if(this.isEmpty()) console.log("Error. Heap is Empty");
-    else{
+Heap.prototype.pop = function () {
+    if (this.isEmpty()) console.log("Error. Heap is Empty");
+    else {
         let popedValue = this.data[0];
         //move last node to first node
         this.data[0] = this.data[this.count - 1];
         this.data.splice(--this.count, 1);
         //move first node to adequate place
         var location = 0;
-        while(location * 2 < this.count){
+        while (location * 2 < this.count) {
             var max;
-            if(this.data[location * 2 + 1] >= this.data[location * 2 + 2]){
+            if (this.data[location * 2 + 1] >= this.data[location * 2 + 2]) {
                 max = location * 2 + 1;
             }
-            else{
+            else {
                 max = location * 2 + 2;
             }
-            if(this.data[location] < this.data[max]){
+            if (this.data[location] < this.data[max]) {
                 this.swap(this.data, location, max);
                 location = max;
             }
-            else{
+            else {
                 break;
             }
         }
@@ -70,23 +70,23 @@ Heap.prototype.pop = function(){
     }
 };
 
-Heap.prototype.clear = function(){
+Heap.prototype.clear = function () {
     this.data = null;
     this.count = 0;
 };
 
-Heap.prototype.makeHeap = function(array){
-    /*make normal array to heap*/    
-    for(let i = 1; i < array.length; i++){
+Heap.prototype.makeHeap = function (array) {
+    /*make normal array to heap*/
+    for (let i = 1; i < array.length; i++) {
         let now = i;
-        while(now > 0){
-            if(now % 2 === 0) var parent = (now) / 2;
+        while (now > 0) {
+            if (now % 2 === 0) var parent = (now) / 2;
             else var parent = (now - 1) / 2;
-            if(array[now] > array[parent]){
+            if (array[now] > array[parent]) {
                 this.swap(array, now, parent);
                 now = parent;
             }
-            else{
+            else {
                 break;
             }
         }
