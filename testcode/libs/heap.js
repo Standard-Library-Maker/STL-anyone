@@ -20,7 +20,7 @@ Heap.prototype.swap = function(array, num1, num2){
 Heap.prototype.push = function(value){
     this.data[this.count] = value;
     /*max heap*/
-    
+
     var temp = this.count;
     while(temp > 0){
         if(temp % 2 === 0) var parent = (temp) / 2;
@@ -34,25 +34,7 @@ Heap.prototype.push = function(value){
             break;
         }
     }
-    this.count++;
-
-    /*makeHeap 내용*/
-    /*
-    for(let i = 1; i < this.size(); i++){
-        let now = i;
-        while(now > 0){
-            var parent = (now - 1) / 2;
-            if(this.data[now] > this.data[parent]){
-                this.swap(this.data, now, parent);
-                now = parent;
-            }
-            else{
-                break;
-            }
-        }
-    }
-    */
-    
+    this.count++;   
 };
 
 Heap.prototype.state = function(){
@@ -91,6 +73,25 @@ Heap.prototype.pop = function(){
 Heap.prototype.clear = function(){
     this.data = null;
     this.count = 0;
+};
+
+Heap.prototype.makeHeap = function(array){
+    /*make normal array to heap*/    
+    for(let i = 1; i < array.length; i++){
+        let now = i;
+        while(now > 0){
+            if(now % 2 === 0) var parent = (now) / 2;
+            else var parent = (now - 1) / 2;
+            if(array[now] > array[parent]){
+                this.swap(array, now, parent);
+                now = parent;
+            }
+            else{
+                break;
+            }
+        }
+    }
+    console.log(`=== ${array.length} items in the heap : [${array}] ===`);
 };
 
 module.exports = Heap;

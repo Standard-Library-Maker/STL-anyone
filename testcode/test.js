@@ -11,12 +11,13 @@ let PriorityQueue = require("./libs/priority_queue");
 // Heap test case
 let h = new Heap();
 h.push(1);
-h.push(2);
 h.push(3);
-h.push(4);
+h.push(2);
 h.push(5);
-h.push(6);
-console.log(`pop : ${h.pop()}`);
+h.push(4);
+let array = [1, 3, 2, 5, 4];
+h.makeHeap(array);
+//console.log(`pop : ${h.pop()}`);
 h.state();
 */
 
