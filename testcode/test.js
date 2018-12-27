@@ -102,7 +102,7 @@ newList.toString();
 */
 
 
-/*
+
 // Priority queue => test by Jisoo 
 console.log("\n=======test by Jisoo=======");
 let testPriorityQueue_1 = new PriorityQueue();
@@ -116,7 +116,10 @@ testPriorityQueue_1.push(2);
 testPriorityQueue_1.testData();
 testPriorityQueue_1.pop();
 testPriorityQueue_1.testData();
+testPriorityQueue_1.pop();
+testPriorityQueue_1.testData();
 
+/*
 let testPriorityQueue_2 = new PriorityQueue("greater");
 testPriorityQueue_2.push(3);
 testPriorityQueue_2.push(5);
