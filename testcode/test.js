@@ -8,6 +8,16 @@ let PriorityQueue = require("./libs/priority_queue");
 let BinaryTree = require("./libs/binary_tree");
 
 /*
+let b = new BinaryTree();
+b.push(1);
+b.push(2);
+b.push(3);
+b.push(4);
+b.push(5);
+b.state();
+*/
+
+/*
 // Heap test case
 let h = new Heap();
 h.push(1);
