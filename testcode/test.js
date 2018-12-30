@@ -7,6 +7,7 @@ let Heap = require("./libs/heap");
 let PriorityQueue = require("./libs/priority_queue");
 let BinaryTree = require("./libs/binary_tree");
 let Deque = require("./libs/deque");
+let HashMap = require("./libs/hash_map");
 
 /*
 let b = new BinaryTree();
