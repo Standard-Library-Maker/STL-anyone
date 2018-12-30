@@ -109,7 +109,7 @@ LinkedList.prototype.insert = function(pos, value) {
   }
 }; */
 
-LinkedList.prototype.remove = function(pos) {
+LinkedList.prototype.removeAt = function(pos) {
   if (pos <= 0 || pos > this.length || this.length === 0) return -1;
   if (typeof pos === "undefined" || pos === 1) { // remove head
     let temp = this.head.next;
