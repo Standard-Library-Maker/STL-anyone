@@ -14,24 +14,35 @@ const LinkedList = function() {
 // find node that has the 'value'.
 LinkedList.prototype.find = function(value) {
   let curNode = this.head;
-  // let index = 1;
-  while(curNode.data !== value) { // if it has value return node, else return null.
+  while(curNode) { // if it has value return node, else return null.
+    if(curNode.data === value) return true;
     curNode = curNode.next;
-    // index++;
   }
-  return curNode;
-  // return index;
+  return false;
 };
 
 // find node in the linked list in the index of pos
-LinkedList.prototype.indexOf = function(pos) {
-  if (pos <= 0 || pos > this.length || this.length === 0) return -1;
+LinkedList.prototype.getNode = function(pos) {
+  if (pos < 0 || pos > this.length || this.length === 0) return -1;
   
   let curNode = this.head;
-  for(let i = 1; i < pos; i++) {
+  for(let i = 0; i < pos; i++) {
     curNode = curNode.next;
   }
   return curNode;
+};
+
+// return index of value in the linked list 
+LinkedList.prototype.indexOf = function(value) {
+  let curNode = this.head;
+  let index = 0;
+
+  while(curNode) {
+    if(curNode.data === value) return index;
+    index++;
+    curNode = curNode.next;
+  }
+  return -1;
 };
 
 // append on the front of the list
