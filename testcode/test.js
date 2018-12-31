@@ -6,7 +6,12 @@ let LinkedList = require("./libs/linked_list");
 let Heap = require("./libs/heap");
 let PriorityQueue = require("./libs/priority_queue");
 let BinaryTree = require("./libs/binary_tree");
+<<<<<<< HEAD
 let BinarySearchTree = require("./libs/binary_search_tree");
+=======
+let Deque = require("./libs/deque");
+let HashMap = require("./libs/hash_map");
+>>>>>>> 6a7801b358ef5285391e1db29318cde13dc02085
 
 /*
 // Binary Tree test case
@@ -155,3 +160,51 @@ testPriorityQueue_2.pop();
 testPriorityQueue_2.pop();
 testPriorityQueue_2.testData();
 */
+
+
+// Deque => test by Jisoo
+/*console.log("\n=======test by Jisoo=======");
+let testDeque_1 = new Deque();
+testDeque_1.push_back(1);
+testDeque_1.push_front(2);
+testDeque_1.push_front(3);
+testDeque_1.push_front(4);
+testDeque_1.push_back(0);
+testDeque_1.push_front(5);
+testDeque_1.push_front(6);
+testDeque_1.push_front(7);
+testDeque_1.push_front(8);
+testDeque_1.push_front(9);
+testDeque_1.push_front(10);
+testDeque_1.push_front(11);
+testDeque_1.pop_back();
+testDeque_1.pop_front();
+console.log(testDeque_1);
+console.log("=========================");
+testDeque_1.at(0);
+testDeque_1.at(1);
+testDeque_1.at(2);
+testDeque_1.at(3);
+testDeque_1.at(4);
+testDeque_1.at(5);
+testDeque_1.at(6);
+testDeque_1.at(7);
+testDeque_1.at(8);
+testDeque_1.at(9);
+testDeque_1.at(10);
+console.log("=========================");
+testDeque_1.erase(1);
+testDeque_1.erase(4);
+testDeque_1.erase(6);
+testDeque_1.at(0);
+testDeque_1.at(1);
+testDeque_1.at(2);
+testDeque_1.at(3);
+testDeque_1.at(4);
+testDeque_1.at(5);
+testDeque_1.at(6);
+console.log(testDeque_1);
+console.log("=========================");
+testDeque_1.clear();
+console.log("=======AFTER CLEAR=======");
+console.log(testDeque_1);*/
