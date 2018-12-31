@@ -8,7 +8,7 @@ const LinkedList = function() {
   console.log("\n==================\nLinked List Create\n==================\n");
   this.length = 0;
   this.head = null;
-  this.tail = null;
+  this.tail = null; // 삭제해도 될듯?
 };
 
 // find node that has the 'value'.
@@ -45,37 +45,28 @@ LinkedList.prototype.indexOf = function(value) {
   return -1;
 };
 
-// append on the front of the list
-LinkedList.prototype.appendHead = function(value) {
+// append value at the end of linked list
+LinkedList.prototype.append = function(value) {
   let node = new Node(value);
-  node.next = this.head;
-  this.head = node;
-  if(this.tail === null) this.tail = node;
-  this.length++;
-};
+  let curNode = null;
 
-// append on the last of the list
-LinkedList.prototype.appendTail = function(value) {
-  let node = new Node(value);
-  let curNode;
-
-  if(this.head === null) { // if head is null, make head to point new node.
+  if(this.head === null) {
     this.head = node;
-    this.tail = node;
-  } else { // else,
-    curNode = this.tail;
+  } else {
+    curNode = this.head;
+    while(curNode.next) curNode = curNode.next;
     curNode.next = node;
-    this.tail = node;
   }
+  this.tail = node;
   this.length++;
 };
 
-// the index of the list starts from 1 for normal user.
+// insert value at the position of double linked list
 LinkedList.prototype.insert = function(pos, value) {
   if(pos > 0 && pos < this.length) {
-    let curNode = this.head;
+    let curNode = this.head; // 0
     let prevNode;
-    for(let i = 1; i < pos; i++) {
+    for(let i = 0; i < pos; i++) {
       prevNode = curNode;
       curNode = curNode.next;
     }
@@ -83,64 +74,47 @@ LinkedList.prototype.insert = function(pos, value) {
     newNode.next = curNode;
     prevNode.next = newNode;
     this.length++;
-  } else if(pos === this.length) {
-    let newNode = new Node(value);
-    this.tail.next = newNode;
-    this.tail = newNode;
-    this.length++;
   } else {
-    console.log(`error. position should be in 0 < position < ${this.length}`);
+    console.log(`insert error. position should be in 0 < position < ${this.length}`);
     return -1;
   }
 };
 
-/* LinkedList.prototype.removeHead = function() {
-  if (this.length === 0) return -1;
-
-  let temp = this.head.next;
-  // delete this.head;
-  this.head = temp;
-  this.length--;
-  // return temp;
-}; */
-
-/* LinkedList.prototype.removeTail = function() {
-  if (this.length === 0) return -1;
-  
-  let temp = this.head;
-  while(temp) {
-    if(temp.next === this.tail) {
-      temp.next = null;
-      // delete this.tail;
-      this.tail = temp;
-      this.length--;
-      // return temp;
-    }
-    temp = temp.next;    
-  }
-}; */
-
-LinkedList.prototype.removeAt = function(pos) {
-  if (pos <= 0 || pos > this.length || this.length === 0) return -1;
-  if (typeof pos === "undefined" || pos === 1) { // remove head
-    let temp = this.head.next;
-    // delete this.head;
-    this.head = temp;
-    this.length--;
-  } else {
-    // if (pos === this.length) this.removeTail();
-    let temp = this.head; // temp = this.head = LinkedList.indexOf(1)
-    let prev;
-    for(let i = 0; i < pos; i++) { // 0 ~ pos - 1
-      if(i === pos - 2) {
-        prev = temp;
-      }
-      temp = temp.next;
-    }
-    prev.next = temp; // prev = cur - 1, temp = cur + 1
-    this.length--;
-  }
+// remove node by value from the linked list
+LinkedList.prototype.remove = function(value) {
+  let index = this.indexOf(value);
+  return this.removeAt(index);
 };
+
+// remove node by position from the linked list
+// removeAt에 pos가 length/2 뒤인지 앞인지 경우 나눠야함. (추가예정)
+LinkedList.prototype.removeAt = function(pos) {
+  if(pos < 0 || pos > this.length || this.length === 0) return null;
+  if(pos === 0) {
+    let temp = this.head;
+    // delete this.head;
+    this.head = this.head.next;
+    return temp.data;
+  }
+
+  let index = 0;
+  let curNode = this.head;
+  let prevNode = null;
+  while(curNode) {
+    if(index === pos) {
+      prevNode.next = curNode.next; // 이전 노드의 next를 다음 노드와 연결.
+      // let temp = curNode;
+      // delete curNode;
+      this.length--;
+      return curNode.data;
+    }
+    index++;
+    prevNode = curNode;
+    curNode = curNode.next;
+  }
+  return null;
+};
+
 
 LinkedList.prototype.size = function() {
   return this.length;
@@ -149,47 +123,51 @@ LinkedList.prototype.size = function() {
 LinkedList.prototype.toString = function() {
   console.log("========linked list========");
   let curNode = this.head;
+  let inList = "In list : ";
   while(curNode !== null) {
-    console.log(curNode.data);
+    inList += `${curNode.data}, `;
     curNode = curNode.next;
   }
+  console.log(inList);
+  return inList;
 };
 
 LinkedList.prototype.isEmpty = function() {
-  if(this.head === null && this.length === 0) return true;
-  return false;
+  return this.head === null && this.length === 0;
 };
 
 module.exports = LinkedList;
 
 /* test code */
-/* let newList = new LinkedList();
-newList.appendHead(2);
+let newList = new LinkedList();
+newList.append(2);
 newList.toString();
 console.log(`size : ${newList.size()}`);
-newList.appendTail(5);
+newList.append(5);
 newList.toString();
 console.log(`size : ${newList.size()}`);
-newList.appendHead(1);
+newList.append(1);
 newList.toString();
 console.log(`size : ${newList.size()}`);
 newList.insert(2, 7);
 console.log(newList);
-console.log(newList.find(1));
-console.log(`length : ${newList.length}`);
+console.log(`find(1) : ${newList.find(1)}`);
+console.log(`length : ${newList.size()}`);
 newList.toString();
-newList.remove();
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.appendTail(10);
+
+console.log(`remove(7) : ${newList.remove(7)}`);
 newList.toString();
 console.log(`size : ${newList.size()}`);
-newList.remove(2);
+newList.append(10);
 newList.toString();
 console.log(`size : ${newList.size()}`);
-newList.remove(3);
+
+console.log(`remove(2) : ${newList.remove(2)}`);
 newList.toString();
-console.log(`size : ${newList.size()}`); */
+console.log(`size : ${newList.size()}`);
+console.log(`remove(2) : ${newList.remove(3)}`);
+newList.toString();
+console.log(`size : ${newList.size()}`);
 
 
 // newList.end();

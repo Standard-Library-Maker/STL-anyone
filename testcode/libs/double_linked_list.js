@@ -7,6 +7,7 @@ let Node = function(value) {
 };
 
 const DoubleLinkedList = function() {
+  console.log("\n==========================\nDouble Linked List Create\n==========================\n");
   this.length = 0;
   this.head = null;
   this.tail = null;
@@ -48,7 +49,7 @@ DoubleLinkedList.prototype.insert = function(pos, value) {
     let curNode = null;
     let prevNode = null;
     
-    if(pos < this.length/2) { // from head to pos
+    if(pos < this.length / 2) { // from head to pos
       curNode = this.head;
       for(let i = 0; i < pos; i++) {
         prevNode = curNode;
@@ -62,9 +63,9 @@ DoubleLinkedList.prototype.insert = function(pos, value) {
       curNode.prev = newNode;
       if(pos === 0) this.head = newNode;
 
-    } else if(pos >= this.length/2) { // from tail to pos
+    } else if(pos >= this.length / 2) { // from tail to pos
       curNode = this.tail;
-      for(let i = this.length; i > pos; i--){
+      for(let i = this.length; i > pos; i--) {
         prevNode = curNode;
         curNode = curNode.prev;
       }
@@ -78,10 +79,10 @@ DoubleLinkedList.prototype.insert = function(pos, value) {
 
     this.length++;
   } else {
-    console.log(`error. position should be in 0 < position < ${this.length}`);
+    console.log(`insert error. position should be in 0 < position < ${this.length}`);
     return -1;
   }
-}
+};
 
 // remove node by value from the double linked list
 DoubleLinkedList.prototype.remove = function(value) {
@@ -118,24 +119,27 @@ DoubleLinkedList.prototype.removeAt = function(pos) {
 };
 
 
-LinkedList.prototype.size = function() {
+DoubleLinkedList.prototype.size = function() {
   return this.length;
 };
 
-LinkedList.prototype.toString = function() {
+DoubleLinkedList.prototype.toString = function() {
   console.log("========double linked list========");
   let curNode = this.head;
+  let inList = "In list : ";
   while(curNode !== null) {
-    console.log(curNode.data);
+    inList += `${curNode.data}, `;
     curNode = curNode.next;
   }
+  console.log(inList);
+  return inList;
 };
 
-LinkedList.prototype.isEmpty = function() {
-  if(this.head === null && this.length === 0) return true;
-  return false;
+DoubleLinkedList.prototype.isEmpty = function() {
+  return this.head === null && this.length === 0;
 };
 
+module.exports = DoubleLinkedList;
 
 /* test code */
 let newList = new DoubleLinkedList();
@@ -143,6 +147,9 @@ newList.append(1);
 newList.append(8);
 newList.append(5);
 console.log(newList);
-console.log(`remove : ${newList.removeAt(1)}`);
+console.log(`removeAt(1) : ${newList.removeAt(1)}`);
 console.log(newList);
-console.log(`remove : ${newList.remove(6)}`);
+console.log(`remove(6) : ${newList.remove(6)}`);
+newList.insert(1, 9);
+newList.toString();
+console.log(`size : ${newList.size()}`);

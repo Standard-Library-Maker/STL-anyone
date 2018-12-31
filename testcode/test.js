@@ -6,12 +6,9 @@ let LinkedList = require("./libs/linked_list");
 let Heap = require("./libs/heap");
 let PriorityQueue = require("./libs/priority_queue");
 let BinaryTree = require("./libs/binary_tree");
-<<<<<<< HEAD
 let BinarySearchTree = require("./libs/binary_search_tree");
-=======
 let Deque = require("./libs/deque");
 let HashMap = require("./libs/hash_map");
->>>>>>> 6a7801b358ef5285391e1db29318cde13dc02085
 
 /*
 // Binary Tree test case
@@ -124,7 +121,7 @@ newList.toString();
 
 
 // Priority queue => test by Jisoo
-/*console.log("\n=======test by Jisoo=======");
+/* console.log("\n=======test by Jisoo=======");
 let testPriorityQueue_1 = new PriorityQueue();
 testPriorityQueue_1.push(3);
 testPriorityQueue_1.push(5);
@@ -163,7 +160,7 @@ testPriorityQueue_2.testData();
 
 
 // Deque => test by Jisoo
-/*console.log("\n=======test by Jisoo=======");
+/* console.log("\n=======test by Jisoo=======");
 let testDeque_1 = new Deque();
 testDeque_1.push_back(1);
 testDeque_1.push_front(2);
@@ -207,4 +204,4 @@ console.log(testDeque_1);
 console.log("=========================");
 testDeque_1.clear();
 console.log("=======AFTER CLEAR=======");
-console.log(testDeque_1);*/
+console.log(testDeque_1); */
