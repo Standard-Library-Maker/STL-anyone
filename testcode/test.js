@@ -6,16 +6,21 @@ let LinkedList = require("./libs/linked_list");
 let Heap = require("./libs/heap");
 let PriorityQueue = require("./libs/priority_queue");
 let BinaryTree = require("./libs/binary_tree");
+let BinarySearchTree = require("./libs/binary_search_tree");
 
 /*
+// Binary Tree test case
 let b = new BinaryTree();
 b.push(1);
 b.push(2);
 b.push(3);
 b.push(4);
 b.push(5);
+b.push(6);
+b.pop();
 b.state();
 */
+
 
 /*
 // Heap test case

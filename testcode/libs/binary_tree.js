@@ -26,6 +26,11 @@ BinaryTree.prototype.push = function (value) {
   this.count ++;
 };
 
+BinaryTree.prototype.pop = function () {
+  this.tree[this.size() - 1].data = null;
+  this.count--;
+};
+
 BinaryTree.prototype.size = function () {
   return this.count;
 };
@@ -36,6 +41,7 @@ BinaryTree.prototype.postOrder = function (value){
   if(node === null) return;
   this.postOrder(node.left);
   this.postOrder(node.right);
+  if(node.data !== null)
   console.log("node data : " + node.data);
 };
 
@@ -44,6 +50,7 @@ BinaryTree.prototype.inOrder = function (value){
   node = value;
   if(node === null) return;
   this.inOrder(node.left);
+  if(node.data !== null)
   console.log("node data : " + node.data);
   this.inOrder(node.right);  
 };
@@ -52,6 +59,7 @@ BinaryTree.prototype.preOrder = function (value){
   let node = new Node();
   node = value;
   if(node === null) return;
+  if(node.data !== null)
   console.log("node data : " + node.data);
   this.preOrder(node.left);  
   this.preOrder(node.right);  
