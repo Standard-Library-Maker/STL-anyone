@@ -13,73 +13,55 @@ const HashMap = function () {
 
 // hash_map::put()
 HashMap.prototype.put = function (key, value) {
-    let newEntry = new Entry(key, value);
-    let hashCode = this.hash(key);
+    let newEntry = new Entry(key, value);   // make newEntry
+    let hashCode = this.hash(key);          // find hashCode
 
-    if (this.containsKey === true) { // 이미 존재하는 key인 경우
-        for (let l = 0; l < this.count; l++) {
-            this.map[hashCode] = this.map[hashCode].next;
+    if (this.length === 0) {
+        this.map[0] = newEntry;
+        this.map[0].count++;
+    } else if (this.length === 1) {
+        let curEntry = this.map[0];
+        for (let l = 0; l < this.map[0].count - 1; l++) {
+            curEntry = curEntry.next;
         }
-        this.map[hashCode] = newEntry;
-        this.count++;
-    } else {    // 존재하지 않는 키인 경우
-        this.map[hashCode] = newEntry;
-        this.length++;
+        curEntry.next = newEntry;
+        this.map[0].count++;
+    } else if (this.length === 2) {
+        this.map[1] = newEntry;
+        this.map[1].count++;
     }
+    this.length++;
 };
 
 HashMap.prototype.test = function () {
     console.log(this.map);
-    for (let l = 0; l < this.length; l++) {
-        console.log("key : " + this.map[l].key + " , value : " + this.map[l].value);
-    }
 };
 
 
 // Hash_map::hash();
 HashMap.prototype.hash = function (key) {
-    return this.length;
+    return 0;
 };
 
 // hash_map::isEmpty()
 HashMap.prototype.isEmpty = function () {
-    console.log(this.length === 0);
-    return this.length === 0;
+
 };
 
 // hash_map::size()
 HashMap.prototype.size = function (value) {
-    console.log(this.length);
-    return this.length;
+
 };
 
 // hash_map::containsKey()
 HashMap.prototype.containsKey = function (key) {
-    for (let l = 0; l < this.length; l++) {
-        if (this.map[l].key === key) {
-            return true;
-        }
-        return false;
-    }
+
 };
-
-
-// HashMap => test by Jisoo
-console.log("\n=======test by Jisoo=======");
-let HashMap_1 = new HashMap();
-HashMap_1.put("A", 1);
-HashMap_1.put("B", 2);
-HashMap_1.put("C", 3);
-HashMap_1.put("A", 2);
-HashMap_1.test();
-
 
 // hash_map::clear()
 HashMap.prototype.clear = function () {
 
 };
-
-
 
 // hash_map::containsValue()
 HashMap.prototype.containsValue = function (value) {
@@ -126,3 +108,11 @@ HashMap.prototype.values = function () {
 
 module.exports = HashMap;
 
+
+// HashMap => test by Jisoo
+console.log("\n=======test by Jisoo=======");
+let HashMap_1 = new HashMap();
+HashMap_1.put("A", 1);
+HashMap_1.put("B", 2);
+HashMap_1.put("C", 3);
+HashMap_1.test();
