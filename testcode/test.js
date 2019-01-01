@@ -12,6 +12,7 @@ let HashMap = require("./libs/hash_map");
 
 
 // Binary Tree test case
+/*
 let b = new BinaryTree();
 b.push(1);
 b.push(2);
@@ -21,7 +22,7 @@ b.push(5);
 b.push(6);
 b.pop();
 b.state();
-
+*/
 
 
 /*
