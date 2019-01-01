@@ -1,14 +1,14 @@
 //Deque implemented by Jisoo
 let Node = function (value) {
   this.data = value;
-  this.prev = undefined;
-  this.next = undefined;
+  this.prev = null;
+  this.next = null;
 };
 
 const Deque = function () {
   this.length = 0;
-  this.head = undefined;
-  this.tail = undefined;
+  this.head = null;
+  this.tail = null;
 };
 
 // deque::push_front()
@@ -21,7 +21,7 @@ Deque.prototype.push_front = function (value) {
   newNode.next = this.head;
   this.head = newNode;
 
-  if (this.head.next === undefined) {
+  if (this.head.next === null) {
     this.tail = this.head;
   }
   this.length++;
@@ -46,10 +46,10 @@ Deque.prototype.pop_front = function () {
   let popNode = new Node();
   popNode = this.head;
   this.head = this.head.next;
-  if (this.head !== undefined) {
-    this.head.prev = undefined;
+  if (this.head !== null) {
+    this.head.prev = null;
   }
-  popNode = undefined;
+  popNode = null;
   this.length--;
 };
 
@@ -58,10 +58,10 @@ Deque.prototype.pop_back = function () {
   let popNode = new Node();
   popNode = this.tail;
   this.tail = this.tail.prev;
-  if (this.tail !== undefined) {
-    this.tail.next = undefined;
+  if (this.tail !== null) {
+    this.tail.next = null;
   }
-  popNode = undefined;
+  popNode = null;
   this.length--;
 };
 
@@ -77,7 +77,7 @@ Deque.prototype.erase = function (pos) {
     let temp = Math.floor(this.length / 2);
     if (pos >= this.length || pos < 0) {
       console.log("ERROR : this position is empty");
-      return undefined;
+      return null;
     }
     else if (temp >= pos) {  // find start at head
       eraseNode = this.head;
@@ -93,7 +93,7 @@ Deque.prototype.erase = function (pos) {
     getNode = eraseNode.prev;
     getNode.next = eraseNode.next;
     getNode.next.prev = getNode;
-    eraseNode = undefined;
+    eraseNode = null;
     this.length--;
   }
 };
@@ -140,7 +140,7 @@ Deque.prototype.at = function (pos) {
   let temp = Math.floor(this.length / 2);
   if (pos >= this.length || pos < 0) {
     console.log("ERROR : this position is empty");
-    return undefined;
+    return null;
   } else if (temp >= pos) {  // find start at head
     getNode = this.head;
     for (let l = 0; l < pos; l++) {
@@ -159,12 +159,12 @@ Deque.prototype.at = function (pos) {
 // deque::clear()
 Deque.prototype.clear = function () {
   this.length = 0;
-  this.head.data = undefined;
-  this.head.next = undefined;
-  this.tail.data = undefined;
-  this.tail.prev = undefined;
-  this.head = undefined;
-  this.tail = undefined;
+  this.head.data = null;
+  this.head.next = null;
+  this.tail.data = null;
+  this.tail.prev = null;
+  this.head = null;
+  this.tail = null;
 };
 
 module.exports = Deque;

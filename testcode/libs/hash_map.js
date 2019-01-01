@@ -48,7 +48,6 @@ HashMap.prototype.put = function (key, value) {
     let curEntry = this.map[pos];
     while (true) {
       if (curEntry.key === key) {
-        //console.log("중복 key : " + curEntry.key);
         curEntry.value = value;
         return 0;
       }
@@ -62,43 +61,38 @@ HashMap.prototype.put = function (key, value) {
   this.map[pos].count++;
 };
 
-// hash_map::isEmpty()
-HashMap.prototype.isEmpty = function () {
-  console.log(this.length === 0);
-  return this.length === 0;
-};
-
-// hash_map::clear()
-HashMap.prototype.clear = function () {
-  this.length = 0;
-  this.map = [];
-};
-
-// hash_map::size()
-HashMap.prototype.size = function (value) {
-
-};
-
 // hash_map::containsKey()
 HashMap.prototype.containsKey = function (key) {
-  let pos = this.hash(key);          // find hashCode
-  let curEntry = this.map[pos]
+  let posOfMap = this.hash(key);          // find hashCode
+  let curEntry = this.map[posOfMap]
 
-  for (let l = 0; l < this.map[pos].count; l++) {
+  for (let posOfEntry = 0; posOfEntry < this.map[posOfMap].count; posOfEntry++) {
     if (curEntry.key === key) {
-      console.log("true");
+      console.log("key : " + key +"값을 포함하고 있음(true)");
       return true;
     }
     curEntry = curEntry.next;
   }
-  console.log("false");
+  console.log("key : " + key +"값을 포함하지 않음(false)");
   return false;
 };
 
-
 // hash_map::containsValue()
 HashMap.prototype.containsValue = function (value) {
-
+  for (let posOfMap = 0; posOfMap < 6; posOfMap++) {
+    if (this.map[posOfMap] !== undefined) {
+      let curEntry = this.map[posOfMap]
+      for (let posOfEntry = 0; posOfEntry < this.map[posOfMap].count; posOfEntry++) {
+        if (curEntry.value === value) {
+          console.log("value : " + value +"값을 포함하고 있음(true)");
+          return true;
+        }
+        curEntry = curEntry.next;
+      }
+    }
+  }
+  console.log("value : " + value +"값을 포함하지 않음(false)");
+  return false;
 };
 
 // hash_map::get()
@@ -121,6 +115,30 @@ HashMap.prototype.remove = function (key) {
 
 };
 
+// hash_map::isEmpty()
+HashMap.prototype.isEmpty = function () {
+  console.log(this.length === 0);
+   return this.length === 0;
+ };
+ 
+ // hash_map::clear()
+ HashMap.prototype.clear = function () {
+   this.length = 0;
+   this.map = [];
+ };
+ 
+ // hash_map::size()
+ HashMap.prototype.size = function (value) {
+   let size = 0;
+   for (let posOfMap = 0; posOfMap < 6; posOfMap++) {
+     if (this.map[posOfMap] !== undefined) {
+       size += this.map[posOfMap].count;
+     }
+   }
+   console.log("size : " + size);
+   return size;
+ };
+
 module.exports = HashMap;
 
 ///////////////////////////////////////////
@@ -132,15 +150,14 @@ HashMap.prototype.test = function () {
 console.log("\n=======test by Jisoo=======");
 let HashMap1 = new HashMap();
 HashMap1.isEmpty();
+
 HashMap1.put("0", 1);
 HashMap1.put("1", 1);
 
 HashMap1.put("A", 1);
 HashMap1.put("B", 2);
 HashMap1.put("C", 3);
-
 HashMap1.put("D", 3);
-
 HashMap1.put("A", 5);
 HashMap1.put("C", 5);
 HashMap1.put("D", 5);
@@ -153,17 +170,27 @@ HashMap1.put("a", 1);
 HashMap1.put("b", 2);
 HashMap1.put("c", 3);
 HashMap1.put("d", 3);
+
 HashMap1.put("z", 1);
+
+//HashMap1.put("가나다", 123);
+HashMap1.test();
+HashMap1.isEmpty();
 
 HashMap1.containsKey("A");
 HashMap1.containsKey("B");
 HashMap1.containsKey("C");
 HashMap1.containsKey("E");
-HashMap1.test();
-HashMap1.isEmpty();
-HashMap1.clear();
-HashMap1.isEmpty();
 
+HashMap1.containsValue(1);
+HashMap1.containsValue(4);
+HashMap1.containsValue(5)
+HashMap1.containsValue(10);
+
+HashMap1.size();
+HashMap1.clear();
+console.log("===AFTER CLEAR===");
+HashMap1.isEmpty();
 
 HashMap1.put("A", 1);
 HashMap1.put("B", 2);
