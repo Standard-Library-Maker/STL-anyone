@@ -55,17 +55,17 @@ HashMap.prototype.hash = function (key) {
     hash = 3;
   }
   else if((123 > hash) && (hash > 107)){
-    hash = 3;
+    hash = 4;
   }
   else {
-    hash = 4;
+    hash = 5;
   }
   return hash;
 };
 
 // hash_map::isEmpty()
 HashMap.prototype.isEmpty = function () {
-
+  return this.map === null;
 };
 
 // hash_map::size()
@@ -137,4 +137,4 @@ HashMap1.put("B", 2);
 HashMap1.put("C", 3);
 HashMap1.test();
 //console.log(HashMap1.hash("bc"));
-//console.log(HashMap1.hash("!bc"));
+console.log(HashMap1.hash("zbc"));

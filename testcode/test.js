@@ -25,7 +25,7 @@ b.state();
 */
 
 
-
+/*
 // Heap test case
 let h = new Heap();
 h.pushMin(1);
@@ -37,6 +37,7 @@ let array = [1, 3, 2, 5, 4];
 h.makeMinHeap(array);
 //console.log(`pop : ${h.pop()}`);
 h.state();
+*/
 
 
 /* stack test case */
