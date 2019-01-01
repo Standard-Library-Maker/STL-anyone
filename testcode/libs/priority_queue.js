@@ -6,7 +6,7 @@ const PriorityQueue = function (value) {
   this.count = 0;
   if (value === "greater") {                               // based on Min_Heap
     this.mode = "min_heap";
-  } else if (value === "less" || value === undefined) {     // DEFAULT : based on Max_Heap
+  } else if (value === "less" || value === null) {     // DEFAULT : based on Max_Heap
     this.mode = "max_heap";
   } else {
     console.log("ERROR:input sort criteria (option:greater,less)");
@@ -29,13 +29,13 @@ PriorityQueue.prototype.top = function () {
     return this.data[0];
   } else {
     console.log("ERROR:priority queue is empty");
-    return undefined;
+    return null;
   }
 };
 
 // priority_queue::push(value)
 PriorityQueue.prototype.push = function (value) {
-  if (value === undefined) {
+  if (value === null) {
     console.log("ERROR:push() required parameter");
   }
 
@@ -155,7 +155,6 @@ PriorityQueue.prototype.swap = function () {
 // priority_queue::emplace (C++ 11 supports this method)
 PriorityQueue.prototype.emplace = function () {
 };
-
 
 PriorityQueue.prototype.testData = function () {
   for (let i = 0; i < this.count; i++) {
