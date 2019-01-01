@@ -1,40 +1,37 @@
-//Hash Map implemented by Jisoo
+// Hash Map implemented by Jisoo
 let Entry = function (key, value) {
   this.key = key;
   this.value = value;
   this.next = undefined;
   this.count = 0;
-}
+};
 
 const HashMap = function () {
-  this.map = new Array();
+  this.map = [];
   this.length = 0;
 };
 
 // hash_map::put()
 HashMap.prototype.put = function (key, value) {
   let newEntry = new Entry(key, value);   // make newEntry
-  let hashCode = this.hash(key);          // find hashCode
+  let pos = this.hash(key);          // find hashCode
 
-  if (this.length === 0) {
-    this.map[0] = newEntry;
-    this.map[0].count++;
-  } else if (this.length === 1) {
-    let curEntry = this.map[0];
-    for (let l = 0; l < this.map[0].count - 1; l++) {
+  if (this.map[pos] === undefined) {
+    this.map[pos] = newEntry;
+    this.length++;
+  } else {
+    let curEntry = this.map[pos];
+    for (let l = 0; l < this.map[pos].count - 1; l++) {
+      if (curEntry.key === key) {
+        console.log("중복 key : " + curEntry.key);
+        curEntry.value = value;
+        return 0;
+      }
       curEntry = curEntry.next;
     }
     curEntry.next = newEntry;
-    this.map[0].count++;
-  } else if (this.length === 2) {
-    this.map[1] = newEntry;
-    this.map[1].count++;
   }
-  this.length++;
-};
-
-HashMap.prototype.test = function () {
-  console.log(this.map);
+  this.map[pos].count++;
 };
 
 
@@ -55,7 +52,18 @@ HashMap.prototype.size = function (value) {
 
 // hash_map::containsKey()
 HashMap.prototype.containsKey = function (key) {
+  let pos = this.hash(key);          // find hashCode
+  let curEntry = this.map[pos]
 
+  for (let l = 0; l < this.map[pos].count; l++) {
+    if (curEntry.key === key) {
+      console.log("true");
+      return true;
+    }
+    curEntry = curEntry.next;
+  }
+  console.log("false");
+  return false;
 };
 
 // hash_map::clear()
@@ -89,7 +97,7 @@ HashMap.prototype.remove = function (key) {
 };
 
 
-//////////////////////////////////////////////////////////////////
+// ////////////////////////////////////////////////////////////////
 // hash_map::clone()
 HashMap.prototype.clone = function () {
 
@@ -109,10 +117,24 @@ HashMap.prototype.values = function () {
 module.exports = HashMap;
 
 
+HashMap.prototype.test = function () {
+  console.log(this.map[0]);
+};
+
 // HashMap => test by Jisoo
 console.log("\n=======test by Jisoo=======");
-let HashMap_1 = new HashMap();
-HashMap_1.put("A", 1);
-HashMap_1.put("B", 2);
-HashMap_1.put("C", 3);
-HashMap_1.test();
+let HashMap1 = new HashMap();
+HashMap1.put("A", 1);
+HashMap1.put("B", 2);
+HashMap1.put("C", 3);
+HashMap1.put("D", 3);
+
+HashMap1.put("A", 5);
+HashMap1.put("C", 5);
+HashMap1.put("D", 5);
+
+HashMap1.containsKey("A");
+HashMap1.containsKey("B");
+HashMap1.containsKey("C");
+HashMap1.containsKey("E");
+HashMap1.test();
