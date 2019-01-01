@@ -19,8 +19,7 @@ Heap.prototype.push = function(value){
 
   let temp = this.count;
   while(temp > 0){
-    if(temp % 2 === 0) var parent = (temp) / 2;
-    else var parent = (temp - 1) / 2;
+    let parent = Math.floor((temp - 1) / 2);
 
     if(this.data[temp] > this.data[parent]){
       swap(this.data, temp, parent);
@@ -75,8 +74,7 @@ Heap.prototype.makeHeap = function(array) {
     let now = i;
     let parent = null;
     while(now > 0) {
-      if(now % 2 === 0) parent = (now) / 2;
-      else parent = (now - 1) / 2;
+      parent = Math.floor((now - 1) / 2);
       if(array[now] > array[parent]) {
         swap(array, now, parent);
         now = parent;
