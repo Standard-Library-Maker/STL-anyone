@@ -34,6 +34,7 @@ module.exports = {
         "no-tabs": 0,
         "linebreak-style": 0,
         "no-multi-spaces": 0,
-        "max-len": 200,
+        "max-len": 0,
+        "padded-blocks": 0,
     }
 };
