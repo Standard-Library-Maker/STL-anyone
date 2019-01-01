@@ -1,5 +1,5 @@
 // C++ STL, 생활코딩 등 참고.. append 함수 변경 예정.
-let Node = function(value) {
+const Node = function(value) {
   this.data = value;
   this.next = null;
 };
@@ -8,7 +8,7 @@ const LinkedList = function() {
   console.log("\n==================\nLinked List Create\n==================\n");
   this.length = 0;
   this.head = null;
-  this.tail = null; // 삭제해도 될듯?
+  // this.tail = null; // 삭제해도 될듯?
 };
 
 // find node that has the 'value'.
@@ -57,7 +57,7 @@ LinkedList.prototype.append = function(value) {
     while(curNode.next) curNode = curNode.next;
     curNode.next = node;
   }
-  this.tail = node;
+  // this.tail = node;
   this.length++;
 };
 
@@ -94,6 +94,7 @@ LinkedList.prototype.removeAt = function(pos) {
     let temp = this.head;
     // delete this.head;
     this.head = this.head.next;
+    this.length--;
     return temp.data;
   }
 
@@ -152,22 +153,24 @@ console.log(`size : ${newList.size()}`);
 newList.insert(2, 7);
 console.log(newList);
 console.log(`find(1) : ${newList.find(1)}`);
-console.log(`length : ${newList.size()}`);
 newList.toString();
+console.log(`size : ${newList.size()}\n`);
 
 console.log(`remove(7) : ${newList.remove(7)}`);
 newList.toString();
-console.log(`size : ${newList.size()}`);
+console.log(`size : ${newList.size()}\n`);
+
 newList.append(10);
 newList.toString();
-console.log(`size : ${newList.size()}`);
+console.log(`size : ${newList.size()}\n`);
 
 console.log(`remove(2) : ${newList.remove(2)}`);
 newList.toString();
-console.log(`size : ${newList.size()}`);
+console.log(`size : ${newList.size()}\n`);
+
 console.log(`remove(2) : ${newList.remove(3)}`);
 newList.toString();
-console.log(`size : ${newList.size()}`);
+console.log(`size : ${newList.size()}\n`);
 
 
 // newList.end();

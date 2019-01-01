@@ -1,6 +1,6 @@
 // C++ STL, 생활코딩 등 참고.. append 함수 변경 예정.
 // https://boycoding.tistory.com 참고.
-let Node = function(value) {
+const Node = function(value) {
   this.data = value;
   this.next = null;
   this.prev = null;
@@ -99,6 +99,7 @@ DoubleLinkedList.prototype.removeAt = function(pos) {
     // delete this.head;
     this.head = this.head.next;
     this.head.prev = null;
+    this.length--;
     return temp.data;
   }
 
@@ -152,4 +153,4 @@ console.log(newList);
 console.log(`remove(6) : ${newList.remove(6)}`);
 newList.insert(1, 9);
 newList.toString();
-console.log(`size : ${newList.size()}`);
+console.log(`size : ${newList.size()}\n`);

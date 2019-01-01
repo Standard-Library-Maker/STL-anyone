@@ -10,8 +10,9 @@ let BinarySearchTree = require("./libs/binary_search_tree");
 let Deque = require("./libs/deque");
 let HashMap = require("./libs/hash_map");
 
-/*
+
 // Binary Tree test case
+/*
 let b = new BinaryTree();
 b.push(1);
 b.push(2);

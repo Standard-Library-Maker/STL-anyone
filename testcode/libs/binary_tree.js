@@ -12,7 +12,6 @@ const BinaryTree = function () {
 
 BinaryTree.prototype.push = function (value) {
   let node = new Node(value);
-  node.data = value;
   if (this.root === null) {
     this.root = node;
     this.tree[this.count] = node;
@@ -28,6 +27,7 @@ BinaryTree.prototype.push = function (value) {
 
 BinaryTree.prototype.pop = function () {
   this.tree[this.size() - 1].data = null;
+  this.tree[this.size() - 1] = null;
   this.count--;
 };
 
@@ -36,7 +36,7 @@ BinaryTree.prototype.size = function () {
 };
 
 BinaryTree.prototype.postOrder = function (value){
-  let node = new Node();
+  let node = new Node(value);
   node = value;
   if(node === null) return;
   this.postOrder(node.left);

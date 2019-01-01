@@ -50,7 +50,7 @@ BinarySearchTree.prototype.inOrder = function(value) {
   this.inOrder(node.left);
   if(node.data !== null)
   console.log("node data : " + node.data);
-  this.inOrder(node.right);  
+  this.inOrder(node.right);
 };
 
 BinarySearchTree.prototype.minValue = function(value) {
