@@ -22,8 +22,8 @@ List.prototype.find = function (value) {
 };
 
 // get value in the list with position
-List.prototype.get = function(pos) {
-  if(pos < this.listSize) return this.data[pos];
+List.prototype.get = function(position) {
+  if(pos < this.listSize) return this.data[position];
   return -1;
 };
 
