@@ -212,3 +212,80 @@ testDeque1.push_front(3);
 testDeque1.push_front(4);
 console.log(testDeque1);
 */
+
+/*
+// HashMap => test by Jisoo
+console.log("\n=======test by Jisoo=======");
+let HashMap1 = new HashMap();
+HashMap1.isEmpty();
+
+HashMap1.put("0", 1);
+HashMap1.put("1", 1);
+
+HashMap1.put("A", 1);
+HashMap1.put("B", 2);
+HashMap1.put("C", 3);
+HashMap1.put("D", 3);
+HashMap1.put("A", 5);
+HashMap1.put("C", 5);
+HashMap1.put("D", 5);
+
+HashMap1.put("N", 1);
+HashMap1.put("O", 2);
+HashMap1.put("Z", 3);
+
+HashMap1.put("a", 1);
+HashMap1.put("b", 2);
+HashMap1.put("c", 3);
+HashMap1.put("d", 3);
+
+HashMap1.put("z", 1);
+
+HashMap1.put("가나다", 123);
+
+HashMap1.test();
+HashMap1.isEmpty();
+//HashMap1.keySet();
+HashMap1.entrySet();
+
+//HashMap1.remove("B");
+HashMap1.test();
+/*
+HashMap1.containsKey("A");
+HashMap1.containsKey("B");
+HashMap1.containsKey("C");
+HashMap1.containsKey("E");
+
+HashMap1.containsValue(1);
+HashMap1.containsValue(4);
+HashMap1.containsValue(5)
+HashMap1.containsValue(10);
+
+HashMap1.get("A");
+HashMap1.get("B");
+HashMap1.get("가나다");
+HashMap1.get("e");
+
+HashMap1.size();
+HashMap1.clear();
+console.log("=======AFTER CLEAR=======");
+HashMap1.isEmpty();
+
+HashMap1.put("A", 1);
+HashMap1.put("B", 2);
+HashMap1.put("C", 3);
+HashMap1.test();
+HashMap1.containsKey("A");
+HashMap1.containsKey("B");
+HashMap1.containsKey("C");
+HashMap1.containsKey("E");
+
+HashMap1.containsValue(1);
+HashMap1.containsValue(4);
+HashMap1.containsValue(5)
+HashMap1.containsValue(10);
+
+HashMap1.size();
+HashMap1.clear();
+HashMap1.isEmpty();
+*/
