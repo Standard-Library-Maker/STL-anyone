@@ -25,19 +25,19 @@ b.state();
 */
 
 
-/*
+
 // Heap test case
 let h = new Heap();
-h.push(1);
-h.push(3);
-h.push(2);
-h.push(5);
-h.push(4);
+h.pushMin(1);
+h.pushMin(3);
+h.pushMin(2);
+h.pushMin(5);
+h.pushMin(4);
 let array = [1, 3, 2, 5, 4];
-h.makeHeap(array);
+h.makeMinHeap(array);
 //console.log(`pop : ${h.pop()}`);
 h.state();
-*/
+
 
 /* stack test case */
 /* let s = new Stack();

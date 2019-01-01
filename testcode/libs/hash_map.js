@@ -40,7 +40,27 @@ HashMap.prototype.test = function () {
 
 // Hash_map::hash();
 HashMap.prototype.hash = function (key) {
-  return 0;
+  //let hash = key.substring(0,1);
+  let hash = key.charCodeAt(0);
+  if((58 > hash) && (hash > 47)){
+    hash = 0;
+  }
+  else if((78 > hash) && (hash > 64)){
+    hash = 1;
+  }
+  else if((91 > hash) && (hash > 77)){
+    hash = 2;
+  }
+  else if((108 > hash) && (hash > 96)){
+    hash = 3;
+  }
+  else if((123 > hash) && (hash > 107)){
+    hash = 3;
+  }
+  else {
+    hash = 4;
+  }
+  return hash;
 };
 
 // hash_map::isEmpty()
@@ -116,3 +136,5 @@ HashMap1.put("A", 1);
 HashMap1.put("B", 2);
 HashMap1.put("C", 3);
 HashMap1.test();
+//console.log(HashMap1.hash("bc"));
+//console.log(HashMap1.hash("!bc"));
