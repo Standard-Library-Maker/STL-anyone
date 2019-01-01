@@ -33,9 +33,9 @@ ArrQueue.prototype.back = function() {
   else return this.data[this.count - 1];
 };
 
-ArrQueue.prototype.size = function() { return this.count; };
+ArrQueue.prototype.size = function() { return this.count; }
 
-ArrQueue.prototype.isEmpty = function() { return this.count === 0; };
+ArrQueue.prototype.isEmpty = function() { return this.count === 0; }
 
 ArrQueue.prototype.clear = function() {
   this.count = 0;
@@ -68,10 +68,10 @@ const CircularQueue = function (max) {
 };
 
 CircularQueue.prototype.isFull = function() {
-  return ((this.qBack + 1) % this.MAX_SIZE === this.qFront);
+  ((this.qBack + 1) % this.MAX_SIZE === this.qFront);
 };
 CircularQueue.prototype.isEmpty = function() {
-  return this.qBack === this.qFront;
+  (this.qBack === this.qFront);
 };
 
 CircularQueue.prototype.push = function(value) {
