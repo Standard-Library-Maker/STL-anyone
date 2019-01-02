@@ -14,18 +14,12 @@ class QueueTemplate extends Component {
     };
   }
 
-  start = async () => {
-    let newQueue = new stl.Queue.ArrQueue();
-    alert("New Queue Created!");
-    await this.setState({
-      ...this.state,
-      queue: newQueue,
-      textAreaValue: [],
-    }, () => {
-      console.log(newQueue);
-    });
-    //this.forceUpdate();
-    // alert(newQueue.state());
+  checkQueue = () => {
+    if (this.state.queue === '') {
+      alert("Initialize Queue!! Please press start button");
+      return true;
+    }
+    return false;
   };
 
   handleChange = (e) => {
@@ -42,11 +36,22 @@ class QueueTemplate extends Component {
     }
   };
 
+  start = async () => {
+    let newQueue = new stl.Queue.ArrQueue();
+    alert("New Queue Created!");
+    await this.setState({
+      ...this.state,
+      queue: newQueue,
+      textAreaValue: [],
+    }, () => {
+      console.log(newQueue);
+    });
+    //this.forceUpdate();
+    // alert(newQueue.state());
+  };
+
   queuePush = async () => {
-    if (this.state.queue === '') {
-      alert("Initialize Queue!! Please press start button");
-      return false;
-    }
+    if (this.checkQueue()) return false;
     if (this.state.pushValue === '') {
       alert("please input push value");
       return false;
@@ -69,10 +74,8 @@ class QueueTemplate extends Component {
   };
 
   queuePop = async () => {
-    if (this.state.queue === '') {
-      alert("Initialize Queue!! Please press start button");
-      return false;
-    }
+    if (this.checkQueue()) return false;
+
     let myQueue = this.state.queue;
     let result = this.state.textAreaValue;
     alert(`pop : ${myQueue.pop()}`);
@@ -87,21 +90,45 @@ class QueueTemplate extends Component {
   };
 
   getState = () => {
-    if (this.state.queue === '') {
-      alert("Initialize Queue!! Please press start button");
-      return false;
-    }
+    if (this.checkQueue()) return false;
+
     else {
       let myQueue = this.state.queue;
       //console.log(myQueue.state());
       //console.log(this.state);
       //this.forceUpdate();
-      alert(myQueue.state());
+      alert(myQueue.toString());
     }
+  };
+
+  getSize = () => {
+    if (this.checkQueue()) return false;
+    let myQueue = this.state.queue;
+    alert(`size : ${myQueue.size()}`);
+  };
+
+  checkEmpty = () => {
+    if (this.checkQueue()) return false;
+    let myQueue = this.state.queue;
+    alert(myQueue.isEmpty());
+  };
+
+  getFront = () => {
+    if (this.checkQueue()) return false;
+    let myQueue = this.state.queue;
+    alert(`front value : ${myQueue.front()}`);
+  };
+
+  getBack = () => {
+    if (this.checkQueue()) return false;
+    let myQueue = this.state.queue;
+    alert(`front value : ${myQueue.back()}`);
   };
 
   render() {
     let value = this.state;
+    let output = '';
+    value.textAreaValue.forEach( (v) => {output += v;});
     return (
       <div className="queue">
         <div className="queue-header">
@@ -112,7 +139,7 @@ class QueueTemplate extends Component {
           <div className="result-area">
             <textarea
               name="resultArea"
-              value={value.textAreaValue}
+              value={output}
               readOnly
             />
           </div>
@@ -131,6 +158,18 @@ class QueueTemplate extends Component {
             </div>
             <div className="state-form">
               <button onClick={this.getState}>state</button>
+            </div>
+            <div className="size-form">
+              <button onClick={this.getSize}>size</button>
+            </div>
+            <div className="empty-form">
+              <button onClick={this.checkEmpty}>empty?</button>
+            </div>
+            <div className="front-form">
+              <button onClick={this.getFront}>front</button>
+            </div>
+            <div className="back-form">
+              <button onClick={this.getBack}>back</button>
             </div>
           </div>
         </div>
