@@ -10,72 +10,94 @@ class QueueTemplate extends Component {
     this.state = {
       queue: '',
       pushValue: '',
-      popValue: '',
-      textAreaValue: '',
+      textAreaValue: [],
     };
   }
 
   start = async () => {
     let newQueue = new stl.Queue.ArrQueue();
+    alert("New Queue Created!");
     await this.setState({
-      queue: newQueue
+      ...this.state,
+      queue: newQueue,
+      textAreaValue: [],
     }, () => {
       console.log(newQueue);
     });
-    this.forceUpdate();
+    //this.forceUpdate();
     // alert(newQueue.state());
   };
 
   handleChange = (e) => {
     if(e.target.name === "pushInput") {
       this.setState({
+        ...this.state,
         pushValue: e.target.value
-      });
-    } else if(e.target.name === "popInput") {
-      this.setState({
-        popValue: e.target.value
       });
     } else if(e.target.name === "resultArea") {
       this.setState({
+        ...this.state,
         textAreaValue: e.target.value
       });
     }
   };
 
-  queuePush = () => {
+  queuePush = async () => {
+    if (this.state.queue === '') {
+      alert("Initialize Queue!! Please press start button");
+      return false;
+    }
+    if (this.state.pushValue === '') {
+      alert("please input push value");
+      return false;
+    }
+
     let myQueue = this.state.queue;
     let pushedValue = this.state.pushValue;
-    console.log(myQueue);
+    let result = this.state.textAreaValue;
+    //console.log(myQueue);
     myQueue.push(pushedValue);
+    result.push(pushedValue+' -> ');
 
-    this.setState({
+    await this.setState({
+      ...this.state,
       queue: myQueue,
-      textAreaValue: `${pushedValue} ->`
-    }, () => {
-      console.log(myQueue);
+      textAreaValue: result
     });
-    this.forceUpdate()
+    //this.forceUpdate()
     //alert(`push : ${this.state.queue.state()}`);
   };
 
   queuePop = async () => {
+    if (this.state.queue === '') {
+      alert("Initialize Queue!! Please press start button");
+      return false;
+    }
     let myQueue = this.state.queue;
-    alert(`pop : ${myQueue.pop(this.state.popValue)}`);
+    let result = this.state.textAreaValue;
+    alert(`pop : ${myQueue.pop()}`);
+    result.splice(0,1);
 
     await this.setState({
-      queue: myQueue
-    }, () => {
-      console.log(myQueue);
+      ...this.state,
+      queue: myQueue,
+      textAreaValue: result
     });
     // alert(`pop : ${this.state.popValue}`);
   };
 
   getState = () => {
-    let myQueue = this.state.queue;
-    console.log(myQueue.state());
-    console.log(this.state);
-    this.forceUpdate();
-    alert(myQueue.state());
+    if (this.state.queue === '') {
+      alert("Initialize Queue!! Please press start button");
+      return false;
+    }
+    else {
+      let myQueue = this.state.queue;
+      //console.log(myQueue.state());
+      //console.log(this.state);
+      //this.forceUpdate();
+      alert(myQueue.state());
+    }
   };
 
   render() {
@@ -95,7 +117,7 @@ class QueueTemplate extends Component {
             />
           </div>
           <div className="user-input-section">
-            <form className="push-form">
+            <div className="push-form">
               <input
                 type="text"
                 name="pushInput"
@@ -103,19 +125,13 @@ class QueueTemplate extends Component {
                 onChange={this.handleChange}
               />
               <button onClick={this.queuePush}>push</button>
-            </form>
-            <form className="pop-form">
-              <input
-                type="text"
-                name="popInput"
-                value={value.popValue}
-                onChange={this.handleChange}
-              />
+            </div>
+            <div className="pop-form">
               <button onClick={this.queuePop}>pop</button>
-            </form>
-            <form className="state-form">
+            </div>
+            <div className="state-form">
               <button onClick={this.getState}>state</button>
-            </form>
+            </div>
           </div>
         </div>
       </div>
