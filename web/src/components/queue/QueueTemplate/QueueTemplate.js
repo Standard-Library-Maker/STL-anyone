@@ -127,6 +127,8 @@ class QueueTemplate extends Component {
 
   render() {
     let value = this.state;
+    let output = '';
+    value.textAreaValue.forEach( (v) => {output += v;});
     return (
       <div className="queue">
         <div className="queue-header">
@@ -137,7 +139,7 @@ class QueueTemplate extends Component {
           <div className="result-area">
             <textarea
               name="resultArea"
-              value={value.textAreaValue}
+              value={output}
               readOnly
             />
           </div>
@@ -161,7 +163,7 @@ class QueueTemplate extends Component {
               <button onClick={this.getSize}>size</button>
             </div>
             <div className="empty-form">
-              <button onClick={this.checkEmpty}>empty</button>
+              <button onClick={this.checkEmpty}>empty?</button>
             </div>
             <div className="front-form">
               <button onClick={this.getFront}>front</button>
