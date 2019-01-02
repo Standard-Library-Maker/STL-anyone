@@ -5,37 +5,118 @@ import HeaderTemplate from 'components/header/HeaderTemplate';
 import './QueueTemplate.scss';
 
 class QueueTemplate extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      queue: '',
+      pushValue: '',
+      popValue: '',
+      textAreaValue: '',
+    };
+  }
 
-  testcode = () => {
-    /* Queue Test Code */
-    console.log('\nqueue test start');
-    let s1 = new stl.Queue.ArrQueue();
-    s1.push("hello world");
-    s1.push("hello javascript");
-    s1.push("this is queue");
-    s1.state();
-    console.log(`front : ${s1.front()}`);
-    console.log(`back : ${s1.back()}`);
-    console.log(`size : ${s1.size()}`);
+  start = async () => {
+    let newQueue = new stl.Queue.ArrQueue();
+    await this.setState({
+      queue: newQueue
+    }, () => {
+      console.log(newQueue);
+    });
+    this.forceUpdate();
+    // alert(newQueue.state());
+  };
 
-    console.log(`pop : ${s1.pop()}`);
-    console.log(`front : ${s1.front()}`);
-    console.log(`back : ${s1.back()}`);
-    console.log(`size : ${s1.size()}`);
-    s1.state();
-    s1.clear();
-    console.log('=== after clear ===')
-    s1.state();
+  handleChange = (e) => {
+    if(e.target.name === "pushInput") {
+      this.setState({
+        pushValue: e.target.value
+      });
+    } else if(e.target.name === "popInput") {
+      this.setState({
+        popValue: e.target.value
+      });
+    } else if(e.target.name === "resultArea") {
+      this.setState({
+        textAreaValue: e.target.value
+      });
+    }
+  };
+
+  queuePush = () => {
+    let myQueue = this.state.queue;
+    let pushedValue = this.state.pushValue;
+    console.log(myQueue);
+    myQueue.push(pushedValue);
+
+    this.setState({
+      queue: myQueue,
+      textAreaValue: `${pushedValue} ->`
+    }, () => {
+      console.log(myQueue);
+    });
+    this.forceUpdate()
+    //alert(`push : ${this.state.queue.state()}`);
+  };
+
+  queuePop = async () => {
+    let myQueue = this.state.queue;
+    alert(`pop : ${myQueue.pop(this.state.popValue)}`);
+
+    await this.setState({
+      queue: myQueue
+    }, () => {
+      console.log(myQueue);
+    });
+    // alert(`pop : ${this.state.popValue}`);
+  };
+
+  getState = () => {
+    let myQueue = this.state.queue;
+    console.log(myQueue.state());
+    console.log(this.state);
+    this.forceUpdate();
+    alert(myQueue.state());
   };
 
   render() {
+    let value = this.state;
     return (
       <div className="queue">
         <div className="queue-header">
           <HeaderTemplate/>
         </div>
+        <button className="start-btn" onClick={this.start}>Start</button>
         <div className="test-code">
-          <button onClick={this.testcode}>Test</button>
+          <div className="result-area">
+            <textarea
+              name="resultArea"
+              value={value.textAreaValue}
+              readOnly
+            />
+          </div>
+          <div className="user-input-section">
+            <form className="push-form">
+              <input
+                type="text"
+                name="pushInput"
+                value={value.pushValue}
+                onChange={this.handleChange}
+              />
+              <button onClick={this.queuePush}>push</button>
+            </form>
+            <form className="pop-form">
+              <input
+                type="text"
+                name="popInput"
+                value={value.popValue}
+                onChange={this.handleChange}
+              />
+              <button onClick={this.queuePop}>pop</button>
+            </form>
+            <form className="state-form">
+              <button onClick={this.getState}>state</button>
+            </form>
+          </div>
         </div>
       </div>
     )

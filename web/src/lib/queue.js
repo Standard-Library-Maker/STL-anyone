@@ -2,23 +2,26 @@
 const ArrQueue = function() {
   this.count = 0;
   this.data = [];
-  document.writeln(`<br>★★★ Array Queue example ★★★<br>=================================<br>`);
+  //document.writeln(`<br>★★★ Array Queue example ★★★<br>=================================<br>`);
 };
 
 ArrQueue.prototype.push = function(value) {
   this.data[this.count++] = value;
-  this.show('push');
+  // this.show('push');
 };
 
 ArrQueue.prototype.pop = function() {
-  if(this.isEmpty()) console.log("Error. Queue is empty");
+  if(this.isEmpty()) {
+    // console.log("Error. Queue is empty");
+    return null;
+  }
   else {
     let popedValue = this.data[0];
     for (let i = 0; i < this.count - 1; i++) {
       this.data[i] = this.data[i + 1];
     }
     this.data.splice(--this.count, 1);
-    this.show('pop');
+    // this.show('pop');
     return popedValue;
   } 
 };
@@ -41,11 +44,12 @@ ArrQueue.prototype.clear = function() {
   this.count = 0;
   this.data = [];
   document.writeln(`=== after clear ===<br>`);
-  this.show(false);
+  // this.show(false);
 };
   
 ArrQueue.prototype.state = function() {
   console.log(`=== ${this.size()} items in the queue : [${this.data}] ===`);
+  return `=== ${this.size()} items in the queue : [${this.data}] ===`;
 };
 
 ArrQueue.prototype.show = function(value) {
@@ -136,16 +140,16 @@ CircularQueue.prototype.show = function(value) {
 
 ///////////////////////////////////////////////////////////////
 // Linked list queue -> will be implemented after implementing ll
-function LlQueue() {
+/*function LlQueue() {
   let data = [];
   let head = 0;
   let tail = 0;
-}
+}*/
 
 const Queue = {
   ArrQueue,
   CircularQueue,
-  LlQueue
+  //LlQueue
 };
 
 export default Queue
