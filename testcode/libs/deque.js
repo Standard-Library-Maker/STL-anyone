@@ -13,6 +13,11 @@ const Deque = function () {
 
 // deque::push_front()
 Deque.prototype.push_front = function (value) {
+  if (value === undefined){
+    console.log("ERROR:push_front() required parameter");
+    return -1;
+  }
+
   let newNode = new Node(value);  // make newNode
 
   if (this.length !== 0) {  // if deque isn't empty
@@ -29,6 +34,11 @@ Deque.prototype.push_front = function (value) {
 
 // deque::push_back()
 Deque.prototype.push_back = function (value) {
+  if (value === undefined){
+    console.log("ERROR:push_back() required parameter");
+    return -1;
+  }
+
   let newNode = new Node(value);  // make newNode
 
   if (this.length === 0) { // if deque is empty
@@ -43,6 +53,11 @@ Deque.prototype.push_back = function (value) {
 
 // deque::pop_front()
 Deque.prototype.pop_front = function () {
+  if (this.length === 0) {
+    console.log("ERROR:deque is empty");
+    return null;
+  }
+
   let popNode = new Node();
   popNode = this.head;
   this.head = this.head.next;
@@ -55,6 +70,11 @@ Deque.prototype.pop_front = function () {
 
 // deque::pop_back()
 Deque.prototype.pop_back = function () {
+  if (this.length === 0) {
+    console.log("ERROR:deque is empty");
+    return null;
+  }
+
   let popNode = new Node();
   popNode = this.tail;
   this.tail = this.tail.prev;
@@ -67,6 +87,11 @@ Deque.prototype.pop_back = function () {
 
 // deque::erase()
 Deque.prototype.erase = function (pos) {
+  if (pos === undefined){
+    console.log("ERROR::erase() required parameter");
+    return -1;
+  }
+
   if (pos === 0) { // remove head value
     this.pop_front();
   } else if (pos === this.length - 1) { // remove tail value
@@ -98,26 +123,53 @@ Deque.prototype.erase = function (pos) {
   }
 };
 
+// deque::clear()
+Deque.prototype.clear = function () {
+  this.length = 0;
+  this.head.data = null;
+  this.head.next = null;
+  this.tail.data = null;
+  this.tail.prev = null;
+  this.head = null;
+  this.tail = null;
+};
+
 // deque::front()
 Deque.prototype.front = function () {
+  if (this.length === 0) {
+    console.log("ERROR:deque is empty");
+    return null;
+  } 
   //console.log(this.head.data);
   return this.head.data;
 };
 
 // deque::back()
 Deque.prototype.back = function () {
+  if (this.length === 0) {
+    console.log("ERROR:deque is empty");
+    return null;
+  } 
   //console.log(this.tail.data);
   return this.tail.data;
 };
-0
+
 // deque::begin()
 Deque.prototype.begin = function () {
+  if (this.length === 0) {
+    console.log("ERROR:deque is empty");
+    return null;
+  } 
   //console.log(this.head);
   return this.head;
 };
 
 // deque::end()
 Deque.prototype.end = function () {
+  if (this.length === 0) {
+    console.log("ERROR:deque is empty");
+    return null;
+  } 
   //console.log(this.tail);
   return this.tail;
 };
@@ -136,6 +188,11 @@ Deque.prototype.size = function () {
 
 // deque::at()
 Deque.prototype.at = function (pos) {
+  if (pos === undefined){
+    console.log("ERROR::at() required parameter");
+    return -1;
+  }
+
   let getNode = new Node();
   let temp = Math.floor(this.length / 2);
   if (pos >= this.length || pos < 0) {
@@ -156,15 +213,5 @@ Deque.prototype.at = function (pos) {
   return getNode.data;
 };
 
-// deque::clear()
-Deque.prototype.clear = function () {
-  this.length = 0;
-  this.head.data = null;
-  this.head.next = null;
-  this.tail.data = null;
-  this.tail.prev = null;
-  this.head = null;
-  this.tail = null;
-};
 
 module.exports = Deque;
