@@ -6,6 +6,13 @@ const Node = function(value) {
   this.prev = null;
 };
 
+/**
+ * @Class DoubleLinkedList
+ * @classdesc 다음노드에 대한 참조 뿐만 아니라, 이전 노드의 참조도 함께 가리키는 자료구조이다.
+ * @example 
+ * var dl = new DoubleLinkedList ();
+ * @author yicho93@gmail.com
+ */
 const DoubleLinkedList = function() {
   console.log("\n==========================\nDouble Linked List Create\n==========================\n");
   this.length = 0;
@@ -13,7 +20,19 @@ const DoubleLinkedList = function() {
   this.tail = null;
 };
 
-// return index of value in the double linked list 
+/**
+ * @method DoubleLinkedList.indexOf
+ * @description This method is used to get the index of value from this double Linked list, but does not remove.
+ * @param {undefined} value - The value which want to get index from this double Linked list.
+ * @return {Boolean} This method returns ‘true’ if this double Linked list has value or ‘false’ if this double Linked list doesn't have value.
+ * @thorws This method returns -1 if this ouble Linked list doens't have the specified value.
+ * @example 
+ * var dl = new DoubleLinkedList ();
+ * dl.append(1);
+ * dl.append(2);
+ * dl.append(3);
+ * var ret = dl.index(2); // ret = 1
+ */
 DoubleLinkedList.prototype.indexOf = function(value) {
   let curNode = this.head;
   let index = 0;
@@ -26,7 +45,16 @@ DoubleLinkedList.prototype.indexOf = function(value) {
   return -1;
 };
 
-// append value at the end of double linked list
+/**
+ * @method LinkedList.append
+ * @description This method is used to append value at the end of double Linked list.
+ * @param {undefined} value - The element to be appended to this double Linked list.
+ * @example 
+ * var dl = new DoubleLinkedList ();
+ * dl.append(1);
+ * dl.append(2);
+ * dl.append(3);
+ */
 DoubleLinkedList.prototype.append = function(value) {
   let node = new Node(value);
   let curNode = null;
@@ -43,7 +71,18 @@ DoubleLinkedList.prototype.append = function(value) {
   this.length++;
 };
 
-// insert value at the position of double linked list
+/**
+ * @method DoubleLinkedList.insert
+ * @description This method is used to insert value at the specified position of double linked list.
+ * @param {undefined} value - The element to be appended to this double linked list.
+ * @param {Number} pos - The position to be appended value in this double linked list.
+ * @throws This method returns –1 if cannot insert value at the specified position in this Linked list.
+ * @example 
+ * var dl = new DoubleLinkedList ();
+ * dl.append(1);
+ * dl.append(3);
+ * dl.insert(2,1);
+ */
 DoubleLinkedList.prototype.insert = function(pos, value) {
   if(pos > 0 && pos < this.length) {
     let curNode = null;
@@ -84,13 +123,30 @@ DoubleLinkedList.prototype.insert = function(pos, value) {
   }
 };
 
-// remove node by value from the double linked list
+/**
+ * @method DoubleLinkedList.remove
+ * @description This method is used to remove the specified value from this double Linked list.
+ * @example 
+ * var dl = new DoubleLinkedList ();
+ * dl.append(1);
+ * dl.append(3);
+ * dl.remove(1); // 1 will be removed.
+ */
 DoubleLinkedList.prototype.remove = function(value) {
   let index = this.indexOf(value);
   return this.removeAt(index);
 };
 
-// remove node by position from the double linked list
+/**
+ * @method DoubleLinkedList.removeAt
+ * @description This method is used to remove the value of specified position from this double Linked list.
+ * @throws This method returns null if the value of the specified position in this double Linked list is empty.
+ * @example 
+ * var dl = new DoubleLinkedList ();
+ * dl.append(1);
+ * dl.append(3);
+ * dl.removeAt(0); // 1 will be removed.
+ */
 // removeAt에 pos가 length/2 뒤인지 앞인지 경우 나눠야함. (추가예정)
 DoubleLinkedList.prototype.removeAt = function(pos) {
   if(pos < 0 || pos > this.length || this.length === 0) return null;
@@ -119,11 +175,30 @@ DoubleLinkedList.prototype.removeAt = function(pos) {
   return null;
 };
 
-
+/**
+ * @method DoubleLinkedList.size
+ * @description This method is used to get the number of elements in this double Linked list.
+ * @returns {Number} This method returns the number of elements in this double Linked list.
+ * @example 
+ * var dl = new DoubleLinkedList ();
+ * dl.append(1);
+ * dl.append(3);
+ * var size = dl.size(); // ret = 2
+ * */
 DoubleLinkedList.prototype.size = function() {
   return this.length;
 };
 
+/**
+ * @method DoubleLinkedList.toString
+ * @description This method is used to get values of this double Linked list.
+ * @returns {String} This method returns the String which has value of this double linked list.
+ * @example 
+ * var dl = new DoubleLinkedList ();
+ * dl.append(1);
+ * dl.append(3);
+ * var v = dl.toString(); // v = 1, 3
+ * */
 DoubleLinkedList.prototype.toString = function() {
   console.log("========double linked list========");
   let curNode = this.head;
@@ -136,6 +211,17 @@ DoubleLinkedList.prototype.toString = function() {
   return inList;
 };
 
+/**
+ * @method DoubleLinkedList.isEmpty
+ * @description This method is used to check if this double Linked list is empty.
+ * @returns {Boolean} This method returns ‘true’ if this double Linked list is empty or ‘false’ if this double Linked list is not empty.
+ * @example 
+ * var dl = new DoubleLinkedList ();
+ * var ret1 = dl.isEmpty(); // ret1 = true;
+ * dl.append(1);
+ * dl.append(3);
+ * var ret2 = dl.isEmpty(); // ret2 = false
+ * */
 DoubleLinkedList.prototype.isEmpty = function() {
   return this.head === null && this.length === 0;
 };

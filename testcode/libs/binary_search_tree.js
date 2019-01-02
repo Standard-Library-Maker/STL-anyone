@@ -4,10 +4,27 @@ let Node = function (value) {
   this.data = value;
 };
   
+/**
+ * @Class BinarySearchTree
+ * @classdesc Binary Search Tree에 저장되어 있는 요소들은 트리 형태로 표현되며 요소 간에 부모, 자식 관계가 크기 비교에 의해서 존재한다. 
+ * 자식이 부모보다 클 경우 부모의 오른쪽 노드로, 자식이 부모보다 작을 경우 부모의 왼쪽 노드로 저장된다
+ * @example 
+ * var bst = new BinarySearchTree ();
+ * @author //kang
+ */
 const BinarySearchTree = function () {
   this.root = null;
 };
 
+/**
+ * @method BinarySearchTree.insert  
+ * @description This method is used to insert the specified element into this binary search tree.
+ * @param {undefined} value - The element to be inserted to this binary search tree.
+ * @example 
+ * var bst = new BinarySearchTree ();
+ * bst.insert(1);
+ * bst.insert(2);
+ */
 BinarySearchTree.prototype.insert = function(value){
   let node = new Node(value);
   if(this.root === null){
@@ -39,10 +56,32 @@ BinarySearchTree.prototype.insert = function(value){
   }
 };
 
+/**
+ * @method BinarySearchTree.state  
+ * @description This method shows state of the binary_search_tree.
+ * @example 
+ * var bst = new BinarySearchTree ();
+ * bst.insert(1);
+ * bst.insert(2);
+ * bst.insert(3);
+ * bst.state();
+ */
 BinarySearchTree.prototype.state = function(){
   this.inOrder(this.root);
 };
 
+/**
+ * @method BinarySearchTree.inOrder  
+ * @description This method is used for tree traversal. Traversal order is left -> parent -> right.
+ * @param {undefined} value - The node is used to tree traversal recursively. 
+ * @throws  method returns null if node has no data.
+ * @example 
+ * var bst = new BinarySearchTree ();
+ * bst.insert(1);
+ * bst.insert(2);
+ * bst.insert(3);
+ * bst.inOrder(this.root);
+ */
 BinarySearchTree.prototype.inOrder = function(value) {
   let node = new Node();
   node = value;
@@ -53,6 +92,17 @@ BinarySearchTree.prototype.inOrder = function(value) {
   this.inOrder(node.right);
 };
 
+/**
+ * @method BinarySearchTree.minValue  
+ * @description This method finds the node which has the minimum data among the value’s child.
+ * @param {undefined} value – The node which intends to look for the minimum data of nodes among children.
+ * @returns {Node} This method returns node if node is null and returns the minimum data from the child nodes of value recursively.
+ * @example 
+ * var bst = new BinarySearchTree ();
+ * bst.insert(1);
+ * bst.insert(2);
+ * bst.minValue(this.root);
+ */
 BinarySearchTree.prototype.minValue = function(value) {
   let node = new Node();
   node = value;
@@ -61,6 +111,17 @@ BinarySearchTree.prototype.minValue = function(value) {
   return node;
 };
 
+/**
+ * @method BinarySearchTree.maxValue  
+ * @description This method finds the node which has the maximum data among the value’s child.
+ * @param {undefined} value - The node which intends to look for the maximum data of nodes among children.
+ * @returns {Node} This method returns node if node is null and returns the maximum data from the child nodes of value recursively.
+ * @example 
+ * var bst = new BinarySearchTree ();
+ * bst.insert(1);
+ * bst.insert(2);
+ * bst.maxValue(this.root);
+ */
 BinarySearchTree.prototype.maxValue = function(value) {
   let node = new Node();
   node = value;
@@ -69,6 +130,20 @@ BinarySearchTree.prototype.maxValue = function(value) {
   return node;
 };
 
+/**
+ * @method BinarySearchTree.find  
+ * @description This method finds the node from the tree of which data is same as value.
+ * @param {undefined} value - The value to look up the node which has data as same as value among the binary search tree.
+ * @returns {undefined} This method returns node which has data as same as value.
+ * @throws This method returns null if node of which data is same as value doesn’t exist.
+ * @example 
+ * var bst = new BinarySearchTree ();
+ * bst.insert(1);
+ * bst.insert(2);
+ * bst.find(3); // return null
+ * bst.insert(3);
+ * bst.find(3); // return node
+ */
 BinarySearchTree.prototype.find = function(value) {
   let node = new Node();
   node = this.root;
@@ -94,6 +169,19 @@ BinarySearchTree.prototype.find = function(value) {
   }
 };
 
+/**
+ * @method BinarySearchTree.delete  
+ * @description This method removes the node from the tree of which data is same as value
+ * @param {undefined} value - The data of node which is in the binary search tree.
+ * @throws This method returns NA if node of which data is value is not among binary search tree.
+ * @example 
+ * var bst = new BinarySearchTree ();
+ * bst.insert(1);
+ * bst.insert(2);
+ * bst.find(2); // return node
+ * bst.delete(2); // 2 will be removed
+ * bst.find(2); // return null
+ */
 BinarySearchTree.prototype.delete = function (value) {
   let node = new Node();  
   node = this.find(value);
