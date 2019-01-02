@@ -2,17 +2,14 @@
 const ArrQueue = function() {
   this.count = 0;
   this.data = [];
-  //document.writeln(`<br>★★★ Array Queue example ★★★<br>=================================<br>`);
 };
 
 ArrQueue.prototype.push = function(value) {
   this.data[this.count++] = value;
-  // this.show('push');
 };
 
 ArrQueue.prototype.pop = function() {
   if(this.isEmpty()) {
-    // console.log("Error. Queue is empty");
     return null;
   }
   else {
@@ -21,18 +18,17 @@ ArrQueue.prototype.pop = function() {
       this.data[i] = this.data[i + 1];
     }
     this.data.splice(--this.count, 1);
-    // this.show('pop');
     return popedValue;
   } 
 };
   
 ArrQueue.prototype.front = function() {
-  if(this.isEmpty()) console.log("Error. Queue is empty");
+  if(this.isEmpty()) return null;
   else return this.data[0];
 };
 
 ArrQueue.prototype.back = function() {
-  if(this.isEmpty()) console.log("Error. Queue is empty");
+  if(this.isEmpty()) return null;
   else return this.data[this.count - 1];
 };
 
@@ -43,22 +39,10 @@ ArrQueue.prototype.isEmpty = function() { return this.count === 0; };
 ArrQueue.prototype.clear = function() {
   this.count = 0;
   this.data = [];
-  document.writeln(`=== after clear ===<br>`);
-  // this.show(false);
 };
   
-ArrQueue.prototype.state = function() {
-  console.log(`=== ${this.size()} items in the queue : [${this.data}] ===`);
+ArrQueue.prototype.toString = function() {
   return `=== ${this.size()} items in the queue : [${this.data}] ===`;
-};
-
-ArrQueue.prototype.show = function(value) {
-  if(value === false){
-    document.writeln('empty, nothing in the queue' + `<br>`);
-  } else {
-    document.writeln(`function(${value}) --> data : [${this.data}] <br>`);
-    document.writeln(` ↓ <br>`);
-  }
 };
 
 ///////////////////////////////////////////////////////////////
@@ -68,7 +52,6 @@ const CircularQueue = function (max) {
   this.qBack = 0;
   this.data = [];
   this.MAX_SIZE = max + 1;
-  document.writeln(`<br>★★★ Circular Queue example ★★★<br>=================================<br>`);
 };
 
 CircularQueue.prototype.isFull = function() {
@@ -81,6 +64,7 @@ CircularQueue.prototype.isEmpty = function() {
 CircularQueue.prototype.push = function(value) {
   if (this.isFull()) {
     console.log("Error! Queue is full");
+    return null;
   } else {
     this.qBack = (this.qBack + 1) % this.MAX_SIZE;
     this.data[this.qBack] = value;
