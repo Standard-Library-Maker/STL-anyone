@@ -96,7 +96,7 @@ class QueueTemplate extends Component {
       //console.log(myQueue.state());
       //console.log(this.state);
       //this.forceUpdate();
-      alert(myQueue.state());
+      alert(myQueue.toString());
     }
   };
 
