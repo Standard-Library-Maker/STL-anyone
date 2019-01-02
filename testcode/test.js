@@ -120,13 +120,14 @@ console.log("after clear");
 newList.toString();
 */
 
-/*
+
 // Priority queue => test by Jisoo
 console.log("\n=======Priority Queue : test by Jisoo=======");
-let testPriorityQueue_1 = new PriorityQueue();
-testPriorityQueue1.push(3);
-testPriorityQueue1.push(5);
+let testPriorityQueue1 = new PriorityQueue();
+testPriorityQueue1.push();
 testPriorityQueue1.push(1);
+testPriorityQueue1.push(2);
+testPriorityQueue1.push(3);
 testPriorityQueue1.push(8);
 testPriorityQueue1.push(4);
 testPriorityQueue1.push(12);
@@ -157,7 +158,7 @@ testPriorityQueue2.pop();
 testPriorityQueue2.pop();
 testPriorityQueue2.pop();
 testPriorityQueue2.testData();
-*/
+
 
 /*
 // Deque => test by Jisoo
