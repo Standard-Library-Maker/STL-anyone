@@ -11,6 +11,7 @@ let Deque = require("./libs/deque");
 let HashMap = require("./libs/hash_map");
 
 
+
 // Binary Tree test case
 /*
 let b = new BinaryTree();
@@ -23,7 +24,6 @@ b.push(6);
 b.pop();
 b.state();
 */
-
 
 /*
 // Heap test case
@@ -164,19 +164,12 @@ testPriorityQueue2.testData();
 // Deque => test by Jisoo
 console.log("\n=======Deque : test by Jisoo=======");
 let testDeque1 = new Deque();
-testDeque1.pop_front();
-testDeque1.erase();
-testDeque1.erase(1);
-
-testDeque1.front();
-testDeque1.back();
-testDeque1.at();
-testDeque1.begin();
-testDeque1.end();
-testDeque1.at(0);
+testDeque1.isEmpty();
 testDeque1.push_back(1);
 testDeque1.push_front(2);
 testDeque1.push_front(3);
+testDeque1.isEmpty();
+/*
 testDeque1.push_front(4);
 testDeque1.push_back(0);
 testDeque1.push_front(5);
@@ -221,10 +214,10 @@ testDeque1.push_back(1);
 testDeque1.push_front(2);
 testDeque1.push_front(3);
 testDeque1.push_front(4);
-console.log(testDeque1);*/
+console.log(testDeque1);
 
 
-
+/*
 // HashMap => test by Jisoo
 console.log("\n=======test by Jisoo=======");
 let HashMap1 = new HashMap();
@@ -268,7 +261,6 @@ HashMap1.entrySet();
 
 //HashMap1.remove("B");
 HashMap1.test();
-/*
 HashMap1.containsKey("A");
 HashMap1.containsKey("B");
 HashMap1.containsKey("C");

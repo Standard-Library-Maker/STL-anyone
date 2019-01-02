@@ -154,7 +154,6 @@ Deque.prototype.back = function () {
   return this.tail.data;
 };
 
-// deque::begin()
 Deque.prototype.begin = function () {
   if (this.length === 0) {
     console.log("ERROR:deque is empty");
