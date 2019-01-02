@@ -6,7 +6,7 @@ const PriorityQueue = function (value) {
   this.count = 0;
   if (value === "greater") {                               // based on Min_Heap
     this.mode = "min_heap";
-  } else if (value === "less" || value === null) {     // DEFAULT : based on Max_Heap
+  } else if (value === "less" || value === undefined) {     // DEFAULT : based on Max_Heap
     this.mode = "max_heap";
   } else {
     console.log("ERROR:input sort criteria (option:greater,less)");
@@ -35,8 +35,9 @@ PriorityQueue.prototype.top = function () {
 
 // priority_queue::push(value)
 PriorityQueue.prototype.push = function (value) {
-  if (value === null) {
+  if (value === undefined){
     console.log("ERROR:push() required parameter");
+    return -1;
   }
 
   this.data[this.count] = value; // insert value into the last location
@@ -56,6 +57,7 @@ PriorityQueue.prototype.push = function (value) {
 PriorityQueue.prototype.pop = function () {
   if (this.isEmpty()) {
     console.log("ERROR:priority queue is empty");
+    return null;
   } else {
     let posOfRoot = 0;
     let posOfLeftChild = posOfRoot * 2 + 1;

@@ -52,6 +52,11 @@ HashMap.prototype.isEmpty = function () {
 
 // hash_map::put()
 HashMap.prototype.put = function (key, value) {
+  if (key === undefined || value == undefined){
+    console.log("ERROR::put() required parameters(key, value)");
+    return -1;
+  }
+
   let newEntry = new Entry(key, value);   // make newEntry
   let pos = this.hash(key);          // find hashCode
 
@@ -77,6 +82,11 @@ HashMap.prototype.put = function (key, value) {
 
 // hash_map::containsKey()
 HashMap.prototype.containsKey = function (key) {
+  if (key === undefined){
+    console.log("ERROR::containsKey() required parameter");
+    return -1;
+  }
+
   let posOfMap = this.hash(key);          // find hashCode
   let curEntry = this.map[posOfMap]
   if (this.map[posOfMap] !== undefined) {
@@ -94,6 +104,12 @@ HashMap.prototype.containsKey = function (key) {
 
 // hash_map::containsValue()
 HashMap.prototype.containsValue = function (value) {
+  if (value === undefined){
+    console.log("ERROR::containsValue() required parameter");
+    return -1;
+  }
+
+
   for (let posOfMap = 0; posOfMap < 6; posOfMap++) {
     if (this.map[posOfMap] !== undefined) {
       let curEntry = this.map[posOfMap]
@@ -112,6 +128,11 @@ HashMap.prototype.containsValue = function (value) {
 
 // hash_map::get()
 HashMap.prototype.get = function (key) {
+  if (key === undefined){
+    console.log("ERROR::get() required parameter");
+    return -1;
+  }
+
   let posOfMap = this.hash(key);          // find hashCode
   let curEntry = this.map[posOfMap]
 
@@ -125,39 +146,7 @@ HashMap.prototype.get = function (key) {
     }
   }
   console.log("ERROR : Key is not exist");
-  return undefined;;
-};
-
-// hash_map::remove()
-HashMap.prototype.remove = function (key) {
-  let posOfMap = this.hash(key);          // find hashCode
-  let preEntry = undefined;
-  let curEntry = this.map[posOfMap];
-
-  if (this.map[posOfMap] !== undefined) {
-    for (let posOfEntry = 0; posOfEntry < this.map[posOfMap].count; posOfEntry++) {
-      if (curEntry.key === key) {
-        switch (posOfEntry) {
-          case 0: // remove first key
-            curEntry.next.count = this.map[posOfMap].count;
-            this.map[posOfMap] = curEntry.next;
-            break;
-          case this.map[posOfMap].count - 1:  // remove last key
-            curEntry.next = undefined;
-            break;
-          default:
-            preEntry.next = curEntry.next;
-            curEntry = undefined;
-        }
-        this.map[posOfMap].count--;
-        return true;
-      }
-      preEntry = curEntry;
-      curEntry = curEntry.next;
-    }
-  }
-  console.log("ERROR : Key is not exist");
-  return false;
+  return undefined;
 };
 
 // hash_map::keySet()
@@ -191,12 +180,43 @@ HashMap.prototype.entrySet = function () {
   //console.log(entrySet);
   return entrySet;
 };
+// hash_map::remove()
+HashMap.prototype.remove = function (key) {
+  if (key === undefined){
+    console.log("ERROR::remove() required parameter");
+    return -1;
+  }
 
-// hash_map::isEmpty()
-HashMap.prototype.isEmpty = function () {
-  //console.log(this.length === 0);
-  return this.length === 0;
+  let posOfMap = this.hash(key);          // find hashCode
+  let preEntry = undefined;
+  let curEntry = this.map[posOfMap];
+
+  if (this.map[posOfMap] !== undefined) {
+    for (let posOfEntry = 0; posOfEntry < this.map[posOfMap].count; posOfEntry++) {
+      if (curEntry.key === key) {
+        switch (posOfEntry) {
+          case 0: // remove first key
+            curEntry.next.count = this.map[posOfMap].count;
+            this.map[posOfMap] = curEntry.next;
+            break;
+          case this.map[posOfMap].count - 1:  // remove last key
+            curEntry.next = undefined;
+            break;
+          default:
+            preEntry.next = curEntry.next;
+            curEntry = undefined;
+        }
+        this.map[posOfMap].count--;
+        return true;
+      }
+      preEntry = curEntry;
+      curEntry = curEntry.next;
+    }
+  }
+  console.log("ERROR : Key is not exist");
+  return null;
 };
+
 
 // hash_map::clear()
 HashMap.prototype.clear = function () {
@@ -204,15 +224,22 @@ HashMap.prototype.clear = function () {
   this.map = [];
 };
 
+
+// hash_map::isEmpty()
+HashMap.prototype.isEmpty = function () {
+  //console.log(this.length === 0);
+  return this.length === 0;
+};
+
 // hash_map::size()
-HashMap.prototype.size = function (value) {
+HashMap.prototype.size = function () {
   let size = 0;
   for (let posOfMap = 0; posOfMap < 6; posOfMap++) {
     if (this.map[posOfMap] !== undefined) {
       size += this.map[posOfMap].count;
     }
   }
-  //console.log("size : " + size);
+  console.log("size : " + size);
   return size;
 };
 

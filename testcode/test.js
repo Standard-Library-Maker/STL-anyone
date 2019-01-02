@@ -123,10 +123,11 @@ newList.toString();
 /*
 // Priority queue => test by Jisoo
 console.log("\n=======Priority Queue : test by Jisoo=======");
-let testPriorityQueue_1 = new PriorityQueue();
-testPriorityQueue1.push(3);
-testPriorityQueue1.push(5);
+let testPriorityQueue1 = new PriorityQueue();
+testPriorityQueue1.push();
 testPriorityQueue1.push(1);
+testPriorityQueue1.push(2);
+testPriorityQueue1.push(3);
 testPriorityQueue1.push(8);
 testPriorityQueue1.push(4);
 testPriorityQueue1.push(12);
@@ -163,6 +164,16 @@ testPriorityQueue2.testData();
 // Deque => test by Jisoo
 console.log("\n=======Deque : test by Jisoo=======");
 let testDeque1 = new Deque();
+testDeque1.pop_front();
+testDeque1.erase();
+testDeque1.erase(1);
+
+testDeque1.front();
+testDeque1.back();
+testDeque1.at();
+testDeque1.begin();
+testDeque1.end();
+testDeque1.at(0);
 testDeque1.push_back(1);
 testDeque1.push_front(2);
 testDeque1.push_front(3);
@@ -210,15 +221,22 @@ testDeque1.push_back(1);
 testDeque1.push_front(2);
 testDeque1.push_front(3);
 testDeque1.push_front(4);
-console.log(testDeque1);
-*/
+console.log(testDeque1);*/
 
-/*
+
+
 // HashMap => test by Jisoo
 console.log("\n=======test by Jisoo=======");
 let HashMap1 = new HashMap();
 HashMap1.isEmpty();
-
+HashMap1.put();
+HashMap1.put(1);
+HashMap1.put(1,);
+HashMap1.remove();
+HashMap1.containsKey();
+HashMap1.size();
+HashMap1.containsValue();
+/*
 HashMap1.put("0", 1);
 HashMap1.put("1", 1);
 
