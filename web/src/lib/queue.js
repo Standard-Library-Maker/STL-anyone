@@ -126,7 +126,7 @@ CircularQueue.prototype.state = function() {
 
 CircularQueue.prototype.show = function(value) {
   if(value === false){
-    document.writeln('empty, nothing in the queue' + `<br>`);
+    document.writeln(`empty, nothing in the queue<br>`);
   } else {
     document.writeln(`function(${value}) --> data : [${this.data}] <br>`);
     document.writeln(` ↓ <br>`);

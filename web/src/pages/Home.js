@@ -1,12 +1,9 @@
 import React from 'react';
+import LandingTemplate from "../components/landing/LandingTemplate/LandingTemplate";
 
 const Home = () => {
   return (
-    <div>
-      <h2>
-        홈
-      </h2>
-    </div>
+    <LandingTemplate/>
   );
 };
 

@@ -1,13 +1,10 @@
-import stl from '../lib/stl';
+import stl from 'lib/stl';
 import React from "react";
+import LandingTemplate from 'components/landing/LandingTemplate';
 
 const Test = () => {
   return (
-    <div>
-      <h2>
-        {testcode()}
-      </h2>
-    </div>
+    <LandingTemplate/>
   );
 };
 
