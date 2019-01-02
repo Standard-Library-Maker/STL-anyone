@@ -160,7 +160,7 @@ testPriorityQueue2.pop();
 testPriorityQueue2.testData();
 */
 
-
+/*
 // Deque => test by Jisoo
 console.log("\n=======Deque : test by Jisoo=======");
 let testDeque1 = new Deque();
@@ -171,7 +171,7 @@ testDeque1.erase(1);
 testDeque1.front();
 testDeque1.back();
 testDeque1.at();
-testDeque1.begin();/*
+testDeque1.begin();
 testDeque1.end();
 testDeque1.at(0);
 testDeque1.push_back(1);
@@ -221,15 +221,22 @@ testDeque1.push_back(1);
 testDeque1.push_front(2);
 testDeque1.push_front(3);
 testDeque1.push_front(4);
-console.log(testDeque1);
+console.log(testDeque1);*/
 
 
-/*
+
 // HashMap => test by Jisoo
 console.log("\n=======test by Jisoo=======");
 let HashMap1 = new HashMap();
 HashMap1.isEmpty();
-
+HashMap1.put();
+HashMap1.put(1);
+HashMap1.put(1,);
+HashMap1.remove();
+HashMap1.containsKey();
+HashMap1.size();
+HashMap1.containsValue();
+/*
 HashMap1.put("0", 1);
 HashMap1.put("1", 1);
 
