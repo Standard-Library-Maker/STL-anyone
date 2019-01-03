@@ -21,7 +21,7 @@ const LinkedList = function() {
 /**
  * @method LinkedList.find
  * @description This method is used to find node that has value in this Linked list.
- * @param {undefined} value - The position which want to get element from Linked list.
+ * @param {undefined} value - The position which want to get value from Linked list.
  * @return {Boolean} This method returns ‘true’ if this Linked list has value or ‘false’ if this Linked list doesn't have value.
  * @example 
  * var ll = new LinkedList ();
@@ -62,18 +62,18 @@ LinkedList.prototype.getNode = function(pos) {
 };
 
 /**
- * @method LinkedList.at
+ * @method LinkedList.indexOf
  * @description This method is used to get the index of value from this Linked list, but does not remove.
  * @param {undefined} value - The value which want to get index from this Linked list.
- * @return {Boolean} This method returns ‘true’ if this Linked list has value or ‘false’ if this Linked list doesn't have value.
+ * @return {Number} This method returns index of value in this Linked list.
+ * @throws This method returns null if this Linked list doesn't have specified value.
  * @example 
  * var ll = new LinkedList ();
  * ll.append(1);
  * ll.append(2);
  * ll.append(3);
- * var ret = ll.index(2); // ret = 1
+ * var ret = ll.indexOf(2); // ret = 1
  */
-// return index of value in the linked list 
 LinkedList.prototype.indexOf = function(value) {
   let curNode = this.head;
   let index = 0;
@@ -83,13 +83,13 @@ LinkedList.prototype.indexOf = function(value) {
     index++;
     curNode = curNode.next;
   }
-  return -1;
+  return null;
 };
 
 /**
  * @method LinkedList.append
- * @description This method is used to append value at the end of linked list.
- * @param {undefined} value - The element to be appended to this linked list.
+ * @description This method is used to append value at the end of Linked list.
+ * @param {undefined} value - The value to be appended to this Linked list.
  * @example 
  * var ll = new LinkedList ();
  * ll.append(1);
@@ -113,10 +113,10 @@ LinkedList.prototype.append = function(value) {
 
 /**
  * @method LinkedList.insert
- * @description This method is used to insert value at the specified position of linked list.
- * @param {undefined} value - The element to be appended to this linked list.
- * @param {Number} pos - The position to be appended value in this linked list.
- * @throws This method returns –1 if cannot insert value at the specified position in this Linked list.
+ * @description This method is used to insert value at the specified position of Linked list.
+ * @param {Number} pos - The position to be appended value in this Linked list.
+ * @param {undefined} value - The value to be appended to this Linked list.
+ * @throws This method returns 'false' if cannot insert value at the specified position in this Linked list.
  * @example 
  * var ll = new LinkedList ();
  * ll.append(1);
@@ -137,20 +137,20 @@ LinkedList.prototype.insert = function(pos, value) {
     this.length++;
   } else {
     console.log(`insert error. position should be in 0 < position < ${this.length}`);
-    return -1;
+    return false;
   }
 };
 
 /**
  * @method LinkedList.remove
  * @description This method is used to remove the specified value from this Linked list.
+ * @throws This method returns null if the value of the specified position in this Linked list is empty.
  * @example 
  * var ll = new LinkedList ();
  * ll.append(1);
  * ll.append(3);
  * ll.remove(1); // 1 will be removed.
  */
-// remove node by value from the linked list
 LinkedList.prototype.remove = function(value) {
   let index = this.indexOf(value);
   return this.removeAt(index);
@@ -159,6 +159,7 @@ LinkedList.prototype.remove = function(value) {
 /**
  * @method LinkedList.removeAt
  * @description This method is used to remove the value of specified position from this Linked list.
+ * @returns {undefined} This method returns the value of specified position in this Linked list.
  * @throws This method returns null if the value of the specified position in this Linked list is empty.
  * @example 
  * var ll = new LinkedList ();
@@ -197,8 +198,8 @@ LinkedList.prototype.removeAt = function(pos) {
 
 /**
  * @method LinkedList.size
- * @description This method is used to get the number of elements in this Linked list.
- * @returns {Number} This method returns the number of elements in this Linked list.
+ * @description This method is used to get the number of values in this Linked list.
+ * @returns {Number} This method returns the number of values in this Linked list.
  * @example 
  * var ll = new LinkedList ();
  * ll.append(1);
@@ -247,43 +248,3 @@ LinkedList.prototype.isEmpty = function() {
 };
 
 module.exports = LinkedList;
-
-/* test code */
-let newList = new LinkedList();
-newList.append(2);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.append(5);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.append(1);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.insert(2, 7);
-console.log(newList);
-console.log(`find(1) : ${newList.find(1)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-
-console.log(`remove(7) : ${newList.remove(7)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-
-newList.append(10);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-
-console.log(`remove(2) : ${newList.remove(2)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-
-console.log(`remove(2) : ${newList.remove(3)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-
-
-// newList.end();
-// console.log(`current position's element : ${newList.getElement()}`);
-// newList.clear();
-// console.log("after clear");
-// newList.toString(); 

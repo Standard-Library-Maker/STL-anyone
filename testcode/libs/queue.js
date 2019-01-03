@@ -25,8 +25,8 @@ ArrQueue.prototype.isEmpty = function() { return this.count === 0; };
 
 /**
  * @method ArrQueue.push
- * @description This method is used to insert the specified element into this queue.
- * @param {Undefined} value - The element to be inserted to this queue.
+ * @description This method is used to insert the specified value into this queue.
+ * @param {undefined} value - The value to be inserted to this queue.
  * @example 
  * var aq = new ArrQueue ();
  * aq.push(1);
@@ -38,7 +38,8 @@ ArrQueue.prototype.push = function(value) {
 
 /**
  * @method ArrQueue.pop
- * @description This method is used to remove element from this queue.
+ * @description This method is used to remove value from this queue.
+ * @returns This method returns the value which is poped.
  * @example 
  * var aq = new ArrQueue ();
  * aq.push(1); 
@@ -59,8 +60,8 @@ ArrQueue.prototype.pop = function() {
 
 /**
  * @method ArrQueue.front
- * @description  This method is used to get the first element in this queue, but does not remove.
- * @returns {value} This method returns the first element of this queue, or null if this queue is empty.
+ * @description  This method is used to get the first value in this queue, but does not remove.
+ * @returns This method returns the first value of this queue, or null if this queue is empty.
  * @example 
  * var aq = new ArrQueue ();
  * aq.push(1); 
@@ -75,8 +76,8 @@ ArrQueue.prototype.front = function() {
 
 /**
  * @method ArrQueue.back
- * @description  This method is used to get the last element in this queue, but does not remove.
- * @returns {value} This method returns the last element of this queue, or null if this queue is empty.
+ * @description  This method is used to get the last value in this queue, but does not remove.
+ * @returns This method returns the last value of this queue, or null if this queue is empty.
  * @example 
  * var aq = new ArrQueue ();
  * aq.push(1); 
@@ -91,8 +92,8 @@ ArrQueue.prototype.back = function() {
 
 /**
  * @method ArrQueue.size  
- * @description This method is used to get the number of elements in this queue.
- * @returns {Number} This method returns the number of elements in this queue.
+ * @description This method is used to get the number of values in this queue.
+ * @returns This method returns the number of values in this queue.
  * @example 
  * var aq = new ArrQueue ();
  * aq.push(1); 
@@ -178,8 +179,8 @@ CircularQueue.prototype.isEmpty = function() {
 
 /**
  * @method CircularQueue.push
- * @description This method is used to insert the specified element into this circular queue.
- * @param {Undefined} value - The element to be inserted to this circular queue.
+ * @description This method is used to insert the specified value into this circular queue.
+ * @param {undefined} value - The value to be inserted to this circular queue.
  * @example 
  * var cq = new CircularQueue (3);
  * cq.push(1);
@@ -196,7 +197,8 @@ CircularQueue.prototype.push = function(value) {
 
 /**
  * @method CircularQueue.pop
- * @description This method is used to remove element from this circular queue.
+ * @description This method is used to remove value from this circular queue.
+ * @returns This method returns the value which is poped.
  * @example 
  * var cq = new CircularQueue (3);
  * cq.push(1);
@@ -217,8 +219,8 @@ CircularQueue.prototype.pop = function() {
 
 /**
 * @method CircularQueue.front
-* @description  This method is used to get the first element in this circular queue, but does not remove.
-* @returns {value} This method returns the first element of this circular queue, or null if this circular queue is empty.
+* @description  This method is used to get the first value in this circular queue, but does not remove.
+* @returns This method returns the first value of this circular queue, or null if this circular queue is empty.
 * @example 
 * var cq = new CircularQueue (3);
 * cq.push(1);
@@ -232,8 +234,8 @@ CircularQueue.prototype.front = function() {
 
 /**
  * @method CircularQueue.back
- * @description  This method is used to get the last element in this circular queue, but does not remove.
- * @returns {value} This method returns the last element of this circular queue, or null if this circular queue is empty.
+ * @description  This method is used to get the last value in this circular queue, but does not remove.
+ * @returns This method returns the last value of this circular queue, or null if this circular queue is empty.
  * @example 
  * var cq = new CircularQueue (3);
  * cq.push(1);
@@ -247,8 +249,8 @@ CircularQueue.prototype.back = function() {
 
 /**
  * @method CircularQueue.size  
- * @description This method is used to get the number of elements in this circular queue.
- * @returns {Number} This method returns the number of elements in this circular queue.
+ * @description This method is used to get the number of values in this circular queue.
+ * @returns This method returns the number of values in this circular queue.
  * @example 
  * var cq = new CircularQueue (3);
  * cq.push(1);
@@ -290,7 +292,6 @@ CircularQueue.prototype.clear = function() {
 CircularQueue.prototype.toString = function() {
   console.log(`=== ${this.size()} items in the queue : [${this.data}] ===`);
 };
-
 
 // Linked list queue -> will be implemented after implementing ll
 /* function LlQueue() {
