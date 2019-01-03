@@ -13,17 +13,29 @@
   .header-bar {
     display: flex;
     flex-flow: row nowrap;
-  }
-  .menu {
-    margin-top: 10px;
-    margin-right: 30px;
-    font-size: 15pt;
-    color: #ffffff;
-  }
-  .help {
-    margin-top: 10px;
-    margin-right: 20px;
-    font-size: 15pt;
-    color: #ffffff;
+    .menu {
+      margin-top: 10px;
+      margin-right: 30px;
+      font-size: 15pt;
+      color: #ffffff;
+    }
+    .help {
+      margin-top: 10px;
+      margin-right: 20px;
+      font-size: 15pt;
+      color: #ffffff;
+      a:link {
+        color: #ffffff;
+        text-decoration: none;
+      }
+      a:visited {
+        color: #ffffff;
+        text-decoration: none;
+      }
+      a:hover {
+        color: #33dbc0;
+        text-decoration: underline;
+      }
+    }
   }
 }
