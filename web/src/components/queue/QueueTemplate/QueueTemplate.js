@@ -11,6 +11,7 @@ class QueueTemplate extends Component {
       queue: '',
       pushValue: '',
       textAreaValue: [],
+      //hidden: true,
     };
   }
 
@@ -61,12 +62,14 @@ class QueueTemplate extends Component {
     let result = this.state.textAreaValue;
     //console.log(myQueue);
     myQueue.push(this.state.pushValue);
+    //result.push(this.state.pushValue);
     result.push(this.state.pushValue + ' -> ');
 
     await this.setState({
       ...this.state,
       queue: myQueue,
-      textAreaValue: result
+      textAreaValue: result,
+      //hidden: !this.state.hidden
     });
     //this.forceUpdate()
     //alert(`push : ${this.state.queue.state()}`);
@@ -143,6 +146,12 @@ class QueueTemplate extends Component {
               value={output}
               readOnly
             />
+            {/*<input
+              name="resultArea"
+              value={output}
+              disabled
+              style={{display: this.state.hidden ? 'none' : 'block'}}
+            />*/}
           </div>
           <div className="user-input-section">
             <div className="push-form">
