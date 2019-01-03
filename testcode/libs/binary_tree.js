@@ -9,7 +9,7 @@ let Node = function (value) {
  * @classdesc Binary Tree에 저장되어 있는 요소들은 트리 형태로 표현되며 요소 간에 부모, 자식 관계가 존재하고 트리의 형태는 complete binary tree이다.
  * @example 
  * var bt = new BinaryTree ();
- * @author //kang
+ * @author seeung0305@naver.com
  */
 const BinaryTree = function () {
   this.tree = [];
@@ -29,6 +29,7 @@ const BinaryTree = function () {
  * bt.push(3);
  */
 BinaryTree.prototype.push = function (value) {
+  if(value === null) return null;
   let node = new Node(value);
   if (this.root === null) {
     this.root = node;
@@ -56,11 +57,25 @@ BinaryTree.prototype.push = function (value) {
  * bt.pop(); // 3 will be removed
  */
 BinaryTree.prototype.pop = function () {
+  if(this.size() === 0) return;
   this.tree[this.size() - 1].data = null;
   this.tree[this.size() - 1] = null;
   this.count--;
 };
 
+/**
+ * @method BinaryTree.isEmpty  
+ * @description This method is used to check if this binary tree is empty.
+ * @returns {Boolean} This method returns ‘true’ if this binary tree is empty or ‘false’ if this binary tree is not empty.
+ * @example 
+ * var bt = new BinaryTree ();
+ * var ret1 = bt.isEmpty(); // ret1 = true
+ * bt.pushMin(1);
+ * var ret2 = bt.isEmpty(); // ret2 = false
+ */
+BinaryTree.prototype.isEmpty = function () {
+  return this.root === null;
+};
 
 /**
  * @method BinaryTree.size  
@@ -90,6 +105,7 @@ BinaryTree.prototype.size = function () {
  * bt.postOrder(this.root); // Tree :  2-3-1
  */
 BinaryTree.prototype.postOrder = function (value){
+  if(value === null) return null;
   let node = new Node(value);
   node = value;
   if(node === null) return;
@@ -112,6 +128,7 @@ BinaryTree.prototype.postOrder = function (value){
  * bt.inOrder(this.root); // Tree :  2-1-3
  */
 BinaryTree.prototype.inOrder = function (value){
+  if(value === null) return null;
   let node = new Node();
   node = value;
   if(node === null) return;
@@ -134,6 +151,7 @@ BinaryTree.prototype.inOrder = function (value){
  * bt.preOrder(this.root);  // Tree :  1-2-3
  */
 BinaryTree.prototype.preOrder = function (value){
+  if(value === null) return null;
   let node = new Node();
   node = value;
   if(node === null) return;

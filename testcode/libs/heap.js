@@ -2,10 +2,10 @@ const swap = require("./swap");
 
 /**
  * @Class Heap
- * @classdesc Heap에 저장되어 있는 요소들은 트리 형태로 표현되며 요소의 정렬 방식에 따라 max-heap(내림차순), min-heap(오름차순)으로 나뉘며, 트리 형태이기 때문에 요소 간에는 부모-자식의 관계가 존재한다.
+ * @classdesc Heap에 저장되어 있는 요소들은 트리 형태로 표현되며 요소의 정렬 방식에 따라 max-heap(내림차순), min-heap(오름차순)으로 나뉩니다. 트리 형태이기 때문에 요소 간에는 부모, 자식의 관계가 존재합니다.
  * @example 
  * var heap = new Heap ();
- * @author //강세응 메일주소
+ * @author seeung0305@naver.com
  */
 const Heap = function(){
   this.data = [];
@@ -45,12 +45,14 @@ Heap.prototype.isEmpty = function(){
  * @description This method is used to insert the specified element into this heap.
  * This method is used in max-heap which its elements are ordered by ASC.
  * @param {Undefined} value - The element to be inserted to this heap.
+ * @throws This method will return null if value is null.
  * @example 
  * var heap = new Heap ();
  * heap.pushMax(1);
  * heap.pushMax(2);
  */
 Heap.prototype.pushMax = function(value){
+  if(value === null) return;
   this.data[this.count] = value;
   /*max heap*/
 
@@ -74,12 +76,14 @@ Heap.prototype.pushMax = function(value){
  * @description This method is used to insert the specified element into this heap.
  * This method is used in min-heap which its elements are ordered by DESC.
  * @param {Undefined} value - The element to be inserted to this heap.
+ * @throws This method will return null if value is null.
  * @example 
  * var heap = new Heap ();
  * heap.pushMin(1);
  * heap.pushMin(2);
  */
 Heap.prototype.pushMin = function(value){
+  if(value === null) return null;
   this.data[this.count] = value;
   /*min heap*/
 
@@ -126,30 +130,31 @@ Heap.prototype.state = function() {
  * heap.popMax(); // 2 will be removed.
  */
 Heap.prototype.popMax = function() {
-  if(this.isEmpty()) console.log("Error. Heap is Empty");
-  else{
-    let popedValue = this.data[0];
-    // move last node to first node
-    this.data[0] = this.data[this.count - 1];
-    this.data.splice(--this.count, 1);
-    // move first node to adequate place
-    let location = 0;
-    while(location * 2 < this.count) {
-      let max;
-      if(this.data[location * 2 + 1] >= this.data[location * 2 + 2]) {
-        max = location * 2 + 1;
-      } else{
-        max = location * 2 + 2;
-      }
-      if(this.data[location] < this.data[max]) {
-        swap(this.data, location, max);
-        location = max;
-      } else{
-        break;
-      }
-    }
-    return popedValue;
+  if(this.isEmpty()) {
+    console.log("Error. Heap is Empty");
+    return null;
   }
+  let popedValue = this.data[0];
+  // move last node to first node
+  this.data[0] = this.data[this.count - 1];
+  this.data.splice(--this.count, 1);
+  // move first node to adequate place
+  let location = 0;
+  while(location * 2 < this.count) {
+    let max;
+    if(this.data[location * 2 + 1] >= this.data[location * 2 + 2]) {
+      max = location * 2 + 1;
+    } else{
+      max = location * 2 + 2;
+    }
+    if(this.data[location] < this.data[max]) {
+      swap(this.data, location, max);
+      location = max;
+    } else{
+      break;
+    }
+  }
+  return popedValue;
 };
 
 /**
@@ -165,30 +170,31 @@ Heap.prototype.popMax = function() {
  * heap.popMin(); // 1 will be removed.
  */
 Heap.prototype.popMin = function() {
-  if(this.isEmpty()) console.log("Error. Heap is Empty");
-  else{
-    let popedValue = this.data[0];
-    // move last node to first node
-    this.data[0] = this.data[this.count - 1];
-    this.data.splice(--this.count, 1);
-    // move first node to adequate place
-    let location = 0;
-    while(location * 2 < this.count) {
-      let min;
-      if(this.data[location * 2 + 1] <= this.data[location * 2 + 2]) {
-        min = location * 2 + 1;
-      } else{
-        min = location * 2 + 2;
-      }
-      if(this.data[location] > this.data[min]) {
-        swap(this.data, location, min);
-        location = min;
-      } else{
-        break;
-      }
-    }
-    return popedValue;
+  if(this.isEmpty()) {
+    console.log("Error. Heap is Empty");
+    return null;
   }
+  let popedValue = this.data[0];
+  // move last node to first node
+  this.data[0] = this.data[this.count - 1];
+  this.data.splice(--this.count, 1);
+  // move first node to adequate place
+  let location = 0;
+  while(location * 2 < this.count) {
+    let min;
+    if(this.data[location * 2 + 1] <= this.data[location * 2 + 2]) {
+      min = location * 2 + 1;
+    } else {
+      min = location * 2 + 2;
+    }
+    if(this.data[location] > this.data[min]) {
+      swap(this.data, location, min);
+      location = min;
+    } else{
+      break;
+    }
+  }
+  return popedValue;
 };
 
 /**
@@ -199,6 +205,7 @@ Heap.prototype.popMin = function() {
  * heap.pushMin(1); 
  * heap.pushMin(2);
  * heap.clear(); 
+ * heap.state();
  */
 Heap.prototype.clear = function() {
   this.data = null;
@@ -216,7 +223,11 @@ Heap.prototype.clear = function() {
  * heap.makeMaxHeap(arr) // arr [1,2,3] will be changed arr[3,1,2]
  */
 Heap.prototype.makeMaxHeap = function(array) {
-  /* make normal array to heap */    
+  /* make normal array to heap */
+  if(array.length === 0) {
+    console.log("Input array is now empty");
+    return;
+  }
   for(let i = 1; i < array.length; i++) {
     let now = i;
     let parent = null;
@@ -244,7 +255,11 @@ Heap.prototype.makeMaxHeap = function(array) {
  * heap.makeMinHeap(arr) // arr [3,2,1] will be changed arr[1,3,2]
  */
 Heap.prototype.makeMinHeap = function(array) {
-  /* make normal array to heap */    
+  /* make normal array to heap */
+  if(array.length === 0) {
+    console.log("Input array is now empty");
+    return;
+  }
   for(let i = 1; i < array.length; i++) {
     let now = i;
     let parent = null;
@@ -260,5 +275,8 @@ Heap.prototype.makeMinHeap = function(array) {
   }
   console.log(`=== ${array.length} items in the heap : [${array}] ===`);
 };
+var heap = new Heap();
+let arr = [1,2,3];
+heap.makeMinHeap(arr);
 
 module.exports = Heap;
