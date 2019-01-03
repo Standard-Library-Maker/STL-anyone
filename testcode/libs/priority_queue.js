@@ -40,8 +40,8 @@ PriorityQueue.prototype.isEmpty = function () {
 
 /**
  * @method priorityQueue.size
- * @description This method is used to get the number of elements in this priority queue.
- * @returns {Number} This method returns the number of elements in this priority queue.
+ * @description This method is used to get the number of values in this priority queue.
+ * @returns {Number} This method returns the number of values in this priority queue.
  * @example 
  * var pq = new priorityQueue ();
  * pq.push(1);
@@ -54,9 +54,9 @@ PriorityQueue.prototype.size = function () {
 
 /**
  * @method priorityQueue.top
- * @description  This method is used to check the top element in this priority queue, but does not remove.
- * @returns {value} This method returns the top element of this priority queue, or null if this priority queue is empty.
- * @throws This method returns null if the top element is empty.  
+ * @description  This method is used to check the top value in this priority queue, but does not remove.
+ * @returns {value} This method returns the top value of this priority queue, or null if this priority queue is empty.
+ * @throws This method returns null if the top value is empty.  
  * @example 
  * var pq1 = new priorityQueue ();
  * pq1.push(1);
@@ -79,9 +79,9 @@ PriorityQueue.prototype.top = function () {
 
 /**
  * @method priorityQueue.push
- * @description This method is used to insert the specified element into this priority queue.
- * @param {Undefined} value - The element to be inserted to this priority queue.
- * @throws This method returns –1 if the parameter is missing.
+ * @description This method is used to insert the specified value into this priority queue.
+ * @param {Undefined} value - The value to be inserted to this priority queue.
+ * @throws This method returns false if the parameter is missing.
  * @example 
  * var pq1 = new priorityQueue ();
  * pq1.push(1); 
@@ -94,7 +94,7 @@ PriorityQueue.prototype.top = function () {
 PriorityQueue.prototype.push = function (value) {
   if (value === undefined){
     console.log("ERROR:push() required parameter");
-    return -1;
+    return false;
   }
 
   this.data[this.count] = value; // insert value into the last location
@@ -112,7 +112,7 @@ PriorityQueue.prototype.push = function (value) {
 
 /**
  * @method priorityQueue.pop
- * @description This method is used to remove the highest priority element from this priority queue.
+ * @description This method is used to remove the highest priority value from this priority queue.
  * @throws This method returns null if this priority queue is empty.
  * @example 
  * var pq1 = new priorityQueue ();
@@ -133,7 +133,7 @@ PriorityQueue.prototype.pop = function () {
     let posOfRoot = 0;
     let posOfLeftChild = posOfRoot * 2 + 1;
     let posOfRightChild = posOfRoot * 2 + 2;
-    this.data[posOfRoot] = this.data[this.count - 1];  // remove top data && move last element to top position
+    this.data[posOfRoot] = this.data[this.count - 1];  // remove top data && move last value to top position
     this.count--;
 
     if (this.mode === "max_heap") {  // mode : less(default) 
@@ -216,17 +216,6 @@ PriorityQueue.prototype.popMinHeap = function (posOfRoot, posOfLeftChild, posOfR
       break;
     }
   } while (posOfLeftChild < this.count)
-};
-
-
-
-////////////////////////////////////////////////////////////////////////
-// priority_queue::swap() (C++ 11 supports this method)
-PriorityQueue.prototype.swap = function () {
-};
-
-// priority_queue::emplace (C++ 11 supports this method)
-PriorityQueue.prototype.emplace = function () {
 };
 
 PriorityQueue.prototype.testData = function () {

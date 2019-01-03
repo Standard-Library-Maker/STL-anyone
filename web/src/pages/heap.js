@@ -14,13 +14,13 @@ const Heap = function(){
 
 /**
  * @method Heap.size  
- * @description This method is used to get the number of values in this heap.
- * @returns {Number} This method returns the number of values in this heap.
+ * @description This method is used to get the number of elements in this heap.
+ * @returns {Number} This method returns the number of elements in this heap.
  * @example 
- * var h = new Heap ();
- * h.pushMin(1);
- * h.pushMin(2);
- * var size = h.size(); // size = 2
+ * var heap = new Heap ();
+ * heap.pushMin(1);
+ * heap.pushMin(2);
+ * var size = heap.size(); // size = 2
  */
 Heap.prototype.size = function(){
   return this.count;
@@ -31,10 +31,10 @@ Heap.prototype.size = function(){
  * @description This method is used to check if this heap is empty.
  * @returns {Boolean} This method returns ‘true’ if this heap is empty or ‘false’ if this heap is not empty.
  * @example 
- * var h = new Heap ();
- * var ret1 = h.isEmpty(); // ret1 = true
- * h.pushMin(1);
- * var ret2 = h.isEmpty(); // ret2 = false
+ * var heap = new Heap ();
+ * var ret1 = heap.isEmpty(); // ret1 = true
+ * heap.pushMin(1);
+ * var ret2 = heap.isEmpty(); // ret2 = false
  */
 Heap.prototype.isEmpty = function(){
   return this.count === 0;
@@ -42,17 +42,17 @@ Heap.prototype.isEmpty = function(){
 
 /**
  * @method Heap.pushMax
- * @description This method is used to insert the specified value into this heap.
- * This method is used in max-heap which its values are ordered by ASC.
- * @param {undefined} value - The value to be inserted to this heap.
- * @throws This method returns 'false' if parameter is missing.
+ * @description This method is used to insert the specified element into this heap.
+ * This method is used in max-heap which its elements are ordered by ASC.
+ * @param {Undefined} value - The element to be inserted to this heap.
+ * @throws This method returns null if parameter is missing.
  * @example 
- * var h = new Heap ();
- * h.pushMax(1);
- * h.pushMax(2);
+ * var heap = new Heap ();
+ * heap.pushMax(1);
+ * heap.pushMax(2);
  */
 Heap.prototype.pushMax = function(value){
-  if(value === null) return false;
+  if(value === null) return null;
   this.data[this.count] = value;
   /*max heap*/
 
@@ -73,17 +73,17 @@ Heap.prototype.pushMax = function(value){
 
 /**
  * @method Heap.pushMin
- * @description This method is used to insert the specified value into this heap.
- * This method is used in min-heap which its values are ordered by DESC.
- * @param {Undefined} value - The value to be inserted to this heap.
- * @throws This method returns 'false' if parameter is missing.
+ * @description This method is used to insert the specified element into this heap.
+ * This method is used in min-heap which its elements are ordered by DESC.
+ * @param {Undefined} value - The element to be inserted to this heap.
+ * @throws This method returns null if parameter is missing.
  * @example 
- * var h = new Heap ();
- * h.pushMin(1);
- * h.pushMin(2);
+ * var heap = new Heap ();
+ * heap.pushMin(1);
+ * heap.pushMin(2);
  */
 Heap.prototype.pushMin = function(value){
-  if(value === null) return false;
+  if(value === null) return null;
   this.data[this.count] = value;
   /*min heap*/
 
@@ -106,12 +106,12 @@ Heap.prototype.pushMin = function(value){
  * @method Heap.state
  * @description This method shows state of the heap.
  * @example 
- * var h = new Heap ();
- * h.pushMin(4); 
- * h.pushMin(2);
- * h.pushMin(3);
- * h.pushMin(1);
- * h.state(); //  [1,2,3,4]
+ * var heap = new Heap ();
+ * heap.pushMin(4); 
+ * heap.pushMin(2);
+ * heap.pushMin(3);
+ * heap.pushMin(1);
+ * heap.state(); //  [1,2,3,4]
  */
 Heap.prototype.state = function() {
   console.log(`=== ${this.size()} items in the heap : [${this.data}] ===`);
@@ -119,15 +119,15 @@ Heap.prototype.state = function() {
 
 /**
  * @method Heap.popMax
- * @description This method is used to remove the very first value from this heap.
- * This method is used in max-heap which its values are ordered by ASC.
- * @returns {undefined} This method returns the first value from this heap.
+ * @description This method is used to remove the very first element from this heap.
+ * This method is used in max-heap which its elements are ordered by ASC.
+ * @returns {undefined} This method returns the first element from this heap.
  * @throws This method returns null if heap is empty.
  * @example 
- * var h = new Heap ();
- * h.pushMax(1); 
- * h.pushMax(2);
- * h.popMax(); // 2 will be removed.
+ * var heap = new Heap ();
+ * heap.pushMax(1); 
+ * heap.pushMax(2);
+ * heap.popMax(); // 2 will be removed.
  */
 Heap.prototype.popMax = function() {
   if(this.isEmpty()) {
@@ -159,15 +159,15 @@ Heap.prototype.popMax = function() {
 
 /**
  * @method Heap.popMin
- * @description This method is used to remove the very first value from this heap.
- * This method is used in min-heap which its values are ordered by DESC.
- * @returns {undefined} This method returns the first value from this heap.
+ * @description This method is used to remove the very first element from this heap.
+ * This method is used in min-heap which its elements are ordered by DESC.
+ * @returns {undefined} This method returns the first element from this heap.
  * @throws This method returns null if heap is empty.
  * @example 
- * var h = new Heap ();
- * h.pushMin(1); 
- * h.pushMin(2);
- * h.popMin(); // 1 will be removed.
+ * var heap = new Heap ();
+ * heap.pushMin(1); 
+ * heap.pushMin(2);
+ * heap.popMin(); // 1 will be removed.
  */
 Heap.prototype.popMin = function() {
   if(this.isEmpty()) {
@@ -201,11 +201,11 @@ Heap.prototype.popMin = function() {
  * @method Heap.clear
  * @description This method is used to nullify this heap and make all variables initial.
  * @example 
- * var h = new Heap ();
- * h.pushMin(1); 
- * h.pushMin(2);
- * h.clear(); 
- * h.state();
+ * var heap = new Heap ();
+ * heap.pushMin(1); 
+ * heap.pushMin(2);
+ * heap.clear(); 
+ * heap.state();
  */
 Heap.prototype.clear = function() {
   this.data = null;
@@ -220,7 +220,7 @@ Heap.prototype.clear = function() {
  * @example 
  * var heap = new Heap ();
  * var arr = [1,2,3];
- * h.makeMaxHeap(arr) // arr [1,2,3] will be changed arr[3,1,2]
+ * heap.makeMaxHeap(arr) // arr [1,2,3] will be changed arr[3,1,2]
  */
 Heap.prototype.makeMaxHeap = function(array) {
   /* make normal array to heap */
@@ -250,9 +250,9 @@ Heap.prototype.makeMaxHeap = function(array) {
  * @param {Array} array The array is to be reconstructed to min-heap.
  * @throws This method returns 'false' if inserted array is empty.
  * @example 
- * var h = new Heap ();
+ * var heap = new Heap ();
  * var arr = [3,2,1];
- * h.makeMinHeap(arr) // arr [3,2,1] will be changed arr[1,3,2]
+ * heap.makeMinHeap(arr) // arr [3,2,1] will be changed arr[1,3,2]
  */
 Heap.prototype.makeMinHeap = function(array) {
   /* make normal array to heap */

@@ -46,7 +46,7 @@ HashMap.prototype.hash = function (key) {
  * @description This method is used to insert the specified key with the specified value in this hash map.
  * @param {undefined} key - The key with which the specified value is to be associated.
  * @param {undefined} value - The value to be associated with the specified key.
- * @throws This method returns –1 if the either one parameter is missing.
+ * @throws This method returns 'false' if the either one parameter is missing.
  * @example 
  * var hm = new HashMap ();
  * hm.put("A", 1);   // (key : A) - (Value : 1)
@@ -56,7 +56,7 @@ HashMap.prototype.hash = function (key) {
 HashMap.prototype.put = function (key, value) {
   if (key === undefined || value == undefined){
     console.log("ERROR::put() required parameters(key, value)");
-    return -1;
+    return false;
   }
 
   let newEntry = new Entry(key, value);   // make newEntry
@@ -70,7 +70,7 @@ HashMap.prototype.put = function (key, value) {
     while (true) {
       if (curEntry.key === key) {
         curEntry.value = value;
-        return 0;
+        return;
       }
       if (curEntry.next === undefined) {
         curEntry.next = newEntry;
@@ -86,18 +86,18 @@ HashMap.prototype.put = function (key, value) {
  * @method HashMap.containsKey
  * @description This method is used to check if this hash map contains the specified key.
  * @param {undefined} key - The key with which the specified value is to be associated.
- * @returns {Boolean}  This method returns ‘true’ if this hash map contains the specified key, or ‘false’ if this hash map doesn’t contain the specified key.
- * @throws This method returns -1 if the parameter is missing.
+ * @returns {Boolean} This method returns ‘true’ if this hash map contains the specified key, or ‘false’ if this hash map doesn’t contain the specified key.
+ * @throws This method returns 'false' if the parameter is missing.
  * @example  
  * var hm = new HashMap ();
- * var ret1 = containsKey("A"); // ret1 = false
+ * var ret1 = hm.containsKey("A"); // ret1 = false
  * hm.put("A", 1);  
- * var ret2 = containsKey("A"); // ret1 = true
+ * var ret2 = hm.containsKey("A"); // ret1 = true
  */
 HashMap.prototype.containsKey = function (key) {
   if (key === undefined){
     console.log("ERROR::containsKey() required parameter");
-    return -1;
+    return false;
   }
 
   let posOfMap = this.hash(key);          // find hashCode
@@ -119,18 +119,18 @@ HashMap.prototype.containsKey = function (key) {
  * @method HashMap.containsValue
  * @description This method is used to check if this hash map contains the specified value.
  * @param {undefined} value - The value with which the specified key is to be associated.
- * @returns {Boolean}  This method returns ‘true’ if this hash map contains the specified value, or ‘false’ if this hash map doesn’t contain the specified value.
- * @throws This method returns -1 if the parameter is missing.
+ * @returns {Boolean} This method returns ‘true’ if this hash map contains the specified value, or ‘false’ if this hash map doesn’t contain the specified value.
+ * @throws This method returns 'false' if the parameter is missing.
  * @example  
  * var hm = new HashMap ();
- * var ret1 = containsValue(1); // ret1 = false
+ * var ret1 = hm.containsValue(1); // ret1 = false
  * hm.put("A", 1);  
- * var ret2 = containsValue(1); // ret1 = true
+ * var ret2 = hm.containsValue(1); // ret1 = true
  */
 HashMap.prototype.containsValue = function (value) {
   if (value === undefined){
     console.log("ERROR::containsValue() required parameter");
-    return -1;
+    return false;
   }
 
 
@@ -154,8 +154,8 @@ HashMap.prototype.containsValue = function (value) {
  * @method HashMap.get
  * @description This method is used to get the value which mapped with the specified key from this hash map.
  * @param {undefined} key - the key with which the specified value is to be associated. 
- * @returns {Boolean}  This method returns the value which be associated with the specified key.
- * @throws This method return –1 if the parameter is missing, or undefined if this hash map doesn’t contain this key.
+ * @returns {undefined} This method returns the value which be associated with the specified key.
+ * @throws This method return false if the parameter is missing, or null if this hash map doesn’t contain this key.
  * @example  
  * var hm = new HashMap ();
  * hm.put("A", 1) ;
@@ -164,7 +164,7 @@ HashMap.prototype.containsValue = function (value) {
 HashMap.prototype.get = function (key) {
   if (key === undefined){
     console.log("ERROR::get() required parameter");
-    return -1;
+    return false;
   }
 
   let posOfMap = this.hash(key);          // find hashCode
@@ -180,13 +180,13 @@ HashMap.prototype.get = function (key) {
     }
   }
   console.log("ERROR : Key is not exist");
-  return undefined;
+  return null;
 };
 
 /**
  * @method HashMap.keySet
  * @description This method is used to get a Set of the keys in this hash map.
- * @returns {Set}  This method returns a set of the key in this hash map.
+ * @returns {Set} This method returns a set of the key in this hash map.
  * @example  
  * var hm = new HashMap ();
  * hm.put("A", 1);  
@@ -239,7 +239,7 @@ HashMap.prototype.entrySet = function () {
  * @method HashMap.remove
  * @description This method is used to remove the mapping with the specified key from this hash map.
  * @param {undefined} key - the key with which the specified value is to be associated. 
- * @throws This method returns –1 if the parameter is missing, or null if this hash map doesn’t contain this key.
+ * @throws This method returns 'false' if the parameter is missing, or null if this hash map doesn’t contain this key.
  * @example  
  * var hm = new HashMap ();
  * hm.put("A", 1);  
@@ -249,7 +249,7 @@ HashMap.prototype.entrySet = function () {
 HashMap.prototype.remove = function (key) {
   if (key === undefined){
     console.log("ERROR::remove() required parameter");
-    return -1;
+    return false;
   }
 
   let posOfMap = this.hash(key);          // find hashCode
@@ -289,7 +289,7 @@ HashMap.prototype.remove = function (key) {
  * var hm = new HashMap ();
  * hm.put("A", 1);  
  * hm.put("B", 2); 
- * hm.remove(); 
+ * hm.clear(); 
  */
 HashMap.prototype.clear = function () {
   this.length = 0;
@@ -315,7 +315,7 @@ HashMap.prototype.isEmpty = function () {
 /**
  * @method HashMap.size
  * @description This method is used to get the number of key-value mappings in this hash map.
- * @returns {Number} The method returns the number of elements in this deque.
+ * @returns {Number} The method returns the number of values in this deque.
  * @example  
  * var hm = new HashMap ();
  * hm.put("A", 1);  

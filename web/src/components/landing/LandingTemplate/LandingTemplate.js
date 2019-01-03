@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import HeaderTemplate from 'components/header/HeaderTemplate';
 import './LandingTemplate.scss';
-import logo from 'static/images/logo.png';
+import logo from 'static/images/Project_Name_Logo.png';
 
 class LandingTemplate extends Component {
   render() {
