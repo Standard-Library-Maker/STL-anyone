@@ -26,7 +26,6 @@
     "not op_mini all"
   ],
   "devDependencies": {
-    "cross-env": "^5.2.0",
-    "webpack": "^4.28.3"
+    "cross-env": "^5.2.0"
   }
 }
