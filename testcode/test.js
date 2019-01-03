@@ -67,8 +67,24 @@ s2.toString();
 console.log(`[isEmpty] is empty? ${s2.isEmpty()}`);
 */
 
+/*
 // Binary Search Tree 
 console.log("\n=======Binary Searuch Tree=======");
+let bst = new BinarySearchTree();
+bst.insert(5);
+bst.insert(3);
+bst.insert(6);
+bst.insert(4);
+bst.insert(2);
+bst.insert(7);
+bst.insert(9);
+bst.state();
+bst.find(1);
+bst.find(9);
+bst.delete(1);
+bst.delete(7);
+bst.state();
+*/
 
 /*
 // Binary Tree 
