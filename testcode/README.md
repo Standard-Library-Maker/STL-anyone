@@ -1,7 +1,7 @@
 # javascript-STL-Testcode
 - STL(Standard Template Library) for javascript testcode
 
-![ex_screenshot]((../logo_desing/project_name (3).jpg)
+![ex_screenshot]((../../logo_desing/project_name (3).jpg)
 
 
 ## Dependency
