@@ -156,7 +156,7 @@ BinarySearchTree.prototype.maxValue = function(value) {
  * @description This method finds the node from the tree of which data is same as value.
  * @param {undefined} value - The value to look up the node which has data as same as value among the binary search tree.
  * @returns {undefined} This method returns node which has data as same as value.
- * @throws This method returns 'false' if the parameter is missing or null if the node of which data is same as value doesn’t exist.
+ * @throws This method returns 'false' if the parameter is missing or root is null and returns null if the node of which data is same as value doesn’t exist.
  * @example 
  * var bst = new BinarySearchTree ();
  * bst.insert(1);
@@ -167,6 +167,7 @@ BinarySearchTree.prototype.maxValue = function(value) {
  */
 BinarySearchTree.prototype.find = function(value) {
   if(value === null) return false;
+  if(this.root === null) return false;
   let node = new Node();
   node = this.root;
   while(true){
@@ -195,7 +196,7 @@ BinarySearchTree.prototype.find = function(value) {
  * @method BinarySearchTree.delete  
  * @description This method removes the node from the tree of which data is same as value
  * @param {undefined} value - The data of node which is in the binary search tree.
- * @throws This method returns false if the parameter is missing or null the node of which data is value is not among binary search tree.
+ * @throws This method returns 'false' if the parameter is missing or root is null and returns null if the node of which data is value is not among binary search tree.
  * @example 
  * var bst = new BinarySearchTree ();
  * bst.insert(1);
@@ -208,8 +209,8 @@ BinarySearchTree.prototype.delete = function (value) {
   if(value === null) return false;
   let node = new Node();  
   node = this.find(value);
-  if(node === null) {
-    return null;
+  if(node === false) {
+    return false;
   }
   console.log("====== delete data : " + node.data + " ======" );
   if(node === this.root){
@@ -220,6 +221,7 @@ BinarySearchTree.prototype.delete = function (value) {
 
     if(node.left === null && node.right === null) {
       console.log("root is only node");
+      this.root = null;
       return;
     }
     if(replace.left === null && replace.right === null){
