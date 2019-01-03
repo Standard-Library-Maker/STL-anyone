@@ -1,9 +1,6 @@
 # javascript-STL-Testcode
 - STL(Standard Template Library) for javascript testcode
 
-![ex_screenshot]((../../logo_desing/project_name (3).jpg)
-
-
 ## Dependency
 
 - you have to install nodejs to test this code or you can test this code at chrome
