@@ -6,11 +6,6 @@ import logo3 from "static/images/logo3.png";
 class HeaderTemplate extends Component {
 
 
-
-  getDocument = () => {
-    return (<a href="src/out/index.html"></a>);
-  };
-
   render() {
     return (
       <div className="header">
@@ -21,7 +16,7 @@ class HeaderTemplate extends Component {
         </div>
         <div className="header-bar">
           <div className="help">
-            <button onClick={this.getDocument}>help</button>
+            <a href="https://Jisoo-Lee93.github.io">help</a>
           </div>
           <div className="menu">
             menu
