@@ -12,3 +12,51 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+button {
+  cursor:pointer;
+}
+
+.start-btn {
+  margin-top: 50px;
+  background:#1AAB8A;
+  color:#fff;
+  border:none;
+  position:relative;
+  height:50px;
+  font-size:1.2rem;
+  padding:0 1em;
+  transition:800ms ease all;
+  outline:none;
+}
+.start-btn:hover{
+  background:#fff;
+  color:#1AAB8A;
+}
+.start-btn:before, .start-btn:after{
+  content:'';
+  position:absolute;
+  top:0;
+  right:0;
+  height:2px;
+  width:0;
+  background: #1AAB8A;
+  transition:400ms ease all;
+}
+.start-btn:after{
+  right:inherit;
+  top:inherit;
+  left:0;
+  bottom:0;
+}
+.start-btn:hover:before, .start-btn:hover:after{
+  width:100%;
+  transition:800ms ease all;
+}
+
+.title {
+  margin-top: 70px;
+  font-size: 4rem;
+  color: white;
+  font-family: Cursive, serif;
+}

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import HeaderTemplate from 'components/header/HeaderTemplate';
 import './LandingTemplate.scss';
-import logo2 from 'static/images/logo2.png';
+import logo from 'static/images/logo.png';
 
 class LandingTemplate extends Component {
   render() {
@@ -12,7 +12,7 @@ class LandingTemplate extends Component {
           <HeaderTemplate/>
         </div>
         <div className="main-section">
-          <img src={logo2} className="App-logo" alt="logo" />
+          <img src={logo} className="App-logo" alt="logo" />
           <div className="menu-list">
               <Link to="/stack">Stack</Link>
               <Link to="/queue">Queue</Link>

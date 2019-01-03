@@ -134,7 +134,8 @@ class QueueTemplate extends Component {
         <div className="queue-header">
           <HeaderTemplate/>
         </div>
-        <button className="start-btn" onClick={this.start}>Start</button>
+        <div className="title">Queue</div>
+        <button className="start-btn" onClick={this.start}>Create Queue</button>
         <div className="test-code">
           <div className="result-area">
             <textarea

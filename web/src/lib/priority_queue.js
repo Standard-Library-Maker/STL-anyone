@@ -20,7 +20,7 @@ const PriorityQueue = function (value) {
   } else if (value === "less" || value === undefined) {     // DEFAULT : based on Max_Heap
     this.mode = "max_heap";
   } else {
-    alert("ERROR:input sort criteria (option:greater,less)");
+    //alert("ERROR:input sort criteria (option:greater,less)");
   }
 };
 
@@ -72,7 +72,7 @@ PriorityQueue.prototype.top = function () {
   if (this.count > 0) {
     return this.data[0];
   } else {
-    alert("ERROR:priority queue is empty");
+   // alert("ERROR:priority queue is empty");  
     return null;
   }
 };
@@ -93,7 +93,7 @@ PriorityQueue.prototype.top = function () {
  */
 PriorityQueue.prototype.push = function (value) {
   if (value === undefined){
-    alert("ERROR:push() required parameter");
+    //alert("ERROR:push() required parameter");
     return -1;
   }
 
@@ -127,7 +127,7 @@ PriorityQueue.prototype.push = function (value) {
  */
 PriorityQueue.prototype.pop = function () {
   if (this.isEmpty()) {
-    alert("ERROR:priority queue is empty");
+    //alert("ERROR:priority queue is empty");
     return null;
   } else {
     let posOfRoot = 0;

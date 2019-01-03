@@ -128,7 +128,8 @@ class StackTemplate extends Component {
         <div className="stack-header">
           <HeaderTemplate/>
         </div>
-        <button className="start-btn" onClick={this.start}>Start</button>
+        <div className="title">Stack</div>
+        <button className="start-btn" onClick={this.start}>Create Stack</button>
         <div className="test-code">
           <div className="result-area">
             <textarea

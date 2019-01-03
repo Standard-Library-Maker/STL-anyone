@@ -55,7 +55,7 @@ HashMap.prototype.hash = function (key) {
  */
 HashMap.prototype.put = function (key, value) {
   if (key === undefined || value == undefined){
-    alert("ERROR::put() required parameters(key, value)");
+    //alert("ERROR::put() required parameters(key, value)");
     return -1;
   }
 
@@ -96,7 +96,7 @@ HashMap.prototype.put = function (key, value) {
  */
 HashMap.prototype.containsKey = function (key) {
   if (key === undefined){
-    alert("ERROR::containsKey() required parameter");
+    //alert("ERROR::containsKey() required parameter");
     return -1;
   }
 
@@ -127,7 +127,7 @@ HashMap.prototype.containsKey = function (key) {
  */
 HashMap.prototype.containsValue = function (value) {
   if (value === undefined){
-    alert("ERROR::containsValue() required parameter");
+    //alert("ERROR::containsValue() required parameter");
     return -1;
   }
 
@@ -159,7 +159,7 @@ HashMap.prototype.containsValue = function (value) {
  */
 HashMap.prototype.get = function (key) {
   if (key === undefined){
-    alert("ERROR::get() required parameter");
+    //alert("ERROR::get() required parameter");
     return -1;
   }
 
@@ -174,7 +174,7 @@ HashMap.prototype.get = function (key) {
       curEntry = curEntry.next;
     }
   }
-  alert("ERROR : Key is not exist");
+  //alert("ERROR : Key is not exist");
   return undefined;
 };
 
@@ -241,7 +241,7 @@ HashMap.prototype.entrySet = function () {
  */
 HashMap.prototype.remove = function (key) {
   if (key === undefined){
-    alert("ERROR::remove() required parameter");
+    //alert("ERROR::remove() required parameter");
     return -1;
   }
 
@@ -271,7 +271,7 @@ HashMap.prototype.remove = function (key) {
       curEntry = curEntry.next;
     }
   }
-  alert("ERROR : Key is not exist");
+  //alert("ERROR : Key is not exist");
   return null;
 };
 
@@ -331,4 +331,4 @@ HashMap.prototype.test = function () {
 }
 */
 
-module.exports = HashMap;
+export default HashMap;

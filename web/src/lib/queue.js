@@ -64,20 +64,16 @@ CircularQueue.prototype.isEmpty = function() {
 };
 
 CircularQueue.prototype.push = function(value) {
-  if (this.isFull()) {
-    console.log("Error! Queue is full");
-    return null;
-  } else {
+  if (this.isFull()) return null;
+  else {
     this.qBack = (this.qBack + 1) % this.MAX_SIZE;
     this.data[this.qBack] = value;
   }
 };
 
 CircularQueue.prototype.pop = function() {
-  if (this.isEmpty()) {
-    console.log("Error! Queue is empty");
-    return null;
-  } else {
+  if (this.isEmpty()) return null;
+  else {
     this.qFront = (this.qFront + 1) % this.MAX_SIZE;
     let popedValue = this.data[this.qFront];
     // data.splice(qFront, 1); reduces MAX_SIZE
@@ -108,7 +104,7 @@ CircularQueue.prototype.clear = function() {
 };
   
 CircularQueue.prototype.toString = function() {
-  console.log(`=== ${this.size()} items in the queue : [${this.data}] ===`);
+  return `=== ${this.size()} items in the queue : [${this.data}] ===`;
 };
 
 
