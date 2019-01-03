@@ -29,7 +29,6 @@ class QueueTemplate extends Component {
       this.setState({
         ...this.state,
         pushValue: e.target.value,
-        hidden: true 
       });
     } else if(e.target.name === "resultArea") {
       this.setState({
@@ -39,12 +38,17 @@ class QueueTemplate extends Component {
     }
   };
 
-  makeOutput = () => {
+  makeOutput = async () => {
     let output = '';
-    this.state.textAreaValue.forEach( (v) => {output += v;});
-    this.setState({
-      output: output
-    })
+    let result = this.state.textAreaValue;
+    result.forEach( (v) => {output += v;});
+    await setTimeout(() => {
+      this.setState({
+        ...this.state,
+        hidden: true,
+        output: output
+      })
+    }, 300);
   };
 
   start = async () => {
@@ -90,13 +94,17 @@ class QueueTemplate extends Component {
 
     let myQueue = this.state.queue;
     let result = this.state.textAreaValue;
+    let output='';
+
     alert(`pop : ${myQueue.pop()}`);
     result.splice(0,1);
+    result.forEach( (v) => {output += v;});
 
     await this.setState({
       ...this.state,
       queue: myQueue,
-      textAreaValue: result
+      textAreaValue: result,
+      output: output
     });
   };
 
