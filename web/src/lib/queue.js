@@ -24,6 +24,7 @@ ArrQueue.prototype.pop = function() {
   
 ArrQueue.prototype.front = function() {
   if(this.isEmpty()) return null;
+
   else return this.data[0];
 };
 
