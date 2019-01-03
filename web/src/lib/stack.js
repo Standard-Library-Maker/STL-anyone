@@ -38,7 +38,7 @@ Stack.prototype.clear = function() {
 Stack.prototype.state = function() { console.log(this.data); };
 
 Stack.prototype.show = function(value) {
-  if(value === false){
+  if(value === false){ return null;
     document.writeln('empty, nothing in the stack' + `<br>`);
   } else {
     document.writeln(`function(${value}) --> data : [${this.data}] <br>`);
