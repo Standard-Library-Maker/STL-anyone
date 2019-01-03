@@ -10,8 +10,6 @@ let BinarySearchTree = require("./libs/binary_search_tree");
 let Deque = require("./libs/deque");
 let HashMap = require("./libs/hash_map");
 
-var bst = new BinarySearchTree (); bst.insert(1); bst.insert(2); bst.insert(3); bst.state();
-
 // Binary Tree test case
 /*
 let b = new BinaryTree();
@@ -303,4 +301,22 @@ HashMap1.containsValue(10);
 HashMap1.size();
 HashMap1.clear();
 HashMap1.isEmpty();
+*/
+
+/*
+//Binary Search Tree test code
+let bst = new BinarySearchTree();
+bst.insert(5);
+bst.insert(3);
+bst.insert(6);
+bst.insert(4);
+bst.insert(2);
+bst.insert(7);
+bst.insert(9);
+bst.state();
+bst.find(1);
+bst.find(9);
+bst.delete(1);
+bst.delete(7);
+bst.state();
 */
