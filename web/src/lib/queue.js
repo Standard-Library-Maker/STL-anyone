@@ -40,7 +40,7 @@ ArrQueue.prototype.clear = function() {
   this.count = 0;
   this.data = [];
 };
-  
+
 ArrQueue.prototype.toString = function() {
   return `=== ${this.size()} items in the queue : [${this.data}] ===`;
 };
@@ -68,30 +68,29 @@ CircularQueue.prototype.push = function(value) {
   } else {
     this.qBack = (this.qBack + 1) % this.MAX_SIZE;
     this.data[this.qBack] = value;
-    this.show('push');
   }
 };
 
 CircularQueue.prototype.pop = function() {
   if (this.isEmpty()) {
     console.log("Error! Queue is empty");
+    return null;
   } else {
     this.qFront = (this.qFront + 1) % this.MAX_SIZE;
     let popedValue = this.data[this.qFront];
     // data.splice(qFront, 1); reduces MAX_SIZE
     delete this.data[this.qFront];
-    this.show('pop');
     return popedValue;
   }
 };
 
 CircularQueue.prototype.front = function() {
-  if (this.isEmpty()) console.log("Error! Queue is empty");
+  if (this.isEmpty()) return null;
   else return this.data[(this.qFront + 1) % this.MAX_SIZE];
 };
 
 CircularQueue.prototype.back = function() {
-  if (this.isEmpty()) console.log("Error! Queue is empty");
+  if (this.isEmpty()) return null;
   else return this.data[this.qBack];
 };
 
@@ -104,21 +103,10 @@ CircularQueue.prototype.clear = function() {
   this.qFront = 0;
   this.qBack = 0;
   this.data = [];
-  document.writeln(`=== after clear ===<br>`);
-  this.show(false);
 };
   
-CircularQueue.prototype.state = function() {
+CircularQueue.prototype.toString = function() {
   console.log(`=== ${this.size()} items in the queue : [${this.data}] ===`);
-};
-
-CircularQueue.prototype.show = function(value) {
-  if(value === false){
-    document.writeln(`empty, nothing in the queue<br>`);
-  } else {
-    document.writeln(`function(${value}) --> data : [${this.data}] <br>`);
-    document.writeln(` ↓ <br>`);
-  }
 };
 
 

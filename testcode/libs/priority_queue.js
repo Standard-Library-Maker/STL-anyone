@@ -1,6 +1,17 @@
 const swapData = require("./swap");
 
-// Priority Queue implemented by Jisoo
+/**
+ * @Class PriorityQueue
+ * @classdesc Priority Queue(우선순위 큐)에 저장되어 있는 각 요소들은 우선순위를 가지고 있으며, 컨테이너에 저장된 요소들 중 우선순위가 높은 요소부터 순차적으로 출력된다.
+ * @param {String} value - ORDER BY
+ * @param {String} [value.less=default] - desc(내림차순)
+ * @param {String} value.greater - asc(오름차순)
+ * @example 
+ * var pq = new PriorityQueue ();
+ * var pq = new PriorityQueue (“less”);
+ * var pq = new PriorityQueue (“greater”);
+ * @author ljsoo0925@gmail.com
+ */
 const PriorityQueue = function (value) {
   this.data = [];                                         // array position will be starts 0
   this.count = 0;
@@ -13,17 +24,50 @@ const PriorityQueue = function (value) {
   }
 };
 
-// priority_queue::isEmpty()
+/**
+ * @method PriorityQueue.isEmpty  
+ * @description This method is used to check if this priority queue is empty.
+ * @returns {Boolean} This method returns ‘true’ if this priority queue is empty or ‘false’ if this priority queue is not empty.
+ * @example 
+ * var pq = new PriorityQueue ();
+ * var ret1 = pq.isEmpty(); // ret1 = true
+ * pq.push(1);
+ * var ret2 = pq.isEmpty(); // ret2 = false
+ */
 PriorityQueue.prototype.isEmpty = function () {
   return this.count === 0;
 };
 
-// priority_queue::size()
+/**
+ * @method PriorityQueue.size  
+ * @description This method is used to get the number of elements in this priority queue.
+ * @returns {Number} This method returns the number of elements in this priority queue.
+ * @example 
+ * var pq = new PriorityQueue ();
+ * pq.push(1);
+ * pq.push(2);
+ * var size = pq.size(); // size = 2
+ */
 PriorityQueue.prototype.size = function () {
   return this.count;
 };
 
-// priority_queue::top()
+/**
+ * @method PriorityQueue.top
+ * @description  This method is used to check the top element in this priority queue, but does not remove.
+ * @returns {value} This method returns the top element of this priority queue, or null if this priority queue is empty.
+ * @throws This method returns null if the top element is empty.  
+ * @example 
+ * var pq1 = new PriorityQueue ();
+ * pq1.push(1);
+ * pq1.push(2);
+ * var ret1 = pq1.top(); // ret = 2
+ *
+ * var pq2 = new PriorityQueue ("greater");
+ * pq2.push(1);
+ * pq2.push(2);
+ * var ret2 = pq2.top(); // ret = 1
+ */
 PriorityQueue.prototype.top = function () {
   if (this.count > 0) {
     return this.data[0];
@@ -33,7 +77,20 @@ PriorityQueue.prototype.top = function () {
   }
 };
 
-// priority_queue::push(value)
+/**
+ * @method PriorityQueue.push
+ * @description This method is used to insert the specified element into this priority queue.
+ * @param {Undefined} value - The element to be inserted to this priority queue.
+ * @throws This method returns –1 if the parameter is missing.
+ * @example 
+ * var pq1 = new PriorityQueue ();
+ * pq1.push(1); 
+ * pq1.push(2);
+ * 
+ * var pq2 = new PriorityQueue ();
+ * pq2.push("A"); 
+ * pq2.push("B");
+ */
 PriorityQueue.prototype.push = function (value) {
   if (value === undefined){
     console.log("ERROR:push() required parameter");
@@ -53,7 +110,21 @@ PriorityQueue.prototype.push = function (value) {
   this.count++;
 };
 
-// priority_queue::pop()
+/**
+ * @method PriorityQueue.pop
+ * @description This method is used to remove the highest priority element from this priority queue.
+ * @throws This method returns null if this priority queue is empty.
+ * @example 
+ * var pq1 = new PriorityQueue ();
+ * pq1.push(1); 
+ * pq1.push(2);
+ * pq1.pop() // 2 will be removed.
+ * 
+ * var pq2 = new PriorityQueue ("greater");
+ * pq2.push(1); 
+ * pq2.push(2);
+ * pq2.pop() // 1 will be removed
+ */
 PriorityQueue.prototype.pop = function () {
   if (this.isEmpty()) {
     console.log("ERROR:priority queue is empty");

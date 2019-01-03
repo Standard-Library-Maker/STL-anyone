@@ -1,17 +1,32 @@
-//Deque implemented by Jisoo
 let Node = function (value) {
   this.data = value;
   this.prev = null;
   this.next = null;
 };
 
+/**
+ * @Class Deque
+ * @classdesc Deque(덱,Double-ended queue)는 양쪽 끝에서 요소들의 삽입과 삭제가 가능한 자료구조의 형태를 가지고 있으며, 큐와 스택의 개념을 합친 개념이다.
+ * @example 
+ * var dq = new Deque ();
+ * @author ljsoo0925@gmail.com
+ */
 const Deque = function () {
   this.length = 0;
   this.head = null;
   this.tail = null;
 };
 
-// deque::push_front()
+/**
+ * @method Deque.push_front
+ * @description This method is used to insert the specified element at the front of this deque.
+ * @param {Undefined} value - The element to be inserted to this deque.
+ * @throws This method returns –1 if the parameter is missing.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ */
 Deque.prototype.push_front = function (value) {
   if (value === undefined){
     console.log("ERROR:push_front() required parameter");
@@ -32,7 +47,16 @@ Deque.prototype.push_front = function (value) {
   this.length++;
 };
 
-// deque::push_back()
+/**
+ * @method Deque.push_back
+ * @description This method is used to insert the specified element at the end of this deque.
+ * @param {Undefined} value - The element to be inserted to this deque.
+ * @throws This method returns –1 if the parameter is missing.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_back(3);
+ * dq.push_back(4);
+ */
 Deque.prototype.push_back = function (value) {
   if (value === undefined){
     console.log("ERROR:push_back() required parameter");
@@ -51,7 +75,18 @@ Deque.prototype.push_back = function (value) {
   }
 };
 
-// deque::pop_front()
+/**
+ * @method Deque.pop_front
+ * @description This method is used to remove the element from the front of this deque.
+ * @throws This method returns null if this deque is empty.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * dq.pop_front(); // 2 will be removed.
+ */
 Deque.prototype.pop_front = function () {
   if (this.length === 0) {
     console.log("ERROR:deque is empty");
@@ -68,7 +103,18 @@ Deque.prototype.pop_front = function () {
   this.length--;
 };
 
-// deque::pop_back()
+/**
+ * @method Deque.pop_back
+ * @description This method is used to remove the element from the end of this deque.
+ * @throws This method returns null if this deque is empty.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * dq.pop_back(); // 4 will be removed.
+ */
 Deque.prototype.pop_back = function () {
   if (this.length === 0) {
     console.log("ERROR:deque is empty");
@@ -85,7 +131,19 @@ Deque.prototype.pop_back = function () {
   this.length--;
 };
 
-// deque::erase()
+/**
+ * @method Deque.erase
+ * @description This method is used to remove the element from the specified position from this deque.
+ * @param {Number} position - The position to be removed from this deque.
+ * @throws This method returns null if this deque is empty, or –1 if the parameter is missing.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * dq.erase(2); // 3 will be removed.
+ */
 Deque.prototype.erase = function (pos) {
   if (pos === undefined){
     console.log("ERROR::erase() required parameter");
@@ -123,7 +181,17 @@ Deque.prototype.erase = function (pos) {
   }
 };
 
-// deque::clear()
+/**
+ * @method Deque.clear
+ * @description This method is used to remove all of the elements from this deque.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * dq.clear();  
+ */
 Deque.prototype.clear = function () {
   this.length = 0;
   this.head.data = null;
@@ -134,7 +202,19 @@ Deque.prototype.clear = function () {
   this.tail = null;
 };
 
-// deque::front()
+/**
+ * @method Deque.front
+ * @description This method is used to get the element at the front of this deque.
+ * @throws This method returns null if the deque is empty.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * var ret1 = dq.front(); // ret1 = 2
+ * var ret2 = dq.front(); // ret2 = 1
+ */
 Deque.prototype.front = function () {
   if (this.length === 0) {
     console.log("ERROR:deque is empty");
@@ -144,7 +224,19 @@ Deque.prototype.front = function () {
   return this.head.data;
 };
 
-// deque::back()
+/**
+ * @method Deque.back
+ * @description This method is used to get the element at the end of this deque.
+ * @throws This method returns null if the deque is empty.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * var ret1 = dq.back(); // ret1 = 4
+ * var ret2 = dq.back(); // ret2 = 3
+ */
 Deque.prototype.back = function () {
   if (this.length === 0) {
     console.log("ERROR:deque is empty");
@@ -154,7 +246,19 @@ Deque.prototype.back = function () {
   return this.tail.data;
 };
 
-// deque::begin()
+/**
+ * @method Deque.begin
+ * @description This method is used to get the iterator at the front of this deque.
+ * @return {iterator} This method returns iterator at the front of this deque. 
+ * @throws This method returns null if the deque is empty.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * var ret = dq.begin();
+ */
 Deque.prototype.begin = function () {
   if (this.length === 0) {
     console.log("ERROR:deque is empty");
@@ -164,7 +268,19 @@ Deque.prototype.begin = function () {
   return this.head;
 };
 
-// deque::end()
+/**
+ * @method Deque.end
+ * @description This method is used to get the iterator at the end of this deque.
+ * @return {iterator} This method returns iterator at the end of this deque. 
+ * @throws This method returns null if the deque is empty.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * var ret = dq.end();
+ */
 Deque.prototype.end = function () {
   if (this.length === 0) {
     console.log("ERROR:deque is empty");
@@ -174,19 +290,56 @@ Deque.prototype.end = function () {
   return this.tail;
 };
 
-// deque::isEmpty()
+/**
+ * @method Deque.isEmpty
+ * @description This method is used to check if this deque is empty.
+ * @returns {Boolean} This method returns ‘true’ if this deque is empty or ‘false’ if this deque is not empty.
+ * @example 
+ * var dq = new Deque ();
+ * var ret1 = dq.isEmpty(); // ret1 = true;
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * var ret2 = dq.isEmpty(); // ret2 = false
+ * */
 Deque.prototype.isEmpty = function () {
   //console.log(this.length === 0);
   return this.length === 0;
 };
 
-// deque::size()
+/**
+ * @method Deque.size
+ * @description This method is used to get the number of elements in this deque.
+ * @returns {Number} This method returns the number of elements in this deque.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * var size = dq.size(); // ret = 4
+ * */
 Deque.prototype.size = function () {
   //console.log(this.length);
   return this.length;
 };
 
-// deque::at()
+/**
+ * @method Deque.at
+ * @description This method is used to get the element from the specified position of this deque, but does not remove.
+ * @param {Number} position - The position which want to get element from this deque.
+ * @return {Undefined} This method returns the element from the specified position from this deque.
+ * @throws This method returns null if the deque is empty, or –1 if the parameter is missing.
+ * @example 
+ * var dq = new Deque ();
+ * dq.push_front(1);
+ * dq.push_front(2);
+ * dq.push_back(3);
+ * dq.push_back(4);
+ * var ret1 = dq.at(0); // ret1 = 2
+ * var ret2 = dq.at(2); // ret2 = 3
+ */
 Deque.prototype.at = function (pos) {
   if (pos === undefined){
     console.log("ERROR::at() required parameter");
