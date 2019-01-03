@@ -9,7 +9,7 @@ let Node = function (value) {
  * @classdesc Binary Tree에 저장되어 있는 요소들은 트리 형태로 표현되며 요소 간에 부모, 자식 관계가 존재하고 트리의 형태는 complete binary tree이다.
  * @example 
  * var bt = new BinaryTree ();
- * @author //kang
+ * @author seeung0305@naver.com
  */
 const BinaryTree = function () {
   this.tree = [];
@@ -22,6 +22,7 @@ const BinaryTree = function () {
  * @description This method is used to insert the specified element into this binary tree.
  * @param {undefined} value - The element to be inserted to this binary tree.
  * @returns {Boolean} This method returns the number of elements in this binary tree.
+ * @throws This method returns null if parameter is missing.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -29,6 +30,7 @@ const BinaryTree = function () {
  * bt.push(3);
  */
 BinaryTree.prototype.push = function (value) {
+  if(value === null) return null;
   let node = new Node(value);
   if (this.root === null) {
     this.root = node;
@@ -47,7 +49,7 @@ BinaryTree.prototype.push = function (value) {
  * @method BinaryTree.pop  
  * @description This method is used to remove the very first element from this binary tree.
  * @returns {undefined} This method returns the first element from this binary tree.
- * @throws This method returns null if binary tree is empty.
+ * @throws This method returns 'false' if binary tree is empty.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -56,16 +58,30 @@ BinaryTree.prototype.push = function (value) {
  * bt.pop(); // 3 will be removed
  */
 BinaryTree.prototype.pop = function () {
+  if(this.size() === 0) return false;
   this.tree[this.size() - 1].data = null;
   this.tree[this.size() - 1] = null;
   this.count--;
 };
 
+/**
+ * @method BinaryTree.isEmpty  
+ * @description This method is used to check if this binary tree is empty.
+ * @returns {Boolean} This method returns ‘true’ if this binary tree is empty or ‘false’ if this binary tree is not empty.
+ * @example 
+ * var bt = new BinaryTree ();
+ * var ret1 = bt.isEmpty(); // ret1 = true
+ * bt.pushMin(1);
+ * var ret2 = bt.isEmpty(); // ret2 = false
+ */
+BinaryTree.prototype.isEmpty = function () {
+  return this.root === null;
+};
 
 /**
  * @method BinaryTree.size  
  * @description This method is used to get the number of elements in this binary tree.
- * @returns {Boolean} This method returns the number of elements in this binary tree.
+ * @returns {Number} This method returns the number of elements in this binary tree.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -81,7 +97,7 @@ BinaryTree.prototype.size = function () {
  * @method BinaryTree.postOrder  
  * @description This method is used for tree traversal. Traversal order is left -> right -> parent.
  * @param {undefined} value - The node is used to tree traversal recursively. 
- * @throws This method returns null if node has no data.
+ * @throws This method returns 'false' if parameter is missing or the node has no data.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -90,9 +106,10 @@ BinaryTree.prototype.size = function () {
  * bt.postOrder(this.root); // Tree :  2-3-1
  */
 BinaryTree.prototype.postOrder = function (value){
+  if(value === null) return false;
   let node = new Node(value);
   node = value;
-  if(node === null) return;
+  if(node === null) return false;
   this.postOrder(node.left);
   this.postOrder(node.right);
   if(node.data !== null)
@@ -103,7 +120,7 @@ BinaryTree.prototype.postOrder = function (value){
  * @method BinaryTree.inOrder  
  * @description This method is used for tree traversal. Traversal order is left -> parent -> right.
  * @param {undefined} value - The node is used to tree traversal recursively. 
- * @throws This method returns null if node has no data.
+ * @throws This method returns 'false' if parameter is missing or the node has no data.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -112,9 +129,10 @@ BinaryTree.prototype.postOrder = function (value){
  * bt.inOrder(this.root); // Tree :  2-1-3
  */
 BinaryTree.prototype.inOrder = function (value){
+  if(value === null) return false;
   let node = new Node();
   node = value;
-  if(node === null) return;
+  if(node === null) return false;
   this.inOrder(node.left);
   if(node.data !== null)
   console.log("node data : " + node.data);
@@ -125,7 +143,7 @@ BinaryTree.prototype.inOrder = function (value){
  * @method BinaryTree.preOrder  
  * @description This method is used for tree traversal. Traversal order is parent -> left -> right.
  * @param {undefined} value - The node is used to tree traversal recursively. 
- * @throws This method returns null if node has no data.
+ * @throws This method returns 'false' if parameter is missing or the node has no data.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -134,9 +152,10 @@ BinaryTree.prototype.inOrder = function (value){
  * bt.preOrder(this.root);  // Tree :  1-2-3
  */
 BinaryTree.prototype.preOrder = function (value){
+  if(value === null) return false;
   let node = new Node();
   node = value;
-  if(node === null) return;
+  if(node === null) return false; 
   if(node.data !== null)
   console.log("node data : " + node.data);
   this.preOrder(node.left);  
