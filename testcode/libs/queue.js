@@ -291,7 +291,6 @@ CircularQueue.prototype.toString = function() {
   console.log(`=== ${this.size()} items in the queue : [${this.data}] ===`);
 };
 
-
 // Linked list queue -> will be implemented after implementing ll
 /* function LlQueue() {
   let data = [];

@@ -17,9 +17,4 @@ const BubbleSort = function(array) {
   return input;
 };
 
-
-// const input = ["나", "가", "안녕", "aw"];
-// const result = BubbleSort(input);
-
-// console.log(`\nresult : ${result}`);
 module.exports = BubbleSort;

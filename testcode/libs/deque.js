@@ -19,9 +19,9 @@ const Deque = function () {
 
 /**
  * @method Deque.push_front
- * @description This method is used to insert the specified element at the front of this deque.
- * @param {Undefined} value - The element to be inserted to this deque.
- * @throws This method returns –1 if the parameter is missing.
+ * @description This method is used to insert the specified value at the front of this deque.
+ * @param {undefined} value - The value to be inserted to this deque.
+ * @throws This method returns 'false' if the parameter is missing.
  * @example 
  * var dq = new Deque ();
  * dq.push_front(1);
@@ -30,7 +30,7 @@ const Deque = function () {
 Deque.prototype.push_front = function (value) {
   if (value === undefined){
     console.log("ERROR:push_front() required parameter");
-    return -1;
+    return false;
   }
 
   let newNode = new Node(value);  // make newNode
@@ -49,9 +49,9 @@ Deque.prototype.push_front = function (value) {
 
 /**
  * @method Deque.push_back
- * @description This method is used to insert the specified element at the end of this deque.
- * @param {Undefined} value - The element to be inserted to this deque.
- * @throws This method returns –1 if the parameter is missing.
+ * @description This method is used to insert the specified value at the end of this deque.
+ * @param {undefined} value - The value to be inserted to this deque.
+ * @throws This method returns 'false' if the parameter is missing.
  * @example 
  * var dq = new Deque ();
  * dq.push_back(3);
@@ -60,7 +60,7 @@ Deque.prototype.push_front = function (value) {
 Deque.prototype.push_back = function (value) {
   if (value === undefined){
     console.log("ERROR:push_back() required parameter");
-    return -1;
+    return false;
   }
 
   let newNode = new Node(value);  // make newNode
@@ -77,7 +77,7 @@ Deque.prototype.push_back = function (value) {
 
 /**
  * @method Deque.pop_front
- * @description This method is used to remove the element from the front of this deque.
+ * @description This method is used to remove the value from the front of this deque.
  * @throws This method returns null if this deque is empty.
  * @example 
  * var dq = new Deque ();
@@ -105,7 +105,7 @@ Deque.prototype.pop_front = function () {
 
 /**
  * @method Deque.pop_back
- * @description This method is used to remove the element from the end of this deque.
+ * @description This method is used to remove the value from the end of this deque.
  * @throws This method returns null if this deque is empty.
  * @example 
  * var dq = new Deque ();
@@ -133,9 +133,9 @@ Deque.prototype.pop_back = function () {
 
 /**
  * @method Deque.erase
- * @description This method is used to remove the element from the specified position from this deque.
+ * @description This method is used to remove the value from the specified position from this deque.
  * @param {Number} position - The position to be removed from this deque.
- * @throws This method returns null if this deque is empty, or –1 if the parameter is missing.
+ * @throws This method returns null if this deque is empty, or 'false' if the parameter is missing.
  * @example 
  * var dq = new Deque ();
  * dq.push_front(1);
@@ -147,7 +147,7 @@ Deque.prototype.pop_back = function () {
 Deque.prototype.erase = function (pos) {
   if (pos === undefined){
     console.log("ERROR::erase() required parameter");
-    return -1;
+    return false;
   }
 
   if (pos === 0) { // remove head value
@@ -183,7 +183,7 @@ Deque.prototype.erase = function (pos) {
 
 /**
  * @method Deque.clear
- * @description This method is used to remove all of the elements from this deque.
+ * @description This method is used to remove all of the values from this deque.
  * @example 
  * var dq = new Deque ();
  * dq.push_front(1);
@@ -204,7 +204,7 @@ Deque.prototype.clear = function () {
 
 /**
  * @method Deque.front
- * @description This method is used to get the element at the front of this deque.
+ * @description This method is used to get the value at the front of this deque.
  * @throws This method returns null if the deque is empty.
  * @example 
  * var dq = new Deque ();
@@ -226,7 +226,7 @@ Deque.prototype.front = function () {
 
 /**
  * @method Deque.back
- * @description This method is used to get the element at the end of this deque.
+ * @description This method is used to get the value at the end of this deque.
  * @throws This method returns null if the deque is empty.
  * @example 
  * var dq = new Deque ();
@@ -310,8 +310,8 @@ Deque.prototype.isEmpty = function () {
 
 /**
  * @method Deque.size
- * @description This method is used to get the number of elements in this deque.
- * @returns {Number} This method returns the number of elements in this deque.
+ * @description This method is used to get the number of values in this deque.
+ * @returns {Number} This method returns the number of values in this deque.
  * @example 
  * var dq = new Deque ();
  * dq.push_front(1);
@@ -327,10 +327,10 @@ Deque.prototype.size = function () {
 
 /**
  * @method Deque.at
- * @description This method is used to get the element from the specified position of this deque, but does not remove.
- * @param {Number} position - The position which want to get element from this deque.
- * @return {Undefined} This method returns the element from the specified position from this deque.
- * @throws This method returns null if the deque is empty, or –1 if the parameter is missing.
+ * @description This method is used to get the value from the specified position of this deque, but does not remove.
+ * @param {Number} position - The position which want to get value from this deque.
+ * @return {undefined} This method returns the value from the specified position from this deque.
+ * @throws This method returns null if the deque is empty, or 'false' if the parameter is missing.
  * @example 
  * var dq = new Deque ();
  * dq.push_front(1);
@@ -343,7 +343,7 @@ Deque.prototype.size = function () {
 Deque.prototype.at = function (pos) {
   if (pos === undefined){
     console.log("ERROR::at() required parameter");
-    return -1;
+    return false;
   }
 
   let getNode = new Node();
@@ -365,6 +365,5 @@ Deque.prototype.at = function (pos) {
   console.log("position(" + pos + ") : " + getNode.data);
   return getNode.data;
 };
-
 
 module.exports = Deque;

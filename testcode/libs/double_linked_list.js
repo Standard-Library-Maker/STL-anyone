@@ -24,8 +24,8 @@ const DoubleLinkedList = function() {
  * @method DoubleLinkedList.indexOf
  * @description This method is used to get the index of value from this double Linked list, but does not remove.
  * @param {undefined} value - The value which want to get index from this double Linked list.
- * @return {Boolean} This method returns ‘true’ if this double Linked list has value or ‘false’ if this double Linked list doesn't have value.
- * @thorws This method returns -1 if this ouble Linked list doens't have the specified value.
+ * @return {Number} This method returns index of the specified value.
+ * @thorws This method returns null if this double Linked list doens't have the specified value.
  * @example 
  * var dl = new DoubleLinkedList ();
  * dl.append(1);
@@ -42,13 +42,13 @@ DoubleLinkedList.prototype.indexOf = function(value) {
     index++;
     curNode = curNode.next;
   }
-  return -1;
+  return null;
 };
 
 /**
  * @method LinkedList.append
  * @description This method is used to append value at the end of double Linked list.
- * @param {undefined} value - The element to be appended to this double Linked list.
+ * @param {undefined} value - The value to be appended to this double Linked list.
  * @example 
  * var dl = new DoubleLinkedList ();
  * dl.append(1);
@@ -73,10 +73,10 @@ DoubleLinkedList.prototype.append = function(value) {
 
 /**
  * @method DoubleLinkedList.insert
- * @description This method is used to insert value at the specified position of double linked list.
- * @param {undefined} value - The element to be appended to this double linked list.
- * @param {Number} pos - The position to be appended value in this double linked list.
- * @throws This method returns –1 if cannot insert value at the specified position in this Linked list.
+ * @description This method is used to insert value at the specified position of double Linked list.
+ * @param {Number} pos - The position to be appended value in this double Linked list.
+ * @param {undefined} value - The value to be appended to this double Linked list.
+ * @throws This method returns 'false' if the specified position is not available.
  * @example 
  * var dl = new DoubleLinkedList ();
  * dl.append(1);
@@ -119,13 +119,15 @@ DoubleLinkedList.prototype.insert = function(pos, value) {
     this.length++;
   } else {
     console.log(`insert error. position should be in 0 < position < ${this.length}`);
-    return -1;
+    return false;
   }
 };
 
 /**
  * @method DoubleLinkedList.remove
  * @description This method is used to remove the specified value from this double Linked list.
+ * @param {undefined} value -  The value to be removed to this double linked list.
+ * @throws This method returns null if the value of the specified position in this double Linked list is empty.
  * @example 
  * var dl = new DoubleLinkedList ();
  * dl.append(1);
@@ -177,8 +179,8 @@ DoubleLinkedList.prototype.removeAt = function(pos) {
 
 /**
  * @method DoubleLinkedList.size
- * @description This method is used to get the number of elements in this double Linked list.
- * @returns {Number} This method returns the number of elements in this double Linked list.
+ * @description This method is used to get the number of values in this double Linked list.
+ * @returns {Number} This method returns the number of values in this double Linked list.
  * @example 
  * var dl = new DoubleLinkedList ();
  * dl.append(1);
@@ -192,7 +194,7 @@ DoubleLinkedList.prototype.size = function() {
 /**
  * @method DoubleLinkedList.toString
  * @description This method is used to get values of this double Linked list.
- * @returns {String} This method returns the String which has value of this double linked list.
+ * @returns {String} This method returns the String which has value of this double Linked list.
  * @example 
  * var dl = new DoubleLinkedList ();
  * dl.append(1);
@@ -227,16 +229,3 @@ DoubleLinkedList.prototype.isEmpty = function() {
 };
 
 module.exports = DoubleLinkedList;
-
-/* test code */
-let newList = new DoubleLinkedList();
-newList.append(1);
-newList.append(8);
-newList.append(5);
-console.log(newList);
-console.log(`removeAt(1) : ${newList.removeAt(1)}`);
-console.log(newList);
-console.log(`remove(6) : ${newList.remove(6)}`);
-newList.insert(1, 9);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
