@@ -14,7 +14,7 @@ const ArrQueue = function() {
 /**
  * @method ArrQueue.isEmpty  
  * @description This method is used to check if this queue is empty.
- * @returns {Boolean} This method returns ‘true’ if this queue is empty or ‘false’ if this queue is not empty.
+ * @returns This method returns ‘true’ if this queue is empty or ‘false’ if this queue is not empty.
  * @example 
  * var aq = new ArrQueue ();
  * var ret1 = aq.isEmpty(); // ret1 = true
