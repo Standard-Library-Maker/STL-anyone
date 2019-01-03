@@ -2,10 +2,10 @@ const swap = require("./swap");
 
 /**
  * @Class Heap
- * @classdesc Heap에 저장되어 있는 요소들은 트리 형태로 표현되며 요소의 정렬 방식에 따라 max-heap(내림차순), min-heap(오름차순)으로 나뉘며, 트리 형태이기 때문에 요소 간에는 부모-자식의 관계가 존재한다.
+ * @classdesc Heap에 저장되어 있는 요소들은 트리 형태로 표현되며 요소의 정렬 방식에 따라 max-heap(내림차순), min-heap(오름차순)으로 나뉩니다. 트리 형태이기 때문에 요소 간에는 부모, 자식의 관계가 존재합니다.
  * @example 
  * var heap = new Heap ();
- * @author //강세응 메일주소
+ * @author seeung0305@naver.com
  */
 const Heap = function(){
   this.data = [];
@@ -45,12 +45,14 @@ Heap.prototype.isEmpty = function(){
  * @description This method is used to insert the specified element into this heap.
  * This method is used in max-heap which its elements are ordered by ASC.
  * @param {Undefined} value - The element to be inserted to this heap.
+ * @throws This method will return null if value is null.
  * @example 
  * var heap = new Heap ();
  * heap.pushMax(1);
  * heap.pushMax(2);
  */
 Heap.prototype.pushMax = function(value){
+  if(value === null) return;
   this.data[this.count] = value;
   /*max heap*/
 
@@ -74,12 +76,14 @@ Heap.prototype.pushMax = function(value){
  * @description This method is used to insert the specified element into this heap.
  * This method is used in min-heap which its elements are ordered by DESC.
  * @param {Undefined} value - The element to be inserted to this heap.
+ * @throws This method will return null if value is null.
  * @example 
  * var heap = new Heap ();
  * heap.pushMin(1);
  * heap.pushMin(2);
  */
 Heap.prototype.pushMin = function(value){
+  if(value === null) return null;
   this.data[this.count] = value;
   /*min heap*/
 
@@ -201,6 +205,7 @@ Heap.prototype.popMin = function() {
  * heap.pushMin(1); 
  * heap.pushMin(2);
  * heap.clear(); 
+ * heap.state();
  */
 Heap.prototype.clear = function() {
   this.data = null;

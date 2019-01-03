@@ -32,20 +32,6 @@ HashMap.prototype.hash = function (key) {
   else if ((108 > hashCode) && (hashCode > 96)) {
     hashCode = 3;
   }
-<<<<<<< HEAD
-  else if((123 > hash) && (hash > 107)){
-    hash = 4;
-  }
-  else {
-    hash = 5;
-  }
-  return hash;
-};
-
-// hash_map::isEmpty()
-HashMap.prototype.isEmpty = function () {
-  return this.map === null;
-=======
   else if ((123 > hashCode) && (hashCode > 107)) {
     hashCode = 4;
   }
@@ -53,7 +39,6 @@ HashMap.prototype.isEmpty = function () {
     hashCode = 5;
   }
   return hashCode;
->>>>>>> 61c7407e5daa6baba4a092f796f6a526d7d3b992
 };
 
 /**
@@ -353,16 +338,4 @@ HashMap.prototype.test = function () {
   console.log(this.map);
 }
 
-<<<<<<< HEAD
-// HashMap => test by Jisoo
-console.log("\n=======test by Jisoo=======");
-let HashMap1 = new HashMap();
-HashMap1.put("A", 1);
-HashMap1.put("B", 2);
-HashMap1.put("C", 3);
-HashMap1.test();
-//console.log(HashMap1.hash("bc"));
-console.log(HashMap1.hash("zbc"));
-=======
 module.exports = HashMap;
->>>>>>> 61c7407e5daa6baba4a092f796f6a526d7d3b992

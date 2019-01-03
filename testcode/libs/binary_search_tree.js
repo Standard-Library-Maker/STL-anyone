@@ -10,18 +10,23 @@ let Node = function (value) {
  * 자식이 부모보다 클 경우 부모의 오른쪽 노드로, 자식이 부모보다 작을 경우 부모의 왼쪽 노드로 저장된다
  * @example 
  * var bst = new BinarySearchTree ();
- * @author //kang
+ * @author seeung0305@naver.com
  */
 const BinarySearchTree = function () {
   this.root = null;
 };
 
-<<<<<<< HEAD
+/**
+ * @method BinarySearchTree.isEmpty  
+ * @description This method is used to check if this binary search tree is empty.
+ * @example 
+ * var bst = new BinarySearchTree ();
+ * var let = bst.isEmpty();
+ */
 BinarySearchTree.prototype.isEmpty = function() {
   return this.root === null;
 };
 
-=======
 /**
  * @method BinarySearchTree.insert  
  * @description This method is used to insert the specified element into this binary search tree.
@@ -31,8 +36,8 @@ BinarySearchTree.prototype.isEmpty = function() {
  * bst.insert(1);
  * bst.insert(2);
  */
->>>>>>> 2cd0f12f0068aefa6b858ee255866e1b94a99f64
 BinarySearchTree.prototype.insert = function(value){
+  if(value === null) return null;
   let node = new Node(value);
   if(this.root === null){
     this.root = node;
@@ -90,6 +95,7 @@ BinarySearchTree.prototype.state = function(){
  * bst.inOrder(this.root);
  */
 BinarySearchTree.prototype.inOrder = function(value) {
+  if(value === null) return null;
   let node = new Node();
   node = value;
   if(node === null) return;
@@ -111,6 +117,7 @@ BinarySearchTree.prototype.inOrder = function(value) {
  * bst.minValue(this.root);
  */
 BinarySearchTree.prototype.minValue = function(value) {
+  if(value === null) return null;
   let node = new Node();
   node = value;
   if(node === null) return node;
@@ -130,6 +137,7 @@ BinarySearchTree.prototype.minValue = function(value) {
  * bst.maxValue(this.root);
  */
 BinarySearchTree.prototype.maxValue = function(value) {
+  if(value === null) return null;
   let node = new Node();
   node = value;
   if(node === null) return node;
@@ -152,6 +160,7 @@ BinarySearchTree.prototype.maxValue = function(value) {
  * bst.find(3); // return node
  */
 BinarySearchTree.prototype.find = function(value) {
+  if(value === null) return null;
   let node = new Node();
   node = this.root;
   while(true){
@@ -190,6 +199,7 @@ BinarySearchTree.prototype.find = function(value) {
  * bst.find(2); // return null
  */
 BinarySearchTree.prototype.delete = function (value) {
+  if(value === null) return null;
   let node = new Node();  
   node = this.find(value);
   if(node === null) {
@@ -233,7 +243,18 @@ BinarySearchTree.prototype.delete = function (value) {
   }
 };
 
+/**
+ * @method BinarySearchTree.clear  
+ * @description This method is used to nullify this binary search tree and make all variables initial.
+ * @example 
+ * var bst = new BinarySearchTree ();
+ * bst.push(1);
+ * bst.push(2);
+ * bst.push(3);
+ * bst.clear(this.root);
+ */
 BinarySearchTree.prototype.clear = function (value) {
+  if(value === null) return null;
   let node = new Node();
   node = value;
   if(node === null) return;
