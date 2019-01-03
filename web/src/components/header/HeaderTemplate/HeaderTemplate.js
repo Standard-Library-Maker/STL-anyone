@@ -13,7 +13,7 @@ class HeaderTemplate extends Component {
             <img src={logo3} className="header-logo" alt="logo" />
           </Link>
         </div>
-        <div>
+        <div className="header-bar">
           <div className="help">
             <a href="out/index.html">help</a>
           </div>
