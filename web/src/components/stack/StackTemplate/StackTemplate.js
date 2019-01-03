@@ -79,7 +79,7 @@ class StackTemplate extends Component {
     let myStack = this.state.stack;
     let result = this.state.textAreaValue;
     alert(`pop : ${myStack.pop()}`);
-    result.splice(result.length - 1,result.length);
+    result.splice(result.length - 1, 1);
 
     await this.setState({
       ...this.state,

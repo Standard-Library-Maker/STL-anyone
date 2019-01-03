@@ -1,4 +1,4 @@
-import Stack from './stack2'; //stack2 is temp file created by seeung kang
+import Stack from './stack';
 import Queue from './queue';
 import List from './list';
 import PriorityQueue from './priority_queue';
