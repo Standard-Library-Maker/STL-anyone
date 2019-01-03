@@ -167,7 +167,7 @@ BinarySearchTree.prototype.maxValue = function(value) {
  */
 BinarySearchTree.prototype.find = function(value) {
   if(value === null) return false;
-  if(this.root === null) return null;
+  if(this.root === null) return false;
   let node = new Node();
   node = this.root;
   while(true){
@@ -209,8 +209,8 @@ BinarySearchTree.prototype.delete = function (value) {
   if(value === null) return false;
   let node = new Node();  
   node = this.find(value);
-  if(node === null) {
-    return null;
+  if(node === false) {
+    return false;
   }
   console.log("====== delete data : " + node.data + " ======" );
   if(node === this.root){
