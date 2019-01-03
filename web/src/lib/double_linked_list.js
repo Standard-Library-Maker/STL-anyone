@@ -226,17 +226,4 @@ DoubleLinkedList.prototype.isEmpty = function() {
   return this.head === null && this.length === 0;
 };
 
-module.exports = DoubleLinkedList;
-
-/* test code */
-let newList = new DoubleLinkedList();
-newList.append(1);
-newList.append(8);
-newList.append(5);
-console.log(newList);
-console.log(`removeAt(1) : ${newList.removeAt(1)}`);
-console.log(newList);
-console.log(`remove(6) : ${newList.remove(6)}`);
-newList.insert(1, 9);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
+export default DoubleLinkedList;

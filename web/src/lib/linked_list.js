@@ -246,44 +246,4 @@ LinkedList.prototype.isEmpty = function() {
   return this.head === null && this.length === 0;
 };
 
-module.exports = LinkedList;
-
-/* test code */
-let newList = new LinkedList();
-newList.append(2);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.append(5);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.append(1);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.insert(2, 7);
-console.log(newList);
-console.log(`find(1) : ${newList.find(1)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-
-console.log(`remove(7) : ${newList.remove(7)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-
-newList.append(10);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-
-console.log(`remove(2) : ${newList.remove(2)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-
-console.log(`remove(2) : ${newList.remove(3)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-
-
-// newList.end();
-// console.log(`current position's element : ${newList.getElement()}`);
-// newList.clear();
-// console.log("after clear");
-// newList.toString(); 
+export default LinkedList;
