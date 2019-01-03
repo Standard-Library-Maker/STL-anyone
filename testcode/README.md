@@ -14,15 +14,11 @@
 ## Environment Settings and Execution steps
 - Just for test now. You can change your inputs in the code.
 
-### in bash Environment
-1. npm install or npm i
-2. node '~.js' or npm start
-3. check the console log
-### in cmd Environment
-1. npm install or npm i
-2. node '~.js' or npm start
-3. check the console log
+### How To (cmd or ubuntu bash shell)
+1. go to 'STL-anyone/testcode' folder
+2. enter command `npm install(or npm i)`
+3. enter command `npm start`
 
 ## License
 
-d2-klc/js-stl is licensed under the [MIT license](https://github.com/d2-klc/js-stl/blob/master/LICENSE).
+Standard-Library-Maker/STL-anyone is licensed under the [MIT license](https://github.com/d2-klc/js-stl/blob/master/LICENSE).
