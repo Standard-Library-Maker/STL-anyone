@@ -26,9 +26,14 @@ BinaryTree.prototype.push = function (value) {
 };
 
 BinaryTree.prototype.pop = function () {
+  if(this.size() === 0) return;
   this.tree[this.size() - 1].data = null;
   this.tree[this.size() - 1] = null;
   this.count--;
+};
+
+BinaryTree.prototype.isEmpty = function () {
+  return this.root === null;
 };
 
 BinaryTree.prototype.size = function () {

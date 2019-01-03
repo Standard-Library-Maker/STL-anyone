@@ -56,57 +56,59 @@ Heap.prototype.state = function() {
 };
 
 Heap.prototype.popMax = function() {
-  if(this.isEmpty()) console.log("Error. Heap is Empty");
-  else{
-    let popedValue = this.data[0];
-    // move last node to first node
-    this.data[0] = this.data[this.count - 1];
-    this.data.splice(--this.count, 1);
-    // move first node to adequate place
-    let location = 0;
-    while(location * 2 < this.count) {
-      let max;
-      if(this.data[location * 2 + 1] >= this.data[location * 2 + 2]) {
-        max = location * 2 + 1;
-      } else{
-        max = location * 2 + 2;
-      }
-      if(this.data[location] < this.data[max]) {
-        swap(this.data, location, max);
-        location = max;
-      } else{
-        break;
-      }
-    }
-    return popedValue;
+  if(this.isEmpty()) {
+    console.log("Error. Heap is Empty");
+    return null;
   }
+  let popedValue = this.data[0];
+  // move last node to first node
+  this.data[0] = this.data[this.count - 1];
+  this.data.splice(--this.count, 1);
+  // move first node to adequate place
+  let location = 0;
+  while(location * 2 < this.count) {
+    let max;
+    if(this.data[location * 2 + 1] >= this.data[location * 2 + 2]) {
+      max = location * 2 + 1;
+    } else{
+      max = location * 2 + 2;
+    }
+    if(this.data[location] < this.data[max]) {
+      swap(this.data, location, max);
+      location = max;
+    } else{
+      break;
+    }
+  }
+  return popedValue;
 };
 
 Heap.prototype.popMin = function() {
-  if(this.isEmpty()) console.log("Error. Heap is Empty");
-  else{
-    let popedValue = this.data[0];
-    // move last node to first node
-    this.data[0] = this.data[this.count - 1];
-    this.data.splice(--this.count, 1);
-    // move first node to adequate place
-    let location = 0;
-    while(location * 2 < this.count) {
-      let min;
-      if(this.data[location * 2 + 1] <= this.data[location * 2 + 2]) {
-        min = location * 2 + 1;
-      } else{
-        min = location * 2 + 2;
-      }
-      if(this.data[location] > this.data[min]) {
-        swap(this.data, location, min);
-        location = min;
-      } else{
-        break;
-      }
-    }
-    return popedValue;
+  if(this.isEmpty()) {
+    console.log("Error. Heap is Empty");
+    return null;
   }
+  let popedValue = this.data[0];
+  // move last node to first node
+  this.data[0] = this.data[this.count - 1];
+  this.data.splice(--this.count, 1);
+  // move first node to adequate place
+  let location = 0;
+  while(location * 2 < this.count) {
+    let min;
+    if(this.data[location * 2 + 1] <= this.data[location * 2 + 2]) {
+      min = location * 2 + 1;
+    } else {
+      min = location * 2 + 2;
+    }
+    if(this.data[location] > this.data[min]) {
+      swap(this.data, location, min);
+      location = min;
+    } else{
+      break;
+    }
+  }
+  return popedValue;
 };
 
 Heap.prototype.clear = function() {
@@ -115,7 +117,11 @@ Heap.prototype.clear = function() {
 };
 
 Heap.prototype.makeMaxHeap = function(array) {
-  /* make normal array to heap */    
+  /* make normal array to heap */
+  if(array.length === 0) {
+    console.log("Input array is now empty");
+    return;
+  }
   for(let i = 1; i < array.length; i++) {
     let now = i;
     let parent = null;
@@ -133,7 +139,11 @@ Heap.prototype.makeMaxHeap = function(array) {
 };
 
 Heap.prototype.makeMinHeap = function(array) {
-  /* make normal array to heap */    
+  /* make normal array to heap */
+  if(array.length === 0) {
+    console.log("Input array is now empty");
+    return;
+  }
   for(let i = 1; i < array.length; i++) {
     let now = i;
     let parent = null;
@@ -149,5 +159,8 @@ Heap.prototype.makeMinHeap = function(array) {
   }
   console.log(`=== ${array.length} items in the heap : [${array}] ===`);
 };
+var heap = new Heap();
+let arr = [1,2,3];
+heap.makeMinHeap(arr);
 
 module.exports = Heap;

@@ -8,6 +8,10 @@ const BinarySearchTree = function () {
   this.root = null;
 };
 
+BinarySearchTree.prototype.isEmpty = function() {
+  return this.root === null;
+};
+
 BinarySearchTree.prototype.insert = function(value){
   let node = new Node(value);
   if(this.root === null){
@@ -136,6 +140,16 @@ BinarySearchTree.prototype.delete = function (value) {
     node.data = replace.data;
     replace.data = null;
   }
+};
+
+BinarySearchTree.prototype.clear = function (value) {
+  let node = new Node();
+  node = value;
+  if(node === null) return;
+  this.inOrder(node.left);
+  if(node.data !== null)
+  node.data = null;
+  this.inOrder(node.right);
 };
 
 module.exports = BinarySearchTree;
