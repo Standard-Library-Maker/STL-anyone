@@ -5,6 +5,8 @@
 - test codes in the '/testcode' folder
 - view on the website using '/web' folder
 
+# Sample Web
+![queue](design/queue.gif)
 -----
 ## License
 - Created by) Kang Se Eung, Lee Ji Soo, Cho Young Il
