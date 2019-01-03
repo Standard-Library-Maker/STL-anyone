@@ -1,8 +1,8 @@
 let Stack = require("./libs/stack");
 let Queue = require("./libs/queue");
-let BubbleSort = require("./libs/[sort]bubble");
+// let BubbleSort = require("./libs/[sort]bubble");
 let List = require("./libs/list");
-//let LinkedList = require("./libs/linked_list");
+// let LinkedList = require("./libs/linked_list");
 let Heap = require("./libs/heap");
 let PriorityQueue = require("./libs/priority_queue");
 let BinaryTree = require("./libs/binary_tree");
@@ -58,45 +58,50 @@ s.state(); */
 s1.push("hello world");
 s1.push("hello javascript");
 s1.push("this is queue");
-s1.state();
+s1.toString();
 console.log(`front : ${s1.front()}`);
 console.log(`back : ${s1.back()}`);
 console.log(`size : ${s1.size()}`);
 
 console.log(`pop : ${s1.pop()}`);
-s1.state();
+s1.toString();
 console.log(`front : ${s1.front()}`);
 console.log(`back : ${s1.back()}`);
 console.log(`size : ${s1.size()}`);
 s1.clear();
 console.log("=== after clear() ===");
-s1.state(); */
+s1.toString(); */
 
 /* test code2 */
 /* let s2 = new CircularQueue(3);
 s2.push("hello world");
 s2.push("hello javascript");
 s2.push("this is circular queue");
-s2.state();
+
+s2.toString();
+console.log(`[isFull] is full? ${s2.isFull()}`);
 console.log(`front : ${s2.front()}`);
 console.log(`back : ${s2.back()}`);
 console.log(`size : ${s2.size()}`);
 
 console.log(`pop : ${s2.pop()}`);
-s2.state();
+s2.toString();
+console.log(`[isFull] is full? ${s2.isFull()}`);
 console.log(`front : ${s2.front()}`);
 console.log(`back : ${s2.back()}`);
 console.log(`size : ${s2.size()}`);
 
 console.log(`pop : ${s2.pop()}`);
-s2.state();
+s2.toString();
 console.log(`front : ${s2.front()}`);
 console.log(`back : ${s2.back()}`);
 console.log(`size : ${s2.size()}`);
+console.log(`[isEmpty] is empty? ${s2.isEmpty()}`);
 
 s2.clear();
 console.log("=== after clear() ===");
-s2.state(); */
+s2.toString();
+console.log(`[isEmpty] is empty? ${s2.isEmpty()}`); */
 
 /* list test case
 let newList = new List();

@@ -58,11 +58,10 @@ class QueueTemplate extends Component {
     }
 
     let myQueue = this.state.queue;
-    let pushedValue = this.state.pushValue;
     let result = this.state.textAreaValue;
     //console.log(myQueue);
-    myQueue.push(pushedValue);
-    result.push(pushedValue+' -> ');
+    myQueue.push(this.state.pushValue);
+    result.push(this.state.pushValue + ' -> ');
 
     await this.setState({
       ...this.state,
@@ -129,6 +128,7 @@ class QueueTemplate extends Component {
     let value = this.state;
     let output = '';
     value.textAreaValue.forEach( (v) => {output += v;});
+
     return (
       <div className="queue">
         <div className="queue-header">

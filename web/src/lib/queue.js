@@ -57,6 +57,7 @@ const CircularQueue = function (max) {
 CircularQueue.prototype.isFull = function() {
   return ((this.qBack + 1) % this.MAX_SIZE === this.qFront);
 };
+
 CircularQueue.prototype.isEmpty = function() {
   return this.qBack === this.qFront;
 };
