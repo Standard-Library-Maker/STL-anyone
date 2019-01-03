@@ -13,4 +13,6 @@ class PriorityQueueTemplate extends Component {
         textAreaValue: [],
       };
     }
-};
+}
+
+export default PriorityQueueTemplate;

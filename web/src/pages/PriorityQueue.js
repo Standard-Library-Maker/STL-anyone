@@ -1,5 +1,5 @@
 import React from 'react';
-import PriorityQueueTemplate from "components/PriorityQueue/PriorityQueueTemplate"
+import PriorityQueueTemplate from "components/priorityQueue/PriorityQueueTemplate"
 
 const PriorityQueue = () => {
   return (
