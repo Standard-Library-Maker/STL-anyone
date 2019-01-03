@@ -13,10 +13,14 @@ class HeaderTemplate extends Component {
             <img src={logo3} className="header-logo" alt="logo" />
           </Link>
         </div>
-        <div className="menu">
-          menu
+        <div>
+          <div className="help">
+            <a href="out/index.html">help</a>
+          </div>
+          <div className="menu">
+            menu
+          </div>
         </div>
-        <input type="button" value="help" onclick="location.href=../src/out/index.html"></input>
       </div >
     )
   }
