@@ -12,6 +12,7 @@ class QueueTemplate extends Component {
       pushValue: '',
       textAreaValue: [],
       hidden: true,
+      output: ''
     };
   }
 
@@ -24,10 +25,11 @@ class QueueTemplate extends Component {
   };
 
   handleChange = (e) => {
-    if(e.target.name === "pushInput") {
+    if(e.target.name === "pushInput") { // 새로운 입력 일어날 때마다 hidden: true
       this.setState({
         ...this.state,
-        pushValue: e.target.value
+        pushValue: e.target.value,
+        hidden: true 
       });
     } else if(e.target.name === "resultArea") {
       this.setState({
@@ -37,18 +39,27 @@ class QueueTemplate extends Component {
     }
   };
 
+  makeOutput = () => {
+    let output = '';
+    this.state.textAreaValue.forEach( (v) => {output += v;});
+    this.setState({
+      output: output
+    })
+  };
+
   start = async () => {
     let newQueue = new stl.Queue.ArrQueue();
     alert("New Queue Created!");
     await this.setState({
-      ...this.state,
       queue: newQueue,
+      pushValue: '',
       textAreaValue: [],
+      hidden: true,
+      output: ''
     }, () => {
       console.log(newQueue);
     });
     //this.forceUpdate();
-    // alert(newQueue.state());
   };
 
   queuePush = async () => {
@@ -72,7 +83,6 @@ class QueueTemplate extends Component {
       hidden: !this.state.hidden
     });
     //this.forceUpdate()
-    //alert(`push : ${this.state.queue.state()}`);
   };
 
   queuePop = async () => {
@@ -88,7 +98,6 @@ class QueueTemplate extends Component {
       queue: myQueue,
       textAreaValue: result
     });
-    // alert(`pop : ${this.state.popValue}`);
   };
 
   getState = () => {
@@ -129,8 +138,8 @@ class QueueTemplate extends Component {
 
   render() {
     let value = this.state;
-    let output = '';
-    value.textAreaValue.forEach( (v) => {output += v;});
+    /*let output = '';
+    value.textAreaValue.forEach( (v) => {output += v;});*/
 
     return (
       <div className="queue">
@@ -141,17 +150,22 @@ class QueueTemplate extends Component {
         <button className="start-btn" onClick={this.start}>Create Queue</button>
         <div className="test-code">
           <div className="result-area">
-            {/*<textarea
-              name="resultArea"
-              value={output}
-              readOnly
-            />*/}
             <input
+              className="queue-storage"
               name="resultArea"
-              value={output}
-              disabled
-              style={{display: this.state.hidden ? 'none' : 'block'}}
+              value={value.output}
+              readOnly
             />
+            <div className="queue-value-div">
+              <input
+                className="queue-value"
+                name="resultArea"
+                value={value.pushValue}
+                disabled
+                style={{display: this.state.hidden ? 'none' : 'block'}}
+                onAnimationEnd={this.makeOutput}
+              />
+            </div>
           </div>
           <div className="user-input-section">
             <div className="push-form">
