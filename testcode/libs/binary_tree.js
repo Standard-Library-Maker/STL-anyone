@@ -22,6 +22,7 @@ const BinaryTree = function () {
  * @description This method is used to insert the specified element into this binary tree.
  * @param {undefined} value - The element to be inserted to this binary tree.
  * @returns {Boolean} This method returns the number of elements in this binary tree.
+ * @throws This method returns null if parameter is missing.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -48,7 +49,7 @@ BinaryTree.prototype.push = function (value) {
  * @method BinaryTree.pop  
  * @description This method is used to remove the very first element from this binary tree.
  * @returns {undefined} This method returns the first element from this binary tree.
- * @throws This method returns null if binary tree is empty.
+ * @throws This method returns 'false' if binary tree is empty.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -57,7 +58,7 @@ BinaryTree.prototype.push = function (value) {
  * bt.pop(); // 3 will be removed
  */
 BinaryTree.prototype.pop = function () {
-  if(this.size() === 0) return;
+  if(this.size() === 0) return false;
   this.tree[this.size() - 1].data = null;
   this.tree[this.size() - 1] = null;
   this.count--;
@@ -80,7 +81,7 @@ BinaryTree.prototype.isEmpty = function () {
 /**
  * @method BinaryTree.size  
  * @description This method is used to get the number of elements in this binary tree.
- * @returns {Boolean} This method returns the number of elements in this binary tree.
+ * @returns {Number} This method returns the number of elements in this binary tree.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -96,7 +97,7 @@ BinaryTree.prototype.size = function () {
  * @method BinaryTree.postOrder  
  * @description This method is used for tree traversal. Traversal order is left -> right -> parent.
  * @param {undefined} value - The node is used to tree traversal recursively. 
- * @throws This method returns null if node has no data.
+ * @throws This method returns 'false' if parameter is missing or the node has no data.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -105,10 +106,10 @@ BinaryTree.prototype.size = function () {
  * bt.postOrder(this.root); // Tree :  2-3-1
  */
 BinaryTree.prototype.postOrder = function (value){
-  if(value === null) return null;
+  if(value === null) return false;
   let node = new Node(value);
   node = value;
-  if(node === null) return;
+  if(node === null) return false;
   this.postOrder(node.left);
   this.postOrder(node.right);
   if(node.data !== null)
@@ -119,7 +120,7 @@ BinaryTree.prototype.postOrder = function (value){
  * @method BinaryTree.inOrder  
  * @description This method is used for tree traversal. Traversal order is left -> parent -> right.
  * @param {undefined} value - The node is used to tree traversal recursively. 
- * @throws This method returns null if node has no data.
+ * @throws This method returns 'false' if parameter is missing or the node has no data.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -128,10 +129,10 @@ BinaryTree.prototype.postOrder = function (value){
  * bt.inOrder(this.root); // Tree :  2-1-3
  */
 BinaryTree.prototype.inOrder = function (value){
-  if(value === null) return null;
+  if(value === null) return false;
   let node = new Node();
   node = value;
-  if(node === null) return;
+  if(node === null) return false;
   this.inOrder(node.left);
   if(node.data !== null)
   console.log("node data : " + node.data);
@@ -142,7 +143,7 @@ BinaryTree.prototype.inOrder = function (value){
  * @method BinaryTree.preOrder  
  * @description This method is used for tree traversal. Traversal order is parent -> left -> right.
  * @param {undefined} value - The node is used to tree traversal recursively. 
- * @throws This method returns null if node has no data.
+ * @throws This method returns 'false' if parameter is missing or the node has no data.
  * @example 
  * var bt = new BinaryTree ();
  * bt.push(1);
@@ -151,10 +152,10 @@ BinaryTree.prototype.inOrder = function (value){
  * bt.preOrder(this.root);  // Tree :  1-2-3
  */
 BinaryTree.prototype.preOrder = function (value){
-  if(value === null) return null;
+  if(value === null) return false;
   let node = new Node();
   node = value;
-  if(node === null) return;
+  if(node === null) return false; 
   if(node.data !== null)
   console.log("node data : " + node.data);
   this.preOrder(node.left);  

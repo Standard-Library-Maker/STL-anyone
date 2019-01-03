@@ -45,14 +45,14 @@ Heap.prototype.isEmpty = function(){
  * @description This method is used to insert the specified element into this heap.
  * This method is used in max-heap which its elements are ordered by ASC.
  * @param {Undefined} value - The element to be inserted to this heap.
- * @throws This method will return null if value is null.
+ * @throws This method returns null if parameter is missing.
  * @example 
  * var heap = new Heap ();
  * heap.pushMax(1);
  * heap.pushMax(2);
  */
 Heap.prototype.pushMax = function(value){
-  if(value === null) return;
+  if(value === null) return null;
   this.data[this.count] = value;
   /*max heap*/
 
@@ -76,7 +76,7 @@ Heap.prototype.pushMax = function(value){
  * @description This method is used to insert the specified element into this heap.
  * This method is used in min-heap which its elements are ordered by DESC.
  * @param {Undefined} value - The element to be inserted to this heap.
- * @throws This method will return null if value is null.
+ * @throws This method returns null if parameter is missing.
  * @example 
  * var heap = new Heap ();
  * heap.pushMin(1);
@@ -216,7 +216,7 @@ Heap.prototype.clear = function() {
  * @method Heap.makeMaxHeap
  * @description This method makes normal array into max-heap.
  * @param {Array} array The array is to be reconstructed to max-heap.
- * @throws This method returns null if inserted array is empty.
+ * @throws This method returns 'false' if inserted array is empty.
  * @example 
  * var heap = new Heap ();
  * var arr = [1,2,3];
@@ -226,7 +226,7 @@ Heap.prototype.makeMaxHeap = function(array) {
   /* make normal array to heap */
   if(array.length === 0) {
     console.log("Input array is now empty");
-    return;
+    return false;
   }
   for(let i = 1; i < array.length; i++) {
     let now = i;
@@ -248,7 +248,7 @@ Heap.prototype.makeMaxHeap = function(array) {
  * @method Heap.makeMinHeap
  * @description This method makes normal array into min-heap.
  * @param {Array} array The array is to be reconstructed to min-heap.
- * @throws This method returns null if inserted array is empty.
+ * @throws This method returns 'false' if inserted array is empty.
  * @example 
  * var heap = new Heap ();
  * var arr = [3,2,1];
@@ -258,7 +258,7 @@ Heap.prototype.makeMinHeap = function(array) {
   /* make normal array to heap */
   if(array.length === 0) {
     console.log("Input array is now empty");
-    return;
+    return false;
   }
   for(let i = 1; i < array.length; i++) {
     let now = i;
@@ -275,8 +275,5 @@ Heap.prototype.makeMinHeap = function(array) {
   }
   console.log(`=== ${array.length} items in the heap : [${array}] ===`);
 };
-var heap = new Heap();
-let arr = [1,2,3];
-heap.makeMinHeap(arr);
 
 module.exports = Heap;
