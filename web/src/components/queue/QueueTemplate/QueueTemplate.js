@@ -31,11 +31,12 @@ class QueueTemplate extends Component {
         ...this.state,
         pushValue: e.target.value,
       });
-    } else if(e.target.name === "resultArea") {
-      this.setState({
-        ...this.state,
-        textAreaValue: e.target.value
-      });
+    }
+  };
+
+  enterPress = async (e) => {
+    if(e.keyCode === 13){
+      await this.queuePush();
     }
   };
 
@@ -84,7 +85,6 @@ class QueueTemplate extends Component {
 
     let myQueue = this.state.queue;
     let result = this.state.textAreaValue;
-    //console.log(myQueue);
     myQueue.push(this.state.pushValue);
     result.push(this.state.pushValue + ' ');
     //result.push(this.state.pushValue + ' -> ');
@@ -166,27 +166,6 @@ class QueueTemplate extends Component {
         <div className="title">Queue</div>
         <button className="start-btn" onClick={this.start}>Create Queue</button>
         <div className="test-code">
-          <div className="result-area">
-            <div className="value-layers">
-              {/*<input
-                className="queue-storage"
-                name="resultArea"
-                value={value.output}
-                readOnly
-              />*/}
-              {this.makeLayer()}
-            </div>
-            <div className="queue-value-div">
-              <input
-                className="queue-value"
-                name="resultArea"
-                value={value.pushValue}
-                disabled
-                style={{display: this.state.hidden ? 'none' : 'block'}}
-                onAnimationEnd={this.makeOutput}
-              />
-            </div>
-          </div>
           <div className="user-input-section">
             <div className="push-form">
               <input
@@ -194,6 +173,8 @@ class QueueTemplate extends Component {
                 name="pushInput"
                 value={value.pushValue}
                 onChange={this.handleChange}
+                onKeyDown={this.enterPress}
+                disabled={!value.hidden}
               />
               <button onClick={this.queuePush} disabled={!value.hidden}>push</button>
             </div>
@@ -214,6 +195,28 @@ class QueueTemplate extends Component {
             </div>
             <div className="back-form">
               <button onClick={this.getBack}>back</button>
+            </div>
+          </div>
+
+          <div className="result-area">
+            <div className="value-layers">
+              {/*<input
+                className="queue-storage"
+                name="resultArea"
+                value={value.output}
+                readOnly
+              />*/}
+              {this.makeLayer()}
+            </div>
+            <div className="queue-value-div">
+              <input
+                className="queue-value"
+                name="resultArea"
+                value={value.pushValue}
+                disabled
+                style={{display: this.state.hidden ? 'none' : 'block'}}
+                onAnimationEnd={this.makeOutput}
+              />
             </div>
           </div>
         </div>
