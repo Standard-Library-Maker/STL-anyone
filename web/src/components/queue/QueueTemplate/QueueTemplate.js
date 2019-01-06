@@ -8,6 +8,7 @@ class QueueTemplate extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      index: 0,
       queue: '',
       pushValue: '',
       textAreaValue: [],
@@ -42,13 +43,21 @@ class QueueTemplate extends Component {
     let output = '';
     let result = this.state.textAreaValue;
     result.forEach( (v) => {output += v;});
+    this.makeLayer();
     await setTimeout(() => {
       this.setState({
         ...this.state,
+        index: this.state.index + 1,
         hidden: true,
         output: output
       })
     }, 300);
+  };
+
+  makeLayer = () => {
+    let layer;
+    layer = <div className={"value-layer" + this.state.index}> {this.state.output} </div>;
+    return layer;
   };
 
   start = async () => {
@@ -77,7 +86,7 @@ class QueueTemplate extends Component {
     let result = this.state.textAreaValue;
     //console.log(myQueue);
     myQueue.push(this.state.pushValue);
-    result.push(this.state.pushValue);
+    result.push(this.state.pushValue + ' ');
     //result.push(this.state.pushValue + ' -> ');
 
     await this.setState({
@@ -158,12 +167,15 @@ class QueueTemplate extends Component {
         <button className="start-btn" onClick={this.start}>Create Queue</button>
         <div className="test-code">
           <div className="result-area">
-            <input
-              className="queue-storage"
-              name="resultArea"
-              value={value.output}
-              readOnly
-            />
+            <div className="value-layers">
+              {/*<input
+                className="queue-storage"
+                name="resultArea"
+                value={value.output}
+                readOnly
+              />*/}
+              {this.makeLayer()}
+            </div>
             <div className="queue-value-div">
               <input
                 className="queue-value"
