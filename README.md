@@ -6,7 +6,7 @@
 - view on the website using '/web' folder
 
 # Sample Web
-![queue](design/queue.gif)
+![queue](design/queue.webp)
 -----
 ## License
 - Created by) Kang Se Eung, Lee Ji Soo, Cho Young Il
