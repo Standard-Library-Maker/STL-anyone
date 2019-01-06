@@ -43,15 +43,15 @@ class QueueTemplate extends Component {
     let output = '';
     let result = this.state.textAreaValue;
     result.forEach( (v) => {output += v;});
-    this.makeLayer();
     await setTimeout(() => {
       this.setState({
         ...this.state,
         index: this.state.index + 1,
         hidden: true,
         output: output
-      })
+      });
     }, 300);
+    return true;
   };
 
   makeLayer = () => {
@@ -195,7 +195,7 @@ class QueueTemplate extends Component {
                 value={value.pushValue}
                 onChange={this.handleChange}
               />
-              <button onClick={this.queuePush}>push</button>
+              <button onClick={this.queuePush} disabled={!value.hidden}>push</button>
             </div>
             <div className="pop-form">
               <button onClick={this.queuePop}>pop</button>
