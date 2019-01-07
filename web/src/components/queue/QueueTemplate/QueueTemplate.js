@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import React, {Component} from 'react';
 import stl from 'lib/stl';
 import HeaderTemplate from 'components/header/HeaderTemplate';
 import './QueueTemplate.scss';
@@ -13,7 +12,8 @@ class QueueTemplate extends Component {
       pushValue: '',
       textAreaValue: [],
       hidden: true,
-      output: ''
+      output: '',
+      // layer: ''
     };
   }
 
@@ -43,13 +43,17 @@ class QueueTemplate extends Component {
   makeOutput = async () => {
     let output = '';
     let result = this.state.textAreaValue;
+    // let layer = this.state.layer;
     result.forEach( (v) => {output += v;});
+    // layer += <div className={"value-layer" + this.state.index}> {this.state.output} </div>;
+
     await setTimeout(() => {
       this.setState({
         ...this.state,
         index: this.state.index + 1,
         hidden: true,
-        output: output
+        output: output,
+        // layer: layer
       });
     }, 300);
     return true;
@@ -57,19 +61,32 @@ class QueueTemplate extends Component {
 
   makeLayer = () => {
     let layer;
-    layer = <div className={"value-layer" + this.state.index}> {this.state.output} </div>;
+    layer = <div className={"value-layer"}> {this.state.output} </div>;
     return layer;
   };
+
+  /*makeLayer2 = () => {
+    let layer = <div><div className={"value-layer0"}> {this.state.output} </div>
+      <div className={"value-layer1"}> {this.state.output} </div></div>;
+    console.log(typeof layer +", " + layer.toString());
+
+    /!*for(let i = 1; i < this.state.index; i++) {
+     layer += <div className={"value-layer" + i}> {this.state.pushValue} </div>;
+    }*!/
+    return layer
+};*/
 
   start = async () => {
     let newQueue = new stl.Queue.ArrQueue();
     alert("New Queue Created!");
     await this.setState({
+      index: 0,
       queue: newQueue,
       pushValue: '',
       textAreaValue: [],
       hidden: true,
-      output: ''
+      output: '',
+      layer: ''
     }, () => {
       console.log(newQueue);
     });
