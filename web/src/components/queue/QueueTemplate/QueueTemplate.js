@@ -60,8 +60,8 @@ class QueueTemplate extends Component {
   };
 
   makeLayer = () => {
-    let layer;
-    layer = <div className={"value-layer"}> {this.state.output} </div>;
+    let layer = null;
+    layer = <div className={"value-layer"+this.state.index}> {this.state.output} </div>;
     return layer;
   };
 
@@ -86,7 +86,7 @@ class QueueTemplate extends Component {
       textAreaValue: [],
       hidden: true,
       output: '',
-      layer: ''
+      //layer: ''
     }, () => {
       console.log(newQueue);
     });
@@ -216,7 +216,7 @@ class QueueTemplate extends Component {
           </div>
 
           <div className="result-area">
-            <div className="value-layers">
+            <div className="value-layers" style={{display: value.queue ? 'flex' : 'none'}}>
               {/*<input
                 className="queue-storage"
                 name="resultArea"
