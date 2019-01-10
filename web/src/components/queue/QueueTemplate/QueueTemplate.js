@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import stl from 'lib/stl';
 import HeaderTemplate from 'components/header/HeaderTemplate';
+import ToastMessage from 'components/popup/ToastMessage';
 import './QueueTemplate.scss';
 
 class QueueTemplate extends Component {
