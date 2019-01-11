@@ -1,37 +1,37 @@
 .toast-message {
-  width: 250px;
+  width: 200px;
   height: 20px;
-  height:auto;
   position: fixed;
-  left: 50%;
-  margin-left:-125px;
-  bottom: 100px;
+  right: 10%;
+  //margin-left:-125px;
+  top: 100px;
   z-index: 9999;
-  background-color: #383838;
+  background-color: #6db9f3;
   color: #F0F0F0;
-  font-family: Calibri;
-  font-size: 15px;
+  font-family: Calibri, serif;
+  font-size: 1rem;
+  font-weight: bold;
   padding: 10px;
   text-align:center;
   border-radius: 2px;
-  -webkit-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
-  -moz-box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
-  box-shadow: 0px 0px 24px -1px rgba(56, 56, 56, 1);
-  animation: slide-in-right 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s,
-            slide-out-right 0.5s cubic-bezier(0.550, 0.085, 0.680, 0.530) both;
-  @keyframes slide-in-right {
+  -webkit-box-shadow: 0 0 24px -1px rgba(56, 56, 56, 1);
+  -moz-box-shadow: 0 0 24px -1px rgba(56, 56, 56, 1);
+  box-shadow: 0 0 24px -1px rgba(56, 56, 56, 1);
+  -webkit-animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 300ms;
+  -o-animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 300ms;
+  animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 300ms;
+
+  @keyframes slide-in-and-out-right {
     0% {
       transform: translateX(1000px);
       opacity: 0;
     }
-    100% {
-      transform: translateX(0);
+    40% {
+      transform: translateX(0px);
       opacity: 1;
     }
-  }
-  @keyframes slide-out-right {
-    0% {
-      transform: translateX(0);
+    60% {
+      transform: translateX(0px);
       opacity: 1;
     }
     100% {

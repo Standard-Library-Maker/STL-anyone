@@ -66,6 +66,10 @@ class QueueTemplate extends Component {
     return layer;
   };
 
+  sendMsg = msg => {
+    return <ToastMessage msg={msg}/>
+  };
+
   /*makeLayer2 = () => {
     let layer = <div><div className={"value-layer0"}> {this.state.output} </div>
       <div className={"value-layer1"}> {this.state.output} </div></div>;
@@ -143,7 +147,9 @@ class QueueTemplate extends Component {
       //console.log(myQueue.state());
       //console.log(this.state);
       //this.forceUpdate();
-      alert(myQueue.toString());
+      //alert(myQueue.toString());
+      //return <ToastMessage msg={myQueue.toString()}/>
+      this.sendMsg(myQueue.toString());
     }
   };
 
