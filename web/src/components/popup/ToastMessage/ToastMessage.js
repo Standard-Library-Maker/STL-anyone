@@ -1,32 +1,42 @@
-import React, {Component} from 'react';
+import React, {Component, Fragment} from 'react';
 import './ToastMessage.scss';
 
-/*class ToastMessage extends Component{
-  constructor(props){
-    super(props);
-    //this.state = props;
-    this.state = props;
-  }
+class ToastMessage extends Component{
 
-  setMsg = (msg) => {
-    this.setState({
-      msg: msg,
-    });
+  sendData = (hidden) => {
+    setTimeout( () => {
+      if(hidden === false)
+        this.props.sendValue(true);
+    }, 3500);
+
   };
 
   render() {
-    //let value = this.state;
-    console.log(this.state.msg);
+    let value = this.props;
+    console.log(value.hidden);
     return(
-      <div className="toast-message" >{this.state.msg}</div>
+      <Fragment>
+        <div className={"toast-" + value.msg}
+             style={{display : value.hidden ? 'none' : 'block'}}
+             onAnimationEnd={this.sendData(value.hidden)}
+        >{value.msg}</div>
+      </Fragment>
     )
   }
-}*/
-const ToastMessage = ({ msg }) => {
+}
+
+/*const ToastMessage = ({ msg, hidden }) => {
   //console.log(`${msg}, ${show}`);
+
+  if(this.state.msg !== msg){
+    this.setState({
+      msg: msg,
+    });
+  }
+
   return (
-    <div className="toast-message">{msg.toString()}</div>
+    <div className="toast-message">{msg}</div>
   )
-};
+};*/
 
 export default ToastMessage;

@@ -14,6 +14,8 @@ class QueueTemplate extends Component {
       textAreaValue: [],
       hidden: true,
       output: '',
+      toastMsg: '',
+      hideMsg: true,
       // layer: ''
     };
   }
@@ -46,6 +48,7 @@ class QueueTemplate extends Component {
     let result = this.state.textAreaValue;
     // let layer = this.state.layer;
     result.forEach( (v) => {output += v;});
+    console.log("makeOutput");
     // layer += <div className={"value-layer" + this.state.index}> {this.state.output} </div>;
 
     await setTimeout(() => {
@@ -66,8 +69,13 @@ class QueueTemplate extends Component {
     return layer;
   };
 
-  sendMsg = msg => {
-    return <ToastMessage msg={msg}/>
+  setHideValue = value => {
+    if(this.state.hideMsg===false) {
+      this.setState({
+        ...this.state,
+        hideMsg: value
+      })
+    }
   };
 
   /*makeLayer2 = () => {
@@ -91,6 +99,8 @@ class QueueTemplate extends Component {
       textAreaValue: [],
       hidden: true,
       output: '',
+      toastMsg: '',
+      hideMsg: true,
       //layer: ''
     }, () => {
       console.log(newQueue);
@@ -127,7 +137,7 @@ class QueueTemplate extends Component {
     let result = this.state.textAreaValue;
     let output='';
 
-    alert(`pop : ${myQueue.pop()}`);
+    // alert(`pop : ${myQueue.pop()}`);
     result.splice(0,1);
     result.forEach( (v) => {output += v;});
 
@@ -135,46 +145,69 @@ class QueueTemplate extends Component {
       ...this.state,
       queue: myQueue,
       textAreaValue: result,
-      output: output
+      output: output,
+      toastMsg: `poped value : ${myQueue.pop()}`,
+      hideMsg: false
     });
   };
 
-  getState = () => {
+  getState = async () => {
     if (this.checkQueue()) return false;
-
     else {
       let myQueue = this.state.queue;
-      //console.log(myQueue.state());
-      //console.log(this.state);
       //this.forceUpdate();
-      //alert(myQueue.toString());
       //return <ToastMessage msg={myQueue.toString()}/>
-      this.sendMsg(myQueue.toString());
+      // this.sendMsg(myQueue.toString());
+      await this.setState({
+        ...this.state,
+        toastMsg: myQueue.toString(),
+        hideMsg: false
+      });
     }
   };
 
   getSize = () => {
     if (this.checkQueue()) return false;
     let myQueue = this.state.queue;
-    alert(`size : ${myQueue.size()}`);
+    // alert(`size : ${myQueue.size()}`);
+    this.setState({
+      ...this.state,
+      toastMsg: `size : ${myQueue.size()}`,
+      hideMsg: false
+    });
   };
 
   checkEmpty = () => {
     if (this.checkQueue()) return false;
     let myQueue = this.state.queue;
-    alert(myQueue.isEmpty());
+    // alert(myQueue.isEmpty());
+    this.setState({
+      ...this.state,
+      toastMsg: `isEmpty ? ${myQueue.isEmpty().toString()}`,
+      hideMsg: false
+    });
   };
 
   getFront = () => {
     if (this.checkQueue()) return false;
     let myQueue = this.state.queue;
-    alert(`front value : ${myQueue.front()}`);
+    // alert(`front value : ${myQueue.front()}`);
+    this.setState({
+      ...this.state,
+      toastMsg: `front value : ${myQueue.front()}`,
+      hideMsg: false
+    });
   };
 
   getBack = () => {
     if (this.checkQueue()) return false;
     let myQueue = this.state.queue;
-    alert(`front value : ${myQueue.back()}`);
+    // alert(`back value : ${myQueue.back()}`);
+    this.setState({
+      ...this.state,
+      toastMsg: `back value : ${myQueue.back()}`,
+      hideMsg: false
+    });
   };
 
   render() {
@@ -186,6 +219,8 @@ class QueueTemplate extends Component {
       <div className="queue">
         <div className="queue-header">
           <HeaderTemplate/>
+          {/*{this.sendMsg()}*/}
+          <ToastMessage msg={value.toastMsg} sendValue={this.setHideValue} hidden={value.hideMsg}/>
         </div>
         <div className="title">Queue</div>
         <button className="start-btn" onClick={this.start}>Create Queue</button>
@@ -203,22 +238,22 @@ class QueueTemplate extends Component {
               <button onClick={this.queuePush} disabled={!value.hidden}>push</button>
             </div>
             <div className="pop-form">
-              <button onClick={this.queuePop}>pop</button>
+              <button onClick={this.queuePop} disabled={!value.hideMsg}>pop</button>
             </div>
             <div className="state-form">
-              <button onClick={this.getState}>state</button>
+              <button onClick={this.getState} disabled={!value.hideMsg}>state</button>
             </div>
             <div className="size-form">
-              <button onClick={this.getSize}>size</button>
+              <button onClick={this.getSize} disabled={!value.hideMsg}>size</button>
             </div>
             <div className="empty-form">
-              <button onClick={this.checkEmpty}>empty?</button>
+              <button onClick={this.checkEmpty} disabled={!value.hideMsg}>empty?</button>
             </div>
             <div className="front-form">
-              <button onClick={this.getFront}>front</button>
+              <button onClick={this.getFront} disabled={!value.hideMsg}>front</button>
             </div>
             <div className="back-form">
-              <button onClick={this.getBack}>back</button>
+              <button onClick={this.getBack} disabled={!value.hideMsg}>back</button>
             </div>
           </div>
 

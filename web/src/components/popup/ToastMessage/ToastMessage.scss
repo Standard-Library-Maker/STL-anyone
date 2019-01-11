@@ -1,13 +1,12 @@
-.toast-message {
-  width: 200px;
+div[class^='toast'] {
   height: 20px;
   position: fixed;
   right: 10%;
   //margin-left:-125px;
   top: 100px;
   z-index: 9999;
-  background-color: #6db9f3;
-  color: #F0F0F0;
+  background-color: #92f36b;
+  color: #000000;
   font-family: Calibri, serif;
   font-size: 1rem;
   font-weight: bold;
@@ -17,9 +16,9 @@
   -webkit-box-shadow: 0 0 24px -1px rgba(56, 56, 56, 1);
   -moz-box-shadow: 0 0 24px -1px rgba(56, 56, 56, 1);
   box-shadow: 0 0 24px -1px rgba(56, 56, 56, 1);
-  -webkit-animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 300ms;
-  -o-animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 300ms;
-  animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 300ms;
+  -webkit-animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 200ms;
+  -o-animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 200ms;
+  animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 200ms;
 
   @keyframes slide-in-and-out-right {
     0% {
