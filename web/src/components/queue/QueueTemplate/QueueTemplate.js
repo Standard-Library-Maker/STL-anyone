@@ -91,7 +91,7 @@ class QueueTemplate extends Component {
 
   start = async () => {
     let newQueue = new stl.Queue.ArrQueue();
-    alert("New Queue Created!");
+    // alert("New Queue Created!");
     await this.setState({
       index: 0,
       queue: newQueue,
@@ -99,8 +99,8 @@ class QueueTemplate extends Component {
       textAreaValue: [],
       hidden: true,
       output: '',
-      toastMsg: '',
-      hideMsg: true,
+      toastMsg: 'New Queue Created!',
+      hideMsg: false
       //layer: ''
     }, () => {
       console.log(newQueue);
