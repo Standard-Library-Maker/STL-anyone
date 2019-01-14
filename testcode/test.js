@@ -1,4 +1,4 @@
-let Queue= require("./libs/queue");
+// let Queue= require("./libs/queue");
 let BinarySearchTree = require("./libs/binary_search_tree");
 let BinaryTree = require("./libs/binary_tree");
 let Deque = require("./libs/deque");
@@ -232,11 +232,19 @@ console.log("\n=======Heap=======");
 let h = new Heap();
 h.pushMin(1);
 h.pushMin(3);
-h.pushMin(2);
 h.pushMin(5);
 h.pushMin(4);
-let array = [1, 3, 2, 5, 4];
-h.makeMinHeap(array);
+h.pushMin(2);
+
+// let array = [1, 3, 2, 5, 4];
+// h.makeMinHeap(array);
+h.state();
+h = new Heap();
+h.pushMax(2);
+h.pushMax(5);
+h.pushMax(1);
+h.pushMax(3);
+h.pushMax(4);
 h.state();
 */
 

@@ -7,7 +7,7 @@ const swap = require("./swap");
  * var heap = new Heap ();
  * @author seeung0305@naver.com
  */
-const Heap = function(){
+const Heap = function() {
   this.data = [];
   this.count = 0;
 };
@@ -22,7 +22,7 @@ const Heap = function(){
  * h.pushMin(2);
  * var size = h.size(); // size = 2
  */
-Heap.prototype.size = function(){
+Heap.prototype.size = function() {
   return this.count;
 };
 
@@ -36,7 +36,7 @@ Heap.prototype.size = function(){
  * h.pushMin(1);
  * var ret2 = h.isEmpty(); // ret2 = false
  */
-Heap.prototype.isEmpty = function(){
+Heap.prototype.isEmpty = function() {
   return this.count === 0;
 };
 
@@ -51,20 +51,19 @@ Heap.prototype.isEmpty = function(){
  * h.pushMax(1);
  * h.pushMax(2);
  */
-Heap.prototype.pushMax = function(value){
+Heap.prototype.pushMax = function(value) {
   if(value === null) return false;
   this.data[this.count] = value;
-  /*max heap*/
+  /* max heap */
 
   let temp = this.count;
-  while(temp > 0){
+  while(temp > 0) {
     let parent = Math.floor((temp - 1) / 2);
 
-    if(this.data[temp] > this.data[parent]){
+    if(this.data[temp] > this.data[parent]) {
       swap(this.data, temp, parent);
       temp = parent;
-    }
-    else{
+    } else{
       break;
     }
   }
@@ -82,20 +81,19 @@ Heap.prototype.pushMax = function(value){
  * h.pushMin(1);
  * h.pushMin(2);
  */
-Heap.prototype.pushMin = function(value){
+Heap.prototype.pushMin = function(value) {
   if(value === null) return false;
   this.data[this.count] = value;
-  /*min heap*/
+  /* min heap */
 
   let temp = this.count;
-  while(temp > 0){
+  while(temp > 0) {
     let parent = Math.floor((temp - 1) / 2);
 
-    if(this.data[temp] < this.data[parent]){
+    if(this.data[temp] < this.data[parent]) {
       swap(this.data, temp, parent);
       temp = parent;
-    }
-    else{
+    } else{
       break;
     }
   }
