@@ -1,5 +1,4 @@
-import React, { Component } from 'react';
-import {Link} from 'react-router-dom';
+import React, {Component} from 'react';
 import stl from 'lib/stl';
 import HeaderTemplate from 'components/header/HeaderTemplate';
 import './StackTemplate.scss';
@@ -8,9 +7,13 @@ class StackTemplate extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      index: 0,
       stack: '',
       pushValue: '',
       textAreaValue: [],
+      hidden: true,
+      output: '',
+      // layer: ''
     };
   }
 
@@ -23,31 +26,71 @@ class StackTemplate extends Component {
   };
 
   handleChange = (e) => {
-    if(e.target.name === "pushInput") {
+    if(e.target.name === "pushInput") { // 새로운 입력 일어날 때마다 hidden: true
       this.setState({
         ...this.state,
-        pushValue: e.target.value
-      });
-    } else if(e.target.name === "resultArea") {
-      this.setState({
-        ...this.state,
-        textAreaValue: e.target.value
+        pushValue: e.target.value,
       });
     }
   };
+
+  enterPress = async (e) => {
+    if(e.keyCode === 13){
+      await this.stackPush();
+    }
+  };
+  /*must implement pop motion to erase the LIFO element*/
+  makeOutput = async () => {
+    let output = '';
+    let result = this.state.textAreaValue;
+    // let layer = this.state.layer;
+    result.forEach( (v) => {output += v;});
+    // layer += <div className={"value-layer" + this.state.index}> {this.state.output} </div>;
+
+    await setTimeout(() => {
+      this.setState({
+        ...this.state,
+        index: this.state.index + 1,
+        hidden: true,
+        output: output,
+        // layer: layer
+      });
+    }, 300);
+    return true;
+  };
+
+  makeLayer = () => {
+    let layer;
+    layer = <div className={"value-layer"}> {this.state.output} </div>;
+    return layer;
+  };
+
+  /*makeLayer2 = () => {
+    let layer = <div><div className={"value-layer0"}> {this.state.output} </div>
+      <div className={"value-layer1"}> {this.state.output} </div></div>;
+    console.log(typeof layer +", " + layer.toString());
+
+    /!*for(let i = 1; i < this.state.index; i++) {
+     layer += <div className={"value-layer" + i}> {this.state.pushValue} </div>;
+    }*!/
+    return layer
+};*/
 
   start = async () => {
     let newStack = new stl.Stack();
     alert("New Stack Created!");
     await this.setState({
-      ...this.state,
+      index: 0,
       stack: newStack,
+      pushValue: '',
       textAreaValue: [],
+      hidden: true,
+      output: '',
+      layer: ''
     }, () => {
       console.log(newStack);
     });
     //this.forceUpdate();
-    // alert(newQueue.state());
   };
 
   stackPush = async () => {
@@ -58,19 +101,18 @@ class StackTemplate extends Component {
     }
 
     let myStack = this.state.stack;
-    let pushedValue = this.state.pushValue;
     let result = this.state.textAreaValue;
-    //console.log(myQueue);
-    myStack.push(pushedValue);
-    result.push(pushedValue+' -> ');
+    myStack.push(this.state.pushValue);
+    result.push(this.state.pushValue + ' ');
+    //result.push(this.state.pushValue + ' -> ');
 
     await this.setState({
       ...this.state,
       stack: myStack,
-      textAreaValue: result
+      textAreaValue: result,
+      hidden: !this.state.hidden
     });
     //this.forceUpdate()
-    //alert(`push : ${this.state.queue.state()}`);
   };
 
   stackPop = async () => {
@@ -78,15 +120,18 @@ class StackTemplate extends Component {
 
     let myStack = this.state.stack;
     let result = this.state.textAreaValue;
+    let output='';
+
     alert(`pop : ${myStack.pop()}`);
-    result.splice(result.length - 1, 1);
+    result.splice(myStack.length - 1, 1);
+    result.forEach( (v) => {output += v;});
 
     await this.setState({
       ...this.state,
       stack: myStack,
-      textAreaValue: result
+      textAreaValue: result,
+      output: output
     });
-    // alert(`pop : ${this.state.popValue}`);
   };
 
   getState = () => {
@@ -94,7 +139,7 @@ class StackTemplate extends Component {
 
     else {
       let myStack = this.state.stack;
-      //console.log(myQueue.state());
+      //console.log(myStack.state());
       //console.log(this.state);
       //this.forceUpdate();
       alert(myStack.toString());
@@ -113,7 +158,7 @@ class StackTemplate extends Component {
     alert(myStack.isEmpty());
   };
 
-  getPeek = () => {
+  peek = () => {
     if (this.checkStack()) return false;
     let myStack = this.state.stack;
     alert(`peek value : ${myStack.peek()}`);
@@ -121,8 +166,9 @@ class StackTemplate extends Component {
 
   render() {
     let value = this.state;
-    let output = '';
-    value.textAreaValue.forEach( (v) => {output += v;});
+    /*let output = '';
+    value.textAreaValue.forEach( (v) => {output += v;});*/
+
     return (
       <div className="stack">
         <div className="stack-header">
@@ -131,13 +177,6 @@ class StackTemplate extends Component {
         <div className="title">Stack</div>
         <button className="start-btn" onClick={this.start}>Create Stack</button>
         <div className="test-code">
-          <div className="result-area">
-            <textarea
-              name="resultArea"
-              value={output}
-              readOnly
-            />
-          </div>
           <div className="user-input-section">
             <div className="push-form">
               <input
@@ -145,8 +184,10 @@ class StackTemplate extends Component {
                 name="pushInput"
                 value={value.pushValue}
                 onChange={this.handleChange}
+                onKeyDown={this.enterPress}
+                disabled={!value.hidden}
               />
-              <button onClick={this.stackPush}>push</button>
+              <button onClick={this.stackPush} disabled={!value.hidden}>push</button>
             </div>
             <div className="pop-form">
               <button onClick={this.stackPop}>pop</button>
@@ -161,7 +202,29 @@ class StackTemplate extends Component {
               <button onClick={this.checkEmpty}>empty?</button>
             </div>
             <div className="peek-form">
-              <button onClick={this.getPeek}>peek</button>
+              <button onClick={this.peek}>peek</button>
+            </div>
+          </div>
+
+          <div className="result-area">
+            <div className="value-layers">
+              {/*<input
+                className="queue-storage"
+                name="resultArea"
+                value={value.output}
+                readOnly
+              />*/}
+              {this.makeLayer()}
+            </div>
+            <div className="stack-value-div">
+              <input
+                className="stack-value"
+                name="resultArea"
+                value={value.pushValue}
+                disabled
+                style={{display: this.state.hidden ? 'none' : 'block'}}
+                onAnimationEnd={this.makeOutput}
+              />
             </div>
           </div>
         </div>

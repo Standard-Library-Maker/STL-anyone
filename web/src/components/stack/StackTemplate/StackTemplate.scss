@@ -5,68 +5,32 @@
     margin-top: 20px;
     text-align: center;
     display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
-    .result-area {
-      margin-left: 30px;
-      width: 500px;
-      /*display: flex;
-      flex-flow: row nowrap;*/
-      input, textarea {
-        width: 400px;
-        height: 200px;
-        //background-color: #1AAB8A;
-        border: 0;
-        border-radius: 10px;
-        //text-align: center;
-        font-size: 1.2rem;
-        font-weight: bold;
-        /*animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
-        animation: slide-rotate-ver-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;*/
-      }
-      /*@keyframes scale-in-center {
-        0% {
-          transform: scale(0);
-          opacity: 1;
-        }
-        100% {
-          transform: scale(1);
-          opacity: 1;
-        }
-      }
-      @keyframes slide-left {
-        0% {
-          transform: translateX(0);
-        }
-        100% {
-          transform: translateX(-400px);
-        }
-      }
-      @keyframes slide-rotate-ver-left {
-        0% {
-          transform: translateX(0) rotateY(0);
-        }
-        100% {
-          transform: translateX(-150px) rotateY(90deg);
-        }
-      }*/
-    }
-    button {
-      width: 60px;
-      height: 40px;
-      font-size: 1rem;
-    }
+    flex-flow: column nowrap;
+    justify-content: space-between;
+
     .user-input-section {
-      margin-right: 20px;
+      //margin-right: 30px;
+      margin-top: 30px;
       display: flex;
-      flex-flow: column nowrap;
-      align-items: flex-end;
+      flex-flow: row wrap;
+      justify-content: center;
       // .pop-form, .push-form, .state-form, .size-form, .empty-form, .front-form, .back-form
       div {
-        margin-right: 10px;
         margin-left: 20px;
         margin-bottom: 10px;
+        button {
+          width: 70px;
+          height: 40px;
+          font-size: 1rem;
+          color: #ffffff;
+          background-color: #393d48;
+          transition:800ms ease all;
+          outline:none;
+        }
+        button:hover{
+          background:#1AAB8A;
+          color:#ffffff;
+        }
         input {
           width: 50px;
           height: 30px;
@@ -77,5 +41,84 @@
         }
       }
     }
+
+    .result-area {
+      margin-top: 100px;
+      margin-bottom: 100px;
+      margin-left: 30px;
+      width: calc(100% - 100px);
+      display: flex;
+      flex-flow: row nowrap;
+      justify-content: flex-end;
+      align-items: center;
+      .value-layers {
+        display: flex;
+        flex-flow: row nowrap;
+        height: 100px;
+        width: calc(100% - 150px);
+        align-items: center;
+        border: ridge #ffffff;
+        border-right-width: 0;
+        border-left-width: 0;
+        background-color: #393d48;
+        color: #ffffff;
+        /*.stack-storage {
+        }*/
+        div {
+          height: 90px;
+          display: flex;
+          align-items: center;
+          background-color: #1AAB8A;
+          color: #ffffff;
+        }
+      }
+      .stack-value-div {
+        width: 100px;
+        height: 100px;
+        .stack-value {
+          width: 100px;
+          height: 100px;
+          background-color: #1AAB8A;
+          border: 0;
+          border-radius: 10px;
+          text-align: center;
+          font-size: 1.2rem;
+          font-weight: bold;
+          animation:
+                  scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both,
+                  slide-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s,
+                  slide-rotate-ver-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both ;
+          //animation: slide-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s ;
+          //animation: slide-rotate-ver-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 3.5s;
+        }
+        @keyframes scale-in-center {
+          0% {
+            transform: scale(0);
+            opacity: 0;
+          }
+          100% {
+            transform: scale(1);
+            opacity: 1;
+          }
+        }
+        @keyframes slide-left {
+          0% {
+            transform:translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-100vw + 450px));  // 100% width - 450px 뺀거리 만큼 움직임.
+          }
+        }
+        @keyframes slide-rotate-ver-left {
+          0% {
+            transform: translateX(0) rotateY(0);
+          }
+          100% {
+            transform: translateX(calc(-100vw + 350px)) rotateY(90deg);
+          }
+        }
+      }
+    }
+
   }
 }

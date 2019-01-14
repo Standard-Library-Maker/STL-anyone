@@ -11,6 +11,10 @@ let PriorityQueue = require("./libs/priority_queue");
 let Stack = require("./libs/stack");
 let BubbleSort = require("./libs/[sort]bubble");
 
+let h = new Heap();
+h.pushMax(9);
+h.pushMax(15);
+h.state();
 /*
 // ArrQueue 
 console.log("\n=======ArrQueue=======");

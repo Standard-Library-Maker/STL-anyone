@@ -16,6 +16,7 @@ class LandingTemplate extends Component {
           <div className="menu-list">
               <Link to="/stack">Stack</Link>
               <Link to="/queue">Queue</Link>
+              <Link to="/heap">Heap</Link>
           </div>
         </div>
       </div>
