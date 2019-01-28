@@ -38,4 +38,4 @@ Stack.prototype.toString = function() {
   return `=== ${this.size()} items in the stack : [${this.data}] ===`;
 };
   
-export default Stack
+export default Stack;
