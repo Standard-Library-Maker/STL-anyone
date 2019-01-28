@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {Link} from 'react-router-dom';
 import stl from 'lib/stl';
 import HeaderTemplate from 'components/header/HeaderTemplate';
+import ToastMessage from 'components/popup/ToastMessage';
 import './StackTemplate.scss';
 
 class StackTemplate extends Component {
@@ -10,6 +11,8 @@ class StackTemplate extends Component {
     this.state = {
       stack: '',
       pushValue: '',
+      toastMsg: '',
+      hideMsg: true,
       textAreaValue: [],
     };
   }
@@ -36,12 +39,23 @@ class StackTemplate extends Component {
     }
   };
 
+  setHideValue = value => {
+    if(this.state.hideMsg===false) {
+      this.setState({
+        ...this.state,
+        hideMsg: value
+      })
+    }
+  };
+
   start = async () => {
     let newStack = new stl.Stack();
-    alert("New Stack Created!");
+    // alert("New Stack Created!");
     await this.setState({
       ...this.state,
       stack: newStack,
+      toastMsg: 'New Queue Created!',
+      hideMsg: false,
       textAreaValue: [],
     }, () => {
       console.log(newStack);
@@ -127,6 +141,7 @@ class StackTemplate extends Component {
       <div className="stack">
         <div className="stack-header">
           <HeaderTemplate/>
+          <ToastMessage msg={value.toastMsg} sendValue={this.setHideValue} hidden={value.hideMsg}/>
         </div>
         <div className="title">Stack</div>
         <button className="start-btn" onClick={this.start}>Create Stack</button>
