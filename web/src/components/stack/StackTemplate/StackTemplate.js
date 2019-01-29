@@ -108,8 +108,7 @@ class StackTemplate extends Component {
 
     else {
       let myStack = this.state.stack;
-      //console.log(myQueue.state());
-      //console.log(this.state);
+      // console.log(this.state);
       //this.forceUpdate();
       alert(myStack.toString());
     }
