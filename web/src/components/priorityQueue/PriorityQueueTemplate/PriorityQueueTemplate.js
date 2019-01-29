@@ -13,6 +13,8 @@ class PriorityQueueTemplate extends Component {
       queue: '',
       pushValue: '',
       textAreaValue: [],
+      toastMsg: '',
+      hideMsg: true,
     };
   }
 
@@ -42,12 +44,13 @@ class PriorityQueueTemplate extends Component {
   };
 */
   render() {
+    let value = this.state;
     return(
       <div className="priorityQueue">
         <div className="pq-header">
           <HeaderTemplate/>
           {/*{this.sendMsg()}*/}
-          {/*<ToastMessage msg={value.toastMsg} sendValue={this.setHideValue} hidden={value.hideMsg}/>*/}
+          <ToastMessage msg={value.toastMsg} sendValue={this.setHideValue} hidden={value.hideMsg}/>
         </div>
         <div className="title">Priority Queue</div>
         <button className="start-btn" onClick={this.start}>Create Priority Queue</button>
