@@ -10,7 +10,7 @@ class App extends Component {
         <Route path="/test" component={Test}/>
         <Route path="/queue" component={Queue}/>
         <Route path="/stack" component={Stack}/>
-        <Route path="/priorityqueue" component={PriorityQueue}/>
+        <Route path="/priority_queue" component={PriorityQueue}/>
       </div>
     );
   }

@@ -17,6 +17,7 @@ class LandingTemplate extends Component {
           <div className="menu-list">
             <Link to="/stack">Stack</Link>
             <Link to="/queue">Queue</Link>
+            <Link to="/priority_queue">Priority Queue</Link>
             <ToastMessage msg="test message"/>
           </div>
         </div>
