@@ -126,6 +126,7 @@ PriorityQueue.prototype.push = function (value) {
  * pq2.pop() // 1 will be removed
  */
 PriorityQueue.prototype.pop = function () {
+  let returnValue = this.data[posOfValue];
   if (this.isEmpty()) {
     //alert("ERROR:priority queue is empty");
     return null;
@@ -141,6 +142,7 @@ PriorityQueue.prototype.pop = function () {
     } else {                         // mode : greater
       this.popMinHeap(posOfRoot, posOfLeftChild, posOfRightChild);
     }
+    return returnValue;
   }
 };
 
