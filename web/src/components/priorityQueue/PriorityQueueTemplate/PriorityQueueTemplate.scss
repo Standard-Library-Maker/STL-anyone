@@ -67,6 +67,22 @@
         margin-right: 10px;
         margin-left: 20px;
         margin-bottom: 10px;
+        button {
+          width: 70px;
+          height: 40px;
+          font-size: 1.1rem;
+          color: #ffffff;
+          //border: 0; // 임시 조정
+          //font-weight: bold; // 임시 조정
+          border-radius: 10px;
+          background-color: #393d48;
+          transition:800ms ease all;
+          outline:none;
+        }
+        button:hover{
+          background:#1AAB8A;
+          color:#ffffff;
+        }
         input {
           width: 50px;
           height: 30px;

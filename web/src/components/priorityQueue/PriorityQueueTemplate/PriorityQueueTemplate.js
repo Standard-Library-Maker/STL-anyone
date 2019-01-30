@@ -92,45 +92,63 @@ class PriorityQueueTemplate extends Component {
 
     let myPriorityQueue = this.state.priorityQueue;
     let result = this.state.textAreaValue;
-    alert(`pop : ${myPriorityQueue.pop()}`);
+    //alert(`pop : ${myPriorityQueue.pop()}`);
     result.splice(result.length - 1, 1);
 
     await this.setState({
       ...this.state,
       stack: myPriorityQueue,
-      textAreaValue: result
+      textAreaValue: result,
+      toastMsg: `poped value : ${myPriorityQueue.pop()}`,
+      hideMsg: false
     });
     // alert(`pop : ${this.state.popValue}`);
   };
 
-  getState = () => {
+  getState = async () => {
     if (this.checkPriorityQueue()) return false;
-
     else {
       let myPriorityQueue = this.state.priorityQueue;
       //console.log(this.state);
-      console.log(myPriorityQueue);
+      //console.log(myPriorityQueue);
       //this.forceUpdate();
-      alert(JSON.stringify(myPriorityQueue));
+      //alert(JSON.stringify(myPriorityQueue));
+      await this.setState({
+        ...this.state,
+        toastMsg: JSON.stringify(myPriorityQueue),
+        hideMsg: false
+      });
     }
   };
 
   getSize = () => {
     if (this.checkPriorityQueue()) return false;
     let myPriorityQueue = this.state.priorityQueue;
-    alert(`size : ${myPriorityQueue.size()}`);
+    this.setState({
+      ...this.state,
+      toastMsg: `size : ${myPriorityQueue.size()}`,
+      hideMsg: false
+    });
   };
 
   checkEmpty = () => {
     if (this.checkPriorityQueue()) return false;
     let myPriorityQueue = this.state.priorityQueue;
-    alert(myPriorityQueue.isEmpty());
+    this.setState({
+      ...this.state,
+      toastMsg: `isEmpty ? ${myPriorityQueue.isEmpty().toString()}`,
+      hideMsg: false
+    });
   };
 
   getTop = () => {
     if (this.checkPriorityQueue()) return false;
     let myPriorityQueue = this.state.priorityQueue;
-    alert(`peek value : ${myPriorityQueue.top()}`);
+    this.setState({
+      ...this.state,
+      toastMsg: `front value : ${myPriorityQueue.top()}`,
+      hideMsg: false
+    });
   };
 
   render() {
@@ -164,19 +182,19 @@ class PriorityQueueTemplate extends Component {
               <button onClick={this.priorityQueuePush}>push</button>
             </div>
             <div className="pop-form">
-              <button onClick={this.priorityQueuePop}>pop</button>
+              <button onClick={this.priorityQueuePop} disabled={!value.hideMsg}>pop</button>
             </div>
             <div className="state-form">
-              <button onClick={this.getState}>state</button>
+              <button onClick={this.getState} disabled={!value.hideMsg}>state</button>
             </div>
             <div className="size-form">
-              <button onClick={this.getSize}>size</button>
+              <button onClick={this.getSize} disabled={!value.hideMsg}>size</button>
             </div>
             <div className="empty-form">
-              <button onClick={this.checkEmpty}>empty?</button>
+              <button onClick={this.checkEmpty} disabled={!value.hideMsg}>empty?</button>
             </div>
             <div className="top-form">
-              <button onClick={this.getTop}>top</button>
+              <button onClick={this.getTop} disabled={!value.hideMsg}>top</button>
             </div>
           </div>
         </div>
