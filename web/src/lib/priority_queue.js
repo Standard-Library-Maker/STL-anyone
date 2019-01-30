@@ -126,12 +126,12 @@ PriorityQueue.prototype.push = function (value) {
  * pq2.pop() // 1 will be removed
  */
 PriorityQueue.prototype.pop = function () {
-  let returnValue = this.data[posOfValue];
   if (this.isEmpty()) {
     //alert("ERROR:priority queue is empty");
     return null;
   } else {
     let posOfRoot = 0;
+    let returnValue = this.data[posOfRoot];
     let posOfLeftChild = posOfRoot * 2 + 1;
     let posOfRightChild = posOfRoot * 2 + 2;
     this.data[posOfRoot] = this.data[this.count - 1];  // remove top data && move last element to top position
