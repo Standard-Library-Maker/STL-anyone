@@ -1,14 +1,8 @@
 .priorityQueue {
   text-align: center;
-
-  .test-code {
-    margin-top: 20px;
-    text-align: center;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
     .result-area {
       margin-left: 30px;
+      margin-top: 50px;
       width: 500px;
       /*display: flex;
       flex-flow: row nowrap;*/
@@ -52,47 +46,6 @@
         }
       }*/
     }
-    button {
-      width: 60px;
-      height: 40px;
-      font-size: 1rem;
-    }
-    .user-input-section {
-      margin-right: 20px;
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: flex-end;
-      // .pop-form, .push-form, .state-form, .size-form, .empty-form, .front-form, .back-form
-      div {
-        margin-right: 10px;
-        margin-left: 20px;
-        margin-bottom: 10px;
-        button {
-          width: 70px;
-          height: 40px;
-          font-size: 1.1rem;
-          color: #ffffff;
-          //border: 0; // 임시 조정
-          //font-weight: bold; // 임시 조정
-          border-radius: 10px;
-          background-color: #393d48;
-          transition:800ms ease all;
-          outline:none;
-        }
-        button:hover{
-          background:#1AAB8A;
-          color:#ffffff;
-        }
-        input {
-          width: 50px;
-          height: 30px;
-          margin-right: 10px;
-          border: #e2e2e2;
-          border-radius: 0.5rem;
-          text-align: center;
-        }
-      }
-    }
-  }
+
 }
 

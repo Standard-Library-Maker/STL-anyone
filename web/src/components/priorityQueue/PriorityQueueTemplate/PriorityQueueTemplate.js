@@ -164,13 +164,6 @@ class PriorityQueueTemplate extends Component {
         <div className="title">Priority Queue</div>
         <button className="start-btn" onClick={this.start}>Create Priority Queue</button>
         <div className="test-code">
-          <div className="result-area">
-            <textarea
-              name="resultArea"
-              value={output}
-              readOnly
-            />
-          </div>
           <div className="user-input-section">
             <div className="push-form">
               <input
@@ -196,6 +189,13 @@ class PriorityQueueTemplate extends Component {
             <div className="top-form">
               <button onClick={this.getTop} disabled={!value.hideMsg}>top</button>
             </div>
+          </div>
+          <div className="result-area">
+            <textarea
+              name="resultArea"
+              value={output}
+              readOnly
+            />
           </div>
         </div>
       </div>

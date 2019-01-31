@@ -1,14 +1,9 @@
 .stack {
   text-align: center;
 
-  .test-code {
-    margin-top: 20px;
-    text-align: center;
-    display: flex;
-    flex-flow: row nowrap;
-    justify-content: space-around;
     .result-area {
       margin-left: 30px;
+      margin-top: 50px;
       width: 500px;
       /*display: flex;
       flex-flow: row nowrap;*/
@@ -52,30 +47,4 @@
         }
       }*/
     }
-    button {
-      width: 60px;
-      height: 40px;
-      font-size: 1rem;
-    }
-    .user-input-section {
-      margin-right: 20px;
-      display: flex;
-      flex-flow: column nowrap;
-      align-items: flex-end;
-      // .pop-form, .push-form, .state-form, .size-form, .empty-form, .front-form, .back-form
-      div {
-        margin-right: 10px;
-        margin-left: 20px;
-        margin-bottom: 10px;
-        input {
-          width: 50px;
-          height: 30px;
-          margin-right: 10px;
-          border: #e2e2e2;
-          border-radius: 0.5rem;
-          text-align: center;
-        }
-      }
-    }
-  }
 }

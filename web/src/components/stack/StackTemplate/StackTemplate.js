@@ -145,13 +145,6 @@ class StackTemplate extends Component {
         <div className="title">Stack</div>
         <button className="start-btn" onClick={this.start}>Create Stack</button>
         <div className="test-code">
-          <div className="result-area">
-            <textarea
-              name="resultArea"
-              value={output}
-              readOnly
-            />
-          </div>
           <div className="user-input-section">
             <div className="push-form">
               <input
@@ -177,6 +170,13 @@ class StackTemplate extends Component {
             <div className="peek-form">
               <button onClick={this.getPeek}>peek</button>
             </div>
+          </div>
+          <div className="result-area">
+            <textarea
+              name="resultArea"
+              value={output}
+              readOnly
+            />
           </div>
         </div>
       </div>
