@@ -19,6 +19,8 @@
 3. enter command `npm start [user input]` or `node test.js [user input]`
 4. `[user input]` : stack, queue1(arr queue), queue2(circular queue), ... updating
 
+ex) `npm start queue`, `node test.js stack`
+
 ## License
 
 Standard-Library-Maker/STL-anyone is licensed under the [MIT license](https://github.com/d2-klc/js-stl/blob/master/LICENSE).
