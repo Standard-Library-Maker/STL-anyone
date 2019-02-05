@@ -1,71 +1,105 @@
 // let Queue= require("./libs/queue");
-let BinarySearchTree = require("./libs/binary_search_tree");
-let BinaryTree = require("./libs/binary_tree");
-let Deque = require("./libs/deque");
-let DoubleLinkedList = require("./libs/double_linked_list");
-let HashMap = require("./libs/hash_map");
-let Heap = require("./libs/heap");
-let LinkedList = require("./libs/linked_list");
-let List = require("./libs/list");
-let PriorityQueue = require("./libs/priority_queue");
 let Stack = require("./libs/stack");
+let Queue = require("./libs/queue");
+let PriorityQueue = require("./libs/priority_queue");
+let Deque = require("./libs/deque");
+let List = require("./libs/list");
+let LinkedList = require("./libs/linked_list");
+let DoubleLinkedList = require("./libs/double_linked_list");
+let BinaryTree = require("./libs/binary_tree");
+let BinarySearchTree = require("./libs/binary_search_tree");
+let Heap = require("./libs/heap");
+let HashMap = require("./libs/hash_map");
+
 let BubbleSort = require("./libs/[sort]bubble");
 
-/*
-// ArrQueue 
-console.log("\n=======ArrQueue=======");
-let s1 = new Queue.ArrQueue();
-s1.push("hello world");
-s1.push("hello javascript");
-s1.push("this is queue");
-s1.toString();
-console.log(`front : ${s1.front()}`);
-console.log(`back : ${s1.back()}`);
-console.log(`size : ${s1.size()}`);
+let userInput = process.argv;
+// console.log(userInput);
+switch (userInput[2]) {
+  case "stack": newStack();
+    break;
+  case "queue1": newArrQueue();
+    break;
+  case "queue2": newCircularQueue();
+    break;
+  default: console.log(`${userInput[2]} doesn't exist`);
+    break;
+}
 
-console.log(`pop : ${s1.pop()}`);
-s1.toString();
-console.log(`front : ${s1.front()}`);
-console.log(`back : ${s1.back()}`);
-console.log(`size : ${s1.size()}`);
-s1.clear();
-console.log("=== after clear() ===");
-s1.toString(); 
-*/
+/** Stack */
+function newStack() {
+  console.log("\n=======Stack=======");
+  let s = new Stack();
+  s.push("hello world");
+  s.push("hello javascript");
+  s.push("hello stack");
+  s.state();
+  console.log(`pop : ${s.pop()}`);
+  s.state();
+  console.log(`pop : ${s.pop()}`);
+  console.log(`top : ${s.top()}`);
+  console.log(`size : ${s.size()}`);
+  s.state();
+  s.clear();
+  console.log("=== after clear ===");
+  s.state();
+}
 
-/*
-// Circular Queue 
-console.log("\n=======Circular Queue =======");
-let s2 = new Queue.CircularQueue();
-s2.push("hello world");
-s2.push("hello javascript");
-s2.push("this is circular queue");
+/** ArrQueue */
+function newArrQueue() {
+  console.log("\n=======ArrQueue=======");
+  let s1 = new Queue.ArrQueue();
+  s1.push("hello world");
+  s1.push("hello javascript");
+  s1.push("this is queue");
+  s1.toString();
+  console.log(`front : ${s1.front()}`);
+  console.log(`back : ${s1.back()}`);
+  console.log(`size : ${s1.size()}`);
 
-s2.toString();
-console.log(`[isFull] is full? ${s2.isFull()}`);
-console.log(`front : ${s2.front()}`);
-console.log(`back : ${s2.back()}`);
-console.log(`size : ${s2.size()}`);
+  console.log(`pop : ${s1.pop()}`);
+  s1.toString();
+  console.log(`front : ${s1.front()}`);
+  console.log(`back : ${s1.back()}`);
+  console.log(`size : ${s1.size()}`);
+  s1.clear();
+  console.log("=== after clear() ===");
+  s1.toString();
+}
 
-console.log(`pop : ${s2.pop()}`);
-s2.toString();
-console.log(`[isFull] is full? ${s2.isFull()}`);
-console.log(`front : ${s2.front()}`);
-console.log(`back : ${s2.back()}`);
-console.log(`size : ${s2.size()}`);
+/** Circular Queue */
+function newCircularQueue() {
+  console.log("\n=======Circular Queue =======");
+  let s2 = new Queue.CircularQueue(10);
+  s2.push("hello world");
+  s2.push("hello javascript");
+  s2.push("this is circular queue");
 
-console.log(`pop : ${s2.pop()}`);
-s2.toString();
-console.log(`front : ${s2.front()}`);
-console.log(`back : ${s2.back()}`);
-console.log(`size : ${s2.size()}`);
-console.log(`[isEmpty] is empty? ${s2.isEmpty()}`);
+  s2.toString();
+  console.log(`[isFull] ? ${s2.isFull()}`);
+  console.log(`front : ${s2.front()}`);
+  console.log(`back : ${s2.back()}`);
+  console.log(`size : ${s2.size()}`);
 
-s2.clear();
-console.log("=== after clear() ===");
-s2.toString();
-console.log(`[isEmpty] is empty? ${s2.isEmpty()}`);
-*/
+  console.log(`pop : ${s2.pop()}`);
+  s2.toString();
+  console.log(`[isFull] is full? ${s2.isFull()}`);
+  console.log(`front : ${s2.front()}`);
+  console.log(`back : ${s2.back()}`);
+  console.log(`size : ${s2.size()}`);
+
+  console.log(`pop : ${s2.pop()}`);
+  s2.toString();
+  console.log(`front : ${s2.front()}`);
+  console.log(`back : ${s2.back()}`);
+  console.log(`size : ${s2.size()}`);
+  console.log(`[isEmpty] is empty? ${s2.isEmpty()}`);
+
+  s2.clear();
+  console.log("=== after clear() ===");
+  s2.toString();
+  console.log(`[isEmpty] is empty? ${s2.isEmpty()}`);
+}
 
 /*
 // Binary Search Tree 
@@ -342,22 +376,7 @@ testPriorityQueue2.pop();
 testPriorityQueue2.testData();
 */
 
-/*
-// Stack
-console.log("\n=======Stack=======");
-let s = new Stack();
-s.push("hello world");
-s.push("hello javascript");
-s.pop();
-s.state();
-console.log(`pop : ${s.pop()}`);
-console.log(`top : ${s.top()}`);
-console.log(`size : ${s.size()}`);
-s.state();
-s.clear();
-console.log("=== after clear ===");
-s.state();
-*/
+
 
 /*
 // Bubble sort (under developing)
