@@ -17,7 +17,7 @@
 1. go to 'STL-anyone/testcode' folder
 2. enter command `npm install(or npm i)`
 3. enter command `npm start [user input]` or `node test.js [user input]`
-4. user input : stack, queue1(arr queue), queue2(circular queue), ... updating
+4. `[user input]` : stack, queue1(arr queue), queue2(circular queue), ... updating
 
 ## License
 
