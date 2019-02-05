@@ -12,6 +12,7 @@
 ## Environment Settings and Execution steps
 - prepare window cmd or linux bash shell
 - install Node.js 
+- if your npm version is below 6.4.0, we recommend you to upgrade your npm version
 
 ### How To (cmd or ubuntu bash shell)
 1. go to 'STL-anyone/web' folder
