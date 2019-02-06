@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import './HeaderTemplate.scss';
 import logo2 from "static/images/logo2.png";
@@ -16,16 +17,12 @@ class HeaderTemplate extends Component {
         <div className="header-bar">
           <div className="help">
             <a
-              href="https://Jisoo-Lee93.github.io"
+              href="https://jisoo0925.github.io"
               target="_blank"
               rel="noopener noreferrer"
             >
               help
             </a>
-          </div>
-
-          <div ClassName="document">
-            <a href='./document/index.html'>help</a>
           </div>
 
           <div className="menu">

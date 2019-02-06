@@ -5,7 +5,7 @@
 - view on the website using '/web' folder
 
 # For Help (Doc)
-https://jisoo-lee93.github.io
+https://jisoo0925.github.io
 
 # Sample Web
 ![queue](design/queue_ver2.gif)
