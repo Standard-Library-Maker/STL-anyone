@@ -4,7 +4,7 @@
 - test codes in the '/testcode' folder
 - view on the website using '/web' folder
 
-# For Help
+# For Help (Doc)
 https://jisoo-lee93.github.io
 
 # Sample Web
@@ -13,3 +13,7 @@ https://jisoo-lee93.github.io
 ## License
 - Created by) Kang Se Eung, Lee Ji Soo, Cho Young Il
 - Standard-Library-Maker/STL-anyone is licensed under the [MIT license](LICENSE).
+
+
+## PS
+인원 추가예정.
