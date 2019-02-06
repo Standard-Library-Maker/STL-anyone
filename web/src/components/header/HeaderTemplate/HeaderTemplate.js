@@ -5,7 +5,6 @@ import logo2 from "static/images/logo2.png";
 
 class HeaderTemplate extends Component {
 
-
   render() {
     return (
       <div className="header">
@@ -24,6 +23,11 @@ class HeaderTemplate extends Component {
               help
             </a>
           </div>
+
+          <div ClassName="document">
+            <a href='./document/index.html'>help</a>
+          </div>
+
           <div className="menu">
             menu
           </div>
