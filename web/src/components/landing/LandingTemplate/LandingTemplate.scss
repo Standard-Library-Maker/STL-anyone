@@ -21,8 +21,9 @@ body {
       flex-flow: column nowrap;
       text-align: center;
       font-size: 1.5rem;
-      :nth-child(1), :nth-child(2), :nth-child(3) {
+      a {
         color: #96d6f3;
+        text-decoration: none;
       }
     }
   }
