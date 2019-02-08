@@ -13,12 +13,7 @@
   .header-bar {
     display: flex;
     flex-flow: row nowrap;
-    .menu {
-      margin-top: 10px;
-      margin-right: 30px;
-      font-size: 15pt;
-      color: #ffffff;
-    }
+    text-align: center;
     .help {
       margin-top: 10px;
       margin-right: 20px;
@@ -35,6 +30,39 @@
       a:hover {
         color: #33dbc0;
         text-decoration: underline;
+      }
+    }
+    .menu {
+      margin-top: 10px;
+      margin-right: 30px;
+      width: 200px;
+      font-size: 15pt;
+      color: #ffffff;
+      ul {
+        list-style: none;
+        width: 200px;
+        padding: 0;
+        position: absolute;
+        z-index: 1000;
+        display: none;
+        li {
+          background: #393D48;
+          border: 0;
+          text-align: center;
+          a {
+            color: #ffffff;
+            text-decoration: none;
+            display: block;
+          }
+          a:hover {
+            background-color: #33dbc0;
+          }
+        }
+      }
+    }
+    .menu:hover {
+      ul {
+        display: block;
       }
     }
   }

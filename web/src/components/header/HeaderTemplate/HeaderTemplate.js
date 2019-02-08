@@ -24,9 +24,13 @@ class HeaderTemplate extends Component {
               help
             </a>
           </div>
-
           <div className="menu">
             menu
+            <ul>
+              <li><Link to="/stack">Stack</Link></li>
+              <li><Link to="/queue">Queue</Link></li>
+              <li><Link to="/priority_queue">Priority Queue</Link></li>
+            </ul>
           </div>
         </div>
       </div >
