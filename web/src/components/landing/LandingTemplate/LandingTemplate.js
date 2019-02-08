@@ -3,7 +3,6 @@ import {Link} from 'react-router-dom';
 import HeaderTemplate from 'components/header/HeaderTemplate';
 import './LandingTemplate.scss';
 import logo from 'static/images/Project_Name_Logo.png';
-import ToastMessage from 'components/popup/ToastMessage';
 
 class LandingTemplate extends Component {
   render() {
@@ -18,7 +17,6 @@ class LandingTemplate extends Component {
             <Link to="/stack">Stack</Link>
             <Link to="/queue">Queue</Link>
             <Link to="/priority_queue">Priority Queue</Link>
-            <ToastMessage msg="test message"/>
           </div>
         </div>
       </div>
