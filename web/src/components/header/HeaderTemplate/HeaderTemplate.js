@@ -30,7 +30,7 @@ class HeaderTemplate extends Component {
               <li><Link to="/stack">Stack</Link></li>
               <li><Link to="/queue">Queue</Link></li>
               <li><Link to="/priority_queue">Priority Queue</Link></li>
-            </ul>
+       </ul>
           </div>
         </div>
       </div >
