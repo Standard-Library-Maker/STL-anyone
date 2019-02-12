@@ -16,6 +16,7 @@ class QueueTemplate extends Component {
       output: '',
       toastMsg: '',
       hideMsg: true,
+      hideCode: true,
       // layer: ''
     };
   }
@@ -210,6 +211,20 @@ class QueueTemplate extends Component {
     });
   };
 
+  showCode = () => {
+    if(this.state.hideCode) {
+      this.setState({
+        ...this.state,
+        hideCode: false
+      });
+    } else {
+      this.setState({
+        ...this.state,
+        hideCode: true
+      });
+    }
+  };
+
   render() {
     let value = this.state;
     /*let output = '';
@@ -277,6 +292,16 @@ class QueueTemplate extends Component {
                 onAnimationEnd={this.makeOutput}
               />
             </div>
+          </div>
+          <div className="code-area">
+            <button
+              className="code-show-btn"
+              onClick={this.showCode}> open / close </button>
+            <textarea
+              className="code-place"
+              value="test"
+              hidden={value.hideCode}
+            />
           </div>
         </div>
       </div>
