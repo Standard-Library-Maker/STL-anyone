@@ -17,6 +17,7 @@ class QueueTemplate extends Component {
       toastMsg: '',
       hideMsg: true,
       hideCode: true,
+      showCode: ''
       // layer: ''
     };
   }
@@ -79,17 +80,6 @@ class QueueTemplate extends Component {
     }
   };
 
-  /*makeLayer2 = () => {
-    let layer = <div><div className={"value-layer0"}> {this.state.output} </div>
-      <div className={"value-layer1"}> {this.state.output} </div></div>;
-    console.log(typeof layer +", " + layer.toString());
-
-    /!*for(let i = 1; i < this.state.index; i++) {
-     layer += <div className={"value-layer" + i}> {this.state.pushValue} </div>;
-    }*!/
-    return layer
-};*/
-
   start = async () => {
     let newQueue = new stl.Queue.ArrQueue();
     // alert("New Queue Created!");
@@ -115,18 +105,20 @@ class QueueTemplate extends Component {
       alert("please input push value");
       return false;
     }
+    let code = this.state.showCode;
 
     let myQueue = this.state.queue;
     let result = this.state.textAreaValue;
-    myQueue.push(this.state.pushValue);
+    code += myQueue.push(this.state.pushValue);
     result.push(this.state.pushValue + ' ');
-    //result.push(this.state.pushValue + ' -> ');
+
 
     await this.setState({
       ...this.state,
       queue: myQueue,
       textAreaValue: result,
-      hidden: !this.state.hidden
+      hidden: !this.state.hidden,
+      showCode: code + '\n'
     });
     //this.forceUpdate()
   };
@@ -299,7 +291,7 @@ class QueueTemplate extends Component {
               onClick={this.showCode}> open / close </button>
             <textarea
               className="code-place"
-              value="test"
+              value={value.showCode}
               hidden={value.hideCode}
             />
           </div>

@@ -6,6 +6,7 @@ const ArrQueue = function() {
 
 ArrQueue.prototype.push = function(value) {
   this.data[this.count++] = value;
+  return `myQueue[${this.count}] = ${value}`;
 };
 
 ArrQueue.prototype.pop = function() {
