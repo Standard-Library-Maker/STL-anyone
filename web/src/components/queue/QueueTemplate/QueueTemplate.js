@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import stl from 'lib/stl';
 import HeaderTemplate from 'components/header/HeaderTemplate';
 import ToastMessage from 'components/popup/ToastMessage';
@@ -66,7 +66,7 @@ class QueueTemplate extends Component {
   };
 
   makeLayer = () => {
-    let layer = null;
+    let layer;
     layer = <div className={"value-layer"+this.state.index}> {this.state.output} </div>;
     return layer;
   };
