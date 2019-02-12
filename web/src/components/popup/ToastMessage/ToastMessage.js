@@ -7,7 +7,7 @@ class ToastMessage extends Component{
     setTimeout( () => {
       if(hidden === false)
         this.props.sendValue(true);
-    }, 3500);
+    }, 3000);
 
   };
 

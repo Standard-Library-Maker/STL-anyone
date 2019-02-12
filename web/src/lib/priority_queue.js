@@ -131,6 +131,7 @@ PriorityQueue.prototype.pop = function () {
     return null;
   } else {
     let posOfRoot = 0;
+    let returnValue = this.data[posOfRoot];
     let posOfLeftChild = posOfRoot * 2 + 1;
     let posOfRightChild = posOfRoot * 2 + 2;
     this.data[posOfRoot] = this.data[this.count - 1];  // remove top data && move last element to top position
@@ -141,6 +142,7 @@ PriorityQueue.prototype.pop = function () {
     } else {                         // mode : greater
       this.popMinHeap(posOfRoot, posOfLeftChild, posOfRightChild);
     }
+    return returnValue;
   }
 };
 

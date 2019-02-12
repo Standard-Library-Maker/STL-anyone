@@ -21,7 +21,9 @@ const ArrQueue = function() {
  * aq.push(1);
  * var ret2 = aq.isEmpty(); // ret2 = false
  */
-ArrQueue.prototype.isEmpty = function() { return this.count === 0; };
+ArrQueue.prototype.isEmpty = function() {
+  return this.count === 0;
+};
 
 /**
  * @method ArrQueue.push
@@ -101,7 +103,9 @@ ArrQueue.prototype.back = function() {
  * aq.push(3);
  * var size = aq.size(); // size = 3
  */
-ArrQueue.prototype.size = function() { return this.count; };
+ArrQueue.prototype.size = function() {
+  return this.count;
+};
 
 /**
  * @method ArrQueue.clear  

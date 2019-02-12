@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import stl from 'lib/stl';
 import HeaderTemplate from 'components/header/HeaderTemplate';
+import ToastMessage from 'components/popup/ToastMessage';
 import './StackTemplate.scss';
 
 class StackTemplate extends Component {
@@ -10,6 +11,8 @@ class StackTemplate extends Component {
       index: 0,
       stack: '',
       pushValue: '',
+      toastMsg: '',
+      hideMsg: true,
       textAreaValue: [],
       hidden: true,
       output: '',
@@ -65,24 +68,27 @@ class StackTemplate extends Component {
     return layer;
   };
 
-  /*makeLayer2 = () => {
-    let layer = <div><div className={"value-layer0"}> {this.state.output} </div>
-      <div className={"value-layer1"}> {this.state.output} </div></div>;
-    console.log(typeof layer +", " + layer.toString());
-
-    /!*for(let i = 1; i < this.state.index; i++) {
-     layer += <div className={"value-layer" + i}> {this.state.pushValue} </div>;
-    }*!/
-    return layer
-};*/
+  setHideValue = value => {
+    if(this.state.hideMsg===false) {
+      this.setState({
+        ...this.state,
+        hideMsg: value
+      })
+    }
+  };
 
   start = async () => {
     let newStack = new stl.Stack();
-    alert("New Stack Created!");
+    // alert("New Stack Created!");
     await this.setState({
       index: 0,
       stack: newStack,
+<<<<<<< HEAD
       pushValue: '',
+=======
+      toastMsg: 'New Queue Created!',
+      hideMsg: false,
+>>>>>>> 26b0dc594e15005cab94698323905047fd390b5b
       textAreaValue: [],
       hidden: true,
       output: '',
@@ -139,8 +145,12 @@ class StackTemplate extends Component {
 
     else {
       let myStack = this.state.stack;
+<<<<<<< HEAD
       //console.log(myStack.state());
       //console.log(this.state);
+=======
+      // console.log(this.state);
+>>>>>>> 26b0dc594e15005cab94698323905047fd390b5b
       //this.forceUpdate();
       alert(myStack.toString());
     }
@@ -173,6 +183,7 @@ class StackTemplate extends Component {
       <div className="stack">
         <div className="stack-header">
           <HeaderTemplate/>
+          <ToastMessage msg={value.toastMsg} sendValue={this.setHideValue} hidden={value.hideMsg}/>
         </div>
         <div className="title">Stack</div>
         <button className="start-btn" onClick={this.start}>Create Stack</button>
@@ -226,6 +237,13 @@ class StackTemplate extends Component {
                 onAnimationEnd={this.makeOutput}
               />
             </div>
+          </div>
+          <div className="result-area">
+            <textarea
+              name="resultArea"
+              value={output}
+              readOnly
+            />
           </div>
         </div>
       </div>

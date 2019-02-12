@@ -6,8 +6,8 @@
  * @author yicho93@gmail.com
  */
 const Stack = function () {
-  let data = [];
-  let top = 0;
+  this.data = [];
+  this.count = 0;
   // this.max = 100;
 };
 
@@ -21,7 +21,7 @@ const Stack = function () {
 * s.push(2);
 */
 Stack.prototype.push = function (value) {
-  data[top++] = value;
+  this.data[this.count++] = value;
 };
 
 /**
@@ -35,17 +35,17 @@ Stack.prototype.push = function (value) {
 * s.pop() // 2 will be removed.
 */
 Stack.prototype.pop = function () {
-  if (top === 0) console.log("Error. Stack is empty");
+  if (this.count === 0) console.log("Error. Stack is empty");
   else {
-    let popedValue = data[--top];
-    // delete data[top];
-    data.splice(top, 1);
+    let popedValue = this.data[--this.count];
+    // delete this.data[this.count];
+    this.data.splice(this.count, 1);
     return popedValue;
   }
 };
 
 /**
-* @method Stack.top
+* @method Stack.this.count
 * @description  This method is used to get the last value in this stack, but does not remove.
 * @returns This method returns the last value of this stack.
 * @example 
@@ -53,11 +53,11 @@ Stack.prototype.pop = function () {
 * s.push(1); 
 * s.push(2);
 * s.push(3);
-* var ret = s.top() // ret1 = 3 
+* var ret = s.top() // ret1 = 3
 * */
 Stack.prototype.top = function () {
-  if (top === 0) console.log("Error. Stack is empty");
-  else return data[top - 1];
+  if (this.count === 0) console.log("Error. Stack is empty");
+  else return this.data[this.count - 1];
 };
 
 /**
@@ -71,7 +71,9 @@ Stack.prototype.top = function () {
 * s.push(3);
 * var size = s.size(); // size = 3
 */
-Stack.prototype.size = function () { return top; }
+Stack.prototype.size = function () {
+  return this.count;
+};
 
 /**
 * @method Stack.isEmpty  
@@ -84,8 +86,7 @@ Stack.prototype.size = function () { return top; }
 * var ret2 = s.isEmpty(); // ret2 = false
 */
 Stack.prototype.isEmpty = function () {
-  if (top === 0) return true;
-  return false;
+  return this.count === 0;
 };
 
 /**
@@ -99,8 +100,8 @@ Stack.prototype.isEmpty = function () {
 * s.clear();
 */
 Stack.prototype.clear = function () {
-  top = 0;
-  data = [];
+  this.count = 0;
+  this.data = [];
 };
 
 /**
@@ -113,8 +114,8 @@ Stack.prototype.clear = function () {
 * s.push(3);
 * s.state(); // 1, 2, 3
 */
-Stack.prototype.status = function () {
-  console.log(`=== ${this.size()} items in the stack : [${data}] ===`);
+Stack.prototype.state = function () {
+  console.log(`=== ${this.size()} items in the stack : [${this.data}] ===`);
 };
 
 

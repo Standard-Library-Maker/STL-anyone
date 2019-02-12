@@ -16,20 +16,20 @@ div[class^='toast'] {
   -webkit-box-shadow: 0 0 24px -1px rgba(56, 56, 56, 1);
   -moz-box-shadow: 0 0 24px -1px rgba(56, 56, 56, 1);
   box-shadow: 0 0 24px -1px rgba(56, 56, 56, 1);
-  -webkit-animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 200ms;
-  -o-animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 200ms;
-  animation: slide-in-and-out-right 4s cubic-bezier(0.645, 0.045, 0.355, 1) both 200ms;
+  -webkit-animation: slide-in-and-out-right 3s cubic-bezier(0,.5,1,.5) both 200ms;
+  -o-animation: slide-in-and-out-right 3s cubic-bezier(0,.5,1,.5) both 200ms;
+  animation: slide-in-and-out-right 3s cubic-bezier(0,.5,1,.5) both 200ms;
 
   @keyframes slide-in-and-out-right {
     0% {
       transform: translateX(1000px);
       opacity: 0;
     }
-    40% {
+    10% {
       transform: translateX(0px);
       opacity: 1;
     }
-    60% {
+    70% {
       transform: translateX(0px);
       opacity: 1;
     }

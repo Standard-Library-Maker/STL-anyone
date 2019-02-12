@@ -1,49 +1,6 @@
 .queue {
   text-align: center;
 
-  .test-code {
-    margin-top: 20px;
-    text-align: center;
-    display: flex;
-    flex-flow: column nowrap;
-    justify-content: space-between;
-
-    .user-input-section {
-      //margin-right: 30px;
-      margin-top: 30px;
-      display: flex;
-      flex-flow: row wrap;
-      justify-content: center;
-      // .pop-form, .push-form, .state-form, .size-form, .empty-form, .front-form, .back-form
-      div {
-        margin-left: 20px;
-        button {
-          width: 70px;
-          height: 40px;
-          font-size: 1.1rem;
-          color: #ffffff;
-          //border: 0; // 임시 조정
-          //font-weight: bold; // 임시 조정
-          border-radius: 10px;
-          background-color: #393d48;
-          transition:800ms ease all;
-          outline:none;
-        }
-        button:hover{
-          background:#1AAB8A;
-          color:#ffffff;
-        }
-        input {
-          width: 50px;
-          height: 30px;
-          margin-right: 10px;
-          border: #e2e2e2;
-          border-radius: 0.5rem;
-          text-align: center;
-        }
-      }
-    }
-
     .result-area {
       margin-top: 100px;
       margin-bottom: 100px;
@@ -86,14 +43,15 @@
           text-align: center;
           font-size: 1.2rem;
           font-weight: bold;
-          animation:
-                  scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both,
-                  slide-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s,
-                  slide-rotate-ver-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both ;
+          //animation:
+          //        scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both,
+          //        slide-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s,
+          //        slide-rotate-ver-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both ;
           //animation: slide-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s ;
           //animation: slide-rotate-ver-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 3.5s;
+          animation: all-in-one 2s cubic-bezier(0.68, 0, 0.3, 1) both ;
         }
-        @keyframes scale-in-center {
+        /*@keyframes scale-in-center {
           0% {
             transform: scale(0);
             opacity: 0;
@@ -118,9 +76,29 @@
           100% {
             transform: translateX(calc(-100vw + 350px)) rotateY(90deg);
           }
+        }*/
+        @keyframes all-in-one {
+          0% {
+            transform: scale(0);
+            opacity: 0;
+          }
+          25% {
+            transform: scale(1);
+            opacity: 1;
+          }
+          50% {
+            transform: translateX(0);
+          }
+          75% {
+            transform: translateX(calc(-100vw + 450px));  // 100% width - 450px 뺀거리 만큼 움직임.
+          }
+          //80% {
+          //  transform: translateX(calc(-100vw + 450px)) rotateY(0);
+          //}
+          100% {
+            transform: translateX(calc(-100vw + 350px)) rotateY(90deg);
+          }
         }
       }
     }
-
-  }
 }

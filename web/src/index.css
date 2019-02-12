@@ -54,6 +54,50 @@ button {
   transition:800ms ease all;
 }
 
+.test-code {
+  margin-top: 20px;
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: space-between;
+}
+.test-code .user-input-section {
+  /*margin-right: 30px;*/
+  margin-top: 30px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+/*. pop-form, . push-form, . state-form, . size-form, . empty-form, . front-form, . back-form;*/
+}
+.test-code .user-input-section div {
+  margin-left: 20px;
+}
+.test-code .user-input-section button {
+  width: 70px;
+  height: 40px;
+  font-size: 1.1rem;
+  color: #ffffff;
+/*border: 0;  임시 조정*/
+/*font-weight: bold;  임시 조정*/
+  border-radius: 10px;
+  background-color: #393d48;
+  transition:800ms ease all;
+  outline:none;
+}
+.test-code .user-input-section button:hover{
+  background:#1AAB8A;
+  color:#ffffff;
+}
+.test-code .user-input-section input {
+  width: 50px;
+  height: 30px;
+  margin-right: 10px;
+  border: #e2e2e2;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
 .title {
   margin-top: 50px;
   font-size: 4rem;

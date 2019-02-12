@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import './HeaderTemplate.scss';
 import logo2 from "static/images/logo2.png";
 
 class HeaderTemplate extends Component {
-
 
   render() {
     return (
@@ -17,7 +17,7 @@ class HeaderTemplate extends Component {
         <div className="header-bar">
           <div className="help">
             <a
-              href="https://Jisoo-Lee93.github.io"
+              href="https://jisoo0925.github.io"
               target="_blank"
               rel="noopener noreferrer"
             >
@@ -26,6 +26,13 @@ class HeaderTemplate extends Component {
           </div>
           <div className="menu">
             menu
+            <ul>
+              <li><Link to="/stack">Stack</Link></li>
+              <li><Link to="/queue">Queue</Link></li>
+              <li><Link to="/priority_queue">Priority Queue</Link></li>
+              <li><Link to="/hash_map">Hash Map</Link></li>
+              <li><Link to="/deque">Deque</Link></li>
+       </ul>
           </div>
         </div>
       </div >
