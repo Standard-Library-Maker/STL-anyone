@@ -14,6 +14,8 @@ let HashMap = require("./libs/hash_map");
 let BubbleSort = require("./libs/[sort]bubble");
 
 let userInput = process.argv;
+let errMsg = 'Please try : \'node test.js \' + {\'stack\',\'queue1\',\'queue2\',\'pq\',\'deque\',\'list\',\'ll\',\'dll\'}';
+let exMsg = 'example : node test.js dll';
 // console.log(userInput);
 switch (userInput[2]) {
   case "stack": newStack();
@@ -22,7 +24,17 @@ switch (userInput[2]) {
     break;
   case "queue2": newCircularQueue();
     break;
-  default: console.log(`${userInput[2]} doesn't exist`);
+  case "pq": newPriorityQueue();
+    break;
+  case "deque": newDeque();
+    break;
+  case "list": newList();
+    break;
+  case "ll": newLinkedList();
+    break;
+  case "dll": newDoubleLinkedList();
+    break;
+  default: console.log(`user input : '${userInput[2]}' doesn't exist\n${errMsg}\n${exMsg}`);
     break;
 }
 
@@ -101,6 +113,173 @@ function newCircularQueue() {
   console.log(`[isEmpty] is empty? ${s2.isEmpty()}`);
 }
 
+/** Priority Queue */
+function newPriorityQueue() {
+  console.log("\n=======Priority Queue Test1=======");
+  let testPriorityQueue1 = new PriorityQueue();
+  testPriorityQueue1.push();
+  testPriorityQueue1.push(1);
+  testPriorityQueue1.push(2);
+  testPriorityQueue1.push(3);
+  testPriorityQueue1.push(8);
+  testPriorityQueue1.push(4);
+  testPriorityQueue1.push(12);
+  testPriorityQueue1.push(2);
+  testPriorityQueue1.testData();
+  testPriorityQueue1.pop();
+  testPriorityQueue1.pop();
+  testPriorityQueue1.pop();
+  testPriorityQueue1.pop();
+  testPriorityQueue1.pop();
+  testPriorityQueue1.pop();
+  testPriorityQueue1.pop();
+  testPriorityQueue1.testData();
+  console.log("\n=======Priority Queue Test2=======");
+  let testPriorityQueue2 = new PriorityQueue("greater");
+  testPriorityQueue2.push(3);
+  testPriorityQueue2.push(5);
+  testPriorityQueue2.push(1);
+  testPriorityQueue2.push(8);
+  testPriorityQueue2.push(4);
+  testPriorityQueue2.push(12);
+  testPriorityQueue2.push(2);
+  testPriorityQueue2.testData();
+  testPriorityQueue2.pop();
+  testPriorityQueue2.pop();
+  testPriorityQueue2.pop();
+  testPriorityQueue2.pop();
+  testPriorityQueue2.pop();
+  testPriorityQueue2.pop();
+  testPriorityQueue2.pop();
+  testPriorityQueue2.testData();
+}
+
+/** Deque */
+function newDeque() {
+  console.log("\n=======Deque=======");
+  let testDeque1 = new Deque();
+  testDeque1.isEmpty();
+  testDeque1.push_back(1);
+  testDeque1.push_front(2);
+  testDeque1.push_front(3);
+  testDeque1.isEmpty();
+  testDeque1.push_front(4);
+  testDeque1.push_back(0);
+  testDeque1.push_front(5);
+  testDeque1.push_front(6);
+  testDeque1.push_front(7);
+  testDeque1.push_front(8);
+  testDeque1.push_front(9);
+  testDeque1.push_front(10);
+  testDeque1.push_front(11);
+  testDeque1.pop_back();
+  testDeque1.pop_front();
+  console.log(testDeque1);
+  testDeque1.at(0);
+  testDeque1.at(1);
+  testDeque1.at(2);
+  testDeque1.at(3);
+  testDeque1.at(4);
+  testDeque1.at(5);
+  testDeque1.at(6);
+  testDeque1.at(7);
+  testDeque1.at(8);
+  testDeque1.at(9);
+  testDeque1.at(10);
+  testDeque1.erase(1);
+  testDeque1.erase(4);
+  testDeque1.erase(6);
+  testDeque1.at(0);
+  testDeque1.at(1);
+  testDeque1.at(2);
+  testDeque1.at(3);
+  testDeque1.at(4);
+  testDeque1.at(5);
+  testDeque1.at(6);
+  console.log(testDeque1);
+  testDeque1.clear();
+  console.log("=======AFTER CLEAR=======");
+  console.log(testDeque1);
+  testDeque1.push_back(1);
+  testDeque1.push_front(2);
+  testDeque1.push_front(3);
+  testDeque1.push_front(4);
+  console.log(testDeque1);
+}
+
+/** List */
+function newList() {
+  console.log("\n=======List=======");
+  let newList = new List();
+  newList.append(2);
+  newList.append(5);
+  newList.append(1);
+  newList.toString();
+  console.log(`size : ${newList.size()}`);
+  newList.insert(2, 7);
+  newList.toString();
+  console.log(`size : ${newList.size()}`);
+  newList.remove(2);
+  newList.toString();
+  newList.end();
+  console.log(`current position's element : ${newList.getElement()}`);
+  newList.clear();
+  console.log("after clear");
+  newList.toString();
+}
+
+/** Linked List */
+function newLinkedList() {
+  console.log("\n=======Linked List=======");
+  let newList = new LinkedList();
+  newList.append(2);
+  newList.toString();
+  console.log(`size : ${newList.size()}`);
+  newList.append(5);
+  newList.toString();
+  console.log(`size : ${newList.size()}`);
+  newList.append(1);
+  newList.toString();
+  console.log(`size : ${newList.size()}`);
+  newList.insert(2, 7);
+  console.log(newList);
+  console.log(`find(1) : ${newList.find(1)}`);
+  newList.toString();
+  console.log(`size : ${newList.size()}\n`);
+
+  console.log(`remove(7) : ${newList.remove(7)}`);
+  newList.toString();
+  console.log(`size : ${newList.size()}\n`);
+
+  newList.append(10);
+  newList.toString();
+  console.log(`size : ${newList.size()}\n`);
+
+  console.log(`remove(2) : ${newList.remove(2)}`);
+  newList.toString();
+  console.log(`size : ${newList.size()}\n`);
+
+  console.log(`remove(2) : ${newList.remove(3)}`);
+  newList.toString();
+  console.log(`size : ${newList.size()}\n`);
+}
+
+/** Double Linked List */
+function newDoubleLinkedList() {
+  console.log("\n=======Double Linked List=======");
+  let newList = new DoubleLinkedList();
+  newList.append(1);
+  newList.append(8);
+  newList.append(5);
+  console.log(newList);
+  console.log(`removeAt(1) : ${newList.removeAt(1)}`);
+  console.log(newList);
+  console.log(`remove(6) : ${newList.remove(6)}`);
+  newList.insert(1, 9);
+  newList.toString();
+  console.log(`size : ${newList.size()}\n`);
+}
+
 /*
 // Binary Search Tree 
 console.log("\n=======Binary Searuch Tree=======");
@@ -132,75 +311,6 @@ b.push(5);
 b.push(6);
 b.pop();
 b.state();
-*/
-
-/*
-// Deque
-console.log("\n=======Deque=======");
-let testDeque1 = new Deque();
-testDeque1.isEmpty();
-testDeque1.push_back(1);
-testDeque1.push_front(2);
-testDeque1.push_front(3);
-testDeque1.isEmpty();
-testDeque1.push_front(4);
-testDeque1.push_back(0);
-testDeque1.push_front(5);
-testDeque1.push_front(6);
-testDeque1.push_front(7);
-testDeque1.push_front(8);
-testDeque1.push_front(9);
-testDeque1.push_front(10);
-testDeque1.push_front(11);
-testDeque1.pop_back();
-testDeque1.pop_front();
-console.log(testDeque1);
-testDeque1.at(0);
-testDeque1.at(1);
-testDeque1.at(2);
-testDeque1.at(3);
-testDeque1.at(4);
-testDeque1.at(5);
-testDeque1.at(6);
-testDeque1.at(7);
-testDeque1.at(8);
-testDeque1.at(9);
-testDeque1.at(10);
-testDeque1.erase(1);
-testDeque1.erase(4);
-testDeque1.erase(6);
-testDeque1.at(0);
-testDeque1.at(1);
-testDeque1.at(2);
-testDeque1.at(3);
-testDeque1.at(4);
-testDeque1.at(5);
-testDeque1.at(6);
-console.log(testDeque1);
-testDeque1.clear();
-console.log("=======AFTER CLEAR=======");
-console.log(testDeque1);
-testDeque1.push_back(1);
-testDeque1.push_front(2);
-testDeque1.push_front(3);
-testDeque1.push_front(4);
-console.log(testDeque1);
-*/
-
-/*
-// Double Linked List
-console.log("\n=======Double Linked List=======");
-let newList = new DoubleLinkedList();
-newList.append(1);
-newList.append(8);
-newList.append(5);
-console.log(newList);
-console.log(`removeAt(1) : ${newList.removeAt(1)}`);
-console.log(newList);
-console.log(`remove(6) : ${newList.remove(6)}`);
-newList.insert(1, 9);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
 */
 
 /*
@@ -278,103 +388,11 @@ h.pushMax(4);
 h.state();
 */
 
-/*
-// Linked List
-console.log("\n=======Linked List=======");
-let newList = new LinkedList();
-newList.append(2);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.append(5);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.append(1);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.insert(2, 7);
-console.log(newList);
-console.log(`find(1) : ${newList.find(1)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
 
-console.log(`remove(7) : ${newList.remove(7)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
 
-newList.append(10);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
 
-console.log(`remove(2) : ${newList.remove(2)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
 
-console.log(`remove(2) : ${newList.remove(3)}`);
-newList.toString();
-console.log(`size : ${newList.size()}\n`);
-*/
 
-/*
-// List
-console.log("\n=======List=======");
-let newList = new List();
-newList.append(2);
-newList.append(5);
-newList.append(1);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.insert(2, 7);
-newList.toString();
-console.log(`size : ${newList.size()}`);
-newList.remove(2);
-newList.toString();
-newList.end();
-console.log(`current position's element : ${newList.getElement()}`);
-newList.clear();
-console.log("after clear");
-newList.toString();
-*/
-
-/*
-// Priority Queue
-console.log("\n=======Priority Queue Test1=======");
-let testPriorityQueue1 = new PriorityQueue();
-testPriorityQueue1.push();
-testPriorityQueue1.push(1);
-testPriorityQueue1.push(2);
-testPriorityQueue1.push(3);
-testPriorityQueue1.push(8);
-testPriorityQueue1.push(4);
-testPriorityQueue1.push(12);
-testPriorityQueue1.push(2);
-testPriorityQueue1.testData();
-testPriorityQueue1.pop();
-testPriorityQueue1.pop();
-testPriorityQueue1.pop();
-testPriorityQueue1.pop();
-testPriorityQueue1.pop();
-testPriorityQueue1.pop();
-testPriorityQueue1.pop();
-testPriorityQueue1.testData();
-console.log("\n=======Priority Queue Test2=======");
-let testPriorityQueue2 = new PriorityQueue("greater");
-testPriorityQueue2.push(3);
-testPriorityQueue2.push(5);
-testPriorityQueue2.push(1);
-testPriorityQueue2.push(8);
-testPriorityQueue2.push(4);
-testPriorityQueue2.push(12);
-testPriorityQueue2.push(2);
-testPriorityQueue2.testData();
-testPriorityQueue2.pop();
-testPriorityQueue2.pop();
-testPriorityQueue2.pop();
-testPriorityQueue2.pop();
-testPriorityQueue2.pop();
-testPriorityQueue2.pop();
-testPriorityQueue2.pop();
-testPriorityQueue2.testData();
-*/
 
 
 
