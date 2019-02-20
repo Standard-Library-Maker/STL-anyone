@@ -5,3 +5,4 @@ export { default as Stack } from './Stack';
 export { default as PriorityQueue } from './PriorityQueue';
 export { default as HashMap } from './HashMap';
 export { default as Deque } from './Deque';
+export { default as Heap} from './Heap';

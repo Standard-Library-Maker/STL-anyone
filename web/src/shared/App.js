@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { Home, Test, Queue, Stack, PriorityQueue, HashMap, Deque } from 'pages';
+import { Home, Test, Queue, Stack, PriorityQueue, HashMap, Deque, Heap } from 'pages';
 
 class App extends Component {
   render() {
@@ -13,6 +13,7 @@ class App extends Component {
         <Route path="/priority_queue" component={PriorityQueue}/>
         <Route path="/hash_map" component={HashMap}/>
         <Route path="/deque" component={Deque}/>
+        <Route path="/heap" component={Heap}/>
       </div>
     );
   }

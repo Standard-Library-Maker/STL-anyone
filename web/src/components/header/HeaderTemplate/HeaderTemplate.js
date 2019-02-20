@@ -32,6 +32,7 @@ class HeaderTemplate extends Component {
               <li><Link to="/priority_queue">Priority Queue</Link></li>
               <li><Link to="/hash_map">Hash Map</Link></li>
               <li><Link to="/deque">Deque</Link></li>
+              <li><Link to="/heap">Heap</Link></li>
        </ul>
           </div>
         </div>

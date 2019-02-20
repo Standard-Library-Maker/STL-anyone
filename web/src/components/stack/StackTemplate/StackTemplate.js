@@ -83,12 +83,8 @@ class StackTemplate extends Component {
     await this.setState({
       index: 0,
       stack: newStack,
-<<<<<<< HEAD
-      pushValue: '',
-=======
       toastMsg: 'New Queue Created!',
       hideMsg: false,
->>>>>>> 26b0dc594e15005cab94698323905047fd390b5b
       textAreaValue: [],
       hidden: true,
       output: '',
@@ -145,12 +141,7 @@ class StackTemplate extends Component {
 
     else {
       let myStack = this.state.stack;
-<<<<<<< HEAD
-      //console.log(myStack.state());
-      //console.log(this.state);
-=======
       // console.log(this.state);
->>>>>>> 26b0dc594e15005cab94698323905047fd390b5b
       //this.forceUpdate();
       alert(myStack.toString());
     }
@@ -241,7 +232,7 @@ class StackTemplate extends Component {
           <div className="result-area">
             <textarea
               name="resultArea"
-              value={output}
+              value={this.output}
               readOnly
             />
           </div>
