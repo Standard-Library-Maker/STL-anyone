@@ -130,6 +130,8 @@ class PriorityQueueTemplate extends Component {
     if (this.checkPriorityQueue()) return false;
 
     let myPriorityQueue = this.state.priorityQueue;
+    let result = this.state.textAreaValue;
+    result.splice(result.length -1, 1);
 
     await this.setState({
       ...this.state,
@@ -138,7 +140,6 @@ class PriorityQueueTemplate extends Component {
       hideMsg: false
     });
   };
-
 
   getTop = () => {
     if (this.checkPriorityQueue()) return false;
