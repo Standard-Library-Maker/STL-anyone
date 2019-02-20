@@ -1,4 +1,4 @@
-// const swapData = require("./swap");
+const swapData = require("./swap");
 
 /**
  * @Class priorityQueue
@@ -135,7 +135,7 @@ PriorityQueue.prototype.pop = function () {
     let posOfLeftChild = posOfRoot * 2 + 1;
     let posOfRightChild = posOfRoot * 2 + 2;
     this.data[posOfRoot] = this.data[this.count - 1];  // remove top data && move last element to top position
-    this.count--;
+    this.data.splice(--this.count, 1);
 
     if (this.mode === "max_heap") {  // mode : less(default) 
       this.popMaxHeap(posOfRoot, posOfLeftChild, posOfRightChild);
@@ -149,7 +149,7 @@ PriorityQueue.prototype.pop = function () {
 PriorityQueue.prototype.pushMaxHeap = function (posOfValue, posOfParent) {
   while (posOfValue > 0) {
     if (this.data[posOfParent] < this.data[posOfValue]) {
-      //this.data = swapData(this.data, posOfValue, posOfParent);
+      this.data = swapData(this.data, posOfValue, posOfParent);
       posOfValue = posOfParent;
       posOfParent = Math.floor((posOfValue - 1) / 2);
     }
@@ -162,7 +162,7 @@ PriorityQueue.prototype.pushMaxHeap = function (posOfValue, posOfParent) {
 PriorityQueue.prototype.pushMinHeap = function (posOfValue, posOfParent) {
   while (posOfValue > 0) {
     if (this.data[posOfParent] > this.data[posOfValue]) {
-      //this.data = swapData(this.data, posOfValue, posOfParent);
+      this.data = swapData(this.data, posOfValue, posOfParent);
       posOfValue = posOfParent;
       posOfParent = Math.floor((posOfValue - 1) / 2);
     }
@@ -185,7 +185,7 @@ PriorityQueue.prototype.popMaxHeap = function (posOfRoot, posOfLeftChild, posOfR
       posOfChange = posOfLeftChild;
     }
     if (this.data[posOfChange] > this.data[posOfRoot]) {
-      //this.data = swapData(this.data, posOfChange, posOfRoot);
+      this.data = swapData(this.data, posOfChange, posOfRoot);
       posOfRoot = posOfChange;
       posOfLeftChild = posOfRoot * 2 + 1;
       posOfRightChild = posOfRoot * 2 + 2;
@@ -209,7 +209,7 @@ PriorityQueue.prototype.popMinHeap = function (posOfRoot, posOfLeftChild, posOfR
       posOfChange = posOfLeftChild;
     }
     if (this.data[posOfChange] < this.data[posOfRoot]) {
-      //this.data = swapData(this.data, posOfChange, posOfRoot);
+      this.data = swapData(this.data, posOfChange, posOfRoot);
       posOfRoot = posOfChange;
       posOfLeftChild = posOfRoot * 2 + 1;
       posOfRightChild = posOfRoot * 2 + 2;
@@ -219,17 +219,5 @@ PriorityQueue.prototype.popMinHeap = function (posOfRoot, posOfLeftChild, posOfR
     }
   } while (posOfLeftChild < this.count)
 };
-
-/*
-priorityQueue.prototype.testData = function () {
-  for (let i = 0; i < this.count; i++) {
-    console.log(this.data[i]);
-  }
-  console.log();
-  console.log(`test isEmpty() // count:${this.count}`);
-  console.log(`test size() // size:${this.count}`);
-  console.log(`test top() // top:${this.data[0]}`);
-};
-*/
 
 export default PriorityQueue;
