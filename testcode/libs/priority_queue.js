@@ -221,11 +221,6 @@ PriorityQueue.prototype.popMinHeap = function (posOfRoot, posOfLeftChild, posOfR
 PriorityQueue.prototype.testData = function () {
   for (let i = 0; i < this.count; i++) {
     console.log(this.data[i]);
-  }
-  console.log();
-  console.log(`test isEmpty() // count:${this.count}`);
-  console.log(`test size() // size:${this.count}`);
-  console.log(`test top() // top:${this.data[0]}`);
-};
+  }};
 
 module.exports = PriorityQueue;

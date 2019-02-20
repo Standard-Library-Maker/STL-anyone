@@ -97,7 +97,7 @@ PriorityQueue.prototype.push = function (value) {
     return -1;
   }
 
-  this.data[this.count] = value; // insert value into the last location
+  this.data[this.count] = parseInt(value); // insert value into the last location
   if (this.count !== 0) {        // need to compare value with parent
     let posOfValue = this.count;
     let posOfParent = Math.floor((posOfValue - 1) / 2);

@@ -124,9 +124,7 @@ function newPriorityQueue() {
   testPriorityQueue1.push(8);
   testPriorityQueue1.push(4);
   testPriorityQueue1.push(12);
-  testPriorityQueue1.push(2);
   testPriorityQueue1.testData();
-  testPriorityQueue1.pop();
   testPriorityQueue1.pop();
   testPriorityQueue1.pop();
   testPriorityQueue1.pop();
