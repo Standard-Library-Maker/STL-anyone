@@ -212,7 +212,7 @@ HashMap.prototype.keySet = function () {
  * hm.put("A", 1);  
  * hm.put("B", 2); 
  * hm.put("가", 2);
- * Set set = hm.keySet(); // set = {"A-1", "B-2", "가-2"}
+ * Set set = hm.entrySet(); // set = {"A-1", "B-2", "가-2"}
  */
 HashMap.prototype.entrySet = function () {
   let entrySet = new Set();
@@ -323,12 +323,5 @@ HashMap.prototype.size = function () {
   }
   return size;
 };
-
-
-/*
-HashMap.prototype.test = function () {
-  console.log(this.map);
-}
-*/
 
 export default HashMap;
