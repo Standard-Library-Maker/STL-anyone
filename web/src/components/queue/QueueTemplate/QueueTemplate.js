@@ -43,34 +43,6 @@ class QueueTemplate extends Component {
     }
   };
 
-  makeOutput = async () => {
-    if (this.checkQueue()) return false;
-    if (this.state.pushValue === '') {
-      alert("please input push value");
-      return false;
-    }
-
-    let result = this.state.textAreaValue;
-    let output = [];
-    let code = this.state.showCode;
-    let myQueue = this.state.queue;
-
-    result.push(this.state.pushValue);
-    result.forEach( (v) => {output.push(v);});
-    code += myQueue.push(this.state.pushValue) + '\n';
-
-    await setTimeout(async () => {
-      await this.setState({
-        ...this.state,
-        hidden: true,
-        queue: myQueue,
-        output: output,
-        showCode: code
-      });
-    }, 300);
-    return true;
-  };
-
   makeLayer = () => {
     let output = [];
 
@@ -107,22 +79,37 @@ class QueueTemplate extends Component {
   };
 
   queuePush = async () => {
-    // if (this.checkQueue()) return false;
-    // if (this.state.pushValue === '') {
-    //   alert("please input push value");
-    //   return false;
-    // }
-    //
-    // let result = this.state.textAreaValue;
-    // result.push(this.state.pushValue);
-    // console.log(`myQueue: ${JSON.stringify(myQueue)}, result : ${result}`);
+    if (this.checkQueue()) return false;
+    if (this.state.pushValue === '') {
+      alert("please input push value");
+      return false;
+    }
 
     await this.setState({
       ...this.state,
-      // textAreaValue: result,
       hidden: !this.state.hidden,
     });
-    //this.forceUpdate()
+
+    let result = this.state.textAreaValue;
+    let output = [];
+    let code = this.state.showCode;
+    let myQueue = this.state.queue;
+
+    result.push(this.state.pushValue);
+    result.forEach( (v) => {output.push(v);});
+    code += myQueue.push(this.state.pushValue) + '\n';
+
+    await setTimeout(async () => {
+      await this.setState({
+        ...this.state,
+        hidden: true,
+        queue: myQueue,
+        output: output,
+        showCode: code,
+        pushValue: ''
+      });
+    }, 2500);
+    return true;
   };
 
   queuePop = async () => {
@@ -267,7 +254,6 @@ class QueueTemplate extends Component {
                 value={value.pushValue}
                 disabled
                 style={{display: this.state.hidden ? 'none' : 'block'}}
-                onAnimationEnd={this.makeOutput}
               />
             </div>
           </div>
