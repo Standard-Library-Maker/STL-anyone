@@ -135,7 +135,7 @@ PriorityQueue.prototype.pop = function () {
     let posOfLeftChild = posOfRoot * 2 + 1;
     let posOfRightChild = posOfRoot * 2 + 2;
     this.data[posOfRoot] = this.data[this.count - 1];  // remove top data && move last element to top position
-    this.count--;
+    this.data.splice(--this.count, 1);
 
     if (this.mode === "max_heap") {  // mode : less(default) 
       this.popMaxHeap(posOfRoot, posOfLeftChild, posOfRightChild);

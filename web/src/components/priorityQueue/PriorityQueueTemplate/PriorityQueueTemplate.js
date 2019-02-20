@@ -9,7 +9,7 @@ class PriorityQueueTemplate extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      priorityQueue: [],
+      priorityQueue: '',
       option: '',
       pushValue: '',
       textAreaValue: [],
@@ -114,11 +114,15 @@ class PriorityQueueTemplate extends Component {
  
     let myPriorityQueue = this.state.priorityQueue;
     let pushedValue = this.state.pushValue;
+    let result = this.state.textAreaValue;
+
     myPriorityQueue.push(pushedValue);
+    result.push(pushedValue+' -> ');
 
     await this.setState({
       ...this.state,
       priorityQueue: myPriorityQueue,
+      textAreaValue : result
     });
   };
 
@@ -126,7 +130,7 @@ class PriorityQueueTemplate extends Component {
     if (this.checkPriorityQueue()) return false;
 
     let myPriorityQueue = this.state.priorityQueue;
-    
+
     await this.setState({
       ...this.state,
       priorityQueue: myPriorityQueue,
