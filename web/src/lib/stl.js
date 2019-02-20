@@ -20,4 +20,4 @@ const stl = {
   BinaryTree: BinaryTree
 };
 
-export default stl
+export default stl;

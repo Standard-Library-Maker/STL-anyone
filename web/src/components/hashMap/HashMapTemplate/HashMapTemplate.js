@@ -55,7 +55,8 @@ setHideValue = value => {
 };
 
 start = async () => {
-  let newHashMap;
+  let newHashMap = new stl.HashMap();
+   
   await this.setState({
     ...this.state,
     hashMap: newHashMap,
@@ -302,6 +303,5 @@ hashMapClear = async () => {
     )
   }
 }
-
 
 export default HashMapTemplate;
