@@ -33,6 +33,8 @@ class HeaderTemplate extends Component {
               <li><Link to="/hash_map">Hash Map</Link></li>
               <li><Link to="/deque">Deque</Link></li>
               <li><Link to="/heap">Heap</Link></li>
+              <li><Link to="/binary_search_tree">Binary Search Tree</Link></li>
+              <li><Link to="/binary_tree">Binary Tree</Link></li>
        </ul>
           </div>
         </div>

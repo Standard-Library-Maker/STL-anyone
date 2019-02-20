@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
-import { Home, Test, Queue, Stack, PriorityQueue, HashMap, Deque, Heap } from 'pages';
+import { Home, Test, Queue, Stack, PriorityQueue, HashMap, Deque, Heap, BinarySearchTree, BinaryTree } from 'pages';
 
 class App extends Component {
   render() {
@@ -14,6 +14,8 @@ class App extends Component {
         <Route path="/hash_map" component={HashMap}/>
         <Route path="/deque" component={Deque}/>
         <Route path="/heap" component={Heap}/>
+        <Route path="/binary_search_tree" component={BinarySearchTree}/>
+        <Route path="/binary_tree" component={BinaryTree}/>
       </div>
     );
   }

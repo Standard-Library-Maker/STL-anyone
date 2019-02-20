@@ -5,6 +5,8 @@ import PriorityQueue from './priority_queue';
 import HashMap from './hash_map';
 import Deque from './deque';
 import Heap from './heap';
+import BinarySearchTree from './binary_search_tree';
+import BinaryTree from './binary_tree';
 
 const stl = {
   Stack: Stack,
@@ -13,7 +15,9 @@ const stl = {
   PriorityQueue: PriorityQueue, 
   HashMap: HashMap,
   Deque: Deque,
-  Heap: Heap
+  Heap: Heap,
+  BinarySearchTree: BinarySearchTree,
+  BinaryTree: BinaryTree
 };
 
 export default stl
