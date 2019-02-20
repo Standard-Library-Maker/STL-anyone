@@ -167,7 +167,7 @@ class PriorityQueueTemplate extends Component {
         <input 
           type="radio" 
           name="option" 
-          value='greater' 
+          value='greater'
           onChange={this.handleChange}/>
           greater
          <input 

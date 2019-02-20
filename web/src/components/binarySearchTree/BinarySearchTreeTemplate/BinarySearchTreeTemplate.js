@@ -95,12 +95,16 @@ class BinarySearchTreeTemplate extends Component {
     if (this.checkBinarySearchTree()) return false;
 
     let myBinarySearchTree = this.state.binarysearchtree;
-    let popValue = this.state.popValue;
+    let popValue = this.state.pushValue;
     let result = this.state.textAreaValue;
     //alert(`pop : ${myHeap.popMax()}`);
-    result.splice(result.length - 1, 1);
-    myBinarySearchTree.delete(popValue);
-
+    if(!myBinarySearchTree.find(popValue)){
+      alert("value doesn't exist");
+      popValue = null;
+    } else {
+      result.splice(result.length - 1, 1);
+      myBinarySearchTree.delete(popValue);
+    }
     await this.setState({
       ...this.state,
       binarysearchtree: myBinarySearchTree,
@@ -152,10 +156,11 @@ class BinarySearchTreeTemplate extends Component {
   findValue = (value) => {
     if (this.checkBinarySearchTree()) return false;
     let myBinarySearchTree = this.state.binarysearchtree;
+    value = this.state.pushValue;
     let isFind = myBinarySearchTree.find(value);
     this.setState({
       ...this.state,
-      toastMsg: `find value : ${isFind}`,
+      toastMsg: `value ${value} exists : ${isFind}`,
       hideMsg: false
     });
   };
@@ -166,6 +171,8 @@ class BinarySearchTreeTemplate extends Component {
     myBinarySearchTree.clear();
     this.setState({
       ...this.setState,
+      textAreaValue: [],
+      toastMsg: 'Tree is now clear',
       hideMsg: false
     });
   };
