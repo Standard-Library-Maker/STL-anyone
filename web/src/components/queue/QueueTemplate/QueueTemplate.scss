@@ -41,40 +41,8 @@
           text-align: center;
           font-size: 1.2rem;
           font-weight: bold;
-          //animation:
-          //        scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both,
-          //        slide-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s,
-          //        slide-rotate-ver-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both ;
-          //animation: slide-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 0.5s ;
-          //animation: slide-rotate-ver-left 1.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both 3.5s;
           animation: all-in-one 2s cubic-bezier(0.68, 0, 0.3, 1) both;
         }
-        /*@keyframes scale-in-center {
-          0% {
-            transform: scale(0);
-            opacity: 0;
-          }
-          100% {
-            transform: scale(1);
-            opacity: 1;
-          }
-        }
-        @keyframes slide-left {
-          0% {
-            transform:translateX(0);
-          }
-          100% {
-            transform: translateX(calc(-100vw + 450px));  // 100% width - 450px 뺀거리 만큼 움직임.
-          }
-        }
-        @keyframes slide-rotate-ver-left {
-          0% {
-            transform: translateX(0) rotateY(0);
-          }
-          100% {
-            transform: translateX(calc(-100vw + 350px)) rotateY(90deg);
-          }
-        }*/
         @keyframes all-in-one {
           0% {
             transform: scale(0);
@@ -90,9 +58,6 @@
           75% {
             transform: translateX(calc(-100vw + 450px)); // 100% width - 450px 뺀거리 만큼 움직임.
           }
-          //80% {
-          //  transform: translateX(calc(-100vw + 450px)) rotateY(0);
-          //}
           100% {
             transform: translateX(calc(-100vw + 350px)) rotateY(90deg);
           }

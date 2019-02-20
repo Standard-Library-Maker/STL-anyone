@@ -44,15 +44,28 @@ class QueueTemplate extends Component {
   };
 
   makeOutput = async () => {
-    let output = [];
-    let result = this.state.textAreaValue;
-    result.forEach( (v) => {output.push(v);});
+    if (this.checkQueue()) return false;
+    if (this.state.pushValue === '') {
+      alert("please input push value");
+      return false;
+    }
 
-    await setTimeout(() => {
-      this.setState({
+    let result = this.state.textAreaValue;
+    let output = [];
+    let code = this.state.showCode;
+    let myQueue = this.state.queue;
+
+    result.push(this.state.pushValue);
+    result.forEach( (v) => {output.push(v);});
+    code += myQueue.push(this.state.pushValue) + '\n';
+
+    await setTimeout(async () => {
+      await this.setState({
         ...this.state,
         hidden: true,
+        queue: myQueue,
         output: output,
+        showCode: code
       });
     }, 300);
     return true;
@@ -60,7 +73,9 @@ class QueueTemplate extends Component {
 
   makeLayer = () => {
     let output = [];
-    (this.state.output).map((o, index) => {
+
+    if (!this.state.queue) return null;
+    (this.state.queue.data).map((o, index) => {
       output.push( <div className={"value-layer" + index} key={index}> { o } </div>);
     });
     return output;
@@ -92,25 +107,20 @@ class QueueTemplate extends Component {
   };
 
   queuePush = async () => {
-    if (this.checkQueue()) return false;
-    if (this.state.pushValue === '') {
-      alert("please input push value");
-      return false;
-    }
-    let code = this.state.showCode;
-
-    let myQueue = this.state.queue;
-    let result = this.state.textAreaValue;
-    code += myQueue.push(this.state.pushValue);
-    result.push(this.state.pushValue + ' ');
-
+    // if (this.checkQueue()) return false;
+    // if (this.state.pushValue === '') {
+    //   alert("please input push value");
+    //   return false;
+    // }
+    //
+    // let result = this.state.textAreaValue;
+    // result.push(this.state.pushValue);
+    // console.log(`myQueue: ${JSON.stringify(myQueue)}, result : ${result}`);
 
     await this.setState({
       ...this.state,
-      queue: myQueue,
-      textAreaValue: result,
+      // textAreaValue: result,
       hidden: !this.state.hidden,
-      showCode: code + '\n'
     });
     //this.forceUpdate()
   };
@@ -120,9 +130,7 @@ class QueueTemplate extends Component {
 
     let myQueue = this.state.queue;
     let result = this.state.textAreaValue;
-    let output = this.state.output;
-
-    output.pop();
+    let output = [...this.state.output.pop()];
 
     await this.setState({
       ...this.state,
