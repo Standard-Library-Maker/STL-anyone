@@ -10,7 +10,6 @@ class DequeTemplate extends Component {
     super(props);
     this.state = {
       deque: '',
-      option: '',
       pushValue: '',
       textAreaValue: [],
       toastMsg: '',
@@ -51,12 +50,6 @@ class DequeTemplate extends Component {
 
   start = async () => {
     let newDeque;
-    if (this.state.option === "greater") {
-      newDeque = new stl.Deque("greater");
-    }
-    else {
-      newDeque = new stl.Deque();
-    }
     await this.setState({
       ...this.state,
       deque: newDeque,
@@ -74,7 +67,7 @@ class DequeTemplate extends Component {
       let myDeque = this.state.deque;
       await this.setState({
         ...this.state,
-        toastMsg: JSON.parse(myDeque),
+        toastMsg: JSON.stringify(myDeque),
         hideMsg: false
       });
     }
@@ -291,7 +284,7 @@ class DequeTemplate extends Component {
                   value={value.pushValue}
                   onChange={this.handleChange}
                 />
-                  <button id="push_front" onClick={this.dequePushFront}>push_front</button>
+                  <button onClick={this.dequePushFront}>push_front</button>
                   <button onClick={this.dequePushBack}>push_back</button>
                 </div>
               <div className="pop-form">
