@@ -94,7 +94,6 @@ class BinaryTreeTemplate extends Component {
 
     let myBinaryTree = this.state.binarytree;
     let result = this.state.textAreaValue;
-    //alert(`pop : ${myHeap.popMax()}`);
     result.splice(result.length - 1, 1);
 
     await this.setState({
@@ -151,6 +150,7 @@ class BinaryTreeTemplate extends Component {
     myBinaryTree.clear();
     this.setState({
       ...this.setState,
+      textAreaValue: [],
       toastMsg: 'Tree is now clear',
       hideMsg: false
     });
@@ -162,7 +162,7 @@ class BinaryTreeTemplate extends Component {
     value.textAreaValue.forEach( (v) => {output += v;});
     return (
       <div className="binarytree">
-        <div className="pq-header">
+        <div className="bt-header">
           <HeaderTemplate/>
           <ToastMessage msg={value.toastMsg} sendValue={this.setHideValue} hidden={value.hideMsg}/>
         </div>

@@ -59,7 +59,7 @@ BinarySearchTree.prototype.insert = function(value){
       }
     }
     else{
-      if(value > current.data){
+      if(value >= current.data){
         if(current.right === null){
           current.right = node;
           break;
@@ -105,7 +105,7 @@ BinarySearchTree.prototype.inOrder = function(value) {
   if(node === null) return null;
   this.inOrder(node.left);
   if(node.data !== null)
-  console.log("node data : " + node.data);
+  //console.log("node data : " + node.data);
   this.inOrder(node.right);
 };
 
@@ -173,21 +173,21 @@ BinarySearchTree.prototype.find = function(value) {
   while(true){
     if(node.data > value){
       if(node.left === null){
-        console.log("data not exists..");
-        return null;
+        //console.log("data not exists..");
+        return false;
       }
       node = node.left;
     }
     else if (node.data < value){
       if(node.right === null) {
-        console.log("data not exists..");
-        return null;
+        //console.log("data not exists..");
+        return false;
       }
       node = node.right;
     }
     else {
-      console.log("data exists : " + node.data);
-      return node;
+      //console.log("data exists : " + node.data);
+      return true;
     }
   }
 };
@@ -209,32 +209,32 @@ BinarySearchTree.prototype.delete = function (value) {
   if(value === null) return false;
   let node = new Node();  
   node = this.find(value);
-  if(node === false) {
+  if(node === null) {
     return false;
   }
-  console.log("====== delete data : " + node.data + " ======" );
+  //console.log("====== delete data : " + node.data + " ======" );
   if(node === this.root){
-    console.log("data : root");
+    //console.log("data : root");
     let replace = new Node();
     replace = this.maxValue(node.left);
     if(replace === null) replace = this.minValue(node.right);
 
     if(node.left === null && node.right === null) {
-      console.log("root is only node");
+      //console.log("root is only node");
       this.root = null;
       return;
     }
     if(replace.left === null && replace.right === null){
       this.root.data = replace.data;
       replace.data = null;
-      console.log(this.root.data);
+      //console.log(this.root.data);
     }
     else {
       this.root.data = replace.data;
       replace.data = null;
       replace = this.maxValue(replace.left);
       if(replace === null) replace = this.minValue(replace.right);
-      console.log(replace.data);
+      //console.log(replace.data);
     }
   }
   else {
@@ -263,15 +263,20 @@ BinarySearchTree.prototype.delete = function (value) {
  * bst.push(3);
  * bst.clear(this.root);
  */
-BinarySearchTree.prototype.clear = function (value) {
-  if(value === null) return;
+BinarySearchTree.prototype.clear = function () {
+  this.deleteTree(this.root);
+  this.root = null;
+};
+
+BinarySearchTree.prototype.deleteTree = function (value) {
   let node = new Node();
   node = value;
-  if(node === null) return;
-  this.inOrder(node.left);
-  if(node.data !== null)
-  node.data = null;
-  this.inOrder(node.right);
+  if(this.node === null) return;
+  if(node.left !== null)
+  this.deleteTree(node.left);
+  if(node.right !== null)
+  this.deleteTree(node.right);
+  node = null;
 };
 
 module.exports = BinarySearchTree;
