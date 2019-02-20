@@ -121,7 +121,7 @@ Deque.prototype.pop_back = function () {
     //alert("ERROR:deque is empty");
     return null;
   }
-  let returnValue = this.head.data;
+  let returnValue = this.tail.data;
   let popNode = new Node();
   popNode = this.tail;
   this.tail = this.tail.prev;
@@ -198,10 +198,6 @@ Deque.prototype.erase = function (pos) {
  */
 Deque.prototype.clear = function () {
   this.length = 0;
-  this.head.data = null;
-  this.head.next = null;
-  this.tail.data = null;
-  this.tail.prev = null;
   this.head = null;
   this.tail = null;
 };

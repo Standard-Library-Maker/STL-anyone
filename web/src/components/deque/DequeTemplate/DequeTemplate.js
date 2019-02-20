@@ -61,7 +61,7 @@ class DequeTemplate extends Component {
       ...this.state,
       deque: newDeque,
       textAreaValue: [],
-      toastMsg: 'New Priority Queue Created!',
+      toastMsg: 'New Deque Created!',
       hideMsg: false,
     }, () => {
       console.log(newDeque);
@@ -74,7 +74,7 @@ class DequeTemplate extends Component {
       let myDeque = this.state.deque;
       await this.setState({
         ...this.state,
-        toastMsg: JSON.stringify(myDeque),
+        toastMsg: JSON.parse(myDeque),
         hideMsg: false
       });
     }
@@ -291,21 +291,17 @@ class DequeTemplate extends Component {
                   value={value.pushValue}
                   onChange={this.handleChange}
                 />
-                push  :
-                <button onClick={this.dequePushFront}>front</button>
-                <button onClick={this.dequePushBack}>back</button>
-              </div>
-
+                  <button id="push_front" onClick={this.dequePushFront}>push_front</button>
+                  <button onClick={this.dequePushBack}>push_back</button>
+                </div>
               <div className="pop-form">
-                pop  :
-               <button onClick={this.dequePopFront} disabled={!value.hideMsg}>front</button>
-                <button onClick={this.dequePopBack} disabled={!value.hideMsg}>back</button>
-              </div>
-              <div className="remove-form">
+                  <button onClick={this.dequePopFront} disabled={!value.hideMsg}>pop_front</button>
+                  <button onClick={this.dequePopBack} disabled={!value.hideMsg}>pop_back</button>
+              </div>  
+             <div className="remove-form">
                 <button onClick={this.dequeErase} disabled={!value.hideMsg}>erase</button>
                 <button onClick={this.dequeClear} disabled={!value.hideMsg}>clear</button>
               </div>
-
               <div className="value-form">
                 <button onClick={this.getFront} disabled={!value.hideMsg}>front</button>
                 <button onClick={this.getBack} disabled={!value.hideMsg}>back</button>
@@ -313,7 +309,6 @@ class DequeTemplate extends Component {
                 <button onClick={this.dequeEnd} disabled={!value.hideMsg}>end</button>
                 <button onClick={this.dequeAt} disabled={!value.hideMsg}>at</button>
               </div>
-      
               <div className="size-form">
                 <button onClick={this.getSize} disabled={!value.hideMsg}>size</button>
               </div>
