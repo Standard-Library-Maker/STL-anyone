@@ -6,3 +6,5 @@ export { default as PriorityQueue } from './PriorityQueue';
 export { default as HashMap } from './HashMap';
 export { default as Deque } from './Deque';
 export { default as Heap} from './Heap';
+export { default as BinarySearchTree} from './BinarySearchTree';
+export { default as BinaryTree} from './BinaryTree';

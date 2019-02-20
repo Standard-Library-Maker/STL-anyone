@@ -1,0 +1,51 @@
+.binarytree {
+  text-align: center;
+    .result-area {
+      margin-left: 30px;
+      margin-top: 50px;
+      width: 500px;
+      /*display: flex;
+      flex-flow: row nowrap;*/
+      input, textarea {
+        width: 400px;
+        height: 200px;
+        //background-color: #1AAB8A;
+        border: 0;
+        border-radius: 10px;
+        //text-align: center;
+        font-size: 1.2rem;
+        font-weight: bold;
+        /*animation: scale-in-center 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: slide-left 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+        animation: slide-rotate-ver-left 2s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;*/
+      }
+      /*@keyframes scale-in-center {
+        0% {
+          transform: scale(0);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes slide-left {
+        0% {
+          transform: translateX(0);
+        }
+        100% {
+          transform: translateX(-400px);
+        }
+      }
+      @keyframes slide-rotate-ver-left {
+        0% {
+          transform: translateX(0) rotateY(0);
+        }
+        100% {
+          transform: translateX(-150px) rotateY(90deg);
+        }
+      }*/
+    }
+
+}
+

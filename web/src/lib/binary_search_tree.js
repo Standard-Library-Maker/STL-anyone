@@ -251,53 +251,6 @@ BinarySearchTree.prototype.delete = function (value) {
   }
 };
 
-
-BinarySearchTree.prototype.delete = function (value) {
-  if(value === null) return false;
-  let node = new Node();  
-  node = this.find(value);
-  if(node === false) {
-    return null;
-  }
-  console.log("====== delete data : " + node.data + " ======" );
-  if(node === this.root){
-    console.log("data : root");
-    let replace = new Node();
-    replace = this.maxValue(node.left);
-    if(replace === null) replace = this.minValue(node.right);
-
-    if(node.left === null && node.right === null) {
-      console.log("root is only node");
-
-      return ;
-    }
-    if(replace.left === null && replace.right === null){
-      this.root.data = replace.data;
-      replace.data = null;
-      console.log(this.root.data);
-    }
-    else {
-      this.root.data = replace.data;
-      replace.data = null;
-      replace = this.maxValue(replace.left);
-      if(replace === null) replace = this.minValue(replace.right);
-      console.log(replace.data);
-    }
-  }
-  else {
-    let replace = new Node(null);
-    replace = this.maxValue(node.left);
-    if(replace === null) replace = this.minValue(node.right);
-
-    if(replace === null) {
-      node.data = null;
-      return;
-    }
-    node.data = replace.data;
-    replace.data = null;
-  }
-};
-
 /**
  * @method BinarySearchTree.clear  
  * @description This method is used to nullify this binary search tree and make all variables initial.
@@ -311,10 +264,10 @@ BinarySearchTree.prototype.delete = function (value) {
  * bst.clear(this.root);
  */
 BinarySearchTree.prototype.clear = function (value) {
-  if(value === null) return false;
+  if(value === null) return;
   let node = new Node();
   node = value;
-  if(node === null) return null;
+  if(node === null) return;
   this.inOrder(node.left);
   if(node.data !== null)
   node.data = null;
