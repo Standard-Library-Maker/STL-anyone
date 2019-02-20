@@ -92,7 +92,7 @@ Deque.prototype.pop_front = function () {
     //alert("ERROR:deque is empty");
     return null;
   }
-
+  let returnValue = this.head.data;
   let popNode = new Node();
   popNode = this.head;
   this.head = this.head.next;
@@ -101,6 +101,7 @@ Deque.prototype.pop_front = function () {
   }
   popNode = null;
   this.length--;
+  return returnValue;
 };
 
 /**
@@ -120,7 +121,7 @@ Deque.prototype.pop_back = function () {
     //alert("ERROR:deque is empty");
     return null;
   }
-
+  let returnValue = this.tail.data;
   let popNode = new Node();
   popNode = this.tail;
   this.tail = this.tail.prev;
@@ -129,6 +130,7 @@ Deque.prototype.pop_back = function () {
   }
   popNode = null;
   this.length--;
+  return returnValue;
 };
 
 /**
@@ -173,11 +175,13 @@ Deque.prototype.erase = function (pos) {
         eraseNode = eraseNode.prev; // go to position
       }
     }
+    let returnValue = eraseNode.data;
     getNode = eraseNode.prev;
     getNode.next = eraseNode.next;
     getNode.next.prev = getNode;
     eraseNode = null;
     this.length--;
+    return returnValue;
   }
 };
 
@@ -194,10 +198,6 @@ Deque.prototype.erase = function (pos) {
  */
 Deque.prototype.clear = function () {
   this.length = 0;
-  this.head.data = null;
-  this.head.next = null;
-  this.tail.data = null;
-  this.tail.prev = null;
   this.head = null;
   this.tail = null;
 };

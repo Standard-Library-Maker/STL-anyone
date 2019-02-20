@@ -1,4 +1,4 @@
-const swap = require("../lib/swap");
+const swap = require("./swap");
 
 /**
  * @Class Heap
@@ -288,6 +288,6 @@ Heap.prototype.makeMinHeap = function(array) {
 
 Heap.prototype.toString = function () {
   return `=== ${this.size()} items in the stack : [${this.data}] ===`;
-}
+};
 
-module.exports = Heap;
+export default Heap;
