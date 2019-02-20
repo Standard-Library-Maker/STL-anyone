@@ -19,13 +19,13 @@
         border-left-width: 0;
         background-color: #393d48;
         color: #ffffff;
-        /*.queue-storage {
-        }*/
+
         div {
-          height: 90px;
+          background-color: #1AAB8A;
           display: flex;
           align-items: center;
-          background-color: #1AAB8A;
+          height: 90px;
+          margin-right: 5px;
           color: #ffffff;
         }
       }
