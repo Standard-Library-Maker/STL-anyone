@@ -19,6 +19,7 @@ class LandingTemplate extends Component {
             <Link to="/priority_queue">Priority Queue</Link>
             <Link to="/hash_map">Hash Map</Link>
             <Link to="/deque">Deque</Link>
+            <Link to="/heap">Heap</Link>
           </div>
         </div>
       </div>

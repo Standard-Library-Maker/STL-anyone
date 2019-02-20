@@ -4,6 +4,7 @@ import List from './list';
 import PriorityQueue from './priority_queue';
 import HashMap from './hash_map';
 import Deque from './deque';
+import Heap from './heap';
 
 const stl = {
   Stack: Stack,
@@ -11,7 +12,8 @@ const stl = {
   List: List,
   PriorityQueue: PriorityQueue, 
   HashMap: HashMap,
-  Deque: Deque
+  Deque: Deque,
+  Heap: Heap
 };
 
 export default stl
