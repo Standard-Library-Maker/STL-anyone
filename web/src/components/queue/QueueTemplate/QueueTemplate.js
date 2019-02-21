@@ -43,24 +43,11 @@ class QueueTemplate extends Component {
     }
   };
 
-  makeOutput = async () => {
-    let output = [];
-    let result = this.state.textAreaValue;
-    result.forEach( (v) => {output.push(v);});
-
-    await setTimeout(() => {
-      this.setState({
-        ...this.state,
-        hidden: true,
-        output: output,
-      });
-    }, 300);
-    return true;
-  };
-
   makeLayer = () => {
     let output = [];
-    (this.state.output).map((o, index) => {
+
+    if (!this.state.queue) return null;
+    (this.state.queue.data).map((o, index) => {
       output.push( <div className={"value-layer" + index} key={index}> { o } </div>);
     });
     return output;
@@ -97,22 +84,32 @@ class QueueTemplate extends Component {
       alert("please input push value");
       return false;
     }
-    let code = this.state.showCode;
-
-    let myQueue = this.state.queue;
-    let result = this.state.textAreaValue;
-    code += myQueue.push(this.state.pushValue);
-    result.push(this.state.pushValue + ' ');
-
 
     await this.setState({
       ...this.state,
-      queue: myQueue,
-      textAreaValue: result,
       hidden: !this.state.hidden,
-      showCode: code + '\n'
     });
-    //this.forceUpdate()
+
+    let result = this.state.textAreaValue;
+    let output = [];
+    let code = this.state.showCode;
+    let myQueue = this.state.queue;
+
+    result.push(this.state.pushValue);
+    result.forEach( (v) => {output.push(v);});
+    code += myQueue.push(this.state.pushValue) + '\n';
+
+    await setTimeout(async () => {
+      await this.setState({
+        ...this.state,
+        hidden: true,
+        queue: myQueue,
+        output: output,
+        showCode: code,
+        pushValue: ''
+      });
+    }, 2500);
+    return true;
   };
 
   queuePop = async () => {
@@ -120,9 +117,7 @@ class QueueTemplate extends Component {
 
     let myQueue = this.state.queue;
     let result = this.state.textAreaValue;
-    let output = this.state.output;
-
-    output.pop();
+    let output = [...this.state.output.pop()];
 
     await this.setState({
       ...this.state,
@@ -259,7 +254,6 @@ class QueueTemplate extends Component {
                 value={value.pushValue}
                 disabled
                 style={{display: this.state.hidden ? 'none' : 'block'}}
-                onAnimationEnd={this.makeOutput}
               />
             </div>
           </div>

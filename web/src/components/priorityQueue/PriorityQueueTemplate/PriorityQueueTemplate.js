@@ -172,6 +172,7 @@ class PriorityQueueTemplate extends Component {
 
         <div className="title">Priority Queue</div>
         <div className="create">
+<<<<<<< HEAD
           <input
             type="radio"
             name="option"
@@ -185,6 +186,21 @@ class PriorityQueueTemplate extends Component {
             onChange={this.handleChange} />
           <span>less(defualt)</span>
           <button className="start-btn" onClick={this.start}>START</button>
+=======
+        <input 
+          type="radio" 
+          name="option" 
+          value='greater'
+          onChange={this.handleChange}/>
+          greater
+         <input 
+          type="radio" 
+          name="option" 
+          value='less' 
+          onChange={this.handleChange}/>
+          less
+        <button onClick={this.start} disabled={!value.hideMsg}>Create Priority Queue</button>
+>>>>>>> a3a871f24aeed191734dd1168114e34a338d847a
         </div>
 
         <div className="test-code">

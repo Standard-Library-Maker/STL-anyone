@@ -59,9 +59,16 @@ BinaryTree.prototype.push = function (value) {
  */
 BinaryTree.prototype.pop = function () {
   if(this.size() === 0) return false;
+  let result = this.tree[this.size() - 1].data;
+  let parent = Math.floor((this.size() - 1) / 2);
+  /*if(parent !== null){
+    this.tree[this.size() - 1] = null;
+    if(this.tree[parent].left.data === null) this.tree[parent].left = null;
+    else this.tree[parent].left = null;
+  }*/
   this.tree[this.size() - 1].data = null;
-  this.tree[this.size() - 1] = null;
   this.count--;
+  return result;
 };
 
 /**
@@ -193,15 +200,20 @@ BinaryTree.prototype.state = function () {
  * bt.clear();
  */
 BinaryTree.prototype.clear = function() {
-  let i;
-  for (i = 0; i < this.size(); i++){
-    this.tree[i].data = null;
-    this.tree[i].left = null;
-    this.tree[i].right = null;
-  }
+  this.deleteTree(this.root);
+  this.root = null;
+};
+BinaryTree.prototype.deleteTree = function (value) {
+  let node = new Node();
+  node = value;
+  if(this.node === null) return;
+  if(node.left !== null)
+  this.deleteTree(node.left);
+  if(node.right !== null)
+  this.deleteTree(node.right);
+  node = null;
   this.tree = null;
   this.count = 0;
-  this.root = null;
 };
 
 module.exports = BinaryTree;
