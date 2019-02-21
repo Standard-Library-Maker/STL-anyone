@@ -359,4 +359,18 @@ Deque.prototype.at = function (pos) {
   return getNode.data;
 };
 
+
+Deque.prototype.state = function () {
+  let length = this.length;
+  let getNode = new Node();
+  getNode = this.head;
+  let state = getNode.data;
+  for(let l=0; l<length-1; l++) {
+    getNode = getNode.next;
+    let newData = getNode.data;
+    state = state + " -> " + newData;
+  }
+  return state;
+};
+
 export default Deque;

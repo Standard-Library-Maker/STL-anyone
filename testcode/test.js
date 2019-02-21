@@ -32,6 +32,8 @@ switch (userInput[2]) {
     break;
   case "ll": newLinkedList();
     break;
+  case "hashmap": newHashMap();
+    break;
   case "dll": newDoubleLinkedList();
     break;
   default: console.log(`user input : '${userInput[2]}' doesn't exist\n${errMsg}\n${exMsg}`);
@@ -311,8 +313,9 @@ b.pop();
 b.state();
 */
 
-/*
+
 // Hash Map
+function newHashMap() {
 console.log("\n=======Hash Map=======");
 let HashMap1 = new HashMap();
 HashMap1.isEmpty();
@@ -362,7 +365,7 @@ HashMap1.size();
 HashMap1.clear();
 console.log("=======AFTER CLEAR=======");
 HashMap1.isEmpty();
-*/
+}
 
 /*
 // Heap

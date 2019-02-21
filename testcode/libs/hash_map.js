@@ -205,7 +205,7 @@ HashMap.prototype.keySet = function () {
       }
     }
   }
-  // console.log(keySet);
+  //console.log(keySet);
   return keySet;
 };
 
@@ -226,7 +226,7 @@ HashMap.prototype.entrySet = function () {
     if (this.map[posOfMap] !== undefined) {
       let curEntry = this.map[posOfMap]
       for (let posOfEntry = 0; posOfEntry < this.map[posOfMap].count; posOfEntry++) {
-        entrySet.add(curEntry.key + "=" + curEntry.value);
+        entrySet.add(curEntry.key + "-" + curEntry.value);
         curEntry = curEntry.next;
       }
     }

@@ -19,7 +19,7 @@ class DequeTemplate extends Component {
 
   checkDeque = () => {
     if (this.state.deque === '') {
-      alert("Initialize Deque!! Please press start button");
+      alert("Initialize Deque. Please press START button.");
       return true;
     }
     return false;
@@ -49,12 +49,12 @@ class DequeTemplate extends Component {
   };
 
   start = async () => {
-    let newDeque;
+    let newDeque = new stl.Deque();
     await this.setState({
       ...this.state,
       deque: newDeque,
       textAreaValue: [],
-      toastMsg: 'New Deque Created!',
+      toastMsg: 'New Deque Created.',
       hideMsg: false,
     }, () => {
       console.log(newDeque);
@@ -67,7 +67,7 @@ class DequeTemplate extends Component {
       let myDeque = this.state.deque;
       await this.setState({
         ...this.state,
-        toastMsg: JSON.stringify(myDeque),
+        toastMsg: `(${myDeque.state()})`,
         hideMsg: false
       });
     }
@@ -78,7 +78,7 @@ class DequeTemplate extends Component {
     let myDeque = this.state.deque;
     this.setState({
       ...this.state,
-      toastMsg: `size : ${myDeque.size()}`,
+      toastMsg: `Deque Size : ${myDeque.size()}`,
       hideMsg: false
     });
   };
@@ -88,7 +88,7 @@ class DequeTemplate extends Component {
     let myDeque = this.state.deque;
     this.setState({
       ...this.state,
-      toastMsg: `isEmpty ? ${myDeque.isEmpty().toString()}`,
+      toastMsg: `is Deque Empty? : ${myDeque.isEmpty().toString()}`,
       hideMsg: false
     });
   };
@@ -96,7 +96,7 @@ class DequeTemplate extends Component {
   dequePushFront = async () => {
     if (this.checkDeque()) return false;
     if (this.state.pushValue === '') {
-      alert("please input push value");
+      alert("Please input value at textbox.");
       return false;
     }
 
@@ -110,14 +110,15 @@ class DequeTemplate extends Component {
     await this.setState({
       ...this.state,
       deque: myDeque,
-      textAreaValue: result
+      textAreaValue: result,
+      toastMsg: `Success to push value (${pushedValue}) at front.`,
     });
   };
 
   dequePushBack = async () => {
     if (this.checkDeque()) return false;
     if (this.state.pushValue === '') {
-      alert("please input push value");
+      alert("Please input value at textbox.");
       return false;
     }
 
@@ -131,7 +132,8 @@ class DequeTemplate extends Component {
     await this.setState({
       ...this.state,
       deque: myDeque,
-      textAreaValue: result
+      textAreaValue: result,
+      toastMsg: `Success to push value (${pushedValue}) at back.`,
     });
   };
 
@@ -145,7 +147,7 @@ class DequeTemplate extends Component {
     await this.setState({
       ...this.state,
       deque: myDeque,
-      toastMsg: `poped value : ${myDeque.pop_front()}`,
+      toastMsg: `Success to pop value (${myDeque.pop_front()}) from front.`,
       hideMsg: false
     });
   };
@@ -160,7 +162,7 @@ class DequeTemplate extends Component {
     await this.setState({
       ...this.state,
       deque: myDeque,
-      toastMsg: `poped value : ${myDeque.pop_back()}`,
+      toastMsg: `Success to pop value (${myDeque.pop_back()}) from back.`,
       hideMsg: false
     });
   };
@@ -170,7 +172,7 @@ class DequeTemplate extends Component {
     let myDeque = this.state.deque;
     this.setState({
       ...this.state,
-      toastMsg: `front value : ${myDeque.front()}`,
+      toastMsg: `Front value of Deque : ${myDeque.front()}`,
       hideMsg: false
     });
   };
@@ -180,7 +182,7 @@ class DequeTemplate extends Component {
     let myDeque = this.state.deque;
     this.setState({
       ...this.state,
-      toastMsg: `back value : ${myDeque.back()}`,
+      toastMsg: `Back value of Deque : ${myDeque.back()}`,
       hideMsg: false
     });
   };
@@ -190,7 +192,7 @@ class DequeTemplate extends Component {
     let myDeque = this.state.deque;
     this.setState({
       ...this.state,
-      toastMsg: `Begin iterator : ${myDeque.begin()}`,
+      toastMsg: `Begin iterator of Deque : ${myDeque.begin()}`,
       hideMsg: false
     });
   };
@@ -200,7 +202,7 @@ class DequeTemplate extends Component {
     let myDeque = this.state.deque;
     this.setState({
       ...this.state,
-      toastMsg: `End iterator : ${myDeque.end()}`,
+      toastMsg: `End iterator of Deque : ${myDeque.end()}`,
       hideMsg: false
     });
   };
@@ -208,7 +210,7 @@ class DequeTemplate extends Component {
   dequeErase = async () => {
     if (this.checkDeque()) return false;
     if (this.state.pushValue === '') {
-      alert("please input position to be removed from this deque");
+      alert("Please input position to be removed from deque.");
       return false;
     }
 
@@ -220,17 +222,14 @@ class DequeTemplate extends Component {
     await this.setState({
       ...this.state,
       deque: myDeque,
-      toastMsg: `erased value : ${myDeque.erase(pushedValue)}`,
+      toastMsg: `Success to erase value (${myDeque.erase(pushedValue)}) at position (${pushedValue}).`,
       hideMsg: false
     });
   };
 
   dequeClear = async () => {
     if (this.checkDeque()) return false;
-    if (this.state.pushValue === '') {
-      alert("please input position to be removed from this deque");
-      return false;
-    }
+
     let myDeque = this.state.deque;
     let result = this.state.textAreaValue;
 
@@ -238,14 +237,15 @@ class DequeTemplate extends Component {
     await this.setState({
       ...this.state,
       deque: myDeque,
-      textAreaValue: result
+      textAreaValue: result,
+      toastMsg: `Success to Clear Deque.`,
     });
   };
 
   dequeAt = async () => {
     if (this.checkDeque()) return false;
     if (this.state.pushValue === '') {
-      alert("please input position to be removed from this deque");
+      alert("Please input position to find value from deque.");
       return false;
     }
 
@@ -255,7 +255,7 @@ class DequeTemplate extends Component {
     await this.setState({
       ...this.state,
       deque: myDeque,
-      toastMsg: `position (${pushedValue}) value : ${myDeque.at(pushedValue)}`,
+      toastMsg: `Position (${pushedValue}) value of deque : ${myDeque.at(pushedValue)}`,
       hideMsg: false
     });
   };
@@ -272,7 +272,7 @@ class DequeTemplate extends Component {
         </div>
 
         <div className="title">Deque</div>
-        <button className="start-btn" onClick={this.start}>Create deque</button>
+        <button className="start-btn" onClick={this.start}>START</button>
 
         <div className="test-code">
           <div className="user-input-section">
@@ -306,7 +306,7 @@ class DequeTemplate extends Component {
                 <button onClick={this.getSize} disabled={!value.hideMsg}>size</button>
               </div>
               <div className="empty-form">
-                <button onClick={this.checkEmpty} disabled={!value.hideMsg}>empty?</button>
+                <button onClick={this.checkEmpty} disabled={!value.hideMsg}>isEmpty</button>
               </div>
               <div className="state-form">
                 <button onClick={this.getState} disabled={!value.hideMsg}>state</button>

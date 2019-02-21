@@ -20,7 +20,7 @@ class PriorityQueueTemplate extends Component {
 
   checkPriorityQueue = () => {
     if (this.state.priorityQueue === '') {
-      alert("Initialize Priority Queue with Option!! Please press start button");
+      alert("Initialize Priority Queue with sort criteria. Please press START button.");
       return true;
     }
     return false;
@@ -41,7 +41,7 @@ class PriorityQueueTemplate extends Component {
       this.setState({
         ...this.state,
         option: e.target.value
-      });  
+      });
     }
   };
 
@@ -56,17 +56,24 @@ class PriorityQueueTemplate extends Component {
 
   start = async () => {
     let newPriorityQueue;
-    if (this.state.option === "greater") {
-     newPriorityQueue = new stl.PriorityQueue("greater");
+    let option;
+    if (this.state.option === "") {
+      alert("Initialize Priority Queue with sort criteria. Please press START button.");
+      return true;
     }
-    else {
+    if (this.state.option === "greater") {
+      option = "greater";
+      newPriorityQueue = new stl.PriorityQueue("greater");
+    }
+    else if (this.state.option === "less") {
+      option = "less"
       newPriorityQueue = new stl.PriorityQueue();
     }
     await this.setState({
       ...this.state,
       priorityQueue: newPriorityQueue,
       textAreaValue: [],
-      toastMsg: 'New Priority Queue Created!',
+      toastMsg: `New Priority Queue with option (${option}) Created.`,
       hideMsg: false,
     }, () => {
       console.log(newPriorityQueue);
@@ -90,7 +97,7 @@ class PriorityQueueTemplate extends Component {
     let myPriorityQueue = this.state.priorityQueue;
     this.setState({
       ...this.state,
-      toastMsg: `size : ${myPriorityQueue.size()}`,
+      toastMsg: `Priority Queue Size : ${myPriorityQueue.size()}`,
       hideMsg: false
     });
   };
@@ -100,7 +107,7 @@ class PriorityQueueTemplate extends Component {
     let myPriorityQueue = this.state.priorityQueue;
     this.setState({
       ...this.state,
-      toastMsg: `isEmpty ? ${myPriorityQueue.isEmpty().toString()}`,
+      toastMsg: `is Priority Queue Empty? : ${myPriorityQueue.isEmpty().toString()}`,
       hideMsg: false
     });
   };
@@ -108,21 +115,22 @@ class PriorityQueueTemplate extends Component {
   priorityQueuePush = async () => {
     if (this.checkPriorityQueue()) return false;
     if (this.state.pushValue === '') {
-      alert("please input push value");
+      alert("Please input value at textbox.");
       return false;
     }
- 
+
     let myPriorityQueue = this.state.priorityQueue;
     let pushedValue = this.state.pushValue;
     let result = this.state.textAreaValue;
 
     myPriorityQueue.push(pushedValue);
-    result.push(pushedValue+' -> ');
+    result.push(pushedValue + ' -> ');
 
     await this.setState({
       ...this.state,
       priorityQueue: myPriorityQueue,
-      textAreaValue : result
+      textAreaValue: result,
+      toastMsg: `Success to push value (${pushedValue})`,
     });
   };
 
@@ -131,12 +139,12 @@ class PriorityQueueTemplate extends Component {
 
     let myPriorityQueue = this.state.priorityQueue;
     let result = this.state.textAreaValue;
-    result.splice(result.length -1, 1);
+    result.splice(result.length - 1, 1);
 
     await this.setState({
       ...this.state,
       priorityQueue: myPriorityQueue,
-      toastMsg: `poped value : ${myPriorityQueue.pop()}`,
+      toastMsg: `Success to pop value (${myPriorityQueue.pop()})`,
       hideMsg: false
     });
   };
@@ -146,7 +154,7 @@ class PriorityQueueTemplate extends Component {
     let myPriorityQueue = this.state.priorityQueue;
     this.setState({
       ...this.state,
-      toastMsg: `front value : ${myPriorityQueue.top()}`,
+      toastMsg: `Top Value of Priority Queue : ${myPriorityQueue.top()}`,
       hideMsg: false
     });
   };
@@ -164,19 +172,19 @@ class PriorityQueueTemplate extends Component {
 
         <div className="title">Priority Queue</div>
         <div className="create">
-        <input 
-          type="radio" 
-          name="option" 
-          value='greater' 
-          onChange={this.handleChange}/>
-          greater
-         <input 
-          type="radio" 
-          name="option" 
-          value='less' 
-          onChange={this.handleChange}/>
-          less
-        <button onClick={this.start} disabled={!value.hideMsg}>Create Priority Queue</button>
+          <input
+            type="radio"
+            name="option"
+            value='greater'
+            onChange={this.handleChange} />
+          <span> greater </span>
+          <input
+            type="radio"
+            name="option"
+            value='less'
+            onChange={this.handleChange} />
+          <span>less(defualt)</span>
+          <button className="start-btn" onClick={this.start}>START</button>
         </div>
 
         <div className="test-code">
@@ -202,7 +210,7 @@ class PriorityQueueTemplate extends Component {
               <button onClick={this.getSize} disabled={!value.hideMsg}>size</button>
             </div>
             <div className="empty-form">
-              <button onClick={this.checkEmpty} disabled={!value.hideMsg}>empty?</button>
+              <button onClick={this.checkEmpty} disabled={!value.hideMsg}>isEmpty</button>
             </div>
             <div className="state-form">
               <button onClick={this.getState} disabled={!value.hideMsg}>state</button>
