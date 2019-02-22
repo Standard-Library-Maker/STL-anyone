@@ -360,7 +360,7 @@ Deque.prototype.at = function (pos) {
 };
 
 
-Deque.prototype.state = function () {
+Deque.prototype.getResult = function () {
   let length = this.length;
   let getNode = new Node();
   getNode = this.head;

@@ -72,7 +72,7 @@ PriorityQueue.prototype.top = function () {
   if (this.count > 0) {
     return this.data[0];
   } else {
-   // alert("ERROR:priority queue is empty");  
+    // alert("ERROR:priority queue is empty");  
     return null;
   }
 };
@@ -92,7 +92,7 @@ PriorityQueue.prototype.top = function () {
  * pq2.push("B");
  */
 PriorityQueue.prototype.push = function (value) {
-  if (value === undefined){
+  if (value === undefined) {
     //alert("ERROR:push() required parameter");
     return -1;
   }
@@ -218,6 +218,15 @@ PriorityQueue.prototype.popMinHeap = function (posOfRoot, posOfLeftChild, posOfR
       break;
     }
   } while (posOfLeftChild < this.count)
+};
+
+PriorityQueue.prototype.getResult = function () {
+  let returnValue = this.data[0];
+  let connectValue = ' - '
+  for (let i = 1; i < this.count; i++) {
+    returnValue =  returnValue + connectValue + this.data[i];
+  }
+  return returnValue;
 };
 
 export default PriorityQueue;

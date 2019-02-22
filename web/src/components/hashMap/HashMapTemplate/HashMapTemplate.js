@@ -37,11 +37,6 @@ class HashMapTemplate extends Component {
         ...this.state,
         pushValue: e.target.value
       });
-    } else if (e.target.name === "resultArea") {
-      this.setState({
-        ...this.state,
-        textAreaValue: e.target.value
-      });
     }
   };
 
@@ -110,10 +105,9 @@ class HashMapTemplate extends Component {
     let myHashMap = this.state.hashMap;
     let pushedKey = this.state.pushKey;
     let pushedValue = this.state.pushValue;
-    let result = this.state.textAreaValue;
-
+    
     myHashMap.put(pushedKey, pushedValue);
-    result.push('{ ' + pushedKey + ', ' + pushedValue + ' }');
+    let result = myHashMap.getResult();
 
     await this.setState({
       ...this.state,
@@ -210,10 +204,14 @@ class HashMapTemplate extends Component {
     let myHashMap = this.state.hashMap;
     let pushedKey = this.state.pushKey;
 
+    let removedValue = myHashMap.remove(pushedKey);    
+    let result = myHashMap.getResult();
+
     await this.setState({
       ...this.state,
       hashMap: myHashMap,
-      toastMsg: `Result of remove key (${pushedKey}) : (${myHashMap.remove(pushedKey)}`,
+      textAreaValue: result,
+      toastMsg: `Result of remove key (${pushedKey}) : ${removedValue}`,
       hideMsg: false
     });
   };
@@ -224,10 +222,12 @@ class HashMapTemplate extends Component {
 
     let myHashMap = this.state.hashMap;
     myHashMap.clear();
+    let result = myHashMap.getResult();
 
     await this.setState({
       ...this.state,
       hashMap: myHashMap,
+      textAreaValue: result,
       toastMsg: `Success to Clear HashMap.`,
       hideMsg: false
     });
@@ -236,8 +236,7 @@ class HashMapTemplate extends Component {
 
   render() {
     let value = this.state;
-    let output = '';
-    value.textAreaValue.forEach((v) => { output += v; });
+    let output = value.textAreaValue;
     return (
       <div className="hashMap">
         <div className="hashMap-header">

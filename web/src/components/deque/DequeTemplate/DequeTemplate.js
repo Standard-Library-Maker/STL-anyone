@@ -31,11 +31,6 @@ class DequeTemplate extends Component {
         ...this.state,
         pushValue: e.target.value
       });
-    } else if (e.target.name === "resultArea") {
-      this.setState({
-        ...this.state,
-        textAreaValue: e.target.value
-      });
     }
   };
 
@@ -67,7 +62,7 @@ class DequeTemplate extends Component {
       let myDeque = this.state.deque;
       await this.setState({
         ...this.state,
-        toastMsg: `(${myDeque.state()})`,
+        toastMsg: `(${myDeque.getResult()})`,
         hideMsg: false
       });
     }
@@ -102,15 +97,13 @@ class DequeTemplate extends Component {
 
     let myDeque = this.state.deque;
     let pushedValue = this.state.pushValue;
-    let result = this.state.textAreaValue;
-
     myDeque.push_front(pushedValue);
-    result.push(pushedValue + ' -> ');
+    let result = myDeque.getResult();
 
     await this.setState({
       ...this.state,
       deque: myDeque,
-      textAreaValue: result,
+     textAreaValue: result,
       toastMsg: `Success to push value (${pushedValue}) at front.`,
     });
   };
@@ -124,10 +117,9 @@ class DequeTemplate extends Component {
 
     let myDeque = this.state.deque;
     let pushedValue = this.state.pushValue;
-    let result = this.state.textAreaValue;
-
+ 
     myDeque.push_back(pushedValue);
-    result.push(pushedValue + ' -> ');
+    let result = myDeque.getResult();
 
     await this.setState({
       ...this.state,
@@ -141,13 +133,14 @@ class DequeTemplate extends Component {
     if (this.checkDeque()) return false;
 
     let myDeque = this.state.deque;
-    let result = this.state.textAreaValue;
-    result.splice(result.length - 1, 1);
+    let popedValue = myDeque.pop_front();
+    let result = myDeque.getResult();
 
     await this.setState({
       ...this.state,
       deque: myDeque,
-      toastMsg: `Success to pop value (${myDeque.pop_front()}) from front.`,
+      textAreaValue: result,
+      toastMsg: `Success to pop value (${popedValue}) from front.`,
       hideMsg: false
     });
   };
@@ -155,14 +148,15 @@ class DequeTemplate extends Component {
   dequePopBack = async () => {
     if (this.checkDeque()) return false;
 
-    let myDeque = this.state.deque;
-    let result = this.state.textAreaValue;
-    result.splice(result.length - 1, 1);
+    let myDeque = this.state.deque;    
+    let popedValue = myDeque.pop_back();
+    let result = myDeque.getResult();
 
     await this.setState({
       ...this.state,
       deque: myDeque,
-      toastMsg: `Success to pop value (${myDeque.pop_back()}) from back.`,
+      textAreaValue: result,
+      toastMsg: `Success to pop value (${popedValue}) from back.`,
       hideMsg: false
     });
   };
@@ -216,13 +210,14 @@ class DequeTemplate extends Component {
 
     let myDeque = this.state.deque;
     let pushedValue = this.state.pushValue;
-    let result = this.state.textAreaValue;
-    result.splice(result.length - 1, 1);
+    let erasedValue = myDeque.erase(pushedValue)
+    let result = myDeque.getResult();
 
     await this.setState({
       ...this.state,
       deque: myDeque,
-      toastMsg: `Success to erase value (${myDeque.erase(pushedValue)}) at position (${pushedValue}).`,
+      textAreaValue: result,
+      toastMsg: `Success to erase value (${erasedValue}) at position (${pushedValue}).`,
       hideMsg: false
     });
   };
@@ -231,9 +226,9 @@ class DequeTemplate extends Component {
     if (this.checkDeque()) return false;
 
     let myDeque = this.state.deque;
-    let result = this.state.textAreaValue;
-
     myDeque.clear();
+    let result = myDeque.getResult();
+
     await this.setState({
       ...this.state,
       deque: myDeque,
@@ -262,8 +257,7 @@ class DequeTemplate extends Component {
 
   render() {
     let value = this.state;
-    let output = '';
-    value.textAreaValue.forEach((v) => { output += v; });
+    let output = value.textAreaValue;
     return (
       <div className="deque">
         <div className="deque-header">

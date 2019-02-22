@@ -32,11 +32,6 @@ class PriorityQueueTemplate extends Component {
         ...this.state,
         pushValue: e.target.value
       });
-    } else if (e.target.name === "resultArea") {
-      this.setState({
-        ...this.state,
-        textAreaValue: e.target.value
-      });
     } else if (e.target.name === "option") {
       this.setState({
         ...this.state,
@@ -121,10 +116,9 @@ class PriorityQueueTemplate extends Component {
 
     let myPriorityQueue = this.state.priorityQueue;
     let pushedValue = this.state.pushValue;
-    let result = this.state.textAreaValue;
 
     myPriorityQueue.push(pushedValue);
-    result.push(pushedValue + ' -> ');
+    let result = myPriorityQueue.getResult();
 
     await this.setState({
       ...this.state,
@@ -138,13 +132,14 @@ class PriorityQueueTemplate extends Component {
     if (this.checkPriorityQueue()) return false;
 
     let myPriorityQueue = this.state.priorityQueue;
-    let result = this.state.textAreaValue;
-    result.splice(result.length - 1, 1);
+    let popedValue = myPriorityQueue.pop();
+    let result = myPriorityQueue.getResult();
 
     await this.setState({
       ...this.state,
       priorityQueue: myPriorityQueue,
-      toastMsg: `Success to pop value (${myPriorityQueue.pop()})`,
+      textAreaValue: result,
+      toastMsg: `Success to pop value (${popedValue})`,
       hideMsg: false
     });
   };
@@ -161,8 +156,7 @@ class PriorityQueueTemplate extends Component {
 
   render() {
     let value = this.state;
-    let output = '';
-    value.textAreaValue.forEach((v) => { output += v; });
+    let output = value.textAreaValue;
     return (
       <div className="priorityQueue">
         <div className="pq-header">
@@ -172,7 +166,6 @@ class PriorityQueueTemplate extends Component {
 
         <div className="title">Priority Queue</div>
         <div className="create">
-<<<<<<< HEAD
           <input
             type="radio"
             name="option"
@@ -186,21 +179,6 @@ class PriorityQueueTemplate extends Component {
             onChange={this.handleChange} />
           <span>less(defualt)</span>
           <button className="start-btn" onClick={this.start}>START</button>
-=======
-        <input 
-          type="radio" 
-          name="option" 
-          value='greater'
-          onChange={this.handleChange}/>
-          greater
-         <input 
-          type="radio" 
-          name="option" 
-          value='less' 
-          onChange={this.handleChange}/>
-          less
-        <button onClick={this.start} disabled={!value.hideMsg}>Create Priority Queue</button>
->>>>>>> a3a871f24aeed191734dd1168114e34a338d847a
         </div>
 
         <div className="test-code">
@@ -246,6 +224,5 @@ class PriorityQueueTemplate extends Component {
     )
   }
 }
-
 
 export default PriorityQueueTemplate;

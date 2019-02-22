@@ -324,4 +324,17 @@ HashMap.prototype.size = function () {
   return size;
 };
 
+HashMap.prototype.getResult = function () {
+  let resultValue = "";
+  for (let posOfMap = 0; posOfMap < 6; posOfMap++) {
+    if (this.map[posOfMap] !== undefined) {
+      let curEntry = this.map[posOfMap]
+      for (let posOfEntry = 0; posOfEntry < this.map[posOfMap].count; posOfEntry++) {
+        resultValue = resultValue +  "{" + curEntry.key + " - " + curEntry.value + "}  ";
+        curEntry = curEntry.next;
+      }
+    }
+  }
+  return resultValue;
+};
 export default HashMap;
