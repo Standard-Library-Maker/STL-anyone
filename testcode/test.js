@@ -158,22 +158,12 @@ function newPriorityQueue() {
 function newDeque() {
   console.log("\n=======Deque=======");
   let testDeque1 = new Deque();
-  testDeque1.isEmpty();
-  testDeque1.push_back(1);
+  testDeque1.push_back(3);
   testDeque1.push_front(2);
-  testDeque1.push_front(3);
-  testDeque1.isEmpty();
-  testDeque1.push_front(4);
-  testDeque1.push_back(0);
-  testDeque1.push_front(5);
-  testDeque1.push_front(6);
-  testDeque1.push_front(7);
-  testDeque1.push_front(8);
-  testDeque1.push_front(9);
-  testDeque1.push_front(10);
-  testDeque1.push_front(11);
-  testDeque1.pop_back();
-  testDeque1.pop_front();
+  testDeque1.push_front(1);
+  testDeque1.push_front(0);
+  testDeque1.push_back(4);
+  testDeque1.push_back(5);
   console.log(testDeque1);
   testDeque1.at(0);
   testDeque1.at(1);
@@ -182,13 +172,8 @@ function newDeque() {
   testDeque1.at(4);
   testDeque1.at(5);
   testDeque1.at(6);
-  testDeque1.at(7);
-  testDeque1.at(8);
-  testDeque1.at(9);
-  testDeque1.at(10);
+  console.log(testDeque1);
   testDeque1.erase(1);
-  testDeque1.erase(4);
-  testDeque1.erase(6);
   testDeque1.at(0);
   testDeque1.at(1);
   testDeque1.at(2);
@@ -198,12 +183,6 @@ function newDeque() {
   testDeque1.at(6);
   console.log(testDeque1);
   testDeque1.clear();
-  console.log("=======AFTER CLEAR=======");
-  console.log(testDeque1);
-  testDeque1.push_back(1);
-  testDeque1.push_front(2);
-  testDeque1.push_front(3);
-  testDeque1.push_front(4);
   console.log(testDeque1);
 }
 
