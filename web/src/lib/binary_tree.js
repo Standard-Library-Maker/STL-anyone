@@ -216,4 +216,8 @@ BinaryTree.prototype.deleteTree = function (value) {
   this.count = 0;
 };
 
-module.exports = BinaryTree;
+BinaryTree.prototype.toString = function () {
+  return `=== binary tree : [${this.tree[0].data}] ===`;
+};
+
+export default BinaryTree;

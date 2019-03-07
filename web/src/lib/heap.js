@@ -287,7 +287,16 @@ Heap.prototype.makeMinHeap = function(array) {
 };
 
 Heap.prototype.toString = function () {
-  return `=== ${this.size()} items in the stack : [${this.data}] ===`;
+  return `=== ${this.size()} items in the heap : [${this.data}] ===`;
+};
+
+Heap.prototype.getResult = function () {
+  let returnValue = this.data[0];
+  let connectValue = ' - '
+  for (let i = 1; i < this.count; i++) {
+    returnValue =  returnValue + connectValue + this.data[i];
+  }
+  return returnValue;
 };
 
 export default Heap;

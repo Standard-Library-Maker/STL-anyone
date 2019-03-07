@@ -17,7 +17,7 @@ const BinarySearchTree = function () {
 };
 
 /**
- * @method BinarySearchTree.isEmpty  
+ * @method BinarySearchTree.isEmpty
  * @description This method is used to check if this binary search tree is empty.
  * @returns {Boolean} This method returns 'true' if this birnary search tree is empty or 'false' if this birnary search tree isn't empty.
  * @example 
@@ -105,7 +105,8 @@ BinarySearchTree.prototype.inOrder = function(value) {
   if(node === null) return null;
   this.inOrder(node.left);
   if(node.data !== null)
-  //console.log("node data : " + node.data);
+  return node.data;
+  console.log("node data : " + node.data);
   this.inOrder(node.right);
 };
 
@@ -264,6 +265,7 @@ BinarySearchTree.prototype.delete = function (value) {
  * bst.clear(this.root);
  */
 BinarySearchTree.prototype.clear = function () {
+  if(this.root === null) return;
   this.deleteTree(this.root);
   this.root = null;
 };
@@ -279,4 +281,10 @@ BinarySearchTree.prototype.deleteTree = function (value) {
   node = null;
 };
 
-module.exports = BinarySearchTree;
+BinarySearchTree.prototype.toString = function () {
+  let result = '';
+  
+  return `=== binary search tree : [${this.state()}] ===`;
+};
+
+export default BinarySearchTree;

@@ -14,7 +14,7 @@ class HeapTemplate extends Component {
       textAreaValue: [],
       toastMsg: '',
       hideMsg: true,
-      isMax: true,
+      isMax: "max heap",
     };
   }
 
@@ -79,20 +79,19 @@ class HeapTemplate extends Component {
 
     let myHeap = this.state.heap;
     let pushedValue = this.state.pushValue;
-    let result = this.state.textAreaValue;
     //console.log(myQueue);
     if(this.state.isMax === "min heap"){
       myHeap.pushMin(pushedValue);
     } else{
       myHeap.pushMax(pushedValue);
     }
-    
+    let result = myHeap.getResult();
     //result = myHeap.toString();
-    result.push(pushedValue+' -> ');
 
     await this.setState({
       ...this.state,
       heap: myHeap,
+      pushValue: '',
       textAreaValue: result
     });
     //this.forceUpdate()
@@ -104,15 +103,17 @@ class HeapTemplate extends Component {
     if (this.checkHeap()) return false;
 
     let myHeap = this.state.heap;
-    let result = this.state.textAreaValue;
+    
     //alert(`pop : ${myHeap.popMax()}`);
-    result.splice(result.length - 1, 1);
+    //myHeap.splice(myHeap.length - 1, 1);
     if(this.state.isMax === "min heap"){
+      myHeap.makeMinHeap(this.state.heap.data);
       target = myHeap.popMin();
     } else{
+      myHeap.makeMaxHeap(this.state.heap.data);
       target = myHeap.popMax();
     }
-
+    let result = myHeap.getResult();
     await this.setState({
       ...this.state,
       heap: myHeap,
@@ -132,13 +133,15 @@ class HeapTemplate extends Component {
       //this.forceUpdate();
       //alert(myHeap.toString());
       if(this.state.isMax === "min heap"){
-        myHeap.makeMinHeap(myHeap);
+        myHeap.makeMinHeap(this.state.heap.data);
       } else{
-        myHeap.makeMaxHeap(myHeap);
+        myHeap.makeMaxHeap(this.state.heap.data);
       }
+      let result = myHeap.getResult();
       await this.setState({
         ...this.state,
-        toastMsg: JSON.stringify(myHeap),
+        textAreaValue: result,
+        toastMsg: JSON.stringify(myHeap) + ", heap is "+ this.state.isMax,
         hideMsg: false
       });
     }
@@ -165,7 +168,7 @@ class HeapTemplate extends Component {
       hideMsg: false
     });
   };
-  
+  /*
   getPeek = () => {
     if (this.checkHeap()) return false;
     let myHeap = this.state.heap;
@@ -175,6 +178,7 @@ class HeapTemplate extends Component {
       hideMsg: false
     });
   };
+  */
 
   changeMax = () => {
     if (this.checkHeap()) return false;
@@ -205,11 +209,10 @@ class HeapTemplate extends Component {
 
   render() {
     let value = this.state;
-    let output = '';
-    value.textAreaValue.forEach( (v) => {output += v;});
+    let output = value.textAreaValue;
     return (
       <div className="heap">
-        <div className="pq-header">
+        <div className="heap-header">
           <HeaderTemplate/>
           <ToastMessage msg={value.toastMsg} sendValue={this.setHideValue} hidden={value.hideMsg}/>
         </div>
@@ -237,9 +240,6 @@ class HeapTemplate extends Component {
             </div>
             <div className="empty-form">
               <button onClick={this.checkEmpty} disabled={!value.hideMsg}>empty?</button>
-            </div>
-            <div className="peek-form">
-              <button onClick={this.getPeek} disabled={!value.hideMsg}>peek</button>
             </div>
             <div className="selectBox">
               <select
