@@ -1,5 +1,0 @@
-deployment:
-  stl:
-    branch: release
-    commands:
-      - ./deploy.sh

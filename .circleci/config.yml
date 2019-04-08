@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  build:
+    docker:
+      - image: circleci/node:10
+    steps:
+      - checkout
+      - restore_cache:
+          key: dependency-cache-{{ checksum "web/package.json" }}
+      - run:
+          name: Setup Dependencies
+          command: cd web && npm install
+      - save_cache:
+          key: dependency-cache-{{ checksum "web/package.json" }}
+          paths:
+            - ./web/node_modules
