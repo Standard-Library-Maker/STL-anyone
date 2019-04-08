@@ -8,6 +8,9 @@ jobs:
 #      - restore_cache:
 #          key: dependency-cache-{{ checksum "web/package.json" }}
       - run:
+          name: remove node_modules
+          command: rm -rf ./web/node_modules
+      - run:
           name: Setup Dependencies
           command: cd web && npm install
       - run:
