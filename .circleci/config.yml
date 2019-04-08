@@ -14,3 +14,9 @@ jobs:
           key: dependency-cache-{{ checksum "web/package.json" }}
           paths:
             - ./web/node_modules
+      - deploy:
+          name: SSH File Transfer
+          command: |
+            if [ "${CIRCLE_BRANCH}" == "master" ]; then
+              sh deploy.sh
+            fi
