@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: circleci/node:10
+      - image: rohara/node:6.10.3-rsync
     steps:
       - checkout
       - restore_cache:
