@@ -2,7 +2,7 @@ version: 2
 jobs:
   build:
     docker:
-      - image: rohara/node:6.10.3-rsync
+      - image: zgaduj/node-10-rsync
     steps:
       - checkout
       - restore_cache:
