@@ -10,6 +10,9 @@ jobs:
       - run:
           name: Setup Dependencies
           command: cd web && npm install
+      - run:
+          name: React Build
+          command: cd web && npm run build
       - save_cache:
           key: dependency-cache-{{ checksum "web/package.json" }}
           paths:
