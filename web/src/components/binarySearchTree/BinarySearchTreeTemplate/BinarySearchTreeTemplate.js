@@ -56,7 +56,7 @@ class BinarySearchTreeTemplate extends Component {
       ...this.state,
       binarysearchtree: newBinarySearchTree,
       textAreaValue: [],
-      toastMsg: 'New Heap Created!',
+      toastMsg: 'New Binary Search Tree Created!',
       hideMsg: false,
     }, () => {
       console.log(newBinarySearchTree);
@@ -125,7 +125,7 @@ class BinarySearchTreeTemplate extends Component {
       //alert(myHeap.toString());
       await this.setState({
         ...this.state,
-        toastMsg: JSON.stringify(myBinarySearchTree),
+        toastMsg: myBinarySearchTree.toString(),
         hideMsg: false
       });
     }

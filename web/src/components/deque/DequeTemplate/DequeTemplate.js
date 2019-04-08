@@ -227,7 +227,7 @@ class DequeTemplate extends Component {
 
     let myDeque = this.state.deque;
     myDeque.clear();
-    let result = myDeque.getResult();
+    let result = '';
 
     await this.setState({
       ...this.state,

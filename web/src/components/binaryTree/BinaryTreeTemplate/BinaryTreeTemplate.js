@@ -82,6 +82,7 @@ class BinaryTreeTemplate extends Component {
 
     await this.setState({
       ...this.state,
+      pushValue: '',
       binarytree: myBinaryTree,
       textAreaValue: result
     });
@@ -116,7 +117,7 @@ class BinaryTreeTemplate extends Component {
       //alert(myHeap.toString());
       await this.setState({
         ...this.state,
-        toastMsg: JSON.stringify(myBinaryTree),
+        toastMsg: myBinaryTree.toString(),
         hideMsg: false
       });
     }
